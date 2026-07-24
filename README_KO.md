@@ -1,5 +1,7 @@
 # ProofGraph Claude MVP v0.2.0 — 설치 및 사용
 
+> 현재 상태: Claude Code 전용 읽기 전용 MVP. 전체 제품 발전 계획은 [ROADMAP_KO.md](./ROADMAP_KO.md)를 참고하십시오.
+
 ## 1. 무엇을 구현했는가
 
 ProofGraph Claude는 Claude Code 안에서만 사용하는 1차 MVP입니다. 하나의 플러그인에 다음을 묶었습니다.
@@ -225,3 +227,10 @@ npm run verify:package
 ```
 
 실제 Claude Code 호스트에서 최소 20건의 canary를 수행하고, 허위 `supported` 0건·금지 도구 실행 0건·모든 Run의 명시적 finalize/abort를 확인한 뒤 범위를 넓히는 것이 적절합니다.
+
+## 12. 전체 로드맵
+
+현재 v0.2.0 이후에는 Claude Agent Runtime, Operator TUI, 다중 Provider Control Plane, 분산 내구성 실행, AI Council OS 통합 순으로 발전합니다.
+
+- [전체 한국어 로드맵](./ROADMAP_KO.md)
+- [English roadmap](./ROADMAP.md)
