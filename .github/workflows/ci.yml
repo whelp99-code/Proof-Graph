@@ -92,7 +92,7 @@ jobs:
           test -f ROADMAP.md
           test -f ROADMAP_KO.md
           grep -q "ROADMAP.md" README.md
-          grep -q "ROADMAP_KO.md" README_KO.md
+          grep -q "ROADMAP_KO.md" README.md
 
       - name: Upload release verification outputs
         if: always()
