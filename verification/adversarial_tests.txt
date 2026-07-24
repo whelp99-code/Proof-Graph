@@ -1,0 +1,33 @@
+
+> proofgraph-claude@0.2.0 test:adversarial
+> node --test --test-reporter=spec tests/adversarial/*.test.mjs
+
+✔ ADVERSARIAL: fabricated quotation cannot be attached (42.445008ms)
+✔ ADVERSARIAL: arbitrary source IDs cannot be cited (22.577936ms)
+✔ ADVERSARIAL: source modification after fetch blocks new evidence and fails integrity (28.925831ms)
+✔ ADVERSARIAL: one supporting source plus a positive verdict cannot be promoted when policy requires two (30.059939ms)
+✔ ADVERSARIAL: two URLs on the same hostname do not masquerade as independent sources (27.122849ms)
+✔ ADVERSARIAL: prompt-injection flagged sources never qualify automatically (26.389981ms)
+✔ ADVERSARIAL: producer cannot self-verify under the same actor identity (9.881521ms)
+✔ ADVERSARIAL RESIDUAL: actor independence remains self-attested rather than cryptographic (12.957568ms)
+✔ ADVERSARIAL: caller cannot inject a final classification into finalize input (25.272662ms)
+✔ ADVERSARIAL: failed task remains in finalized report instead of being silently dropped (27.413461ms)
+✔ ADVERSARIAL: event log tampering is detected (10.855326ms)
+✔ ADVERSARIAL: report tampering is detected after finalization (32.137704ms)
+✔ ADVERSARIAL: path traversal and malformed run IDs are rejected (1.19866ms)
+✔ ADVERSARIAL: production MCP cannot invoke the test fixture importer even by name (46.146063ms)
+✔ ADVERSARIAL: guard fails closed when its state directory is unusable (31.518175ms)
+✔ ADVERSARIAL: deleting active run state does not disable the guard (35.141544ms)
+✔ ADVERSARIAL: corrupting active run state does not disable the guard (35.202004ms)
+✔ ADVERSARIAL: valid-JSON state tampering is detected before any later mutation (15.514073ms)
+✔ ADVERSARIAL: source tampering before finalization prevents report generation (49.110554ms)
+✔ ADVERSARIAL: canonical role boundaries reject cross-role state mutations (27.164661ms)
+✔ ADVERSARIAL: semantic state tampering cannot mark an active run terminal to disable the guard (43.87447ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 635.706231

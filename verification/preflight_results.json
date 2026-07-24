@@ -1,0 +1,156 @@
+{
+  "product": "proofgraph-claude",
+  "version": "0.2.0",
+  "generated_at": "2026-07-24T00:40:15.151Z",
+  "root": "/mnt/data/proofgraph_claude_mvp",
+  "node": "v22.16.0",
+  "platform": "linux-x64",
+  "passed": 15,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "node_version",
+      "ok": true,
+      "actual": "22.16.0",
+      "required": ">=20"
+    },
+    {
+      "name": "version_alignment",
+      "ok": true,
+      "plugin": "0.2.0",
+      "package": "0.2.0"
+    },
+    {
+      "name": "plugin_name",
+      "ok": true,
+      "actual": "proofgraph-claude"
+    },
+    {
+      "name": "component_paths",
+      "ok": true,
+      "checked": [
+        "skills/",
+        "hooks/hooks.json",
+        ".mcp.json",
+        "agents/planner.md",
+        "agents/researcher.md",
+        "agents/verifier.md",
+        "agents/synthesizer.md"
+      ],
+      "missing": []
+    },
+    {
+      "name": "mcp_configuration",
+      "ok": true,
+      "server": {
+        "type": "stdio",
+        "command": "node",
+        "args": [
+          "${CLAUDE_PLUGIN_ROOT}/server/index.mjs"
+        ],
+        "env": {
+          "PROOFGRAPH_DATA_DIR": "${CLAUDE_PLUGIN_DATA}",
+          "PROOFGRAPH_PROJECT_DIR": "${CLAUDE_PROJECT_DIR}",
+          "PROOFGRAPH_PLUGIN_ROOT": "${CLAUDE_PLUGIN_ROOT}",
+          "PROOFGRAPH_TEST_MODE": "0"
+        }
+      }
+    },
+    {
+      "name": "hook_surface",
+      "ok": true,
+      "events": [
+        "PreToolUse",
+        "PostToolUse",
+        "PostToolUseFailure",
+        "SubagentStart",
+        "SubagentStop",
+        "SessionStart",
+        "SessionEnd",
+        "Stop"
+      ]
+    },
+    {
+      "name": "component_frontmatter",
+      "ok": true,
+      "failures": []
+    },
+    {
+      "name": "javascript_syntax",
+      "ok": true,
+      "files_checked": 24,
+      "failures": []
+    },
+    {
+      "name": "no_external_runtime_imports",
+      "ok": true,
+      "failures": [],
+      "dependencies": null
+    },
+    {
+      "name": "mcp_requires_initialize",
+      "ok": true,
+      "response": {
+        "code": -32002,
+        "message": "Server not initialized"
+      }
+    },
+    {
+      "name": "mcp_initialize",
+      "ok": true,
+      "result": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "serverInfo": {
+          "name": "proofgraph-claude",
+          "title": "ProofGraph Claude Evidence Server",
+          "version": "0.2.0",
+          "description": "Local evidence-gated research state and verification for Claude Code."
+        },
+        "instructions": "Use pg_start_run first. Only sources fetched by this server qualify as evidence. Final claim classifications are computed by pg_finalize_run."
+      }
+    },
+    {
+      "name": "mcp_tool_surface",
+      "ok": true,
+      "count": 14,
+      "names": [
+        "pg_start_run",
+        "pg_get_active_run",
+        "pg_register_plan",
+        "pg_register_claims",
+        "pg_fetch_source",
+        "pg_search_source",
+        "pg_attach_evidence",
+        "pg_record_verdicts",
+        "pg_complete_task",
+        "pg_finalize_run",
+        "pg_get_status",
+        "pg_get_report",
+        "pg_verify_integrity",
+        "pg_abort_run"
+      ]
+    },
+    {
+      "name": "mcp_tool_schemas",
+      "ok": true
+    },
+    {
+      "name": "hook_no_active_run_is_silent",
+      "ok": true,
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "claude_cli_plugin_validation",
+      "ok": true,
+      "skipped": true,
+      "reason": "claude CLI is not installed in this verification environment"
+    }
+  ]
+}

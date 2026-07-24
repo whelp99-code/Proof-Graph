@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "proofgraph-claude",
+  "displayName": "ProofGraph Claude",
+  "version": "0.2.0",
+  "description": "Read-only, evidence-gated deep research for Claude Code with auditable local state.",
+  "author": {
+    "name": "ProofGraph Project"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "research",
+    "verification",
+    "mcp",
+    "evidence"
+  ],
+  "skills": "./skills/",
+  "agents": [
+    "./agents/planner.md",
+    "./agents/researcher.md",
+    "./agents/verifier.md",
+    "./agents/synthesizer.md"
+  ],
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json"
+}

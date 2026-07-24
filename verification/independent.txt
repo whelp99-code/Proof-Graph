@@ -1,0 +1,21 @@
+PASS  plugin manifest and component inventory are internally consistent
+PASS  production MCP requires initialization and exposes exactly the intended surface
+PASS  malformed JSON and unknown tools fail without terminating the MCP process
+PASS  black-box evidence lifecycle finalizes a supported claim and passes local integrity checks
+PASS  persisted state remains readable after MCP server restart
+PASS  fabricated quotations and arbitrary source identifiers are rejected
+PASS  two URLs on one hostname do not satisfy independent-source policy
+PASS  prompt-injection-marked source text cannot qualify for automatic promotion
+PASS  canonical role boundaries reject cross-role state mutation
+PASS  hard MCP tool-call budget transitions the run to budget_exceeded
+PASS  one active run per project is enforced and explicit abort releases the guard
+PASS  active-run hooks deny shell, skill, and external MCP escape paths while allowing the bundled MCP
+PASS  hook fails closed when active state is missing or corrupt
+PASS  valid-JSON semantic state tampering cannot disable the active-run guard
+PASS  Stop hook blocks an unfinished run instead of silently ending the session
+PASS  source-file tampering before finalization blocks report generation
+PASS  post-finalization report and event-log tampering are detected
+RESIDUAL  actor independence remains a declared role rather than cryptographic identity
+
+18/18 independent checks passed; residuals: 1
+Wrote /mnt/data/proofgraph_claude_mvp/verification/independent_results.json

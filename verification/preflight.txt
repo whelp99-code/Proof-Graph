@@ -1,0 +1,17 @@
+PASS  node_version
+PASS  version_alignment
+PASS  plugin_name
+PASS  component_paths
+PASS  mcp_configuration
+PASS  hook_surface
+PASS  component_frontmatter
+PASS  javascript_syntax
+PASS  no_external_runtime_imports
+PASS  mcp_requires_initialize
+PASS  mcp_initialize
+PASS  mcp_tool_surface
+PASS  mcp_tool_schemas
+PASS  hook_no_active_run_is_silent
+PASS  claude_cli_plugin_validation (SKIPPED)
+
+15/15 checks passed

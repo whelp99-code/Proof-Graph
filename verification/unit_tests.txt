@@ -1,0 +1,38 @@
+
+> proofgraph-claude@0.2.0 test:unit
+> node --test --test-reporter=spec tests/unit/*.test.mjs
+
+✔ canonical JSON is stable across key order (0.866757ms)
+✔ sha256 and event hashes are deterministic (0.853957ms)
+✔ URL security blocks http://example.com/ (1.889596ms)
+✔ URL security blocks https://user:pass@example.com/ (0.118086ms)
+✔ URL security blocks https://example.com:444/ (0.132406ms)
+✔ URL security blocks https://localhost/ (0.135541ms)
+✔ URL security blocks https://service.internal/ (0.165756ms)
+✔ URL security blocks https://127.0.0.1/ (0.423218ms)
+✔ URL security blocks https://[::1]/ (3.316715ms)
+✔ URL allowlist accepts subdomains and rejects other hosts (0.189051ms)
+✔ private and documentation addresses are blocked (0.317521ms)
+✔ DNS resolution rejects any private answer (0.729688ms)
+✔ HTML extraction removes active elements and decodes text (1.049698ms)
+✔ prompt injection detection flags common instructions (0.687281ms)
+✔ exact quote matching normalizes whitespace but requires a real substring (0.226356ms)
+✔ supported classification requires distinct hosts and independent verdict (66.720159ms)
+✔ two sources on one hostname do not satisfy independence threshold (35.888719ms)
+✔ prompt-injection flagged evidence is excluded from automatic support (28.720341ms)
+✔ claim producer cannot record own verdict (8.863871ms)
+✔ finalization is blocked while planned tasks are pending (13.179843ms)
+✔ failed tasks remain visible and make the quality gate partial (29.134566ms)
+✔ full successful lifecycle finalizes, reports, and verifies integrity (49.596065ms)
+✔ tool-call budget is a hard state transition (41.322361ms)
+✔ only one active run is permitted per project and abort releases it (7.874191ms)
+✔ parallel state transactions serialize without lost updates (153.124708ms)
+✔ source tampering is detected (21.558157ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 511.871796

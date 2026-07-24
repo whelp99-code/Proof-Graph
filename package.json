@@ -1,0 +1,21 @@
+{
+  "name": "proofgraph-claude",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code-only evidence-gated research plugin with a local MCP server and deterministic hooks.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test --test-reporter=spec tests/**/*.test.mjs",
+    "test:unit": "node --test --test-reporter=spec tests/unit/*.test.mjs",
+    "test:integration": "node --test --test-reporter=spec tests/integration/*.test.mjs",
+    "test:adversarial": "node --test --test-reporter=spec tests/adversarial/*.test.mjs",
+    "preflight": "node scripts/preflight.mjs",
+    "verify:independent": "node verification/independent_verifier.mjs",
+    "verify:package": "node scripts/verify-package.mjs",
+    "release:verify": "npm test && node scripts/preflight.mjs --output verification/preflight_results.json && node verification/independent_verifier.mjs --output verification/independent_results.json"
+  },
+  "license": "MIT"
+}

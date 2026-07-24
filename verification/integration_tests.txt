@@ -1,0 +1,25 @@
+
+> proofgraph-claude@0.2.0 test:integration
+> node --test --test-reporter=spec tests/integration/*.test.mjs
+
+✔ guard is silent when no ProofGraph run is active (35.239019ms)
+✔ active guard allows bundled MCP and WebSearch but denies risky and external tools (529.96303ms)
+✔ guard only permits ProofGraph plugin agents and enforces agent budget (126.16782ms)
+✔ stop guard blocks an unfinished run and avoids recursive blocking (68.623154ms)
+✔ audit hook stores hashes instead of raw tool input (50.927101ms)
+✔ WebSearch hook reservations enforce the hard tool-call budget (482.139814ms)
+✔ MCP requires initialize before tool operations (45.751967ms)
+✔ MCP negotiates the latest supported protocol when requested version is unknown (42.23771ms)
+✔ production tool list excludes the deterministic fixture importer (43.321408ms)
+✔ test-mode MCP completes a full evidence-gated lifecycle (127.232721ms)
+✔ MCP reports malformed JSON and unknown tools without crashing (37.902394ms)
+✔ MCP state persists across server restarts (87.791743ms)
+✔ MCP output schemas permit the documented structured result fields (54.958987ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1344.849264

@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "expected_files": 55,
+  "actual_files": 55,
+  "secret_findings": 0,
+  "failures": []
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph-claude",
+  "version": "0.2.0",
+  "release_decision": "PASS_OFFLINE_CANARY_REQUIRED",
+  "scope": "Claude Code-only read-only research plugin with bundled local stdio MCP and deterministic hooks",
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux-x64",
+    "claude_cli_available": false,
+    "external_network_canary": "NOT_RUN_IN_VERIFICATION_ENVIRONMENT"
+  },
+  "automated_tests": {
+    "unit": {
+      "total": 26,
+      "passed": 26,
+      "failed": 0
+    },
+    "integration": {
+      "total": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "adversarial": {
+      "total": 21,
+      "passed": 21,
+      "failed": 0,
+      "documented_residuals": 1
+    },
+    "all": {
+      "total": 60,
+      "passed": 60,
+      "failed": 0
+    }
+  },
+  "coverage_percent": {
+    "line": 89.51,
+    "branch": 77.03,
+    "functions": 92.63
+  },
+  "independent_black_box": {
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "production_modules_imported": false,
+    "residuals_confirmed": 1,
+    "release_gate": "PASS_OFFLINE_CANARY_REQUIRED"
+  },
+  "preflight": {
+    "checks": 15,
+    "reported_passed": 15,
+    "failed": 0,
+    "skipped": [
+      "claude_cli_plugin_validation"
+    ],
+    "substantive_executed_passed": 14
+  },
+  "production_mcp_tool_count": 14,
+  "runtime_npm_dependencies": 0,
+  "known_residuals": [
+    "Verifier actor identity is a server-enforced declared role, not a cryptographically attested identity.",
+    "Exact quote matching proves text presence, not semantic entailment or context correctness.",
+    "Distinct hostnames are only a proxy for editorial independence.",
+    "Claude token usage and account billing are not hard-limited by the plugin.",
+    "Actual Claude Code host loading, live WebSearch, and live public HTTPS source retrieval require the user-environment canary."
+  ],
+  "go_no_go": {
+    "offline_mvp": "GO",
+    "local_read_only_claude_canary": "GO",
+    "unattended_or_org_wide_deployment": "NO_GO_UNTIL_20_CASE_CANARY"
+  }
+}
