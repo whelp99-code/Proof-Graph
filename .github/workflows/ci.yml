@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - "chore/**"
+      - "feature/**"
+      - "fix/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: proofgraph-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Node ${{ matrix.node-version }} validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Unit, integration, and adversarial tests
+        run: npm test
+
+      - name: Static and MCP preflight
+        run: npm run preflight
+
+      - name: Independent black-box verification
+        run: npm run verify:independent
+
+      - name: Package verification
+        run: npm run verify:package
+
+      - name: Upload verification outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-node-${{ matrix.node-version }}
+          path: |
+            verification/*.json
+            verification/*.md
+          if-no-files-found: warn
+          retention-days: 14
+
+  manifest:
+    name: Repository and release manifest checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+
+      - name: Full release verification
+        run: npm run release:verify
+
+      - name: Verify roadmap and documentation links
+        shell: bash
+        run: |
+          test -f ROADMAP.md
+          test -f ROADMAP_KO.md
+          grep -q "ROADMAP.md" README.md
+          grep -q "ROADMAP_KO.md" README_KO.md
+
+      - name: Upload release verification outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-verification
+          path: |
+            verification/*.json
+            verification/*.md
+            BUILD_MANIFEST.json
+          if-no-files-found: warn
+          retention-days: 30
