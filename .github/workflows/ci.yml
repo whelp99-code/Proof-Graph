@@ -37,7 +37,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: npm
 
       - name: Install dependencies
         run: npm install --ignore-scripts
@@ -78,7 +77,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
         run: npm install --ignore-scripts
@@ -92,7 +90,7 @@ jobs:
           test -f ROADMAP.md
           test -f ROADMAP_KO.md
           grep -q "ROADMAP.md" README.md
-          grep -q "ROADMAP_KO.md" README.md
+          grep -q "ROADMAP_KO.md" README_KO.md
 
       - name: Upload release verification outputs
         if: always()
