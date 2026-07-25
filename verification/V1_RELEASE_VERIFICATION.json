@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.0.0",
+  "generated_at": "2026-07-25T04:38:04.945880Z",
+  "release_gate": "PASS_OFFLINE_VENDOR_CANARY_REQUIRED",
+  "versions": {
+    "v0.6.0": "universal_runtime_kernel",
+    "v0.7.0": "universal_adapter_layer",
+    "v0.8.0": "workspace_execution_engine",
+    "v0.9.0": "graph_debugger_and_inspector",
+    "v1.0.0": "graph_engineering_platform"
+  },
+  "automated_tests": {
+    "unit": 47,
+    "integration": 24,
+    "adversarial": 40,
+    "platform": 36,
+    "total": 147,
+    "passed": 147,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coverage": {
+    "line_percent": 92.24,
+    "branch_percent": 76.99,
+    "function_percent": 91.87,
+    "branch_observed_range": [
+      76.99,
+      77.04
+    ],
+    "measurement_note": "Node.js experimental branch coverage varied slightly across repeated full-suite runs; 76.99% is the conservative floor."
+  },
+  "preflight": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 1,
+    "total": 20,
+    "skipped_checks": [
+      "claude_cli_plugin_validation"
+    ]
+  },
+  "independent_verification": {
+    "evidence_engine": {
+      "passed": 18,
+      "total": 18,
+      "failed": 0,
+      "residuals": 1
+    },
+    "graph_engine": {
+      "passed": 14,
+      "total": 14,
+      "failed": 0,
+      "residuals": 1
+    },
+    "platform": {
+      "passed": 10,
+      "total": 10,
+      "failed": 0,
+      "residuals": 1
+    }
+  },
+  "canaries": {
+    "mock": "CANARY_PASS",
+    "claude": "NOT_RUN",
+    "codex": "NOT_RUN",
+    "opencode": "NOT_RUN",
+    "gajae_code": "NOT_RUN",
+    "grok": "NOT_RUN",
+    "pi": "NOT_RUN"
+  },
+  "residual_risks": [
+    "Agent/verifier role identity is declared rather than cryptographically attested.",
+    "Human approval identity is not cryptographically proven inside one host.",
+    "Git worktree isolates files but not network or operating-system kernel.",
+    "Vendor CLI/SDK interfaces can drift and require version-pinned live canaries."
+  ],
+  "claims_not_made": [
+    "No authenticated vendor adapter was executed in this build environment.",
+    "No network or kernel sandbox is claimed.",
+    "No unattended production mutation is approved.",
+    "Local hashes are not external signatures or notarization."
+  ],
+  "package_verification": {
+    "manifested_files": 141,
+    "actual_files": 141,
+    "hash_or_size_mismatches": 0,
+    "unexpected_files": 0,
+    "secret_findings": 0,
+    "transient_results_directory": "verification/tmp"
+  }
+}

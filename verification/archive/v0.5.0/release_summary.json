@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph-claude",
+  "version": "0.5.0",
+  "release_decision": "PASS_OFFLINE_CLAUDE_CANARY_REQUIRED",
+  "scope": "Claude Code-only artifact-first Dynamic Graph Engineering plugin with deterministic compiler, bounded runtime, human approval state, and legacy evidence-gated research",
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux-x64",
+    "claude_cli_available": false,
+    "external_network_canary": "NOT_RUN_IN_VERIFICATION_ENVIRONMENT"
+  },
+  "automated_tests": {
+    "unit": { "total": 47, "passed": 47, "failed": 0 },
+    "integration": { "total": 24, "passed": 24, "failed": 0 },
+    "adversarial": { "total": 34, "passed": 34, "failed": 0, "documented_residuals": 2 },
+    "all": { "total": 105, "passed": 105, "failed": 0 }
+  },
+  "coverage_percent": {
+    "line": 93.07,
+    "branch": 80.71,
+    "functions": 94.69
+  },
+  "independent_black_box": {
+    "evidence_engine": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "production_modules_imported": false,
+      "residuals_confirmed": 1
+    },
+    "graph_engine": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "production_modules_imported": false,
+      "residuals_confirmed": 1
+    }
+  },
+  "preflight": {
+    "checks": 16,
+    "reported_passed": 16,
+    "failed": 0,
+    "substantive_executed_passed": 15,
+    "skipped": ["claude_cli_plugin_validation"]
+  },
+  "production_mcp_tool_count": 24,
+  "runtime_npm_dependencies": 0,
+  "default_workspace_mutation": false,
+  "known_residuals": [
+    "Verifier actor identity is a server-enforced declared role, not a cryptographically attested identity.",
+    "Human approval identity is self-attested inside one Claude host.",
+    "Heuristic complexity and risk assessment are routing inputs, not objective truth.",
+    "Claude token usage and account billing are not hard-limited by the plugin.",
+    "Actual Claude Code host loading and 20-case canary remain required."
+  ],
+  "go_no_go": {
+    "offline_v0_5_0": "GO",
+    "local_artifact_only_claude_canary": "GO",
+    "workspace_mutation": "NO_GO",
+    "unattended_or_org_wide_deployment": "NO_GO_UNTIL_20_CASE_CANARY"
+  }
+}

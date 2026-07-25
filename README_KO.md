@@ -1,236 +1,434 @@
-# ProofGraph Claude MVP v0.2.0 — 설치 및 사용
+# ProofGraph v1.1.0 — 설치와 운영
 
-> 현재 상태: Claude Code 전용 읽기 전용 MVP. 전체 제품 발전 계획은 [ROADMAP_KO.md](./ROADMAP_KO.md)를 참고하십시오.
+**AI 코딩 도구를 위한 Graph Engineering Runtime**입니다.
 
-## 1. 무엇을 구현했는가
+ProofGraph는 개발 목표를 타입이 있는 상태 그래프로 컴파일하고, 역할별 에이전트·검증·실패 역라우팅·사람 승인·Workspace 변경을 결정론적으로 통제합니다. AI Council OS가 아니며, 새로운 모델을 만드는 프로젝트도 아닙니다. Claude Code, Codex, OpenCode, Gajae Code(GJC), Grok Build, Pi 및 사용자 정의 코딩 에이전트를 하나의 Graph Runtime에서 실행하기 위한 개발 도구입니다.
 
-ProofGraph Claude는 Claude Code 안에서만 사용하는 1차 MVP입니다. 하나의 플러그인에 다음을 묶었습니다.
+## v1.1.0 구성
 
 ```text
-Claude Code Plugin
-├─ /proofgraph-claude:research Skill
-├─ planner / researcher / verifier / synthesizer Subagent
-├─ read-only 정책 Hook
-└─ local stdio MCP server
-   ├─ 실행·예산 상태
-   ├─ HTTPS 출처 수집과 SSRF 차단
-   ├─ 정확 일치 인용 검증
-   ├─ 주장·근거·판정 원장
-   ├─ 결정론적 최종 분류
-   └─ 해시 체인·무결성 검사
+사용자 목표
+  ↓
+Dynamic Graph Compiler
+  ↓
+Typed Graph Runtime / State / Event Chain
+  ↓
+Adapter Router
+  ├─ Claude
+  ├─ Codex
+  ├─ OpenCode — 1차 기준 Host
+  ├─ GJC
+  ├─ Grok
+  ├─ Pi — 2차 Reference TUI Host
+  ├─ Orca Execution Host
+  └─ Custom
+  ↓
+Verifier / Failure Routing / Human Approval
+  ↓
+Approval-gated Git Worktree
+  ↓
+Inspector / Report / Integrity
 ```
 
-TUI나 별도 데몬은 만들지 않았습니다. 1차 MVP에서는 Claude Code 자체가 UI이고, MCP 서버가 통제·상태·증거 엔진 역할을 담당합니다.
+완성된 기능:
 
-## 2. 전제 조건
+- 자연어 → 검증된 GraphSpec
+- 조건 분기, 제한된 반복, 동적 fan-out, checkpoint/resume
+- 공통 AgentRequest/AgentResult 계약과 범용 Adapter 계층
+- 승인된 변경만 적용하는 disposable Git worktree
+- patch·명령 결과·diff·rollback receipt
+- breakpoint, pause/resume, single-step, DOT, 로컬 Inspector
+- OpenCode Plugin·Server/SSE·Permission Bridge를 결합한 1차 기준 Host
+- Pi Extension·strict JSONL RPC·session persistence를 결합한 2차 Reference TUI Host
+- `proofgraph.host.v1` 인증형 Host Protocol과 loopback HTTP/SSE Bridge
+- OpenCode·Pi 프로젝트/사용자 범위 관리형 설치기
+- Orca 외부 Operator UI·worktree·terminal 호환 브리지는 3순위 Host로 유지
+- 선택형 dependency-free 로컬 TUI는 디버그·CI snapshot 용도로 유지
+- 명시적 GraphSpec JSON의 validate/start/run
+- agent-tui, feature, bugfix, refactor, security-audit, migration, research 템플릿
+- CLI, ESM API, 범용 stdio MCP, Claude Code 플러그인
+- 적대적·독립 블랙박스·패키지 검증
 
-- Claude Code 최신 버전
-- Node.js 20 이상
-- Claude Code를 사용할 수 있는 로그인 또는 계정
+## 1. 설치
 
-이 플러그인의 MCP 서버는 Node.js 내장 모듈만 사용합니다. `npm install`은 필요하지 않습니다.
+필수 조건:
 
-## 3. 가장 빠른 시험 실행
+```text
+ProofGraph Core: Node.js 20 이상
+Pi 0.82.0 Host 사용 시: Node.js 22.19.0 이상
+Git
+실제로 사용할 코딩 에이전트 CLI와 로그인
+```
 
-압축을 풀고 플러그인 루트에서 실행합니다.
+소스 설치:
 
 ```bash
-node scripts/preflight.mjs
+git clone https://github.com/whelp99-code/Proof-Graph.git
+cd Proof-Graph
+npm ci --ignore-scripts
 npm test
+npm link
+proofgraph version
+```
+
+전역 링크를 만들지 않으려면 모든 예제의 `proofgraph`를 다음으로 바꿉니다.
+
+```bash
+node /절대경로/Proof-Graph/bin/proofgraph.mjs
+```
+
+## 2. OpenCode·Pi 우선 Host 설치
+
+Host 우선순위와 지원 기능을 확인합니다.
+
+```bash
+proofgraph hosts
+proofgraph host paths
+```
+
+현재 프로젝트에 설치합니다.
+
+```bash
+proofgraph host install opencode --scope project
+proofgraph host install pi --scope project
+```
+
+사용자 전체 설치는 `--scope user`를 사용합니다. OpenCode 설치기는 기존 `.opencode/package.json`을 삭제하지 않고 `@opencode-ai/plugin@1.18.4` 의존성만 병합합니다. 기존 의존성·script·사용자 필드는 보존하며, 다른 plugin 버전이 있으면 `--force` 없이는 중단합니다. Pi의 핵심 import는 Pi가 제공하므로 peer dependency로 유지합니다. 모든 설치 경로에서 심볼릭 링크와 부분 설치를 fail-closed로 거부합니다.
+
+Host Bridge 시작:
+
+```bash
+export PROOFGRAPH_HOST_TOKEN="$(openssl rand -hex 32)"
+export PROOFGRAPH_HOST_URL="http://127.0.0.1:8743"
+proofgraph host serve opencode --port 8743 --token "$PROOFGRAPH_HOST_TOKEN"
+```
+
+Pi는 별도 port/token으로 `proofgraph host serve pi`를 실행합니다. OpenCode Worker는 UI Host와 분리된 `opencode --pure serve` 인스턴스를 사용하고, 운영자가 이를 확인한 뒤에만 `pure_worker_confirmed=true`로 승격합니다. OpenCode 모델 도구에는 승인·거부·중단 권한을 노출하지 않으며, 해당 작업은 ProofGraph CLI에서 수행합니다. 오프라인 계약 대상은 OpenCode CLI/server 1.18.4, `@opencode-ai/plugin` 1.18.4, Pi 0.82.0입니다. 이는 live 인증이 아니며, 설치된 바이너리가 있으면 `npm run hosts:preflight`가 정확한 버전 일치를 검사합니다. 상세한 Worker 설정과 명령은 [OpenCode·Pi 통합 가이드](./docs/OPENCODE_PI_INTEGRATION_KO.md)를 참고하십시오.
+
+## 3. 프로젝트 초기화
+
+```bash
+cd /개발/저장소
+proofgraph init
+```
+
+생성 파일:
+
+```text
+proofgraph.config.json
+.proofgraph/.gitignore
+```
+
+기존 설정은 `--force` 없이는 덮어쓰지 않습니다. 설정 파일이나 `.proofgraph`가 심볼릭 링크이면 초기화를 거부합니다.
+
+## 4. 첫 실행
+
+```bash
+proofgraph templates
+proofgraph compile "인증 회귀 버그를 수정하라" --template bugfix
+proofgraph run "이 저장소의 결정론적 불변조건 하나를 설명하라"
+```
+
+초기 기본값은 `mock` Adapter입니다. 실제 외부 에이전트를 호출하지 않고 Graph Runtime을 검증합니다.
+
+## 5. 템플릿
+
+```text
+agent-tui
+feature
+bugfix
+refactor
+security-audit
+migration
+research
+```
+
+예:
+
+```bash
+proofgraph run \
+  "세션 토큰 회전 기능을 설계하고 구현안을 검증하라" \
+  --template feature
+```
+
+프로젝트 전용 템플릿은 `proofgraph.config.json`의 `templates`에 같은 계약으로 추가할 수 있습니다.
+
+## 6. AI Agent TUI
+
+내장 TUI는 Reference Host가 아니라 디버그·CI snapshot용 보조 화면입니다. 자연어 목표를 전용 템플릿으로 컴파일할 수 있습니다.
+
+```bash
+proofgraph compile "AI 에이전트 TUI를 개발하라"
+# --template 없이 agent-tui가 자동 선택됩니다.
+```
+
+검토 가능한 명시적 GraphSpec도 제공합니다.
+
+```bash
+proofgraph graph validate examples/graphs/ai-agent-tui.graph.json
+proofgraph graph run examples/graphs/ai-agent-tui.graph.json --adapter mock
+```
+
+실행 중인 agent graph를 terminal에서 운영합니다.
+
+```bash
+proofgraph tui
+proofgraph tui <run_id>
+proofgraph tui <run_id> --snapshot
+```
+
+키는 `Tab/←/→`로 panel focus, `↑/k`·`↓/j`로 run 또는 node 선택, `p`로 pause/resume, `s`로 single-step, `a,a`로 승인, `d,d`로 거부, `x,x`로 중단, `r`로 refresh, `q`로 종료합니다. 승인·거부·중단은 4초 이내 동일 키 2회를 요구합니다. TUI는 state 파일을 직접 수정하지 않고 DebuggerController와 GraphKernel만 사용합니다. 상세 설계는 [AI Agent TUI 문서](./docs/AI_AGENT_TUI_KO.md), 그래프 형식은 [GraphSpec v1](./docs/GRAPH_SPEC_KO.md)을 참고하십시오.
+
+## 7. 디버거 운영
+
+Graph를 먼저 만들고 작업자 실행 전 멈출 수 있습니다.
+
+```bash
+proofgraph start \
+  "결제 모듈의 오류 처리를 리팩터링하라" \
+  --template refactor
+```
+
+반환된 `run_id`로:
+
+```bash
+proofgraph debug break <run_id> kind develop
+proofgraph resume <run_id>
+proofgraph debug status <run_id>
+proofgraph inspect <run_id> text
+proofgraph inspect <run_id> json
+proofgraph inspect <run_id> dot
+```
+
+한 번만 breakpoint를 통과:
+
+```bash
+proofgraph debug bypass <run_id> <node_id>
+proofgraph resume <run_id>
+```
+
+한 노드만 실행:
+
+```bash
+proofgraph debug step <run_id>
+proofgraph resume <run_id>
+```
+
+웹 Inspector:
+
+```bash
+proofgraph serve <run_id>
+```
+
+기본적으로 `127.0.0.1`에만 바인딩되고 임의 bearer token을 요구합니다.
+
+## 8. 실제 파일 변경
+
+`proofgraph.config.json`:
+
+```json
+{
+  "workspace": {
+    "enabled": true,
+    "require_approval": true,
+    "require_clean": true
+  }
+}
+```
+
+운영 순서:
+
+```bash
+proofgraph workspace create <run_id>
+proofgraph workspace propose <run_id> actions.json
+proofgraph workspace approve <run_id> <challenge> approve
+proofgraph workspace execute <run_id>
+proofgraph workspace diff <run_id>
+```
+
+문제 시:
+
+```bash
+proofgraph workspace rollback <run_id>
+```
+
+`actions.json` 예:
+
+```json
+[
+  {
+    "type": "write_file",
+    "path": "src/example.js",
+    "content": "export const value = 1;\n"
+  },
+  {
+    "type": "run_command",
+    "argv": ["npm", "test"]
+  }
+]
+```
+
+제약:
+
+- 절대 경로, `..`, `.git`, 심볼릭 링크 경로 차단
+- shell 문자열이 아니라 argv 실행
+- 명령 allowlist 적용
+- 승인 action digest가 바뀌면 실행 거부
+- 실패 시 rollback
+- 직접 파일 변경을 감지하면 rollback
+
+Git worktree는 파일 격리입니다. 네트워크·커널 격리는 컨테이너나 별도 sandbox가 필요합니다.
+
+## 9. 실제 코딩 에이전트 연결
+
+설정 예시는 [`examples/proofgraph.config.json`](./examples/proofgraph.config.json)을 참고합니다.
+
+```bash
+proofgraph adapters
+```
+
+각 Adapter는 기본적으로 비활성입니다. 설치·로그인 후 해당 설정의 `enabled`를 켜고 canary를 실행합니다.
+
+```bash
+npm run canary -- \
+  --adapter claude \
+  --project /개발/저장소
+```
+
+Codex, OpenCode, Grok, Pi도 같은 방식입니다. Claude는 print JSON, Codex는 `exec` JSON/JSONL, OpenCode의 기본 프로필은 authenticated Server API와 Structured Output이며 필요할 때 legacy subprocess를 선택할 수 있습니다. Grok은 headless JSON, Pi는 discovery를 끄고 read tool만 노출한 엄격한 LF JSONL RPC를 사용합니다. Codex의 JSON 출력 플래그는 릴리스 간 변화에 대응하도록 설정 가능합니다. Gajae Code v0.11은 외부 `--mode rpc`, `rpc-ui`, `bridge` CLI 진입점을 제거하고 SDK v3 WebSocket을 기계 제어 표면으로 지정했으므로, pinned SDK bridge 또는 신뢰할 수 있는 command profile 없이는 GJC를 fail-closed로 유지합니다.
+
+### OpenCode·Pi First-class Host
+
+OpenCode는 Plugin + Server API/SSE Worker, Pi는 Extension + strict JSONL RPC Worker로 연결됩니다.
+
+```bash
+cp examples/opencode-host.config.json proofgraph.config.json
+# 또는
+cp examples/pi-host.config.json proofgraph.config.json
+```
+
+예시 설정은 `enabled=false`, `default_adapter=mock`으로 제공됩니다. 실제 바이너리 설치·로그인·canary를 통과한 뒤에만 해당 Adapter를 활성화하십시오.
+
+```bash
+npm run test:hosts
+npm run verify:hosts
+npm run hosts:preflight
+```
+
+현재 Host 계층은 OpenCode/Pi Plugin·Extension, 인증 Bridge, 도구 정책, 설치, Mock E2E와 독립 블랙박스 검증을 완료했습니다. 실제 Host 바이너리·인증 세션 canary는 별도 출시 게이트입니다.
+
+### Orca Execution Host
+
+Orca는 단일 모델 Adapter가 아니라 UI·worktree·terminal·agent process를 제공하는 **Execution Host**입니다. ProofGraph는 GraphSpec, ready node, 검증, 실패 역라우팅과 최종 상태의 권위자로 남습니다.
+
+```bash
+cp examples/orca-bridge.config.json proofgraph.config.json
+# Orca UI에서 Agent Permissions를 Manual로 변경한 뒤
+# adapters.orca.enabled=true
+# adapters.orca.manual_permissions_confirmed=true
+# `orca repo list --json`에서 repo ID를 확인하고
+# adapters.orca.repo_selector="id:<repoId>"로 설정
+
+orca status --json  # 실제 명령은 영문 ASCII `orca`
+orca repo list --json
+proofgraph adapters
+proofgraph run "결정론적 불변조건 하나를 설명하라" --adapter orca
+```
+
+Orca-hosted run에서는 `workspace.enabled=false`와 명시적 `repo_selector`가 필수입니다. 활성 화면에 우연히 선택된 저장소가 아니라 지정한 저장소만 대상으로 삼습니다. Orca가 유일한 worktree 소유자이며 ProofGraph Workspace Engine을 동시에 켜면 실행을 거부합니다. bridge는 `task-create → worktree create → terminal wait → dispatch --inject → check`만 사용하고 Orca의 autonomous coordinator loop와 ad-hoc terminal injection은 사용하지 않습니다. 자세한 설정·canary·제한은 [Orca 통합 문서](./docs/ORCA_INTEGRATION_KO.md)를 참고하십시오.
+
+## 10. 범용 MCP
+
+```bash
+proofgraph-mcp
+```
+
+또는:
+
+```bash
+proofgraph mcp
+```
+
+노출 기능:
+
+```text
+compile / start / run / resume
+status / report / integrity / approval
+adapters / templates
+debug / inspect
+workspace propose / decide / execute / diff / rollback
+```
+
+MCP 클라이언트 설정 예시는 [`examples/universal-mcp.json`](./examples/universal-mcp.json)에 있습니다.
+
+## 11. Claude Code 플러그인
+
+```bash
 claude plugin validate . --strict
 claude --plugin-dir .
 ```
 
-Claude Code가 열리면 다음을 확인합니다.
+Claude Code 내부:
 
 ```text
-/plugin    → proofgraph-claude 구성요소가 보이는지 확인
-/mcp       → proofgraph MCP 서버가 connected인지 확인
-/hooks     → PreToolUse, PostToolUse, Stop Hook 확인
+/proofgraph-claude:graph <개발 목표>
+/proofgraph-claude:research <검증할 주장 또는 URL>
 ```
 
-이후 다음처럼 실행합니다.
+Claude 플러그인은 ProofGraph v1.0의 Adapter 중 하나입니다. 핵심 Runtime은 CLI와 범용 MCP에서도 독립적으로 동작합니다.
 
-```text
-/proofgraph-claude:research https://x.com/... 게시물의 기술적 주장을 공식 문서와 원문으로 검증해줘
-```
-
-또는 일반 주장도 가능합니다.
-
-```text
-/proofgraph-claude:research Claude Code 플러그인은 MCP 서버와 Hook을 함께 배포할 수 있다는 주장을 공식 문서로 검증해줘
-```
-
-## 4. 사용자 전체 설치
-
-Claude Code의 skills-directory plugin 방식으로 설치할 수 있습니다.
-
-### macOS·Linux·WSL
+## 12. 검증
 
 ```bash
-bash scripts/install-user.sh
-```
-
-기존 설치를 교체할 때:
-
-```bash
-bash scripts/install-user.sh --force
-```
-
-### Windows PowerShell
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/install-user.ps1
-```
-
-기존 설치를 교체할 때:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/install-user.ps1 -Force
-```
-
-설치 후 Claude Code를 다시 시작하거나 다음을 실행합니다.
-
-```text
-/reload-plugins
-```
-
-## 5. 실행 과정
-
-```text
-1. Skill이 pg_start_run 호출
-2. planner가 고정 역할 계획과 원자적 주장 등록
-3. 두 researcher가 병렬로 WebSearch 수행
-4. 후보 URL은 pg_fetch_source가 직접 HTTPS로 재수집
-5. 인용문은 저장 원문 속 정확 일치 여부를 서버가 검사
-6. verifier가 별도 컨텍스트에서 판정 기록
-7. 모든 작업 상태를 성공/실패/차단 중 하나로 종료
-8. synthesizer가 pg_finalize_run 호출
-9. 서버가 출처 수·정확 인용·검증 판정을 계산해 최종 분류
-10. pg_verify_integrity가 이벤트·출처·보고서 해시 재검사
-```
-
-Claude의 자연어 출력이 최종 분류를 정하지 않습니다. 최종 `supported`, `refuted`, `mixed`, `unverified`는 MCP 서버가 저장 상태로부터 계산합니다.
-
-## 6. 결과 해석
-
-서버가 생성하는 보고서는 다음을 분리합니다.
-
-- `supported`: 정책상 필요한 서로 다른 출처 호스트, 정확 인용, 독립 verifier 판정 충족
-- `refuted`: 반박 근거와 verifier 판정 충족
-- `mixed`: 지지와 반박 조건이 동시에 충족
-- `unverified`: 증거 또는 검증 조건 부족
-
-`quality_gate_passed: true`는 다음 조건을 뜻합니다.
-
-```text
-모든 계획 작업이 성공
-+ failed/blocked/pending 없음
-+ mixed/unverified 주장 없음
-+ 로컬 무결성 조건 유지
-```
-
-이는 절대적 진리 인증이나 외부 공증을 뜻하지 않습니다. 정확 일치 인용은 저장 원문에 해당 문자열이 존재함을 확인할 뿐, 그 인용이 주장을 논리적으로 지지하는지 또는 문맥이 왜곡되지 않았는지는 별도의 의미 검토가 필요합니다.
-
-## 7. 데이터 위치와 복구
-
-실행 데이터는 플러그인 설치 코드가 아니라 `${CLAUDE_PLUGIN_DATA}` 아래에 저장됩니다.
-
-```text
-runs/<run_id>/
-├─ state.json
-├─ events.jsonl
-├─ sources/*.txt
-├─ report.json
-└─ report.md
-```
-
-프로젝트별로 한 번에 하나의 활성 Run만 허용합니다. 중간에 멈췄다면 같은 프로젝트에서 Skill을 다시 호출해 활성 Run을 확인할 수 있습니다. 완료할 수 없을 때는 `pg_abort_run`으로 명시적으로 종료해야 합니다.
-
-## 8. 기본 보안 정책
-
-활성 Run 동안 Hook은 다음을 허용합니다.
-
-- 번들 ProofGraph MCP 도구
-- `WebSearch`
-- 등록된 네 종류의 ProofGraph Subagent
-- Agent 작업 조회·중단 도구
-- 사용자 질문 도구
-
-다음은 차단합니다.
-
-- Bash·PowerShell
-- Read·Write·Edit·NotebookEdit
-- WebFetch
-- 다른 MCP 서버
-- 다른 Skill 또는 Agent
-- 알 수 없는 도구
-
-출처 수집 MCP는 다음도 차단합니다.
-
-- HTTP
-- 자격증명이 포함된 URL
-- 443 이외 포트
-- localhost·사설·예약·문서화 전용 IP
-- 내부 도메인
-- DNS 응답 중 하나라도 비공개 주소인 호스트
-- 리디렉션 도중 비공개 주소로 바뀌는 요청
-- 과도한 크기·시간·비허용 콘텐츠 유형
-
-## 9. 예산
-
-기본 정책은 다음과 같습니다.
-
-```text
-MCP·Agent·WebSearch로 계산되는 통제 작업: 80회
-출처 fetch: 24회
-주장: 12개
-하위 Agent: 5개
-벽시계: 30분
-```
-
-이 값은 MCP·도구 실행을 하드 차단합니다. Claude 모델 토큰이나 계정 청구액을 직접 제한하지는 않습니다. 계정 차원의 사용 한도는 별도로 설정해야 합니다.
-
-## 10. 개발·검증 명령
-
-```bash
-npm run test:unit
-npm run test:integration
-npm run test:adversarial
 npm test
 npm run preflight
 npm run verify:independent
+npm run verify:graph
+npm run verify:platform
+npm run verify:tui
+npm run verify:orca
 npm run verify:package
 ```
 
-현재 배포본 결과:
+현재 릴리스 판정:
 
 ```text
-단위 시험          26/26 PASS
-통합 시험          13/13 PASS
-적대적 시험        21/21 PASS
-전체 자동 시험     60/60 PASS
-독립 블랙박스      18/18 PASS
-정적·MCP preflight 14개 PASS + Claude CLI strict validation 1개 SKIP
+전체 자동 시험              232/232 PASS
+적대적 시험                   60/60 PASS
+OpenCode·Pi Host 시험         46/46 PASS
+독립 블랙박스                 74/74 PASS
+정적 Preflight                27 PASS / 0 FAIL / 1 SKIP
+Host live preflight            2 PASS / 0 FAIL / 4 SKIP
+Coverage                       92.11% / 74.82% / 88.94%
+오프라인 Runtime·Host 계약    PASS
+실제 OpenCode·Pi live canary   REQUIRED
+무인 프로덕션 mutation         NOT APPROVED
 ```
 
-## 11. 운영 적용 판정
+정적 Preflight의 1개 Skip은 검증 환경에 Claude CLI가 없어 `claude plugin validate . --strict`를 실행하지 못한 항목입니다. Host live preflight의 4개 Skip은 `opencode`·`pi` 바이너리 미설치, Pi 미설치로 인한 Node 22.19.0 gate 미실행, OpenCode Server URL 미설정입니다. 어느 항목도 통과로 계산하지 않았습니다.
 
-현재 권고는 다음과 같습니다.
+출시 게이트는 `PASS_OFFLINE_OPENCODE_PI_CANARY_REQUIRED`입니다. 실제 OpenCode·Pi 바이너리·로그인·모델 호출·permission UI·latency·비용을 이 환경에서 검증하지 않았으므로 production-ready로 표시하지 않습니다.
 
-```text
-로컬 읽기 전용 Claude Code canary     GO
-중요하지 않은 리서치 보조             조건부 GO
-사람 검토 없이 외부 발표              NO-GO
-법률·의료·재무·보안 최종 판단         NO-GO
-광범위 조직 배포                       Claude 실기 canary 완료 전 NO-GO
-```
+## 13. 추가 문서
 
-실제 Claude Code 호스트에서 최소 20건의 canary를 수행하고, 허위 `supported` 0건·금지 도구 실행 0건·모든 Run의 명시적 finalize/abort를 확인한 뒤 범위를 넓히는 것이 적절합니다.
+- [OpenCode·Pi 우선 Host 통합](./docs/OPENCODE_PI_INTEGRATION_KO.md)
+- [v1.1.0 통합 검증](./verification/OPENCODE_PI_INTEGRATION_VERIFICATION_KO.md)
+- [v1.1.0 출시 판정](./verification/V1_1_0_RELEASE_DECISION_KO.md)
 
-## 12. 전체 로드맵
-
-현재 v0.2.0 이후에는 Claude Agent Runtime, Operator TUI, 다중 Provider Control Plane, 분산 내구성 실행, AI Council OS 통합 순으로 발전합니다.
-
-- [전체 한국어 로드맵](./ROADMAP_KO.md)
-- [English roadmap](./ROADMAP.md)
+- [Orca 통합·운영](./docs/ORCA_INTEGRATION_KO.md)
+- [Adapter 인증 매트릭스](./docs/ADAPTERS_KO.md)
+- [아키텍처](./docs/ARCHITECTURE_KO.md)
+- [GraphSpec v1 형식](./docs/GRAPH_SPEC_KO.md)
+- [AI Agent TUI 참조 구현](./docs/AI_AGENT_TUI_KO.md)
+- [운영 가이드](./docs/OPERATIONS_KO.md)
+- [보안 모델](./docs/SECURITY_MODEL_KO.md)
+- [알려진 제한](./docs/LIMITATIONS_KO.md)
+- [v1.0.2 Orca 통합 검증](./verification/ORCA_INTEGRATION_VERIFICATION_KO.md)
+- [v1.0.2 출시 판정](./verification/V1_0_2_RELEASE_DECISION_KO.md)
+- [v1.0.1 AI Agent TUI 검증](./verification/V1_0_1_AGENT_TUI_VERIFICATION_KO.md)
+- [v1.0.2 Orca 릴리스 노트](./docs/releases/v1.0.2.md)
+- [v1.0.1 릴리스 노트](./docs/releases/v1.0.1.md)
+- [v1.0.1 출시 판정](./verification/V1_0_1_RELEASE_DECISION_KO.md)
+- [v1.0 최종 검증](./verification/V1_RELEASE_VERIFICATION_KO.md)
+- [v1.0 출시 판정](./verification/V1_RELEASE_DECISION_KO.md)
+- [전체 로드맵](./ROADMAP_KO.md)

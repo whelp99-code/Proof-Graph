@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://proofgraph.dev/schemas/graphspec-v1.schema.json",
+  "title": "ProofGraph GraphSpec v1",
+  "description": "Editor and interchange schema for the bounded ProofGraph GraphSpec v1 format. The runtime validator remains authoritative for graph topology and security invariants.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["graph_id", "name", "objective", "entry_node", "nodes", "edges"],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1, "default": 1 },
+    "graph_id": { "$ref": "#/$defs/identifier" },
+    "name": { "type": "string", "minLength": 3, "maxLength": 200 },
+    "objective": { "type": "string", "minLength": 10, "maxLength": 10000 },
+    "entry_node": { "$ref": "#/$defs/identifier" },
+    "nodes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 200,
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": { "$ref": "#/$defs/edge" }
+    },
+    "limits": { "$ref": "#/$defs/limits" },
+    "policy": { "$ref": "#/$defs/policy" },
+    "metadata": { "type": "object" },
+    "compiler": { "type": ["object", "null"] }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,63}$"
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_id", "title", "kind", "role"],
+      "properties": {
+        "node_id": { "$ref": "#/$defs/identifier" },
+        "title": { "type": "string", "minLength": 3, "maxLength": 300 },
+        "kind": {
+          "enum": ["triage", "direct", "research", "plan", "develop", "verify", "human_approval", "synthesize", "terminal"]
+        },
+        "role": {
+          "enum": ["system", "coordinator", "direct", "researcher", "planner", "developer", "verifier", "human", "synthesizer"]
+        },
+        "risk": { "enum": ["low", "medium", "high", "critical"], "default": "low" },
+        "max_attempts": { "type": "integer", "minimum": 1, "maximum": 20, "default": 1 },
+        "join": { "enum": ["any", "all"], "default": "any" },
+        "approval_required": { "type": "boolean" },
+        "agent_type": { "type": ["string", "null"], "minLength": 3, "maxLength": 120 },
+        "model_tier": { "enum": ["fast", "standard", "deep", "inherit"], "default": "inherit" },
+        "tool_policy": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": { "enum": ["proofgraph", "web_search", "workspace_read", "workspace_write", "shell"] }
+        },
+        "terminal_status": { "enum": ["success", "partial", "failed"] },
+        "dynamic": { "type": "boolean", "default": false },
+        "metadata": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "terminal" } }, "required": ["kind"] },
+          "then": { "required": ["terminal_status"] }
+        }
+      ]
+    },
+    "condition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": { "type": { "const": "always" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "const": "outcome" },
+            "value": { "enum": ["success", "failed", "blocked"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "const": "route" },
+            "value": { "enum": ["direct", "research", "plan", "develop", "verify", "human", "synthesize", "success", "partial", "failed"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "const": "failure_type" },
+            "value": { "enum": ["implementation_error", "design_error", "requirements_error", "evidence_gap", "verification_error", "security_risk", "budget_exceeded", "unknown"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "const": "approval" },
+            "value": { "enum": ["approved", "denied"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "const": "verification" },
+            "value": { "enum": ["passed", "failed"] }
+          }
+        }
+      ]
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "from", "to"],
+      "properties": {
+        "edge_id": { "$ref": "#/$defs/identifier" },
+        "from": { "$ref": "#/$defs/identifier" },
+        "to": { "$ref": "#/$defs/identifier" },
+        "condition": { "$ref": "#/$defs/condition" },
+        "priority": { "type": "integer", "minimum": 0, "maximum": 100, "default": 50 },
+        "label": { "type": ["string", "null"], "minLength": 1, "maxLength": 200 }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_steps": { "type": "integer", "minimum": 4, "maximum": 2000, "default": 120 },
+        "max_route_visits": { "type": "integer", "minimum": 1, "maximum": 20, "default": 4 },
+        "max_dynamic_nodes": { "type": "integer", "minimum": 0, "maximum": 200, "default": 24 },
+        "max_parallel_nodes": { "type": "integer", "minimum": 1, "maximum": 32, "default": 6 },
+        "max_iterations": { "type": "integer", "minimum": 1, "maximum": 20, "default": 4 }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "require_verification_for_success": { "type": "boolean", "default": true },
+        "require_human_for_high_risk": { "type": "boolean", "default": true },
+        "allow_workspace_mutation": { "type": "boolean", "default": false },
+        "allow_shell": { "type": "boolean", "default": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,1308 @@
+{
+  "ok": true,
+  "run_id": "pg_4ff04e488efd0c1572a5e323",
+  "format": "json",
+  "report": {
+    "schema_version": 1,
+    "product": "proofgraph",
+    "version": "1.0.1",
+    "run_kind": "graph",
+    "run_id": "pg_4ff04e488efd0c1572a5e323",
+    "graph_id": "graph_0135660d128012af",
+    "graph_digest": "4e943669520e4bd5d538ca7a62da0acf4657c5df7050acbd56acfc8fa6c72821",
+    "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+    "terminal_status": "success",
+    "quality_gate_passed": true,
+    "finalized_at": "2026-07-25T07:27:52.507Z",
+    "assessment": {
+      "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+      "mode": "auto",
+      "signals": {
+        "complexity": 85,
+        "uncertainty": 55,
+        "risk": "medium",
+        "reversibility": "partially_reversible",
+        "requires_research": true,
+        "requires_implementation": true,
+        "estimated_subtasks": 8,
+        "external_side_effects": true,
+        "compliance_sensitive": false,
+        "user_approval_required": false,
+        "verification_strength": "deep",
+        "heuristic_fields": [
+          "external_side_effects",
+          "compliance_sensitive",
+          "detected"
+        ],
+        "heuristic_details": {
+          "complex": true,
+          "research": true,
+          "implementation": true,
+          "risky": true,
+          "list_like": true
+        }
+      },
+      "profile": {
+        "template_name": "agent-tui",
+        "research_workstreams": [
+          "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+          "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+          "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+          "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+          "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+          "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+        ],
+        "implementation_workstreams": [
+          "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+          "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+          "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+          "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+          "Event log, node inspector, failure packet viewer, and approval queue",
+          "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+        ],
+        "deliverables": [
+          "Runnable AI agent TUI executable with a deterministic demo mode",
+          "Architecture and state/event contracts",
+          "Keyboard map and operator flows",
+          "Unit, integration, rendering snapshot, and failure-path tests",
+          "Installation, operation, troubleshooting, and security documentation"
+        ],
+        "acceptance_tests": [
+          "The TUI starts and exits without leaving the terminal in raw mode",
+          "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+          "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+          "Non-interactive snapshot mode runs in CI without a TTY",
+          "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+          "No unrestricted shell or workspace mutation is available from the TUI by default"
+        ],
+        "non_goals": [
+          "A full desktop GUI",
+          "Unattended production deployment or unrestricted command execution",
+          "Embedding provider credentials in the TUI"
+        ]
+      },
+      "recommendation": {
+        "initial_route": "human",
+        "post_approval_route": "research",
+        "research_fanout": 6,
+        "verification_strength": "deep",
+        "max_iterations": 3,
+        "max_parallel_nodes": 6,
+        "max_dynamic_nodes": 32,
+        "human_approval_required": true,
+        "model_tiers": {
+          "direct": "standard",
+          "research": "standard",
+          "plan": "deep",
+          "develop": "deep",
+          "verify": "deep",
+          "synthesize": "standard"
+        },
+        "reason_codes": [
+          "mode:auto",
+          "complexity:85",
+          "uncertainty:55",
+          "risk:medium",
+          "route:human"
+        ]
+      }
+    },
+    "counters": {
+      "tool_calls": 21,
+      "source_fetches": 0,
+      "agents_spawned": 0,
+      "graph_steps": 12,
+      "dynamic_nodes": 0,
+      "approvals_requested": 1
+    },
+    "nodes": [
+      {
+        "node_id": "triage",
+        "title": "Deterministic complexity and risk triage",
+        "kind": "triage",
+        "role": "system",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "system",
+        "activated_incoming": [],
+        "started_at": "2026-07-25T07:27:51.838Z",
+        "completed_at": "2026-07-25T07:27:51.838Z",
+        "output": {
+          "route": "human",
+          "assessment": {
+            "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+            "mode": "auto",
+            "signals": {
+              "complexity": 85,
+              "uncertainty": 55,
+              "risk": "medium",
+              "reversibility": "partially_reversible",
+              "requires_research": true,
+              "requires_implementation": true,
+              "estimated_subtasks": 8,
+              "external_side_effects": true,
+              "compliance_sensitive": false,
+              "user_approval_required": false,
+              "verification_strength": "deep",
+              "heuristic_fields": [
+                "external_side_effects",
+                "compliance_sensitive",
+                "detected"
+              ],
+              "heuristic_details": {
+                "complex": true,
+                "research": true,
+                "implementation": true,
+                "risky": true,
+                "list_like": true
+              }
+            },
+            "profile": {
+              "template_name": "agent-tui",
+              "research_workstreams": [
+                "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+                "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+                "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+                "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+                "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+                "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+              ],
+              "implementation_workstreams": [
+                "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+                "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+                "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+                "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+                "Event log, node inspector, failure packet viewer, and approval queue",
+                "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+              ],
+              "deliverables": [
+                "Runnable AI agent TUI executable with a deterministic demo mode",
+                "Architecture and state/event contracts",
+                "Keyboard map and operator flows",
+                "Unit, integration, rendering snapshot, and failure-path tests",
+                "Installation, operation, troubleshooting, and security documentation"
+              ],
+              "acceptance_tests": [
+                "The TUI starts and exits without leaving the terminal in raw mode",
+                "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+                "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+                "Non-interactive snapshot mode runs in CI without a TTY",
+                "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+                "No unrestricted shell or workspace mutation is available from the TUI by default"
+              ],
+              "non_goals": [
+                "A full desktop GUI",
+                "Unattended production deployment or unrestricted command execution",
+                "Embedding provider credentials in the TUI"
+              ]
+            },
+            "recommendation": {
+              "initial_route": "human",
+              "post_approval_route": "research",
+              "research_fanout": 6,
+              "verification_strength": "deep",
+              "max_iterations": 3,
+              "max_parallel_nodes": 6,
+              "max_dynamic_nodes": 32,
+              "human_approval_required": true,
+              "model_tiers": {
+                "direct": "standard",
+                "research": "standard",
+                "plan": "deep",
+                "develop": "deep",
+                "verify": "deep",
+                "synthesize": "standard"
+              },
+              "reason_codes": [
+                "mode:auto",
+                "complexity:85",
+                "uncertainty:55",
+                "risk:medium",
+                "route:human"
+              ]
+            }
+          }
+        },
+        "output_sha256": "90b599d9b33f7e21276ac5e32007144a304dc61fd24010f745e9a054f2579aa4",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 1,
+            "from": "triage",
+            "to": "human-gate",
+            "edge_id": "e-triage-human",
+            "condition": {
+              "type": "route",
+              "value": "human"
+            },
+            "context": {
+              "outcome": "success",
+              "route": "human",
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.838Z"
+          }
+        ]
+      },
+      {
+        "node_id": "terminal-success",
+        "title": "Successful completion",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "system",
+        "activated_incoming": [
+          "e-synthesize-success"
+        ],
+        "started_at": "2026-07-25T07:27:52.506Z",
+        "completed_at": "2026-07-25T07:27:52.506Z",
+        "output": {
+          "terminal_status": "success"
+        },
+        "output_sha256": "da748561b61eb5c95a5259a6b86daead3c46525a28ca2d656106ec0ca27c04b9",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": []
+      },
+      {
+        "node_id": "terminal-partial",
+        "title": "Partial completion",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "status": "pending",
+        "attempts": 0,
+        "visits": 0,
+        "actor": null,
+        "activated_incoming": [],
+        "started_at": null,
+        "completed_at": null,
+        "output": null,
+        "output_sha256": null,
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": []
+      },
+      {
+        "node_id": "terminal-failed",
+        "title": "Failed completion",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "status": "pending",
+        "attempts": 0,
+        "visits": 0,
+        "actor": null,
+        "activated_incoming": [],
+        "started_at": null,
+        "completed_at": null,
+        "output": null,
+        "output_sha256": null,
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": []
+      },
+      {
+        "node_id": "research-01",
+        "title": "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "researcher",
+        "activated_incoming": [
+          "e-human-research-01"
+        ],
+        "started_at": "2026-07-25T07:27:52.086Z",
+        "completed_at": "2026-07-25T07:27:52.111Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "research"
+          },
+          "summary": "Completed research-01",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "c77053b0e1f5434456fd9c538f010a14cddcd24787991a1ccca070c222e753ee",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 3,
+            "from": "research-01",
+            "to": "plan",
+            "edge_id": "e-research-01-plan",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.117Z"
+          }
+        ]
+      },
+      {
+        "node_id": "research-02",
+        "title": "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "researcher",
+        "activated_incoming": [
+          "e-human-research-02"
+        ],
+        "started_at": "2026-07-25T07:27:52.232Z",
+        "completed_at": "2026-07-25T07:27:52.247Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "research"
+          },
+          "summary": "Completed research-02",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "d025e55c8cd58939c33f3f527efbb8b7118f2c0c163c42638b9f1f5afc6b6984",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 6,
+            "from": "research-02",
+            "to": "plan",
+            "edge_id": "e-research-02-plan",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.248Z"
+          }
+        ]
+      },
+      {
+        "node_id": "research-03",
+        "title": "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "researcher",
+        "activated_incoming": [
+          "e-human-research-03"
+        ],
+        "started_at": "2026-07-25T07:27:52.326Z",
+        "completed_at": "2026-07-25T07:27:52.344Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "research"
+          },
+          "summary": "Completed research-03",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "432776491642df7629846298fec5ca2d2bf1707852ba7582c3386e91f7307d7d",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 8,
+            "from": "research-03",
+            "to": "plan",
+            "edge_id": "e-research-03-plan",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.344Z"
+          }
+        ]
+      },
+      {
+        "node_id": "research-04",
+        "title": "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "researcher",
+        "activated_incoming": [
+          "e-human-research-04"
+        ],
+        "started_at": "2026-07-25T07:27:52.268Z",
+        "completed_at": "2026-07-25T07:27:52.285Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "research"
+          },
+          "summary": "Completed research-04",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "1409a34c9170510720c0ea0f36a155b6521fbd88b9ef57862654c3881c2b460e",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 7,
+            "from": "research-04",
+            "to": "plan",
+            "edge_id": "e-research-04-plan",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.285Z"
+          }
+        ]
+      },
+      {
+        "node_id": "research-05",
+        "title": "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "researcher",
+        "activated_incoming": [
+          "e-human-research-05"
+        ],
+        "started_at": "2026-07-25T07:27:52.180Z",
+        "completed_at": "2026-07-25T07:27:52.196Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "research"
+          },
+          "summary": "Completed research-05",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "c99710348e15ccaf4ed26927fa12a51189e8c17dd6dd03258fb48066016f2e76",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 5,
+            "from": "research-05",
+            "to": "plan",
+            "edge_id": "e-research-05-plan",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.196Z"
+          }
+        ]
+      },
+      {
+        "node_id": "research-06",
+        "title": "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "researcher",
+        "activated_incoming": [
+          "e-human-research-06"
+        ],
+        "started_at": "2026-07-25T07:27:52.139Z",
+        "completed_at": "2026-07-25T07:27:52.153Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "research"
+          },
+          "summary": "Completed research-06",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "f5a6393be7a2ca49a9c63611da661ac67ee6e83176a0fa5a6e5d95af59f9dd67",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 4,
+            "from": "research-06",
+            "to": "plan",
+            "edge_id": "e-research-06-plan",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.153Z"
+          }
+        ]
+      },
+      {
+        "node_id": "plan",
+        "title": "Plan requirements, implementation, and acceptance criteria",
+        "kind": "plan",
+        "role": "planner",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "planner",
+        "activated_incoming": [
+          "e-research-01-plan",
+          "e-research-06-plan",
+          "e-research-05-plan",
+          "e-research-02-plan",
+          "e-research-04-plan",
+          "e-research-03-plan"
+        ],
+        "started_at": "2026-07-25T07:27:52.366Z",
+        "completed_at": "2026-07-25T07:27:52.390Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "plan"
+          },
+          "summary": "Completed plan",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "12f24dcebe6b179b8bedeb46c031a211f60cfd9fae34af3e5b9e779b8b41b064",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 9,
+            "from": "plan",
+            "to": "develop",
+            "edge_id": "e-plan-develop",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.390Z"
+          }
+        ]
+      },
+      {
+        "node_id": "develop",
+        "title": "Produce an auditable implementation artifact",
+        "kind": "develop",
+        "role": "developer",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "developer",
+        "activated_incoming": [
+          "e-plan-develop"
+        ],
+        "started_at": "2026-07-25T07:27:52.409Z",
+        "completed_at": "2026-07-25T07:27:52.426Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "develop"
+          },
+          "summary": "Completed develop",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "6f04850a07d5538381fc246f1b6e08df007ea77e72a61a273ccf811d74e7e1f0",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 10,
+            "from": "develop",
+            "to": "verify",
+            "edge_id": "e-develop-verify",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.426Z"
+          }
+        ]
+      },
+      {
+        "node_id": "verify",
+        "title": "deep independent verification",
+        "kind": "verify",
+        "role": "verifier",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "verifier",
+        "activated_incoming": [
+          "e-develop-verify"
+        ],
+        "started_at": "2026-07-25T07:27:52.445Z",
+        "completed_at": "2026-07-25T07:27:52.462Z",
+        "output": {
+          "verification": {
+            "passed": true,
+            "checks": [
+              "mock-contract"
+            ]
+          },
+          "result": {
+            "mock": true
+          },
+          "summary": "Verified verify",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "81916ea4e62c2d6b3d64a53f890b3ac0eaab2222f1ed50ebeee9439b535c4289",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 11,
+            "from": "verify",
+            "to": "synthesize",
+            "edge_id": "e-verify-pass",
+            "condition": {
+              "type": "verification",
+              "value": "passed"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": "passed",
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.462Z"
+          }
+        ]
+      },
+      {
+        "node_id": "synthesize",
+        "title": "Synthesize verified outputs",
+        "kind": "synthesize",
+        "role": "synthesizer",
+        "risk": "low",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "synthesizer",
+        "activated_incoming": [
+          "e-verify-pass"
+        ],
+        "started_at": "2026-07-25T07:27:52.490Z",
+        "completed_at": "2026-07-25T07:27:52.506Z",
+        "output": {
+          "result": {
+            "mock": true,
+            "kind": "synthesize"
+          },
+          "summary": "Completed synthesize",
+          "artifacts": [],
+          "usage": {},
+          "adapter": "mock",
+          "adapter_agent_id": "proofgraph.mock"
+        },
+        "output_sha256": "4fdd1e7d70bf8ff0299fc2b03cb743aa3d4d42844495d3a148df13eac9a93194",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": null,
+        "route_history": [
+          {
+            "step": 12,
+            "from": "synthesize",
+            "to": "terminal-success",
+            "edge_id": "e-synthesize-success",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:52.506Z"
+          }
+        ]
+      },
+      {
+        "node_id": "human-gate",
+        "title": "Human approval for high-risk execution",
+        "kind": "human_approval",
+        "role": "human",
+        "risk": "medium",
+        "status": "succeeded",
+        "attempts": 1,
+        "visits": 1,
+        "actor": "human",
+        "activated_incoming": [
+          "e-triage-human"
+        ],
+        "started_at": "2026-07-25T07:27:51.991Z",
+        "completed_at": "2026-07-25T07:27:51.991Z",
+        "output": {
+          "approval": "approved",
+          "decision_source": "external_human",
+          "comment": "Explicit CLI decision"
+        },
+        "output_sha256": "83366658a99622a5f3536d5b1f3743eebe38c622bc816fdf09c6dff4d675c025",
+        "failure": null,
+        "failure_sha256": null,
+        "approval_id": "approval_c1d196a854e99bdd75be0b0f",
+        "route_history": [
+          {
+            "step": 2,
+            "from": "human-gate",
+            "to": "research-01",
+            "edge_id": "e-human-research-01",
+            "condition": {
+              "type": "approval",
+              "value": "approved"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": "approved",
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.997Z"
+          },
+          {
+            "step": 2,
+            "from": "human-gate",
+            "to": "research-02",
+            "edge_id": "e-human-research-02",
+            "condition": {
+              "type": "approval",
+              "value": "approved"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": "approved",
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.997Z"
+          },
+          {
+            "step": 2,
+            "from": "human-gate",
+            "to": "research-03",
+            "edge_id": "e-human-research-03",
+            "condition": {
+              "type": "approval",
+              "value": "approved"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": "approved",
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.997Z"
+          },
+          {
+            "step": 2,
+            "from": "human-gate",
+            "to": "research-04",
+            "edge_id": "e-human-research-04",
+            "condition": {
+              "type": "approval",
+              "value": "approved"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": "approved",
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.997Z"
+          },
+          {
+            "step": 2,
+            "from": "human-gate",
+            "to": "research-05",
+            "edge_id": "e-human-research-05",
+            "condition": {
+              "type": "approval",
+              "value": "approved"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": "approved",
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.997Z"
+          },
+          {
+            "step": 2,
+            "from": "human-gate",
+            "to": "research-06",
+            "edge_id": "e-human-research-06",
+            "condition": {
+              "type": "approval",
+              "value": "approved"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": "approved",
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T07:27:51.997Z"
+          }
+        ]
+      }
+    ],
+    "failures": [],
+    "approvals": [
+      {
+        "approval_id": "approval_c1d196a854e99bdd75be0b0f",
+        "node_id": "human-gate",
+        "status": "resolved",
+        "risk": "medium",
+        "reason": "High-risk, sensitive, externally acting, or irreversible work requires explicit approval.",
+        "requested_at": "2026-07-25T07:27:51.838Z",
+        "decided_at": "2026-07-25T07:27:51.991Z",
+        "decision": "approved",
+        "decided_by": "human",
+        "decision_source": "external_human",
+        "challenge_sha256": "0562452de51da0923b07c39efa7eafdb55e3c5ebd360e6b25be546de787369c7",
+        "comment_sha256": "9d1ca00c9ae26ee00fcf7f7f63153bdb834f93971478b097f59f56eaaaea4b59"
+      }
+    ],
+    "route_history": [
+      {
+        "step": 1,
+        "from": "triage",
+        "to": "human-gate",
+        "edge_id": "e-triage-human",
+        "condition": {
+          "type": "route",
+          "value": "human"
+        },
+        "context": {
+          "outcome": "success",
+          "route": "human",
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.838Z"
+      },
+      {
+        "step": 2,
+        "from": "human-gate",
+        "to": "research-01",
+        "edge_id": "e-human-research-01",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": "approved",
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.997Z"
+      },
+      {
+        "step": 2,
+        "from": "human-gate",
+        "to": "research-02",
+        "edge_id": "e-human-research-02",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": "approved",
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.997Z"
+      },
+      {
+        "step": 2,
+        "from": "human-gate",
+        "to": "research-03",
+        "edge_id": "e-human-research-03",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": "approved",
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.997Z"
+      },
+      {
+        "step": 2,
+        "from": "human-gate",
+        "to": "research-04",
+        "edge_id": "e-human-research-04",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": "approved",
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.997Z"
+      },
+      {
+        "step": 2,
+        "from": "human-gate",
+        "to": "research-05",
+        "edge_id": "e-human-research-05",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": "approved",
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.997Z"
+      },
+      {
+        "step": 2,
+        "from": "human-gate",
+        "to": "research-06",
+        "edge_id": "e-human-research-06",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": "approved",
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:51.997Z"
+      },
+      {
+        "step": 3,
+        "from": "research-01",
+        "to": "plan",
+        "edge_id": "e-research-01-plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.117Z"
+      },
+      {
+        "step": 4,
+        "from": "research-06",
+        "to": "plan",
+        "edge_id": "e-research-06-plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.153Z"
+      },
+      {
+        "step": 5,
+        "from": "research-05",
+        "to": "plan",
+        "edge_id": "e-research-05-plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.196Z"
+      },
+      {
+        "step": 6,
+        "from": "research-02",
+        "to": "plan",
+        "edge_id": "e-research-02-plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.248Z"
+      },
+      {
+        "step": 7,
+        "from": "research-04",
+        "to": "plan",
+        "edge_id": "e-research-04-plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.285Z"
+      },
+      {
+        "step": 8,
+        "from": "research-03",
+        "to": "plan",
+        "edge_id": "e-research-03-plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.344Z"
+      },
+      {
+        "step": 9,
+        "from": "plan",
+        "to": "develop",
+        "edge_id": "e-plan-develop",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.390Z"
+      },
+      {
+        "step": 10,
+        "from": "develop",
+        "to": "verify",
+        "edge_id": "e-develop-verify",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.426Z"
+      },
+      {
+        "step": 11,
+        "from": "verify",
+        "to": "synthesize",
+        "edge_id": "e-verify-pass",
+        "condition": {
+          "type": "verification",
+          "value": "passed"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": "passed",
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.462Z"
+      },
+      {
+        "step": 12,
+        "from": "synthesize",
+        "to": "terminal-success",
+        "edge_id": "e-synthesize-success",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "context": {
+          "outcome": "success",
+          "route": null,
+          "approval": null,
+          "verification": null,
+          "failure_type": null
+        },
+        "at": "2026-07-25T07:27:52.506Z"
+      }
+    ],
+    "dynamic_expansions": [],
+    "limitations": [
+      "Agent roles are declared identities supplied by adapters, not cryptographically independent principals.",
+      "Git worktrees isolate files but do not provide network or kernel isolation; use an external sandbox for untrusted commands.",
+      "Vendor adapters require tool-specific live canaries before production use.",
+      "Heuristic complexity and risk scores are routing inputs, not objective ground truth."
+    ],
+    "report_json_sha256": "e1ccc9490736867affb04b6a9c0d9cfb7a3ecffc36d7aed8cfda04532a21621f",
+    "report_markdown_sha256": "c3a56353d3bb6a6660b87ef8e1be91a1024d668a18f1a052182b9843e5b9e18c"
+  }
+}

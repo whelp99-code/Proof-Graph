@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:54:36.454Z",
+  "verifier_type": "black-box-cli-stdio-mcp-git-and-persisted-artifacts",
+  "production_modules_imported": false,
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "total": 10,
+  "passed": 10,
+  "failed": 0,
+  "residuals_confirmed": 1,
+  "release_gate": "PASS_OFFLINE_VENDOR_CANARY_REQUIRED",
+  "results": [
+    {
+      "name": "release metadata, package, and Claude adapter versions are aligned",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 0.457,
+      "details": {
+        "package": "proofgraph",
+        "version": "1.1.0",
+        "claude_plugin": "proofgraph-claude"
+      }
+    },
+    {
+      "name": "CLI initializes a project without overwriting existing configuration",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 129.632,
+      "details": {
+        "data_dir": ".proofgraph",
+        "default_adapter": "mock"
+      }
+    },
+    {
+      "name": "built-in templates compile to verified graph paths",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 205.121,
+      "details": {
+        "templates": [
+          "agent-tui",
+          "bugfix",
+          "feature",
+          "migration",
+          "refactor",
+          "research",
+          "security-audit"
+        ],
+        "graph_digest": "f627b8fe6981600761161ec8846bc59507939531254032f36b1974c0cad638df"
+      }
+    },
+    {
+      "name": "safe mock adapter completes a graph and passes integrity",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 238.279,
+      "details": {
+        "run_id": "pg_357c64698c06522d7de73923",
+        "terminal_status": "success"
+      }
+    },
+    {
+      "name": "CLI breakpoint pauses before invocation and one-shot bypass resumes execution",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 516.071,
+      "details": {
+        "run_id": "pg_f840c145a57c443828f34809",
+        "breakpoint_node": "direct"
+      }
+    },
+    {
+      "name": "all non-mock vendor adapters require explicit configuration and live canary",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 138.656,
+      "details": [
+        {
+          "name": "claude",
+          "status": "disabled",
+          "live_canary_required": true
+        },
+        {
+          "name": "codex",
+          "status": "disabled",
+          "live_canary_required": true
+        },
+        {
+          "name": "opencode",
+          "status": "disabled",
+          "live_canary_required": true
+        },
+        {
+          "name": "grok",
+          "status": "disabled",
+          "live_canary_required": true
+        },
+        {
+          "name": "pi",
+          "status": "disabled",
+          "live_canary_required": true
+        },
+        {
+          "name": "orca",
+          "status": "disabled",
+          "live_canary_required": true
+        },
+        {
+          "name": "gjc",
+          "status": "disabled",
+          "live_canary_required": true
+        }
+      ]
+    },
+    {
+      "name": "universal MCP exposes compile, runtime, debugger, template, and workspace tools",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 68.088,
+      "details": {
+        "protocol": "2025-11-25",
+        "tool_count": 21
+      }
+    },
+    {
+      "name": "universal MCP survives malformed and prototype-pollution requests",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 67.909,
+      "details": null
+    },
+    {
+      "name": "workspace changes require challenge-bound approval and remain rollbackable",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 682.421,
+      "details": {
+        "run_id": "pg_e944b01d4b1673d79c2abef9",
+        "receipt_digest": "c0bced33eccc248987f7d91e590a1db80570773b6b32916c9659fe7cd6c27137"
+      }
+    },
+    {
+      "name": "git worktree isolation does not claim network isolation",
+      "status": "RESIDUAL_CONFIRMED",
+      "residual": true,
+      "duration_ms": 0.068,
+      "details": {
+        "impact": "Workspace Engine isolates files with a disposable Git worktree, but network isolation requires an external container or sandbox policy."
+      }
+    }
+  ]
+}

@@ -2,8 +2,8 @@ import readline from 'node:readline';
 import { asToolError, ValidationError } from './errors.mjs';
 import { assertFiniteJson } from './validate.mjs';
 import { invokeTool, listTools } from './tools.mjs';
+import { VERSION } from '../../runtime/version.mjs';
 
-const SERVER_VERSION = '0.2.0';
 const SUPPORTED_PROTOCOLS = ['2025-11-25', '2025-06-18', '2024-11-05'];
 const MAX_LINE_BYTES = 2_000_000;
 
@@ -61,11 +61,11 @@ export class McpSession {
         capabilities: { tools: { listChanged: false } },
         serverInfo: {
           name: 'proofgraph-claude',
-          title: 'ProofGraph Claude Evidence Server',
-          version: SERVER_VERSION,
-          description: 'Local evidence-gated research state and verification for Claude Code.',
+          title: 'ProofGraph Claude Graph and Evidence Server',
+          version: VERSION,
+          description: 'Local dynamic graph control, bounded verification loops, human approval, and evidence-gated research for Claude Code.',
         },
-        instructions: 'Use pg_start_run first. Only sources fetched by this server qualify as evidence. Final claim classifications are computed by pg_finalize_run.',
+        instructions: 'Use pg_graph_preview and pg_graph_start for dynamic Graph Engineering, or pg_start_run for legacy evidence research. The server computes graph routes, approval gates, terminal states, and claim classifications.',
       }));
       return;
     }

@@ -1,0 +1,615 @@
+{
+  "adapter": "mock",
+  "doctor": {
+    "name": "mock",
+    "ok": true,
+    "adapter": "mock",
+    "agent_id": "proofgraph.mock",
+    "mode": "mock",
+    "status": "ready",
+    "invocable": true
+  },
+  "result": {
+    "ok": true,
+    "run_id": "pg_5ba03f17150b1ab145d61d07",
+    "status": "finalized",
+    "report": {
+      "ok": true,
+      "run_id": "pg_5ba03f17150b1ab145d61d07",
+      "format": "json",
+      "report": {
+        "schema_version": 1,
+        "product": "proofgraph",
+        "version": "1.0.0",
+        "run_kind": "graph",
+        "run_id": "pg_5ba03f17150b1ab145d61d07",
+        "graph_id": "graph_22997fb6c5a01fa0",
+        "graph_digest": "f1fa94836fed87615cb1788d7867b1033675c146b520620dcdb7b69239923573",
+        "objective": "Inspect this repository and return one verified, low-risk engineering observation without modifying files.",
+        "terminal_status": "success",
+        "quality_gate_passed": true,
+        "finalized_at": "2026-07-25T04:35:05.758Z",
+        "assessment": {
+          "objective": "Inspect this repository and return one verified, low-risk engineering observation without modifying files.",
+          "mode": "review",
+          "signals": {
+            "complexity": 20,
+            "uncertainty": 20,
+            "risk": "low",
+            "reversibility": "reversible",
+            "requires_research": false,
+            "requires_implementation": false,
+            "estimated_subtasks": 1,
+            "external_side_effects": false,
+            "compliance_sensitive": false,
+            "user_approval_required": false,
+            "verification_strength": null,
+            "heuristic_fields": [
+              "external_side_effects",
+              "compliance_sensitive",
+              "detected"
+            ],
+            "heuristic_details": {
+              "complex": false,
+              "research": false,
+              "implementation": false,
+              "risky": false,
+              "list_like": false
+            }
+          },
+          "recommendation": {
+            "initial_route": "direct",
+            "post_approval_route": "direct",
+            "research_fanout": 0,
+            "verification_strength": "lite",
+            "max_iterations": 1,
+            "max_parallel_nodes": 6,
+            "max_dynamic_nodes": 24,
+            "human_approval_required": false,
+            "model_tiers": {
+              "direct": "fast",
+              "research": "standard",
+              "plan": "standard",
+              "develop": "standard",
+              "verify": "standard",
+              "synthesize": "standard"
+            },
+            "reason_codes": [
+              "mode:review",
+              "complexity:20",
+              "uncertainty:20",
+              "risk:low",
+              "route:direct"
+            ]
+          }
+        },
+        "counters": {
+          "tool_calls": 6,
+          "source_fetches": 0,
+          "agents_spawned": 0,
+          "graph_steps": 4,
+          "dynamic_nodes": 0,
+          "approvals_requested": 0
+        },
+        "nodes": [
+          {
+            "node_id": "triage",
+            "title": "Deterministic complexity and risk triage",
+            "kind": "triage",
+            "role": "system",
+            "risk": "low",
+            "status": "succeeded",
+            "attempts": 1,
+            "visits": 1,
+            "actor": "system",
+            "activated_incoming": [],
+            "started_at": "2026-07-25T04:35:05.689Z",
+            "completed_at": "2026-07-25T04:35:05.689Z",
+            "output": {
+              "route": "direct",
+              "assessment": {
+                "objective": "Inspect this repository and return one verified, low-risk engineering observation without modifying files.",
+                "mode": "review",
+                "signals": {
+                  "complexity": 20,
+                  "uncertainty": 20,
+                  "risk": "low",
+                  "reversibility": "reversible",
+                  "requires_research": false,
+                  "requires_implementation": false,
+                  "estimated_subtasks": 1,
+                  "external_side_effects": false,
+                  "compliance_sensitive": false,
+                  "user_approval_required": false,
+                  "verification_strength": null,
+                  "heuristic_fields": [
+                    "external_side_effects",
+                    "compliance_sensitive",
+                    "detected"
+                  ],
+                  "heuristic_details": {
+                    "complex": false,
+                    "research": false,
+                    "implementation": false,
+                    "risky": false,
+                    "list_like": false
+                  }
+                },
+                "recommendation": {
+                  "initial_route": "direct",
+                  "post_approval_route": "direct",
+                  "research_fanout": 0,
+                  "verification_strength": "lite",
+                  "max_iterations": 1,
+                  "max_parallel_nodes": 6,
+                  "max_dynamic_nodes": 24,
+                  "human_approval_required": false,
+                  "model_tiers": {
+                    "direct": "fast",
+                    "research": "standard",
+                    "plan": "standard",
+                    "develop": "standard",
+                    "verify": "standard",
+                    "synthesize": "standard"
+                  },
+                  "reason_codes": [
+                    "mode:review",
+                    "complexity:20",
+                    "uncertainty:20",
+                    "risk:low",
+                    "route:direct"
+                  ]
+                }
+              }
+            },
+            "output_sha256": "25a27106f2c67560c9ce2d8a553c4e3a33f5c69d134afcd08061ff57320146d1",
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": [
+              {
+                "step": 1,
+                "from": "triage",
+                "to": "direct",
+                "edge_id": "e-triage-direct",
+                "condition": {
+                  "type": "route",
+                  "value": "direct"
+                },
+                "context": {
+                  "outcome": "success",
+                  "route": "direct",
+                  "approval": null,
+                  "verification": null,
+                  "failure_type": null
+                },
+                "at": "2026-07-25T04:35:05.689Z"
+              }
+            ]
+          },
+          {
+            "node_id": "terminal-success",
+            "title": "Successful completion",
+            "kind": "terminal",
+            "role": "system",
+            "risk": "low",
+            "status": "succeeded",
+            "attempts": 1,
+            "visits": 1,
+            "actor": "system",
+            "activated_incoming": [
+              "e-synthesize-success"
+            ],
+            "started_at": "2026-07-25T04:35:05.758Z",
+            "completed_at": "2026-07-25T04:35:05.758Z",
+            "output": {
+              "terminal_status": "success"
+            },
+            "output_sha256": "da748561b61eb5c95a5259a6b86daead3c46525a28ca2d656106ec0ca27c04b9",
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": []
+          },
+          {
+            "node_id": "terminal-partial",
+            "title": "Partial completion",
+            "kind": "terminal",
+            "role": "system",
+            "risk": "low",
+            "status": "pending",
+            "attempts": 0,
+            "visits": 0,
+            "actor": null,
+            "activated_incoming": [],
+            "started_at": null,
+            "completed_at": null,
+            "output": null,
+            "output_sha256": null,
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": []
+          },
+          {
+            "node_id": "terminal-failed",
+            "title": "Failed completion",
+            "kind": "terminal",
+            "role": "system",
+            "risk": "low",
+            "status": "pending",
+            "attempts": 0,
+            "visits": 0,
+            "actor": null,
+            "activated_incoming": [],
+            "started_at": null,
+            "completed_at": null,
+            "output": null,
+            "output_sha256": null,
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": []
+          },
+          {
+            "node_id": "direct",
+            "title": "Direct low-complexity execution",
+            "kind": "direct",
+            "role": "direct",
+            "risk": "low",
+            "status": "succeeded",
+            "attempts": 1,
+            "visits": 1,
+            "actor": "direct",
+            "activated_incoming": [
+              "e-triage-direct"
+            ],
+            "started_at": "2026-07-25T04:35:05.701Z",
+            "completed_at": "2026-07-25T04:35:05.709Z",
+            "output": {
+              "result": {
+                "mock": true,
+                "kind": "direct"
+              },
+              "route": "synthesize",
+              "summary": "Completed direct",
+              "artifacts": [],
+              "usage": {},
+              "adapter": "mock",
+              "adapter_agent_id": "proofgraph.mock"
+            },
+            "output_sha256": "0f4fc3cc2608efce00cfbc822ef55cd12e9c6ae37697a890c9999f4f174eed6a",
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": [
+              {
+                "step": 2,
+                "from": "direct",
+                "to": "verify",
+                "edge_id": "e-direct-verify",
+                "condition": {
+                  "type": "outcome",
+                  "value": "success"
+                },
+                "context": {
+                  "outcome": "success",
+                  "route": "synthesize",
+                  "approval": null,
+                  "verification": null,
+                  "failure_type": null
+                },
+                "at": "2026-07-25T04:35:05.715Z"
+              }
+            ]
+          },
+          {
+            "node_id": "plan",
+            "title": "Plan requirements, implementation, and acceptance criteria",
+            "kind": "plan",
+            "role": "planner",
+            "risk": "low",
+            "status": "pending",
+            "attempts": 0,
+            "visits": 0,
+            "actor": null,
+            "activated_incoming": [],
+            "started_at": null,
+            "completed_at": null,
+            "output": null,
+            "output_sha256": null,
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": []
+          },
+          {
+            "node_id": "develop",
+            "title": "Produce an auditable implementation artifact",
+            "kind": "develop",
+            "role": "developer",
+            "risk": "low",
+            "status": "pending",
+            "attempts": 0,
+            "visits": 0,
+            "actor": null,
+            "activated_incoming": [],
+            "started_at": null,
+            "completed_at": null,
+            "output": null,
+            "output_sha256": null,
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": []
+          },
+          {
+            "node_id": "verify",
+            "title": "lite independent verification",
+            "kind": "verify",
+            "role": "verifier",
+            "risk": "low",
+            "status": "succeeded",
+            "attempts": 1,
+            "visits": 1,
+            "actor": "verifier",
+            "activated_incoming": [
+              "e-direct-verify"
+            ],
+            "started_at": "2026-07-25T04:35:05.729Z",
+            "completed_at": "2026-07-25T04:35:05.738Z",
+            "output": {
+              "verification": {
+                "passed": true,
+                "checks": [
+                  "mock-contract"
+                ]
+              },
+              "result": {
+                "mock": true
+              },
+              "summary": "Verified verify",
+              "artifacts": [],
+              "usage": {},
+              "adapter": "mock",
+              "adapter_agent_id": "proofgraph.mock"
+            },
+            "output_sha256": "81916ea4e62c2d6b3d64a53f890b3ac0eaab2222f1ed50ebeee9439b535c4289",
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": [
+              {
+                "step": 3,
+                "from": "verify",
+                "to": "synthesize",
+                "edge_id": "e-verify-pass",
+                "condition": {
+                  "type": "verification",
+                  "value": "passed"
+                },
+                "context": {
+                  "outcome": "success",
+                  "route": null,
+                  "approval": null,
+                  "verification": "passed",
+                  "failure_type": null
+                },
+                "at": "2026-07-25T04:35:05.738Z"
+              }
+            ]
+          },
+          {
+            "node_id": "synthesize",
+            "title": "Synthesize verified outputs",
+            "kind": "synthesize",
+            "role": "synthesizer",
+            "risk": "low",
+            "status": "succeeded",
+            "attempts": 1,
+            "visits": 1,
+            "actor": "synthesizer",
+            "activated_incoming": [
+              "e-verify-pass"
+            ],
+            "started_at": "2026-07-25T04:35:05.747Z",
+            "completed_at": "2026-07-25T04:35:05.758Z",
+            "output": {
+              "result": {
+                "mock": true,
+                "kind": "synthesize"
+              },
+              "summary": "Completed synthesize",
+              "artifacts": [],
+              "usage": {},
+              "adapter": "mock",
+              "adapter_agent_id": "proofgraph.mock"
+            },
+            "output_sha256": "4fdd1e7d70bf8ff0299fc2b03cb743aa3d4d42844495d3a148df13eac9a93194",
+            "failure": null,
+            "failure_sha256": null,
+            "approval_id": null,
+            "route_history": [
+              {
+                "step": 4,
+                "from": "synthesize",
+                "to": "terminal-success",
+                "edge_id": "e-synthesize-success",
+                "condition": {
+                  "type": "outcome",
+                  "value": "success"
+                },
+                "context": {
+                  "outcome": "success",
+                  "route": null,
+                  "approval": null,
+                  "verification": null,
+                  "failure_type": null
+                },
+                "at": "2026-07-25T04:35:05.758Z"
+              }
+            ]
+          }
+        ],
+        "failures": [],
+        "approvals": [],
+        "route_history": [
+          {
+            "step": 1,
+            "from": "triage",
+            "to": "direct",
+            "edge_id": "e-triage-direct",
+            "condition": {
+              "type": "route",
+              "value": "direct"
+            },
+            "context": {
+              "outcome": "success",
+              "route": "direct",
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T04:35:05.689Z"
+          },
+          {
+            "step": 2,
+            "from": "direct",
+            "to": "verify",
+            "edge_id": "e-direct-verify",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": "synthesize",
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T04:35:05.715Z"
+          },
+          {
+            "step": 3,
+            "from": "verify",
+            "to": "synthesize",
+            "edge_id": "e-verify-pass",
+            "condition": {
+              "type": "verification",
+              "value": "passed"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": "passed",
+              "failure_type": null
+            },
+            "at": "2026-07-25T04:35:05.738Z"
+          },
+          {
+            "step": 4,
+            "from": "synthesize",
+            "to": "terminal-success",
+            "edge_id": "e-synthesize-success",
+            "condition": {
+              "type": "outcome",
+              "value": "success"
+            },
+            "context": {
+              "outcome": "success",
+              "route": null,
+              "approval": null,
+              "verification": null,
+              "failure_type": null
+            },
+            "at": "2026-07-25T04:35:05.758Z"
+          }
+        ],
+        "dynamic_expansions": [],
+        "limitations": [
+          "Agent roles are declared identities supplied by adapters, not cryptographically independent principals.",
+          "Git worktrees isolate files but do not provide network or kernel isolation; use an external sandbox for untrusted commands.",
+          "Vendor adapters require tool-specific live canaries before production use.",
+          "Heuristic complexity and risk scores are routing inputs, not objective ground truth."
+        ],
+        "report_json_sha256": "ea25a8e2d0749df87f7d92ab2579225442b36662308841c5728a057156696934",
+        "report_markdown_sha256": "0d2fce8eff2206fbda4cec6a977a4214688b2a30bedeeafe6be0d073f25830be"
+      }
+    },
+    "integrity": {
+      "ok": true,
+      "run_id": "pg_5ba03f17150b1ab145d61d07",
+      "checks": [
+        {
+          "check": "event_chain",
+          "ok": true,
+          "details": {
+            "ok": true,
+            "errors": [],
+            "event_count": 37,
+            "head_hash": "c3eed3a461764c5a33937883353ff818b2ce90e6b5614ac3c81241c5ea2b482e"
+          }
+        },
+        {
+          "check": "graph_spec",
+          "ok": true,
+          "expected": "f1fa94836fed87615cb1788d7867b1033675c146b520620dcdb7b69239923573",
+          "actual": "f1fa94836fed87615cb1788d7867b1033675c146b520620dcdb7b69239923573"
+        },
+        {
+          "check": "node:triage",
+          "ok": true
+        },
+        {
+          "check": "node:terminal-success",
+          "ok": true
+        },
+        {
+          "check": "node:terminal-partial",
+          "ok": true
+        },
+        {
+          "check": "node:terminal-failed",
+          "ok": true
+        },
+        {
+          "check": "node:direct",
+          "ok": true
+        },
+        {
+          "check": "node:plan",
+          "ok": true
+        },
+        {
+          "check": "node:develop",
+          "ok": true
+        },
+        {
+          "check": "node:verify",
+          "ok": true
+        },
+        {
+          "check": "node:synthesize",
+          "ok": true
+        },
+        {
+          "check": "report_markdown",
+          "ok": true
+        },
+        {
+          "check": "report_json",
+          "ok": true
+        }
+      ],
+      "failed_checks": [],
+      "event_head": {
+        "seq": 37,
+        "hash": "c3eed3a461764c5a33937883353ff818b2ce90e6b5614ac3c81241c5ea2b482e"
+      },
+      "warning": "Local hashes are not an external signature, human-identity attestation, or notarization."
+    }
+  },
+  "release_gate": "CANARY_PASS"
+}

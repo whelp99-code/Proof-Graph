@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.0.2",
+  "generated_at": "2026-07-25T08:20:32.187797Z",
+  "release_decision": "PASS_OFFLINE_ORCA_LIVE_CANARY_REQUIRED",
+  "scope": "Graph Engineering runtime with an Orca execution-host compatibility bridge",
+  "automated_tests": {
+    "total": 184,
+    "passed": 184,
+    "failed": 0,
+    "skipped": 0
+  },
+  "adversarial_tests": {
+    "total": 49,
+    "passed": 49,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coverage_percent": {
+    "line_percent": 92.97,
+    "branch_percent_lower_bound": 76.28,
+    "branch_percent_observed_range": [
+      76.28,
+      76.37
+    ],
+    "function_percent_lower_bound": 92.09,
+    "function_percent_observed_range": [
+      92.09,
+      92.18
+    ]
+  },
+  "preflight": {
+    "passed": 22,
+    "failed": 0,
+    "skipped": 1,
+    "total": 23,
+    "skipped_checks": [
+      "claude_cli_plugin_validation"
+    ]
+  },
+  "independent_black_box": {
+    "evidence_engine": {
+      "passed": 18,
+      "total": 18,
+      "failed": 0,
+      "residuals": 1
+    },
+    "graph_engine": {
+      "passed": 14,
+      "total": 14,
+      "failed": 0,
+      "residuals": 1
+    },
+    "platform": {
+      "passed": 10,
+      "total": 10,
+      "failed": 0,
+      "residuals": 1
+    },
+    "ai_agent_tui": {
+      "passed": 7,
+      "total": 7,
+      "failed": 0,
+      "residuals": 0
+    },
+    "orca_bridge": {
+      "passed": 13,
+      "total": 13,
+      "failed": 0,
+      "residuals": 6
+    },
+    "total": {
+      "passed": 62,
+      "total": 62,
+      "failed": 0,
+      "residuals": 9
+    }
+  },
+  "orca": {
+    "integration_mode": "compatibility_bridge",
+    "strict_orca_native": false,
+    "state_authority": "proofgraph-kernel",
+    "execution_authority": "orca-runtime",
+    "workspace_authority": "orca-worktree",
+    "contract_and_adversarial_tests": {
+      "passed": 20,
+      "total": 20,
+      "failed": 0
+    },
+    "independent_tests": {
+      "passed": 13,
+      "total": 13,
+      "failed": 0
+    },
+    "explicit_repo_selector_required": true,
+    "manual_permissions_required": true,
+    "live_preflight": "NOT_RUN",
+    "live_three_worker_canary": "NOT_RUN",
+    "workspace_mutation": "DISABLED",
+    "remote_or_ssh_worktree": "UNSUPPORTED"
+  },
+  "canaries": {
+    "mock": "CANARY_PASS",
+    "orca_read_only": "NOT_RUN",
+    "claude": "NOT_RUN",
+    "codex": "NOT_RUN",
+    "opencode": "NOT_RUN",
+    "gajae_code": "NOT_RUN",
+    "grok": "NOT_RUN",
+    "pi": "NOT_RUN"
+  },
+  "known_residuals": [
+    "Orca Orchestration is experimental and its CLI JSON contract may change.",
+    "The --all plus --wait parallel message pattern requires a live pinned-version canary.",
+    "Agent Permissions Manual confirmation is operator self-attestation.",
+    "The explicit repo selector is configuration, not a cryptographic binding to the displayed Orca project.",
+    "The compatibility bridge requires a locally accessible absolute Orca worktree path.",
+    "Decision gates are projected as blocked results; full bidirectional gate reconciliation is not implemented.",
+    "Agent/verifier and human role identities are not cryptographically attested.",
+    "Git worktrees isolate files, not network or the operating-system kernel.",
+    "Vendor CLI/SDK interfaces require version-pinned live canaries."
+  ],
+  "claims_not_made": [
+    "No real Orca Desktop runtime or authenticated vendor agent was executed in this build environment.",
+    "The bridge is not strict Orca-native state ownership.",
+    "Remote Orca Server and SSH worktrees are not supported by the local report transport.",
+    "No unattended workspace mutation, push, merge, PR, deployment, or production database action is approved.",
+    "Offline fake-Orca validation does not prove live Orca compatibility."
+  ],
+  "package_verification": {
+    "manifested_files": 194,
+    "actual_files": 194,
+    "hash_or_size_mismatches": 0,
+    "unexpected_files": 0,
+    "secret_findings": 0,
+    "transient_results_directory": "verification/tmp"
+  }
+}

@@ -1,221 +1,55 @@
-# ProofGraph Roadmap
+# ProofGraph Product Roadmap
 
-## Vision
+ProofGraph is a **Graph Engineering development runtime**, not an AI Council OS. It reuses existing coding-agent interfaces and models while keeping typed graph compilation, execution, verification, rerouting, approval, and workspace policy under a host-neutral runtime.
 
-ProofGraph is an evidence-centered Agent Control Plane that records claims, evidence, verification, decisions, failures, budgets, and provenance as reproducible execution state.
+## Completed
 
-The current product is a Claude Code-only, read-only research plugin. The long-term direction is to validate the governance model on Claude first, then expand it to additional agents and providers.
+### v0.6 — Universal Runtime Kernel
+- Typed AgentRequest/AgentResult
+- Adapter-independent kernel
+- Conditional routing, Failure Packets, checkpoints, and event integrity
 
-## Product principles
+### v0.7 — Universal Adapter Layer
+- Claude, Codex, OpenCode, Grok, Pi, and bounded GJC extension boundary
+- argv subprocess execution, timeout, cancel, output limits, and doctor status
 
-1. No silent failure.
-2. No unverified promotion.
-3. Fail closed when state, authority, or integrity cannot be verified.
-4. Keep budgets, permissions, transitions, and approvals deterministic.
-5. Prefer primary evidence, tests, and reproduction over agent consensus.
-6. Scale agent count only when measured quality improves.
+### v0.8 — Workspace Execution Engine
+- Disposable Git worktrees
+- Typed write/delete/patch/command actions
+- Human approval, receipts, diff, rollback, and mutation detection
 
-## Phase 0 — Research and local execution kernel
+### v0.9 — Graph Debugger and Inspector
+- Pause/resume/single-step, breakpoints, event/route/failure inspection, DOT, and loopback HTTP
 
-**Status: Complete**
+### v1.0 — Graph Engineering Platform
+- Shared CLI/MCP/adapter/workspace/debugger platform
+- Graph templates, project config, universal MCP, ESM API, and Claude plugin adapter
 
-- Typed DAG execution
-- Parallel map/fan-in
-- Checkpointing, resume, and cache experiments
-- Structured output
-- Claim/evidence ledger
-- Mock-based 1,000 logical-task load test
-- Independent and adversarial validation foundations
+### v1.1 — OpenCode and Pi First-class Hosts
+- **OpenCode primary host**: local plugin, Server/SSE workers, tool-policy bridge, and diff artifacts
+- **Pi reference TUI host**: TypeScript extension, strict JSONL RPC workers, session persistence, and approval UI
+- Versioned `proofgraph.host.v1` protocol
+- Bearer-authenticated loopback HTTP/SSE bridge
+- Managed project/user installation
+- Fail-closed tool policy
+- Mock E2E, adversarial, and independent black-box verification
+- Gate: `PASS_OFFLINE_OPENCODE_PI_CANARY_REQUIRED`
 
-Findings from this phase—budget enforcement, cache contamination, failed-run recovery, and fabricated evidence promotion—were incorporated into the Claude-only MVP.
+## Next gates
 
-## Phase 1 — Claude Code MVP
+### v1.1.x — Live host certification
+Pin OpenCode and Pi versions, authenticate, run at least 20 representative graphs per host, verify approval/tool-policy/abort/resume/diff/session persistence, and measure reliability, latency, and cost.
 
-**Version: v0.2.x**  
-**Current status: Offline verified; real Claude canary required**
+### v1.2 — Task Intelligence Compiler
+Workspace discovery, TaskSpec, task archetypes, verified graph blueprints, Graph Adequacy Validator, and a bilingual compiler evaluation suite.
 
-Implemented:
+### v1.3 — Strong Sandbox
+Container/VM execution, network policy, secret broker, resource limits, and supervised patch/test/rollback.
 
-- Claude Code plugin packaging
-- Planner, researcher, verifier, and synthesizer subagents
-- Local stdio MCP server
-- PreToolUse, Stop, and audit hooks
-- Read-only tool policy
-- Safe HTTPS retrieval and SSRF protection
-- Exact-quote verification
-- Role-scoped state mutations
-- Hard call, source, agent, and wall-time budgets
-- Claim/evidence/verdict ledger
-- Event hash chain and artifact integrity checks
-- Unit, integration, adversarial, and independent black-box validation
+### v1.4 — Graph Package Registry
+Signed graph packages, compatibility checks, organization policy packs, and reproducible benchmarks.
 
-### v0.2.1 — Real Claude canary
+### v1.5 — Durable Distributed Execution
+Remote workers, durable queues, leases, idempotent retries, recovery, and multi-project operations.
 
-- Run at least 20 real Claude Code cases
-- Include X posts, official documentation, technical claims, and repository analysis
-- Zero false `supported` promotions
-- Zero forbidden tool executions
-- Every run ends with explicit `finalize` or `abort`
-- 100% source-to-quote integrity
-- Measure cost, latency, and failure modes
-
-Release gates:
-
-- `claude plugin validate . --strict`
-- Real Linux/macOS install tests
-- Hook, MCP, and subagent lifecycle validation
-- Published canary evidence and raw validation logs
-
-### v0.2.2 — Operational hardening
-
-- Better interrupted-run recovery
-- Externalized policy configuration
-- Source trust tiers
-- Stronger semantic-support cross-validation
-- Stronger fixture/production isolation
-- GitHub Actions, CodeQL, and Dependabot
-- Signed release artifacts and SBOM
-
-### v0.2.3 — Research templates
-
-- Technical claim validation
-- Official documentation comparison
-- Open-source project audit
-- Product and service comparison
-- Paper and benchmark verification
-- Evidence gathering for PRD and SPEC creation
-
-## Phase 2 — Claude Agent Runtime
-
-**Target: v0.3.x**
-
-- Agent Manifest and Agent Registry
-- Per-node role, model, tool, and budget configuration
-- Delegation tokens and privilege attenuation
-- Tool Broker and human approval gates
-- SQLite Event Store
-- Local REST/SSE control plane
-- Pause, resume, cancel, and retry
-- OpenTelemetry-compatible traces
-- Project and run artifact storage
-
-Completion criteria:
-
-- Unregistered agents cannot run
-- Every model/tool call has a Run ID and Agent ID
-- Child privileges cannot exceed parent privileges
-- Risky tools require approval before execution
-- State survives control-plane restart
-- A complete run can be reconstructed from traces and the ledger
-
-## Phase 3 — Operator Console
-
-**Target: v0.4.x**
-
-The TUI is an operator client, not the execution engine.
-
-- Runs dashboard
-- Workflow graph
-- Agent/node inspector
-- Live event stream
-- Approval queue
-- Evidence ledger
-- Budget, cost, and latency views
-- Failed-node retry and run cancellation
-
-The TUI never edits runtime state directly; all commands go through the Control Plane API.
-
-## Phase 4 — Multi-provider expansion
-
-**Target: v0.5.x**
-
-Adapters:
-
-- Claude Agent SDK
-- OpenAI Agents SDK
-- Generic OpenAI-compatible HTTP
-- Local models
-- CLI/subprocess agents
-- MCP client/server adapters
-
-Control levels:
-
-- L0 Unmanaged
-- L1 Observed
-- L2 Governed
-- L3 Controlled
-- L4 Verifiable
-
-L0 and L1 outputs are never automatically promoted to confirmed results.
-
-## Phase 5 — Durable distributed runtime
-
-**Target: v0.6.x**
-
-- Temporal or equivalent durable execution backend
-- PostgreSQL RunStore
-- Object storage
-- Remote workers and queue routing
-- Idempotency keys and duplicate suppression
-- Failure injection and recovery tests
-- Scale tests at 100, 250, 500, and 1,000 logical tasks
-
-The term “1,000” will always distinguish cumulative tasks, active tasks, and concurrent model requests.
-
-## Phase 6 — AI Council OS integration
-
-**Target: v1.0**
-
-```text
-User objective
-  → Multi-AI / multi-agent debate
-  → Claim and conflict graph
-  → Independent verification with unresolved issues preserved
-  → Human approval
-  → Decision Graph
-  → PRD / SPEC / Issues / Marketing artifacts
-  → Execution tools and external systems
-```
-
-v1.0 criteria:
-
-- Debate timeline and position-change tracking
-- Separation of agreements and unresolved issues
-- Claim-level provenance
-- Human approval gates
-- Artifact-to-evidence traceability
-- GitHub, Jira, and document-system integration
-- Team permissions and audit logs
-- Cost and quality scorecards
-
-## Continuous validation track
-
-Every phase retains:
-
-- Unit and integration tests
-- Adversarial tests
-- Independent black-box validation
-- Real-provider canaries
-- Fault injection
-- Quality/cost comparison against baselines
-- Published failures and limitations
-- Reproducible release manifests
-
-## Current priorities
-
-1. GitHub Actions validation
-2. Real Claude CLI strict validation
-3. Twenty-case Claude canary
-4. Canary fixes and v0.2.1
-5. Signed v0.2.1 release
-6. Begin Agent Registry and Tool Broker design
-
-## Status vocabulary
-
-- **Implemented**: code exists
-- **Offline verified**: simulation, static, and black-box tests pass
-- **Provider verified**: validated on real Claude/API execution
-- **Operationally verified**: repeated operations and fault injection pass
-- **Released**: tag, release artifact, checksum, and changelog published
-
-ProofGraph Claude MVP is currently **Implemented + Offline verified**.
+No capability is considered production-ready from implementation alone. Adversarial tests, independent reproduction, and required live host/vendor canaries remain release gates.

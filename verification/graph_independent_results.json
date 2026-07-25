@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:54:41.535Z",
+  "verifier_type": "independent-black-box-stdio-mcp-hooks-and-artifacts",
+  "production_modules_imported": false,
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "total": 14,
+  "passed": 14,
+  "failed": 0,
+  "residuals_confirmed": 1,
+  "release_gate": "PASS_OFFLINE_CLAUDE_CANARY_REQUIRED",
+  "results": [
+    {
+      "name": "production MCP exposes the package version and the complete graph tool surface",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 43.923,
+      "details": {
+        "version": "1.1.0",
+        "tool_count": 24
+      }
+    },
+    {
+      "name": "deterministic compiler returns identical graph digest for identical input",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 46.103,
+      "details": {
+        "graph_digest": "37c66d373ac9d1f9d5c88c241c657f2a193719e41da15a4a13d79d03c878cf97",
+        "route": "direct"
+      }
+    },
+    {
+      "name": "black-box direct graph lifecycle finalizes with a verified success report",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 114.892,
+      "details": {
+        "run_id": "pg_f6caf926195b3a3827ff04e4",
+        "terminal_status": "success"
+      }
+    },
+    {
+      "name": "conditional failure routes verifier implementation error back to developer",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 89.865,
+      "details": {
+        "ready": "develop"
+      }
+    },
+    {
+      "name": "parallel research shards require all completions before the plan join",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 118.476,
+      "details": {
+        "research_shards": 3
+      }
+    },
+    {
+      "name": "high-risk graph remains blocked until challenge-bound approval resolution",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 80.507,
+      "details": {
+        "denied_terminal": "finalized"
+      }
+    },
+    {
+      "name": "planner can perform bounded dynamic fan-out and the join waits for all children",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 127.425,
+      "details": {
+        "graph_revision": 2,
+        "dynamic_nodes": 2
+      }
+    },
+    {
+      "name": "route injection in worker output cannot bypass verifier",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 82.093,
+      "details": {
+        "next": "verify"
+      }
+    },
+    {
+      "name": "graph guard denies unmatched agents and all write or shell tools",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 270.672,
+      "details": {
+        "denied": [
+          "unmatched-agent",
+          "Write",
+          "Edit",
+          "Bash",
+          "PowerShell",
+          "WebFetch"
+        ]
+      }
+    },
+    {
+      "name": "graph state survives MCP process restart",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 99.984,
+      "details": {
+        "run_id": "pg_529a10a404de4fe5781ed98b",
+        "ready": "direct"
+      }
+    },
+    {
+      "name": "valid JSON state tampering is rejected before further mutation",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 70.434,
+      "details": {
+        "error": "Run state or event chain failed integrity validation"
+      }
+    },
+    {
+      "name": "post-finalization report tampering is detected",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 111.301,
+      "details": {
+        "failed_checks": [
+          "report_markdown"
+        ]
+      }
+    },
+    {
+      "name": "dynamic expansion cannot smuggle shell or workspace-write capability",
+      "status": "PASS",
+      "residual": false,
+      "duration_ms": 77.151,
+      "details": {
+        "rejected": [
+          "shell",
+          "workspace_write"
+        ]
+      }
+    },
+    {
+      "name": "human identity remains self-attested inside one Claude host",
+      "status": "RESIDUAL_CONFIRMED",
+      "residual": true,
+      "duration_ms": 72.768,
+      "details": {
+        "impact": "Possession of the local challenge plus a declared role is not cryptographic proof of a human decision."
+      }
+    }
+  ]
+}

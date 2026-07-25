@@ -1,0 +1,475 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "verifier": "orca-black-box",
+  "generated_at": "2026-07-25T10:54:44.598Z",
+  "boundary": "CLI subprocess and persisted artifacts only; no ProofGraph production module imports",
+  "passed": 13,
+  "failed": 0,
+  "total": 13,
+  "checks": [
+    {
+      "name": "public_cli_version",
+      "ok": true,
+      "exit_code": 0,
+      "result": {
+        "product": "proofgraph",
+        "version": "1.1.0"
+      }
+    },
+    {
+      "name": "doctor_ready_for_canary",
+      "ok": true,
+      "exit_code": 0,
+      "orca": {
+        "name": "orca",
+        "host": "orca",
+        "mode": "orca-orchestration-bridge",
+        "compatibility_bridge": true,
+        "strict_orca_native": false,
+        "state_authority": "proofgraph-kernel",
+        "execution_authority": "orca-runtime",
+        "workspace_authority": "orca-worktree",
+        "enabled": true,
+        "manual_permissions_confirmed": true,
+        "require_explicit_repo_selector": true,
+        "repo_selector_configured": true,
+        "live_canary_required": true,
+        "orchestration_experimental": true,
+        "ok": true,
+        "checks": {
+          "status": {
+            "ok": true,
+            "runtime": {
+              "version": "1.4.35",
+              "orchestration": {
+                "enabled": true,
+                "experimental": true
+              }
+            }
+          },
+          "repos": {
+            "repos": [
+              {
+                "id": "repo_1",
+                "path": "/tmp/proofgraph-orca-independent-KVRR66/good"
+              }
+            ]
+          },
+          "repo": {
+            "repo": {
+              "id": "repo_1",
+              "path": "/tmp/proofgraph-orca-independent-KVRR66/good"
+            }
+          },
+          "worktrees": {
+            "worktrees": []
+          },
+          "terminals": {
+            "terminals": []
+          },
+          "tasks": {
+            "tasks": []
+          },
+          "gates": {
+            "gates": []
+          },
+          "inbox": {
+            "messages": []
+          }
+        },
+        "adapter": "orca",
+        "agent_id": "proofgraph.orca",
+        "host_mode": "execution-host",
+        "host_tool_risk": true,
+        "status": "ready_for_canary",
+        "invocable": true
+      }
+    },
+    {
+      "name": "doctor_declares_boundaries",
+      "ok": true,
+      "orca": {
+        "name": "orca",
+        "host": "orca",
+        "mode": "orca-orchestration-bridge",
+        "compatibility_bridge": true,
+        "strict_orca_native": false,
+        "state_authority": "proofgraph-kernel",
+        "execution_authority": "orca-runtime",
+        "workspace_authority": "orca-worktree",
+        "enabled": true,
+        "manual_permissions_confirmed": true,
+        "require_explicit_repo_selector": true,
+        "repo_selector_configured": true,
+        "live_canary_required": true,
+        "orchestration_experimental": true,
+        "ok": true,
+        "checks": {
+          "status": {
+            "ok": true,
+            "runtime": {
+              "version": "1.4.35",
+              "orchestration": {
+                "enabled": true,
+                "experimental": true
+              }
+            }
+          },
+          "repos": {
+            "repos": [
+              {
+                "id": "repo_1",
+                "path": "/tmp/proofgraph-orca-independent-KVRR66/good"
+              }
+            ]
+          },
+          "repo": {
+            "repo": {
+              "id": "repo_1",
+              "path": "/tmp/proofgraph-orca-independent-KVRR66/good"
+            }
+          },
+          "worktrees": {
+            "worktrees": []
+          },
+          "terminals": {
+            "terminals": []
+          },
+          "tasks": {
+            "tasks": []
+          },
+          "gates": {
+            "gates": []
+          },
+          "inbox": {
+            "messages": []
+          }
+        },
+        "adapter": "orca",
+        "agent_id": "proofgraph.orca",
+        "host_mode": "execution-host",
+        "host_tool_risk": true,
+        "status": "ready_for_canary",
+        "invocable": true
+      }
+    },
+    {
+      "name": "verified_graph_completion",
+      "ok": true,
+      "exit_code": 0,
+      "run_id": "pg_598877104ed065de60850763",
+      "terminal_status": "success",
+      "quality_gate_passed": true
+    },
+    {
+      "name": "task_dispatch_metadata_preserved",
+      "ok": true,
+      "nodes": [
+        {
+          "node_id": "direct",
+          "kind": "direct",
+          "status": "succeeded",
+          "adapter": "orca"
+        },
+        {
+          "node_id": "verify",
+          "kind": "verify",
+          "status": "succeeded",
+          "adapter": "orca"
+        },
+        {
+          "node_id": "synthesize",
+          "kind": "synthesize",
+          "status": "succeeded",
+          "adapter": "orca"
+        }
+      ]
+    },
+    {
+      "name": "graph_integrity_after_orca",
+      "ok": true,
+      "exit_code": 0,
+      "failed_checks": []
+    },
+    {
+      "name": "manual_dispatch_only",
+      "ok": true,
+      "command_count": 26,
+      "forbidden": []
+    },
+    {
+      "name": "worker_contract_injected",
+      "ok": true,
+      "task_count": 3
+    },
+    {
+      "name": "parallel_fanout_uses_non_consuming_checks",
+      "ok": true,
+      "terminal_status": "success",
+      "quality_gate_passed": true,
+      "research_nodes": [
+        {
+          "node_id": "research-01",
+          "status": "succeeded"
+        },
+        {
+          "node_id": "research-02",
+          "status": "succeeded"
+        },
+        {
+          "node_id": "research-03",
+          "status": "succeeded"
+        }
+      ],
+      "check_commands": [
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ],
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ],
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ],
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ],
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ],
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ],
+        [
+          "orchestration",
+          "check",
+          "--all",
+          "--wait",
+          "--types",
+          "worker_done,escalation,decision_gate",
+          "--timeout-ms",
+          "1000"
+        ]
+      ]
+    },
+    {
+      "name": "report_path_traversal_fails_closed",
+      "ok": true,
+      "terminal_status": "failed",
+      "quality_gate_passed": false,
+      "failure": {
+        "failure_type": "unknown",
+        "severity": "medium",
+        "summary": "Adapter orca failed: Orca worker_done report path escapes the worktree",
+        "evidence": [],
+        "expected": "A structured AgentResult matching the ProofGraph contract",
+        "observed": "Orca worker_done report path escapes the worktree",
+        "recommended_route": "plan",
+        "retryable": true,
+        "signature": "df7ab8610a1ee884035cb5e0"
+      }
+    },
+    {
+      "name": "manual_permission_acknowledgement_fails_closed",
+      "ok": true,
+      "orca": {
+        "name": "orca",
+        "host": "orca",
+        "mode": "orca-orchestration-bridge",
+        "compatibility_bridge": true,
+        "strict_orca_native": false,
+        "state_authority": "proofgraph-kernel",
+        "execution_authority": "orca-runtime",
+        "workspace_authority": "orca-worktree",
+        "enabled": true,
+        "manual_permissions_confirmed": false,
+        "require_explicit_repo_selector": true,
+        "repo_selector_configured": true,
+        "live_canary_required": true,
+        "orchestration_experimental": true,
+        "ok": false,
+        "checks": {
+          "status": {
+            "ok": true,
+            "runtime": {
+              "version": "1.4.35",
+              "orchestration": {
+                "enabled": true,
+                "experimental": true
+              }
+            }
+          },
+          "repos": {
+            "repos": [
+              {
+                "id": "repo_1",
+                "path": "/tmp/proofgraph-orca-independent-KVRR66/no-manual"
+              }
+            ]
+          },
+          "repo": {
+            "repo": {
+              "id": "repo_1",
+              "path": "/tmp/proofgraph-orca-independent-KVRR66/no-manual"
+            }
+          },
+          "worktrees": {
+            "worktrees": []
+          },
+          "terminals": {
+            "terminals": []
+          },
+          "tasks": {
+            "tasks": []
+          },
+          "gates": {
+            "gates": []
+          },
+          "inbox": {
+            "messages": []
+          }
+        },
+        "error": "Set Orca Agent Permissions to Manual, then set adapters.orca.manual_permissions_confirmed=true",
+        "adapter": "orca",
+        "agent_id": "proofgraph.orca",
+        "host_mode": "execution-host",
+        "host_tool_risk": true,
+        "status": "error",
+        "invocable": false
+      }
+    },
+    {
+      "name": "explicit_repo_selector_fails_closed",
+      "ok": true,
+      "orca": {
+        "name": "orca",
+        "host": "orca",
+        "mode": "orca-orchestration-bridge",
+        "compatibility_bridge": true,
+        "strict_orca_native": false,
+        "state_authority": "proofgraph-kernel",
+        "execution_authority": "orca-runtime",
+        "workspace_authority": "orca-worktree",
+        "enabled": true,
+        "manual_permissions_confirmed": true,
+        "require_explicit_repo_selector": true,
+        "repo_selector_configured": false,
+        "live_canary_required": true,
+        "orchestration_experimental": true,
+        "ok": false,
+        "checks": {
+          "status": {
+            "ok": true,
+            "runtime": {
+              "version": "1.4.35",
+              "orchestration": {
+                "enabled": true,
+                "experimental": true
+              }
+            }
+          },
+          "repos": {
+            "repos": [
+              {
+                "id": "repo_1",
+                "path": "/tmp/proofgraph-orca-independent-KVRR66/no-repo"
+              }
+            ]
+          },
+          "worktrees": {
+            "worktrees": []
+          },
+          "terminals": {
+            "terminals": []
+          },
+          "tasks": {
+            "tasks": []
+          },
+          "gates": {
+            "gates": []
+          },
+          "inbox": {
+            "messages": []
+          }
+        },
+        "error": "Set adapters.orca.repo_selector to an explicit id:<repoId> from `orca repo list --json`",
+        "adapter": "orca",
+        "agent_id": "proofgraph.orca",
+        "host_mode": "execution-host",
+        "host_tool_risk": true,
+        "status": "error",
+        "invocable": false
+      }
+    },
+    {
+      "name": "double_workspace_ownership_rejected",
+      "ok": true,
+      "terminal_status": "failed",
+      "failures": [
+        {
+          "failure_id": "failure_236d9b102e25f5b103b0de3c",
+          "node_id": "direct",
+          "actor": "direct",
+          "attempt": 1,
+          "failure": {
+            "failure_type": "unknown",
+            "severity": "medium",
+            "summary": "Adapter orca failed: Disable the ProofGraph Workspace Engine for Orca-hosted runs; Orca must be the sole worktree owner",
+            "evidence": [],
+            "expected": "A structured AgentResult matching the ProofGraph contract",
+            "observed": "Disable the ProofGraph Workspace Engine for Orca-hosted runs; Orca must be the sole worktree owner",
+            "recommended_route": "plan",
+            "retryable": true,
+            "signature": "9ec6a624bace1fe461cc720f"
+          },
+          "created_at": "2026-07-25T10:54:44.563Z"
+        }
+      ]
+    }
+  ],
+  "release_gate": "PASS_OFFLINE_ORCA_LIVE_CANARY_REQUIRED"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "default_adapter": "mock",
+  "data_dir": ".proofgraph",
+  "routing": {
+    "direct": "opencode",
+    "researcher": "opencode",
+    "planner": "opencode",
+    "developer": "opencode",
+    "verifier": "opencode",
+    "synthesizer": "opencode"
+  },
+  "workspace": {
+    "enabled": false,
+    "require_approval": true,
+    "require_clean": true,
+    "allowed_commands": [
+      "npm",
+      "node",
+      "python",
+      "python3",
+      "pytest",
+      "cargo",
+      "go"
+    ]
+  },
+  "debugger": {
+    "enabled": true,
+    "event_poll_ms": 250
+  },
+  "adapters": {
+    "opencode": {
+      "enabled": false,
+      "transport": "server",
+      "server_url": "http://127.0.0.1:4096",
+      "username": "opencode",
+      "password_env": "OPENCODE_SERVER_PASSWORD",
+      "allow_remote": false,
+      "allow_insecure_remote": false,
+      "allow_host_tools": false,
+      "require_isolated_workspace": true,
+      "keep_sessions": true,
+      "max_messages": 50,
+      "timeout_ms": 300000,
+      "max_response_bytes": 2000000,
+      "agent_map": {
+        "direct": "plan",
+        "researcher": "plan",
+        "planner": "plan",
+        "developer": "plan",
+        "verifier": "plan",
+        "synthesizer": "plan"
+      },
+      "pure_worker_confirmed": false
+    }
+  },
+  "templates": {}
+}

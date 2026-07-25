@@ -9,7 +9,7 @@ import { runId as validateRunId } from './validate.mjs';
 const ZERO_HASH = '0'.repeat(64);
 
 export function resolveDataDir(env = process.env) {
-  const candidate = env.PROOFGRAPH_DATA_DIR || env.CLAUDE_PLUGIN_DATA || path.join(os.homedir(), '.proofgraph-claude-data');
+  const candidate = env.PROOFGRAPH_DATA_DIR || env.CLAUDE_PLUGIN_DATA || path.join(os.homedir(), '.proofgraph');
   return path.resolve(candidate);
 }
 

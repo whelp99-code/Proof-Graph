@@ -1,0 +1,92 @@
+{
+  "ok": true,
+  "run_id": "pg_acaba997d516ff457410ac6e",
+  "checks": [
+    {
+      "check": "event_chain",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "errors": [],
+        "event_count": 109,
+        "head_hash": "a77a2bb6ce6df607c240fbf4779dea40a9cd98530c7774c842fa6f549d5cddc6"
+      }
+    },
+    {
+      "check": "graph_spec",
+      "ok": true,
+      "expected": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+      "actual": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8"
+    },
+    {
+      "check": "node:triage",
+      "ok": true
+    },
+    {
+      "check": "node:research-runtime",
+      "ok": true
+    },
+    {
+      "check": "node:research-ux",
+      "ok": true
+    },
+    {
+      "check": "node:research-safety",
+      "ok": true
+    },
+    {
+      "check": "node:plan",
+      "ok": true
+    },
+    {
+      "check": "node:develop-model",
+      "ok": true
+    },
+    {
+      "check": "node:develop-renderer",
+      "ok": true
+    },
+    {
+      "check": "node:develop-controller",
+      "ok": true
+    },
+    {
+      "check": "node:verify-functional",
+      "ok": true
+    },
+    {
+      "check": "node:verify-adversarial",
+      "ok": true
+    },
+    {
+      "check": "node:synthesize",
+      "ok": true
+    },
+    {
+      "check": "node:terminal-success",
+      "ok": true
+    },
+    {
+      "check": "node:terminal-partial",
+      "ok": true
+    },
+    {
+      "check": "node:terminal-failed",
+      "ok": true
+    },
+    {
+      "check": "report_markdown",
+      "ok": true
+    },
+    {
+      "check": "report_json",
+      "ok": true
+    }
+  ],
+  "failed_checks": [],
+  "event_head": {
+    "seq": 109,
+    "hash": "a77a2bb6ce6df607c240fbf4779dea40a9cd98530c7774c842fa6f549d5cddc6"
+  },
+  "warning": "Local hashes are not an external signature, human-identity attestation, or notarization."
+}

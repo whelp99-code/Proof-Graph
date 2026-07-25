@@ -1,26 +1,45 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "proofgraph-claude",
-  "displayName": "ProofGraph Claude",
-  "version": "0.2.0",
-  "description": "Read-only, evidence-gated deep research for Claude Code with auditable local state.",
+  "displayName": "ProofGraph",
+  "version": "1.1.0",
+  "description": "Graph Engineering runtime for AI coding tools with first-class OpenCode and Pi hosts, verified dynamic graphs, approval-gated workspaces, and deterministic evidence.",
   "author": {
     "name": "ProofGraph Project"
   },
+  "repository": "https://github.com/whelp99-code/Proof-Graph",
   "license": "MIT",
   "keywords": [
+    "ai-coding",
     "claude-code",
-    "research",
-    "verification",
+    "codex",
+    "debugger",
+    "dynamic-workflow",
+    "evidence",
+    "graph-engineering",
     "mcp",
-    "evidence"
+    "multi-agent",
+    "opencode",
+    "orca",
+    "runtime",
+    "tui",
+    "verification",
+    "workspace",
+    "pi"
   ],
   "skills": "./skills/",
   "agents": [
     "./agents/planner.md",
     "./agents/researcher.md",
     "./agents/verifier.md",
-    "./agents/synthesizer.md"
+    "./agents/synthesizer.md",
+    "./agents/graph-direct.md",
+    "./agents/graph-researcher.md",
+    "./agents/graph-planner.md",
+    "./agents/graph-developer.md",
+    "./agents/graph-verifier.md",
+    "./agents/graph-verifier-deep.md",
+    "./agents/graph-synthesizer.md"
   ],
   "hooks": "./hooks/hooks.json",
   "mcpServers": "./.mcp.json"

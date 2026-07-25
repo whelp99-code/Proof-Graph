@@ -1,0 +1,1434 @@
+{
+  "ok": true,
+  "assessment": {
+    "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+    "mode": "auto",
+    "signals": {
+      "complexity": 85,
+      "uncertainty": 55,
+      "risk": "medium",
+      "reversibility": "partially_reversible",
+      "requires_research": true,
+      "requires_implementation": true,
+      "estimated_subtasks": 8,
+      "external_side_effects": true,
+      "compliance_sensitive": false,
+      "user_approval_required": false,
+      "verification_strength": "deep",
+      "heuristic_fields": [
+        "external_side_effects",
+        "compliance_sensitive",
+        "detected"
+      ],
+      "heuristic_details": {
+        "complex": true,
+        "research": true,
+        "implementation": true,
+        "risky": true,
+        "list_like": true
+      }
+    },
+    "profile": {
+      "template_name": "agent-tui",
+      "research_workstreams": [
+        "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+        "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+        "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+        "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+        "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+        "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+      ],
+      "implementation_workstreams": [
+        "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+        "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+        "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+        "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+        "Event log, node inspector, failure packet viewer, and approval queue",
+        "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+      ],
+      "deliverables": [
+        "Runnable AI agent TUI executable with a deterministic demo mode",
+        "Architecture and state/event contracts",
+        "Keyboard map and operator flows",
+        "Unit, integration, rendering snapshot, and failure-path tests",
+        "Installation, operation, troubleshooting, and security documentation"
+      ],
+      "acceptance_tests": [
+        "The TUI starts and exits without leaving the terminal in raw mode",
+        "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+        "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+        "Non-interactive snapshot mode runs in CI without a TTY",
+        "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+        "No unrestricted shell or workspace mutation is available from the TUI by default"
+      ],
+      "non_goals": [
+        "A full desktop GUI",
+        "Unattended production deployment or unrestricted command execution",
+        "Embedding provider credentials in the TUI"
+      ]
+    },
+    "recommendation": {
+      "initial_route": "human",
+      "post_approval_route": "research",
+      "research_fanout": 6,
+      "verification_strength": "deep",
+      "max_iterations": 3,
+      "max_parallel_nodes": 6,
+      "max_dynamic_nodes": 32,
+      "human_approval_required": true,
+      "model_tiers": {
+        "direct": "standard",
+        "research": "standard",
+        "plan": "deep",
+        "develop": "deep",
+        "verify": "deep",
+        "synthesize": "standard"
+      },
+      "reason_codes": [
+        "mode:auto",
+        "complexity:85",
+        "uncertainty:55",
+        "risk:medium",
+        "route:human"
+      ]
+    }
+  },
+  "graph": {
+    "schema_version": 1,
+    "graph_id": "graph_0135660d128012af",
+    "name": "ProofGraph dynamic workflow (auto)",
+    "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+    "entry_node": "triage",
+    "nodes": [
+      {
+        "node_id": "triage",
+        "title": "Deterministic complexity and risk triage",
+        "kind": "triage",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "auto": true,
+          "initial_route": "human",
+          "assessment": {
+            "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+            "mode": "auto",
+            "signals": {
+              "complexity": 85,
+              "uncertainty": 55,
+              "risk": "medium",
+              "reversibility": "partially_reversible",
+              "requires_research": true,
+              "requires_implementation": true,
+              "estimated_subtasks": 8,
+              "external_side_effects": true,
+              "compliance_sensitive": false,
+              "user_approval_required": false,
+              "verification_strength": "deep",
+              "heuristic_fields": [
+                "external_side_effects",
+                "compliance_sensitive",
+                "detected"
+              ],
+              "heuristic_details": {
+                "complex": true,
+                "research": true,
+                "implementation": true,
+                "risky": true,
+                "list_like": true
+              }
+            },
+            "profile": {
+              "template_name": "agent-tui",
+              "research_workstreams": [
+                "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+                "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+                "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+                "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+                "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+                "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+              ],
+              "implementation_workstreams": [
+                "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+                "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+                "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+                "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+                "Event log, node inspector, failure packet viewer, and approval queue",
+                "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+              ],
+              "deliverables": [
+                "Runnable AI agent TUI executable with a deterministic demo mode",
+                "Architecture and state/event contracts",
+                "Keyboard map and operator flows",
+                "Unit, integration, rendering snapshot, and failure-path tests",
+                "Installation, operation, troubleshooting, and security documentation"
+              ],
+              "acceptance_tests": [
+                "The TUI starts and exits without leaving the terminal in raw mode",
+                "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+                "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+                "Non-interactive snapshot mode runs in CI without a TTY",
+                "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+                "No unrestricted shell or workspace mutation is available from the TUI by default"
+              ],
+              "non_goals": [
+                "A full desktop GUI",
+                "Unattended production deployment or unrestricted command execution",
+                "Embedding provider credentials in the TUI"
+              ]
+            },
+            "recommendation": {
+              "initial_route": "human",
+              "post_approval_route": "research",
+              "research_fanout": 6,
+              "verification_strength": "deep",
+              "max_iterations": 3,
+              "max_parallel_nodes": 6,
+              "max_dynamic_nodes": 32,
+              "human_approval_required": true,
+              "model_tiers": {
+                "direct": "standard",
+                "research": "standard",
+                "plan": "deep",
+                "develop": "deep",
+                "verify": "deep",
+                "synthesize": "standard"
+              },
+              "reason_codes": [
+                "mode:auto",
+                "complexity:85",
+                "uncertainty:55",
+                "risk:medium",
+                "route:human"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "node_id": "terminal-success",
+        "title": "Successful completion",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": "success",
+        "dynamic": false,
+        "metadata": {}
+      },
+      {
+        "node_id": "terminal-partial",
+        "title": "Partial completion",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": "partial",
+        "dynamic": false,
+        "metadata": {}
+      },
+      {
+        "node_id": "terminal-failed",
+        "title": "Failed completion",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": "failed",
+        "dynamic": false,
+        "metadata": {}
+      },
+      {
+        "node_id": "research-01",
+        "title": "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "web_search",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "shard_index": 1,
+          "shard_count": 6,
+          "workstream": "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence"
+        }
+      },
+      {
+        "node_id": "research-02",
+        "title": "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "web_search",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "shard_index": 2,
+          "shard_count": 6,
+          "workstream": "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown"
+        }
+      },
+      {
+        "node_id": "research-03",
+        "title": "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "web_search",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "shard_index": 3,
+          "shard_count": 6,
+          "workstream": "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior"
+        }
+      },
+      {
+        "node_id": "research-04",
+        "title": "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "web_search",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "shard_index": 4,
+          "shard_count": 6,
+          "workstream": "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings"
+        }
+      },
+      {
+        "node_id": "research-05",
+        "title": "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "web_search",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "shard_index": 5,
+          "shard_count": 6,
+          "workstream": "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions"
+        }
+      },
+      {
+        "node_id": "research-06",
+        "title": "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "web_search",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "shard_index": 6,
+          "shard_count": 6,
+          "workstream": "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+        }
+      },
+      {
+        "node_id": "plan",
+        "title": "Plan requirements, implementation, and acceptance criteria",
+        "kind": "plan",
+        "role": "planner",
+        "risk": "low",
+        "max_attempts": 3,
+        "join": "all",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-planner",
+        "model_tier": "deep",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "join_from": [
+            "research-01",
+            "research-02",
+            "research-03",
+            "research-04",
+            "research-05",
+            "research-06"
+          ],
+          "dynamic_join_node_id": "develop",
+          "implementation_workstreams": [
+            "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+            "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+            "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+            "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+            "Event log, node inspector, failure packet viewer, and approval queue",
+            "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+          ],
+          "deliverables": [
+            "Runnable AI agent TUI executable with a deterministic demo mode",
+            "Architecture and state/event contracts",
+            "Keyboard map and operator flows",
+            "Unit, integration, rendering snapshot, and failure-path tests",
+            "Installation, operation, troubleshooting, and security documentation"
+          ],
+          "acceptance_tests": [
+            "The TUI starts and exits without leaving the terminal in raw mode",
+            "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+            "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+            "Non-interactive snapshot mode runs in CI without a TTY",
+            "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+            "No unrestricted shell or workspace mutation is available from the TUI by default"
+          ],
+          "non_goals": [
+            "A full desktop GUI",
+            "Unattended production deployment or unrestricted command execution",
+            "Embedding provider credentials in the TUI"
+          ]
+        }
+      },
+      {
+        "node_id": "develop",
+        "title": "Produce an auditable implementation artifact",
+        "kind": "develop",
+        "role": "developer",
+        "risk": "low",
+        "max_attempts": 3,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-developer",
+        "model_tier": "deep",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "mutation_mode": "artifact_only",
+          "implementation_workstreams": [
+            "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+            "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+            "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+            "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+            "Event log, node inspector, failure packet viewer, and approval queue",
+            "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+          ],
+          "deliverables": [
+            "Runnable AI agent TUI executable with a deterministic demo mode",
+            "Architecture and state/event contracts",
+            "Keyboard map and operator flows",
+            "Unit, integration, rendering snapshot, and failure-path tests",
+            "Installation, operation, troubleshooting, and security documentation"
+          ],
+          "non_goals": [
+            "A full desktop GUI",
+            "Unattended production deployment or unrestricted command execution",
+            "Embedding provider credentials in the TUI"
+          ]
+        }
+      },
+      {
+        "node_id": "verify",
+        "title": "deep independent verification",
+        "kind": "verify",
+        "role": "verifier",
+        "risk": "low",
+        "max_attempts": 4,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-verifier-deep",
+        "model_tier": "deep",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read",
+          "web_search"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "verification_strength": "deep",
+          "acceptance_tests": [
+            "The TUI starts and exits without leaving the terminal in raw mode",
+            "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+            "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+            "Non-interactive snapshot mode runs in CI without a TTY",
+            "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+            "No unrestricted shell or workspace mutation is available from the TUI by default"
+          ],
+          "deliverables": [
+            "Runnable AI agent TUI executable with a deterministic demo mode",
+            "Architecture and state/event contracts",
+            "Keyboard map and operator flows",
+            "Unit, integration, rendering snapshot, and failure-path tests",
+            "Installation, operation, troubleshooting, and security documentation"
+          ]
+        }
+      },
+      {
+        "node_id": "synthesize",
+        "title": "Synthesize verified outputs",
+        "kind": "synthesize",
+        "role": "synthesizer",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-synthesizer",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "deliverables": [
+            "Runnable AI agent TUI executable with a deterministic demo mode",
+            "Architecture and state/event contracts",
+            "Keyboard map and operator flows",
+            "Unit, integration, rendering snapshot, and failure-path tests",
+            "Installation, operation, troubleshooting, and security documentation"
+          ],
+          "non_goals": [
+            "A full desktop GUI",
+            "Unattended production deployment or unrestricted command execution",
+            "Embedding provider credentials in the TUI"
+          ]
+        }
+      },
+      {
+        "node_id": "human-gate",
+        "title": "Human approval for high-risk execution",
+        "kind": "human_approval",
+        "role": "human",
+        "risk": "medium",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": true,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "reason": "High-risk, sensitive, externally acting, or irreversible work requires explicit approval."
+        }
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "e-triage-human",
+        "from": "triage",
+        "to": "human-gate",
+        "condition": {
+          "type": "route",
+          "value": "human"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-research-01",
+        "from": "human-gate",
+        "to": "research-01",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-research-02",
+        "from": "human-gate",
+        "to": "research-02",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-research-03",
+        "from": "human-gate",
+        "to": "research-03",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-research-04",
+        "from": "human-gate",
+        "to": "research-04",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-research-05",
+        "from": "human-gate",
+        "to": "research-05",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-research-06",
+        "from": "human-gate",
+        "to": "research-06",
+        "condition": {
+          "type": "approval",
+          "value": "approved"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-human-denied",
+        "from": "human-gate",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "approval",
+          "value": "denied"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-01-plan",
+        "from": "research-01",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-01-partial",
+        "from": "research-01",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-01-failed",
+        "from": "research-01",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 10,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-02-plan",
+        "from": "research-02",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-02-partial",
+        "from": "research-02",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-02-failed",
+        "from": "research-02",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 10,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-03-plan",
+        "from": "research-03",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-03-partial",
+        "from": "research-03",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-03-failed",
+        "from": "research-03",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 10,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-04-plan",
+        "from": "research-04",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-04-partial",
+        "from": "research-04",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-04-failed",
+        "from": "research-04",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 10,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-05-plan",
+        "from": "research-05",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-05-partial",
+        "from": "research-05",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-05-failed",
+        "from": "research-05",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 10,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-06-plan",
+        "from": "research-06",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-06-partial",
+        "from": "research-06",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-research-06-failed",
+        "from": "research-06",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 10,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-develop",
+        "from": "plan",
+        "to": "develop",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-evidence-research-01",
+        "from": "plan",
+        "to": "research-01",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-evidence-research-02",
+        "from": "plan",
+        "to": "research-02",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-evidence-research-03",
+        "from": "plan",
+        "to": "research-03",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-evidence-research-04",
+        "from": "plan",
+        "to": "research-04",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-evidence-research-05",
+        "from": "plan",
+        "to": "research-05",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-evidence-research-06",
+        "from": "plan",
+        "to": "research-06",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-security",
+        "from": "plan",
+        "to": "human-gate",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-partial",
+        "from": "plan",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-verify",
+        "from": "develop",
+        "to": "verify",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-plan-design",
+        "from": "develop",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-plan-requirements",
+        "from": "develop",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "requirements_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-security",
+        "from": "develop",
+        "to": "human-gate",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-partial",
+        "from": "develop",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-pass",
+        "from": "verify",
+        "to": "synthesize",
+        "condition": {
+          "type": "verification",
+          "value": "passed"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-implementation",
+        "from": "verify",
+        "to": "develop",
+        "condition": {
+          "type": "failure_type",
+          "value": "implementation_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-design",
+        "from": "verify",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-requirements",
+        "from": "verify",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "requirements_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-evidence-research-01",
+        "from": "verify",
+        "to": "research-01",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-evidence-research-02",
+        "from": "verify",
+        "to": "research-02",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-evidence-research-03",
+        "from": "verify",
+        "to": "research-03",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-evidence-research-04",
+        "from": "verify",
+        "to": "research-04",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-evidence-research-05",
+        "from": "verify",
+        "to": "research-05",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-evidence-research-06",
+        "from": "verify",
+        "to": "research-06",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-self",
+        "from": "verify",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "verification_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-security",
+        "from": "verify",
+        "to": "human-gate",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-budget",
+        "from": "verify",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "failure_type",
+          "value": "budget_exceeded"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-unknown",
+        "from": "verify",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "unknown"
+        },
+        "priority": 20,
+        "label": null
+      },
+      {
+        "edge_id": "e-verify-blocked",
+        "from": "verify",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-synthesize-success",
+        "from": "synthesize",
+        "to": "terminal-success",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-synthesize-partial",
+        "from": "synthesize",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-synthesize-failed",
+        "from": "synthesize",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 100,
+        "label": null
+      }
+    ],
+    "limits": {
+      "max_steps": 90,
+      "max_route_visits": 4,
+      "max_dynamic_nodes": 32,
+      "max_parallel_nodes": 6,
+      "max_iterations": 3
+    },
+    "policy": {
+      "require_verification_for_success": true,
+      "require_human_for_high_risk": true,
+      "allow_workspace_mutation": false,
+      "allow_shell": false
+    },
+    "metadata": {
+      "generated": true,
+      "compiler_version": "1.0.1",
+      "assessment": {
+        "objective": "AI에인전트 TUI를 개발하라\n\nTemplate research workstreams:\n- Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence\n- Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown\n- ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior\n- Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings\n- Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions\n- Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI\n\nTemplate implementation workstreams:\n- State model and deterministic reducer for runs, graph nodes, agents, approvals, and events\n- Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout\n- Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help\n- ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface\n- Event log, node inspector, failure packet viewer, and approval queue\n- Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation\n\nTemplate deliverables:\n- Runnable AI agent TUI executable with a deterministic demo mode\n- Architecture and state/event contracts\n- Keyboard map and operator flows\n- Unit, integration, rendering snapshot, and failure-path tests\n- Installation, operation, troubleshooting, and security documentation\n\nTemplate acceptance tests:\n- The TUI starts and exits without leaving the terminal in raw mode\n- Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes\n- Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible\n- Non-interactive snapshot mode runs in CI without a TTY\n- Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing\n- No unrestricted shell or workspace mutation is available from the TUI by default\n\nTemplate non-goals:\n- A full desktop GUI\n- Unattended production deployment or unrestricted command execution\n- Embedding provider credentials in the TUI\n\nTemplate success contract:\n- operator flows are mapped to explicit graph and agent state transitions\n- a runnable keyboard-first TUI and deterministic demo are delivered\n- failure, approval, cancellation, resize, and terminal restoration paths are independently verified",
+        "mode": "auto",
+        "signals": {
+          "complexity": 85,
+          "uncertainty": 55,
+          "risk": "medium",
+          "reversibility": "partially_reversible",
+          "requires_research": true,
+          "requires_implementation": true,
+          "estimated_subtasks": 8,
+          "external_side_effects": true,
+          "compliance_sensitive": false,
+          "user_approval_required": false,
+          "verification_strength": "deep",
+          "heuristic_fields": [
+            "external_side_effects",
+            "compliance_sensitive",
+            "detected"
+          ],
+          "heuristic_details": {
+            "complex": true,
+            "research": true,
+            "implementation": true,
+            "risky": true,
+            "list_like": true
+          }
+        },
+        "profile": {
+          "template_name": "agent-tui",
+          "research_workstreams": [
+            "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+            "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+            "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+            "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+            "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+            "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+          ],
+          "implementation_workstreams": [
+            "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+            "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+            "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+            "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+            "Event log, node inspector, failure packet viewer, and approval queue",
+            "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+          ],
+          "deliverables": [
+            "Runnable AI agent TUI executable with a deterministic demo mode",
+            "Architecture and state/event contracts",
+            "Keyboard map and operator flows",
+            "Unit, integration, rendering snapshot, and failure-path tests",
+            "Installation, operation, troubleshooting, and security documentation"
+          ],
+          "acceptance_tests": [
+            "The TUI starts and exits without leaving the terminal in raw mode",
+            "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+            "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+            "Non-interactive snapshot mode runs in CI without a TTY",
+            "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+            "No unrestricted shell or workspace mutation is available from the TUI by default"
+          ],
+          "non_goals": [
+            "A full desktop GUI",
+            "Unattended production deployment or unrestricted command execution",
+            "Embedding provider credentials in the TUI"
+          ]
+        },
+        "recommendation": {
+          "initial_route": "human",
+          "post_approval_route": "research",
+          "research_fanout": 6,
+          "verification_strength": "deep",
+          "max_iterations": 3,
+          "max_parallel_nodes": 6,
+          "max_dynamic_nodes": 32,
+          "human_approval_required": true,
+          "model_tiers": {
+            "direct": "standard",
+            "research": "standard",
+            "plan": "deep",
+            "develop": "deep",
+            "verify": "deep",
+            "synthesize": "standard"
+          },
+          "reason_codes": [
+            "mode:auto",
+            "complexity:85",
+            "uncertainty:55",
+            "risk:medium",
+            "route:human"
+          ]
+        }
+      },
+      "profile": {
+        "template_name": "agent-tui",
+        "research_workstreams": [
+          "Operator jobs, user flows, and information architecture for runs, graphs, agents, approvals, and evidence",
+          "Cross-platform terminal rendering, keyboard input, resize handling, accessibility, and graceful shutdown",
+          "ProofGraph runtime integration, event/state synchronization, adapter boundaries, and reconnect behavior",
+          "Safety UX for approvals, failures, retries, cancellation, budgets, and integrity warnings",
+          "Packaging and compatibility across macOS, Linux, Windows Terminal, and SSH sessions",
+          "Testing strategy for reducers, rendering snapshots, keyboard commands, and non-interactive CI"
+        ],
+        "implementation_workstreams": [
+          "State model and deterministic reducer for runs, graph nodes, agents, approvals, and events",
+          "Terminal renderer with responsive panes, focus management, status indicators, and compact fallback layout",
+          "Keyboard command router for navigation, pause, resume, single-step, abort, approve, deny, and help",
+          "ProofGraph client boundary supporting mock fixtures first and CLI/MCP integration behind an interface",
+          "Event log, node inspector, failure packet viewer, and approval queue",
+          "Automated tests, snapshot mode, demo fixtures, packaging, and operator documentation"
+        ],
+        "deliverables": [
+          "Runnable AI agent TUI executable with a deterministic demo mode",
+          "Architecture and state/event contracts",
+          "Keyboard map and operator flows",
+          "Unit, integration, rendering snapshot, and failure-path tests",
+          "Installation, operation, troubleshooting, and security documentation"
+        ],
+        "acceptance_tests": [
+          "The TUI starts and exits without leaving the terminal in raw mode",
+          "Runs, graph nodes, agents, approvals, failures, and events remain visible at narrow and wide terminal sizes",
+          "Pause, resume, single-step, abort, approve, and deny commands update state deterministically; automatic failure reroutes remain visible",
+          "Non-interactive snapshot mode runs in CI without a TTY",
+          "Disconnects, malformed events, unknown states, and integrity failures are rendered without crashing",
+          "No unrestricted shell or workspace mutation is available from the TUI by default"
+        ],
+        "non_goals": [
+          "A full desktop GUI",
+          "Unattended production deployment or unrestricted command execution",
+          "Embedding provider credentials in the TUI"
+        ]
+      },
+      "artifact_only_development": true
+    },
+    "compiler": {
+      "name": "proofgraph-deterministic-compiler",
+      "version": "1.0.1",
+      "input_digest": "e04d0c62ebd03c44fa1e02725989017bf239058c94072ed2fccc62fee82a92d2"
+    }
+  },
+  "graph_digest": "4e943669520e4bd5d538ca7a62da0acf4657c5df7050acbd56acfc8fa6c72821",
+  "validation": {
+    "node_count": 15,
+    "edge_count": 58,
+    "terminal_count": 3,
+    "cycle_count": 1,
+    "cycles": [
+      [
+        "research-06",
+        "research-05",
+        "research-04",
+        "research-03",
+        "research-02",
+        "verify",
+        "develop",
+        "plan",
+        "research-01",
+        "human-gate"
+      ]
+    ],
+    "dynamic_node_count": 6
+  },
+  "warnings": [
+    "Heuristic assessment fields: external_side_effects, compliance_sensitive, detected",
+    "Development nodes emit auditable artifacts only; the default compiler does not grant write or shell capabilities.",
+    "Model tiers are routing recommendations and remain subject to the selected adapter, model availability, and account policy."
+  ],
+  "metadata": {
+    "template": {
+      "name": "agent-tui",
+      "title": "AI agent operator TUI",
+      "built_in": true
+    },
+    "selection": "auto",
+    "matched_keyword": "ai에인전트 tui"
+  }
+}

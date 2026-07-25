@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "proofgraph": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/ABSOLUTE/PATH/TO/Proof-Graph/runtime/mcp/server.mjs"],
+      "env": {
+        "PROOFGRAPH_PROJECT_DIR": "/ABSOLUTE/PATH/TO/YOUR/PROJECT",
+        "PROOFGRAPH_CONFIG": "/ABSOLUTE/PATH/TO/YOUR/PROJECT/proofgraph.config.json"
+      }
+    }
+  }
+}

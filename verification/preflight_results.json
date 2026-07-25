@@ -1,33 +1,41 @@
 {
-  "product": "proofgraph-claude",
-  "version": "0.2.0",
-  "generated_at": "2026-07-24T00:40:15.151Z",
-  "root": "/mnt/data/proofgraph_claude_mvp",
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:54:29.416Z",
+  "root": "/mnt/data/ProofGraph-v1.1.0-opencode-pi",
   "node": "v22.16.0",
   "platform": "linux-x64",
-  "passed": 15,
+  "passed": 27,
   "failed": 0,
+  "skipped": 1,
+  "total": 28,
   "checks": [
     {
-      "name": "node_version",
-      "ok": true,
       "actual": "22.16.0",
-      "required": ">=20"
+      "required": ">=20",
+      "name": "node_version",
+      "ok": true
     },
     {
+      "plugin": "1.1.0",
+      "package": "1.1.0",
       "name": "version_alignment",
-      "ok": true,
-      "plugin": "0.2.0",
-      "package": "0.2.0"
+      "ok": true
     },
     {
+      "name": "package_identity",
+      "bin": {
+        "proofgraph": "./bin/proofgraph.mjs",
+        "proofgraph-mcp": "./runtime/mcp/server.mjs"
+      },
+      "ok": true
+    },
+    {
+      "actual": "proofgraph-claude",
       "name": "plugin_name",
-      "ok": true,
-      "actual": "proofgraph-claude"
+      "ok": true
     },
     {
-      "name": "component_paths",
-      "ok": true,
       "checked": [
         "skills/",
         "hooks/hooks.json",
@@ -35,13 +43,367 @@
         "agents/planner.md",
         "agents/researcher.md",
         "agents/verifier.md",
-        "agents/synthesizer.md"
+        "agents/synthesizer.md",
+        "agents/graph-direct.md",
+        "agents/graph-researcher.md",
+        "agents/graph-planner.md",
+        "agents/graph-developer.md",
+        "agents/graph-verifier.md",
+        "agents/graph-verifier-deep.md",
+        "agents/graph-synthesizer.md"
       ],
-      "missing": []
+      "missing": [],
+      "name": "component_paths",
+      "ok": true
     },
     {
-      "name": "mcp_configuration",
-      "ok": true,
+      "checked": [
+        "bin/proofgraph.mjs",
+        "runtime/platform.mjs",
+        "runtime/mcp/server.mjs",
+        "runtime/templates/registry.mjs",
+        "runtime/workspace/engine.mjs",
+        "runtime/debugger/controller.mjs",
+        "runtime/tui/app.mjs",
+        "runtime/hosts/base.mjs",
+        "runtime/hosts/orca-client.mjs",
+        "runtime/hosts/orca.mjs",
+        "runtime/adapters/orca.mjs",
+        "runtime/hosts/protocol.mjs",
+        "runtime/hosts/bridge-server.mjs",
+        "runtime/hosts/compatibility.mjs",
+        "runtime/hosts/catalog.mjs",
+        "runtime/hosts/install.mjs",
+        "runtime/hosts/opencode-client.mjs",
+        "runtime/hosts/opencode.mjs",
+        "runtime/adapters/opencode-server.mjs",
+        "runtime/adapters/pi-rpc.mjs",
+        "integrations/opencode/plugin.ts",
+        "integrations/opencode/core.mjs",
+        "integrations/opencode/bridge-client.mjs",
+        "integrations/pi/extensions/proofgraph/index.ts",
+        "integrations/pi/core.mjs",
+        "integrations/pi/bridge-client.mjs",
+        "scripts/orca-live-preflight.mjs",
+        "scripts/hosts-live-preflight.mjs",
+        "scripts/package-hosts.mjs",
+        "examples/graphs/ai-agent-tui.graph.json",
+        "examples/orca-bridge.config.json",
+        "examples/opencode-host.config.json",
+        "examples/pi-host.config.json",
+        "schemas/graphspec-v1.schema.json",
+        "docs/GRAPH_SPEC.md",
+        "docs/GRAPH_SPEC_KO.md",
+        "docs/AI_AGENT_TUI.md",
+        "docs/AI_AGENT_TUI_KO.md",
+        "docs/ORCA_INTEGRATION.md",
+        "docs/ORCA_INTEGRATION_KO.md",
+        "docs/OPENCODE_PI_INTEGRATION.md",
+        "docs/OPENCODE_PI_INTEGRATION_KO.md",
+        "docs/HOSTS_OPENCODE_PI.md",
+        "docs/HOSTS_OPENCODE_PI_KO.md",
+        "skills/orca-worker/SKILL.md",
+        "verification/ORCA_INTEGRATION_VERIFICATION_KO.md",
+        "verification/platform_independent_verifier.mjs",
+        "verification/tui_independent_verifier.mjs",
+        "verification/orca_independent_verifier.mjs",
+        "verification/hosts_independent_verifier.mjs"
+      ],
+      "missing": [],
+      "name": "platform_paths",
+      "ok": true
+    },
+    {
+      "hosts": [
+        {
+          "name": "opencode",
+          "display_name": "OpenCode",
+          "priority": 1,
+          "integration": "plugin+http+sse",
+          "install_targets": [
+            "project",
+            "user"
+          ],
+          "runtime_surfaces": [
+            "plugin",
+            "server",
+            "sdk",
+            "sse",
+            "custom-tool",
+            "custom-command"
+          ],
+          "capabilities": [
+            "commands",
+            "custom_tools",
+            "event_stream",
+            "permission_projection",
+            "session_mapping",
+            "diff_artifacts",
+            "tui_projection",
+            "headless_execution"
+          ],
+          "minimum_version": null,
+          "contract_target": {
+            "cli_version": "1.18.4",
+            "plugin_version": "1.18.4",
+            "node_minimum": "20.0.0",
+            "dependency": {
+              "name": "@opencode-ai/plugin",
+              "version": "1.18.4"
+            }
+          },
+          "version_policy": "pin-after-live-canary",
+          "live_canary_required": true
+        },
+        {
+          "name": "pi",
+          "display_name": "Pi",
+          "priority": 2,
+          "integration": "extension+jsonl-rpc",
+          "install_targets": [
+            "project",
+            "user"
+          ],
+          "runtime_surfaces": [
+            "extension",
+            "rpc",
+            "sdk",
+            "custom-command",
+            "custom-tool",
+            "custom-ui"
+          ],
+          "capabilities": [
+            "commands",
+            "custom_tools",
+            "event_interception",
+            "session_persistence",
+            "jsonl_rpc",
+            "approval_projection",
+            "custom_tui",
+            "headless_execution"
+          ],
+          "minimum_version": null,
+          "contract_target": {
+            "cli_version": "0.82.0",
+            "node_minimum": "22.19.0",
+            "peer_dependencies": {
+              "@earendil-works/pi-coding-agent": "*",
+              "typebox": "*"
+            }
+          },
+          "version_policy": "pin-after-live-canary",
+          "live_canary_required": true
+        },
+        {
+          "name": "orca",
+          "display_name": "Orca",
+          "priority": 3,
+          "integration": "cli+custom-agent",
+          "install_targets": [
+            "project"
+          ],
+          "runtime_surfaces": [
+            "cli",
+            "worktree",
+            "terminal"
+          ],
+          "capabilities": [
+            "worktree",
+            "terminal",
+            "diff",
+            "desktop_projection"
+          ],
+          "minimum_version": null,
+          "version_policy": "pin-and-canary",
+          "live_canary_required": true
+        }
+      ],
+      "protocol_version": "proofgraph.host.v1",
+      "name": "host_priority",
+      "ok": true
+    },
+    {
+      "opencode": {
+        "host": "opencode",
+        "scope": "project",
+        "mode": "managed",
+        "root": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode",
+        "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/plugins/proofgraph.ts",
+        "files": [
+          {
+            "kind": "package-json",
+            "source": null,
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/package.json"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/opencode/plugin.ts",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/plugins/proofgraph.ts"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/opencode/core.mjs",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/proofgraph/core.mjs"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/opencode/bridge-client.mjs",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/proofgraph/bridge-client.mjs"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/opencode/commands/pg.md",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/commands/pg.md"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/opencode/commands/pg-status.md",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/commands/pg-status.md"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/opencode/commands/pg-report.md",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.opencode/commands/pg-report.md"
+          }
+        ]
+      },
+      "pi": {
+        "host": "pi",
+        "scope": "project",
+        "mode": "managed",
+        "root": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.pi",
+        "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.pi/extensions/proofgraph/index.ts",
+        "files": [
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/pi/extensions/proofgraph/index.ts",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.pi/extensions/proofgraph/index.ts"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/pi/core.mjs",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.pi/extensions/proofgraph/core.mjs"
+          },
+          {
+            "kind": "file",
+            "source": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/integrations/pi/bridge-client.mjs",
+            "target": "/mnt/data/ProofGraph-v1.1.0-opencode-pi/.pi/extensions/proofgraph/bridge-client.mjs"
+          }
+        ]
+      },
+      "name": "host_install_layouts",
+      "ok": true
+    },
+    {
+      "opencode": {
+        "enabled": false,
+        "transport": "server",
+        "server_url": "http://127.0.0.1:4096",
+        "username": "opencode",
+        "password_env": "OPENCODE_SERVER_PASSWORD",
+        "allow_remote": false,
+        "allow_insecure_remote": false,
+        "allow_host_tools": false,
+        "require_isolated_workspace": true,
+        "keep_sessions": true,
+        "max_messages": 50,
+        "timeout_ms": 300000,
+        "max_response_bytes": 2000000,
+        "agent_map": {
+          "direct": "plan",
+          "researcher": "plan",
+          "planner": "plan",
+          "developer": "plan",
+          "verifier": "plan",
+          "synthesizer": "plan"
+        },
+        "pure_worker_confirmed": false
+      },
+      "pi": {
+        "enabled": false,
+        "command": "pi",
+        "allow_host_tools": false,
+        "disable_discovery": true,
+        "ui_policy": "deny"
+      },
+      "name": "host_safe_defaults",
+      "ok": true
+    },
+    {
+      "root": "1.1.0",
+      "opencode": "1.1.0",
+      "pi": "1.1.0",
+      "opencode_contract": {
+        "opencode": "1.18.4",
+        "plugin": "1.18.4"
+      },
+      "pi_contract": {
+        "pi": "0.82.0"
+      },
+      "pi_node": ">=22.19.0",
+      "name": "host_package_versions",
+      "ok": true
+    },
+    {
+      "test": "node --test --test-reporter=spec tests/platform/host-*.test.mjs tests/platform/opencode-host.test.mjs tests/platform/pi-rpc-host.test.mjs tests/integration/host-bridge-e2e.test.mjs tests/adversarial/host-integrations-adversarial.test.mjs",
+      "verify": "node verification/hosts_independent_verifier.mjs --output verification/tmp/hosts_independent_results.json",
+      "preflight": "node scripts/hosts-live-preflight.mjs --output verification/tmp/hosts_live_preflight.json",
+      "name": "host_verification_scripts",
+      "ok": true
+    },
+    {
+      "workspace_enabled": false,
+      "adapter_enabled": false,
+      "manual_permissions_confirmed": false,
+      "require_explicit_repo_selector": true,
+      "allow_workspace_mutation": false,
+      "allow_inline_result": false,
+      "preflight_script": "node scripts/orca-live-preflight.mjs",
+      "name": "orca_bridge_safe_defaults",
+      "ok": true
+    },
+    {
+      "digest": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+      "analysis": {
+        "node_count": 14,
+        "edge_count": 38,
+        "terminal_count": 3,
+        "cycle_count": 1,
+        "cycles": [
+          [
+            "research-safety",
+            "research-ux",
+            "verify-adversarial",
+            "verify-functional",
+            "develop-controller",
+            "develop-renderer",
+            "develop-model",
+            "plan",
+            "research-runtime"
+          ]
+        ],
+        "dynamic_node_count": 3
+      },
+      "name": "agent_tui_graphspec",
+      "ok": true
+    },
+    {
+      "schema": "https://proofgraph.dev/schemas/graphspec-v1.schema.json",
+      "node_kinds": [
+        "triage",
+        "direct",
+        "research",
+        "plan",
+        "develop",
+        "verify",
+        "human_approval",
+        "synthesize",
+        "terminal"
+      ],
+      "name": "graphspec_schema",
+      "ok": true
+    },
+    {
       "server": {
         "type": "stdio",
         "command": "node",
@@ -54,11 +416,11 @@
           "PROOFGRAPH_PLUGIN_ROOT": "${CLAUDE_PLUGIN_ROOT}",
           "PROOFGRAPH_TEST_MODE": "0"
         }
-      }
+      },
+      "name": "mcp_configuration",
+      "ok": true
     },
     {
-      "name": "hook_surface",
-      "ok": true,
       "events": [
         "PreToolUse",
         "PostToolUse",
@@ -68,36 +430,36 @@
         "SessionStart",
         "SessionEnd",
         "Stop"
-      ]
+      ],
+      "name": "hook_surface",
+      "ok": true
     },
     {
-      "name": "component_frontmatter",
-      "ok": true,
-      "failures": []
-    },
-    {
-      "name": "javascript_syntax",
-      "ok": true,
-      "files_checked": 24,
-      "failures": []
-    },
-    {
-      "name": "no_external_runtime_imports",
-      "ok": true,
       "failures": [],
-      "dependencies": null
+      "name": "component_frontmatter",
+      "ok": true
     },
     {
-      "name": "mcp_requires_initialize",
-      "ok": true,
+      "files_checked": 119,
+      "failures": [],
+      "name": "javascript_syntax",
+      "ok": true
+    },
+    {
+      "failures": [],
+      "dependencies": null,
+      "name": "no_external_runtime_imports",
+      "ok": true
+    },
+    {
       "response": {
         "code": -32002,
         "message": "Server not initialized"
-      }
+      },
+      "name": "mcp_requires_initialize",
+      "ok": true
     },
     {
-      "name": "mcp_initialize",
-      "ok": true,
       "result": {
         "protocolVersion": "2025-11-25",
         "capabilities": {
@@ -107,17 +469,17 @@
         },
         "serverInfo": {
           "name": "proofgraph-claude",
-          "title": "ProofGraph Claude Evidence Server",
-          "version": "0.2.0",
-          "description": "Local evidence-gated research state and verification for Claude Code."
+          "title": "ProofGraph Claude Graph and Evidence Server",
+          "version": "1.1.0",
+          "description": "Local dynamic graph control, bounded verification loops, human approval, and evidence-gated research for Claude Code."
         },
-        "instructions": "Use pg_start_run first. Only sources fetched by this server qualify as evidence. Final claim classifications are computed by pg_finalize_run."
-      }
+        "instructions": "Use pg_graph_preview and pg_graph_start for dynamic Graph Engineering, or pg_start_run for legacy evidence research. The server computes graph routes, approval gates, terminal states, and claim classifications."
+      },
+      "name": "mcp_initialize",
+      "ok": true
     },
     {
-      "name": "mcp_tool_surface",
-      "ok": true,
-      "count": 14,
+      "count": 24,
       "names": [
         "pg_start_run",
         "pg_get_active_run",
@@ -132,25 +494,812 @@
         "pg_get_status",
         "pg_get_report",
         "pg_verify_integrity",
-        "pg_abort_run"
-      ]
+        "pg_abort_run",
+        "pg_graph_preview",
+        "pg_graph_start",
+        "pg_graph_get_status",
+        "pg_graph_claim_node",
+        "pg_graph_complete_node",
+        "pg_graph_resolve_approval",
+        "pg_graph_expand",
+        "pg_graph_get_report",
+        "pg_graph_verify_integrity",
+        "pg_graph_abort"
+      ],
+      "name": "mcp_tool_surface",
+      "ok": true
     },
     {
       "name": "mcp_tool_schemas",
       "ok": true
     },
     {
-      "name": "hook_no_active_run_is_silent",
-      "ok": true,
-      "status": 0,
-      "stdout": "",
-      "stderr": ""
+      "preview": {
+        "ok": true,
+        "assessment": {
+          "objective": "Compile a deterministic low-risk graph and verify the result before completion.",
+          "mode": "auto",
+          "signals": {
+            "complexity": 10,
+            "uncertainty": 5,
+            "risk": "low",
+            "reversibility": "reversible",
+            "requires_research": false,
+            "requires_implementation": false,
+            "estimated_subtasks": 1,
+            "external_side_effects": false,
+            "compliance_sensitive": false,
+            "user_approval_required": false,
+            "verification_strength": null,
+            "heuristic_fields": [
+              "external_side_effects",
+              "compliance_sensitive",
+              "detected"
+            ],
+            "heuristic_details": {
+              "complex": false,
+              "research": true,
+              "implementation": false,
+              "risky": false,
+              "list_like": false
+            }
+          },
+          "profile": {
+            "template_name": null,
+            "research_workstreams": [],
+            "implementation_workstreams": [],
+            "deliverables": [],
+            "acceptance_tests": [],
+            "non_goals": []
+          },
+          "recommendation": {
+            "initial_route": "direct",
+            "post_approval_route": "direct",
+            "research_fanout": 0,
+            "verification_strength": "lite",
+            "max_iterations": 1,
+            "max_parallel_nodes": 6,
+            "max_dynamic_nodes": 24,
+            "human_approval_required": false,
+            "model_tiers": {
+              "direct": "fast",
+              "research": "standard",
+              "plan": "standard",
+              "develop": "standard",
+              "verify": "standard",
+              "synthesize": "standard"
+            },
+            "reason_codes": [
+              "mode:auto",
+              "complexity:10",
+              "uncertainty:5",
+              "risk:low",
+              "route:direct"
+            ]
+          }
+        },
+        "graph": {
+          "schema_version": 1,
+          "graph_id": "graph_a3a27f6ce0127143",
+          "name": "ProofGraph dynamic workflow (auto)",
+          "objective": "Compile a deterministic low-risk graph and verify the result before completion.",
+          "entry_node": "triage",
+          "nodes": [
+            {
+              "node_id": "triage",
+              "title": "Deterministic complexity and risk triage",
+              "kind": "triage",
+              "role": "system",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": null,
+              "model_tier": "inherit",
+              "tool_policy": [
+                "proofgraph"
+              ],
+              "terminal_status": null,
+              "dynamic": false,
+              "metadata": {
+                "auto": true,
+                "initial_route": "direct",
+                "assessment": {
+                  "objective": "Compile a deterministic low-risk graph and verify the result before completion.",
+                  "mode": "auto",
+                  "signals": {
+                    "complexity": 10,
+                    "uncertainty": 5,
+                    "risk": "low",
+                    "reversibility": "reversible",
+                    "requires_research": false,
+                    "requires_implementation": false,
+                    "estimated_subtasks": 1,
+                    "external_side_effects": false,
+                    "compliance_sensitive": false,
+                    "user_approval_required": false,
+                    "verification_strength": null,
+                    "heuristic_fields": [
+                      "external_side_effects",
+                      "compliance_sensitive",
+                      "detected"
+                    ],
+                    "heuristic_details": {
+                      "complex": false,
+                      "research": true,
+                      "implementation": false,
+                      "risky": false,
+                      "list_like": false
+                    }
+                  },
+                  "profile": {
+                    "template_name": null,
+                    "research_workstreams": [],
+                    "implementation_workstreams": [],
+                    "deliverables": [],
+                    "acceptance_tests": [],
+                    "non_goals": []
+                  },
+                  "recommendation": {
+                    "initial_route": "direct",
+                    "post_approval_route": "direct",
+                    "research_fanout": 0,
+                    "verification_strength": "lite",
+                    "max_iterations": 1,
+                    "max_parallel_nodes": 6,
+                    "max_dynamic_nodes": 24,
+                    "human_approval_required": false,
+                    "model_tiers": {
+                      "direct": "fast",
+                      "research": "standard",
+                      "plan": "standard",
+                      "develop": "standard",
+                      "verify": "standard",
+                      "synthesize": "standard"
+                    },
+                    "reason_codes": [
+                      "mode:auto",
+                      "complexity:10",
+                      "uncertainty:5",
+                      "risk:low",
+                      "route:direct"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "node_id": "terminal-success",
+              "title": "Successful completion",
+              "kind": "terminal",
+              "role": "system",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": null,
+              "model_tier": "inherit",
+              "tool_policy": [
+                "proofgraph"
+              ],
+              "terminal_status": "success",
+              "dynamic": false,
+              "metadata": {}
+            },
+            {
+              "node_id": "terminal-partial",
+              "title": "Partial completion",
+              "kind": "terminal",
+              "role": "system",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": null,
+              "model_tier": "inherit",
+              "tool_policy": [
+                "proofgraph"
+              ],
+              "terminal_status": "partial",
+              "dynamic": false,
+              "metadata": {}
+            },
+            {
+              "node_id": "terminal-failed",
+              "title": "Failed completion",
+              "kind": "terminal",
+              "role": "system",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": null,
+              "model_tier": "inherit",
+              "tool_policy": [
+                "proofgraph"
+              ],
+              "terminal_status": "failed",
+              "dynamic": false,
+              "metadata": {}
+            },
+            {
+              "node_id": "direct",
+              "title": "Direct low-complexity execution",
+              "kind": "direct",
+              "role": "direct",
+              "risk": "low",
+              "max_attempts": 2,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": "proofgraph-claude:graph-direct",
+              "model_tier": "fast",
+              "tool_policy": [
+                "proofgraph",
+                "workspace_read"
+              ],
+              "terminal_status": null,
+              "dynamic": false,
+              "metadata": {}
+            },
+            {
+              "node_id": "plan",
+              "title": "Plan requirements, implementation, and acceptance criteria",
+              "kind": "plan",
+              "role": "planner",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": "proofgraph-claude:graph-planner",
+              "model_tier": "standard",
+              "tool_policy": [
+                "proofgraph",
+                "workspace_read"
+              ],
+              "terminal_status": null,
+              "dynamic": false,
+              "metadata": {
+                "dynamic_join_node_id": "develop",
+                "implementation_workstreams": [],
+                "deliverables": [],
+                "acceptance_tests": [],
+                "non_goals": []
+              }
+            },
+            {
+              "node_id": "develop",
+              "title": "Produce an auditable implementation artifact",
+              "kind": "develop",
+              "role": "developer",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": "proofgraph-claude:graph-developer",
+              "model_tier": "standard",
+              "tool_policy": [
+                "proofgraph",
+                "workspace_read"
+              ],
+              "terminal_status": null,
+              "dynamic": false,
+              "metadata": {
+                "mutation_mode": "artifact_only",
+                "implementation_workstreams": [],
+                "deliverables": [],
+                "non_goals": []
+              }
+            },
+            {
+              "node_id": "verify",
+              "title": "lite independent verification",
+              "kind": "verify",
+              "role": "verifier",
+              "risk": "low",
+              "max_attempts": 2,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": "proofgraph-claude:graph-verifier",
+              "model_tier": "standard",
+              "tool_policy": [
+                "proofgraph",
+                "workspace_read"
+              ],
+              "terminal_status": null,
+              "dynamic": false,
+              "metadata": {
+                "verification_strength": "lite",
+                "acceptance_tests": [],
+                "deliverables": []
+              }
+            },
+            {
+              "node_id": "synthesize",
+              "title": "Synthesize verified outputs",
+              "kind": "synthesize",
+              "role": "synthesizer",
+              "risk": "low",
+              "max_attempts": 1,
+              "join": "any",
+              "approval_required": false,
+              "agent_type": "proofgraph-claude:graph-synthesizer",
+              "model_tier": "standard",
+              "tool_policy": [
+                "proofgraph"
+              ],
+              "terminal_status": null,
+              "dynamic": false,
+              "metadata": {
+                "deliverables": [],
+                "non_goals": []
+              }
+            }
+          ],
+          "edges": [
+            {
+              "edge_id": "e-triage-direct",
+              "from": "triage",
+              "to": "direct",
+              "condition": {
+                "type": "route",
+                "value": "direct"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-direct-verify",
+              "from": "direct",
+              "to": "verify",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-direct-plan",
+              "from": "direct",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "implementation_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-direct-partial",
+              "from": "direct",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "outcome",
+                "value": "blocked"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-plan-develop",
+              "from": "plan",
+              "to": "develop",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-plan-evidence-develop",
+              "from": "plan",
+              "to": "develop",
+              "condition": {
+                "type": "failure_type",
+                "value": "evidence_gap"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-plan-security",
+              "from": "plan",
+              "to": "terminal-failed",
+              "condition": {
+                "type": "failure_type",
+                "value": "security_risk"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-plan-partial",
+              "from": "plan",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "outcome",
+                "value": "blocked"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-develop-verify",
+              "from": "develop",
+              "to": "verify",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-develop-plan-design",
+              "from": "develop",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "design_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-develop-plan-requirements",
+              "from": "develop",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "requirements_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-develop-security",
+              "from": "develop",
+              "to": "terminal-failed",
+              "condition": {
+                "type": "failure_type",
+                "value": "security_risk"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-develop-partial",
+              "from": "develop",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "outcome",
+                "value": "blocked"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-pass",
+              "from": "verify",
+              "to": "synthesize",
+              "condition": {
+                "type": "verification",
+                "value": "passed"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-implementation",
+              "from": "verify",
+              "to": "develop",
+              "condition": {
+                "type": "failure_type",
+                "value": "implementation_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-design",
+              "from": "verify",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "design_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-requirements",
+              "from": "verify",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "requirements_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-evidence-plan",
+              "from": "verify",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "evidence_gap"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-self",
+              "from": "verify",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "verification_error"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-security",
+              "from": "verify",
+              "to": "terminal-failed",
+              "condition": {
+                "type": "failure_type",
+                "value": "security_risk"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-budget",
+              "from": "verify",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "failure_type",
+                "value": "budget_exceeded"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-unknown",
+              "from": "verify",
+              "to": "plan",
+              "condition": {
+                "type": "failure_type",
+                "value": "unknown"
+              },
+              "priority": 20,
+              "label": null
+            },
+            {
+              "edge_id": "e-verify-blocked",
+              "from": "verify",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "outcome",
+                "value": "blocked"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-synthesize-success",
+              "from": "synthesize",
+              "to": "terminal-success",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-synthesize-partial",
+              "from": "synthesize",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "outcome",
+                "value": "blocked"
+              },
+              "priority": 100,
+              "label": null
+            },
+            {
+              "edge_id": "e-synthesize-failed",
+              "from": "synthesize",
+              "to": "terminal-partial",
+              "condition": {
+                "type": "outcome",
+                "value": "failed"
+              },
+              "priority": 100,
+              "label": null
+            }
+          ],
+          "limits": {
+            "max_steps": 36,
+            "max_route_visits": 2,
+            "max_dynamic_nodes": 24,
+            "max_parallel_nodes": 6,
+            "max_iterations": 1
+          },
+          "policy": {
+            "require_verification_for_success": true,
+            "require_human_for_high_risk": true,
+            "allow_workspace_mutation": false,
+            "allow_shell": false
+          },
+          "metadata": {
+            "generated": true,
+            "compiler_version": "1.1.0",
+            "assessment": {
+              "objective": "Compile a deterministic low-risk graph and verify the result before completion.",
+              "mode": "auto",
+              "signals": {
+                "complexity": 10,
+                "uncertainty": 5,
+                "risk": "low",
+                "reversibility": "reversible",
+                "requires_research": false,
+                "requires_implementation": false,
+                "estimated_subtasks": 1,
+                "external_side_effects": false,
+                "compliance_sensitive": false,
+                "user_approval_required": false,
+                "verification_strength": null,
+                "heuristic_fields": [
+                  "external_side_effects",
+                  "compliance_sensitive",
+                  "detected"
+                ],
+                "heuristic_details": {
+                  "complex": false,
+                  "research": true,
+                  "implementation": false,
+                  "risky": false,
+                  "list_like": false
+                }
+              },
+              "profile": {
+                "template_name": null,
+                "research_workstreams": [],
+                "implementation_workstreams": [],
+                "deliverables": [],
+                "acceptance_tests": [],
+                "non_goals": []
+              },
+              "recommendation": {
+                "initial_route": "direct",
+                "post_approval_route": "direct",
+                "research_fanout": 0,
+                "verification_strength": "lite",
+                "max_iterations": 1,
+                "max_parallel_nodes": 6,
+                "max_dynamic_nodes": 24,
+                "human_approval_required": false,
+                "model_tiers": {
+                  "direct": "fast",
+                  "research": "standard",
+                  "plan": "standard",
+                  "develop": "standard",
+                  "verify": "standard",
+                  "synthesize": "standard"
+                },
+                "reason_codes": [
+                  "mode:auto",
+                  "complexity:10",
+                  "uncertainty:5",
+                  "risk:low",
+                  "route:direct"
+                ]
+              }
+            },
+            "profile": {
+              "template_name": null,
+              "research_workstreams": [],
+              "implementation_workstreams": [],
+              "deliverables": [],
+              "acceptance_tests": [],
+              "non_goals": []
+            },
+            "artifact_only_development": true
+          },
+          "compiler": {
+            "name": "proofgraph-deterministic-compiler",
+            "version": "1.1.0",
+            "input_digest": "06c68815a0cde28094d9d532113eb49200ae6cc81e234a5fd33ab42c5d35b5d0"
+          }
+        },
+        "graph_digest": "b663dd1f29ff159db7261d7263ad0a6b3fd84cd64ba6b6f0a00d9b9eaceed968",
+        "validation": {
+          "node_count": 9,
+          "edge_count": 26,
+          "terminal_count": 3,
+          "cycle_count": 1,
+          "cycles": [
+            [
+              "plan",
+              "develop",
+              "verify"
+            ]
+          ],
+          "dynamic_node_count": 0
+        },
+        "warnings": [
+          "Heuristic assessment fields: external_side_effects, compliance_sensitive, detected",
+          "Development nodes emit auditable artifacts only; the default compiler does not grant write or shell capabilities.",
+          "Model tiers are routing recommendations and remain subject to the selected adapter, model availability, and account policy."
+        ]
+      },
+      "name": "graph_compiler_preview",
+      "ok": true
     },
     {
-      "name": "claude_cli_plugin_validation",
-      "ok": true,
+      "result": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "serverInfo": {
+          "name": "proofgraph",
+          "title": "ProofGraph Graph Engineering Runtime",
+          "version": "1.1.0",
+          "description": "Universal Graph Engineering control plane for AI coding tools."
+        },
+        "instructions": "Compile, execute, inspect, debug, and verify engineering graphs. Vendor adapters are disabled until explicitly configured and live-canary verified."
+      },
+      "name": "platform_mcp_initialize",
+      "ok": true
+    },
+    {
+      "count": 21,
+      "names": [
+        "proofgraph_compile",
+        "proofgraph_graph_validate",
+        "proofgraph_graph_start",
+        "proofgraph_graph_run",
+        "proofgraph_start",
+        "proofgraph_run",
+        "proofgraph_resume",
+        "proofgraph_status",
+        "proofgraph_report",
+        "proofgraph_integrity",
+        "proofgraph_approve",
+        "proofgraph_adapters",
+        "proofgraph_templates",
+        "proofgraph_debug",
+        "proofgraph_inspect",
+        "proofgraph_workspace_status",
+        "proofgraph_workspace_propose",
+        "proofgraph_workspace_decide",
+        "proofgraph_workspace_execute",
+        "proofgraph_workspace_diff",
+        "proofgraph_workspace_rollback"
+      ],
+      "name": "platform_mcp_tool_surface",
+      "ok": true
+    },
+    {
+      "status": 0,
+      "stdout": "",
+      "stderr": "",
+      "name": "hook_no_active_run_is_silent",
+      "ok": true
+    },
+    {
       "skipped": true,
-      "reason": "claude CLI is not installed in this verification environment"
+      "reason": "claude CLI is not installed in this verification environment",
+      "name": "claude_cli_plugin_validation",
+      "ok": true
     }
   ]
 }

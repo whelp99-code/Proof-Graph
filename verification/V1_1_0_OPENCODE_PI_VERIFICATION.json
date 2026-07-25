@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:52:00Z",
+  "release_gate": "PASS_OFFLINE_OPENCODE_PI_CANARY_REQUIRED",
+  "automated_tests": {
+    "passed": 232,
+    "failed": 0,
+    "total": 232
+  },
+  "adversarial_tests": {
+    "passed": 60,
+    "failed": 0,
+    "total": 60
+  },
+  "host_tests": {
+    "passed": 46,
+    "failed": 0,
+    "total": 46
+  },
+  "independent_verification": {
+    "passed": 74,
+    "failed": 0,
+    "total": 74,
+    "by_verifier": {
+      "evidence": {
+        "passed": 18,
+        "failed": 0,
+        "total": 18
+      },
+      "graph": {
+        "passed": 14,
+        "failed": 0,
+        "total": 14
+      },
+      "platform": {
+        "passed": 10,
+        "failed": 0,
+        "total": 10
+      },
+      "tui": {
+        "passed": 7,
+        "failed": 0,
+        "total": 7
+      },
+      "orca": {
+        "passed": 13,
+        "failed": 0,
+        "total": 13
+      },
+      "hosts": {
+        "passed": 12,
+        "failed": 0,
+        "total": 12
+      }
+    }
+  },
+  "preflight": {
+    "passed": 27,
+    "failed": 0,
+    "skipped": 1,
+    "total": 28
+  },
+  "host_live_preflight": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 4,
+    "total": 6
+  },
+  "coverage": {
+    "line_percent": 92.11,
+    "branch_percent": 74.82,
+    "function_percent": 88.94,
+    "measurement_note": "Final full-suite Node.js experimental coverage run after managed-install hardening and Pi agent_settled completion enforcement."
+  },
+  "host_priority": [
+    "opencode",
+    "pi",
+    "orca"
+  ],
+  "host_protocol": "proofgraph.host.v1",
+  "verified_offline": [
+    "host protocol schemas and bounds",
+    "bearer-authenticated loopback bridge",
+    "optimistic revision checks",
+    "managed project/user installation",
+    "OpenCode plugin hooks and custom tools",
+    "OpenCode server session and diff contract",
+    "Pi extension commands, tools, session persistence and policy interception",
+    "Pi strict LF-delimited JSONL RPC",
+    "mock OpenCode/Pi end-to-end graph execution",
+    "fake OpenCode HTTP and Pi RPC black-box execution",
+    "OpenCode model tool surface excludes human approval and abort authority",
+    "Host Bridge identity is pinned to the configured host and cross-host impersonation is rejected",
+    "OpenCode Host Bridge rejects approve, deny, and abort operator commands even with a valid bearer token",
+    "OpenCode config-root package manifest preserves user data while pinning the reviewed plugin dependency",
+    "installed host versions outside the reviewed contract target fail live preflight",
+    "Pi worker completion requires agent_settled; agent_end-only process exit is rejected",
+    "OpenCode CLI/server contract is pinned to the publicly installable stable 1.18.4 rather than the unreleased development-branch 1.18.5 manifest"
+  ],
+  "not_verified_live": [
+    "real OpenCode binary and authenticated server",
+    "real Pi binary and authenticated provider",
+    "actual host version compatibility",
+    "real-model structured output quality",
+    "real permission UI behavior",
+    "vendor latency and cost"
+  ],
+  "residual_risks": [
+    "Host extensions execute with the host user account permissions; ProofGraph policy is not OS isolation.",
+    "Git worktree isolation is not network or kernel isolation.",
+    "Human identity inside a single host remains self-attested rather than cryptographically proven.",
+    "Vendor APIs and event shapes can change; pin-and-canary is required.",
+    "OpenCode pure_worker_confirmed is an operator attestation and must be validated by a pinned live canary."
+  ],
+  "defects_found_and_fixed": [
+    {
+      "component": "OpenCode SSE client",
+      "defect": "Used /event while the official global event stream is /global/event",
+      "fix": "Updated client and independent fake-server regression contract to /global/event"
+    },
+    {
+      "component": "OpenCode model tool surface",
+      "defect": "Approval and abort commands were initially exposed as model-callable plugin tools, allowing self-attested human-gate actions.",
+      "fix": "Removed approval, denial, and abort from the OpenCode model tool surface; these actions now require the ProofGraph CLI/operator path."
+    },
+    {
+      "component": "OpenCode worker isolation",
+      "defect": "A plugin-loaded UI/server process could recursively expose ProofGraph tools to worker sessions.",
+      "fix": "Separated UI host from the worker server and required an operator-confirmed dedicated opencode --pure server before worker execution."
+    },
+    {
+      "component": "Host Bridge CLI handshake",
+      "defect": "Pretty-printed startup JSON was not a stable JSONL handshake for long-running launchers.",
+      "fix": "Changed startup output to one compact JSONL record while never echoing caller-provided bearer tokens."
+    },
+    {
+      "component": "Host Bridge identity and operator authority",
+      "defect": "The authenticated request body could claim a different host identity, and an OpenCode bridge token could reach human-gate commands through the generic command endpoint.",
+      "fix": "Pinned every Bridge instance to its configured host identity, reject cross-host claims with 403, and deny approve, deny, and abort through the OpenCode Bridge; these actions require the ProofGraph CLI/operator path."
+    },
+    {
+      "component": "OpenCode managed installer",
+      "defect": "The local plugin imported @opencode-ai/plugin without ensuring the OpenCode config-root package manifest declared it.",
+      "fix": "Transactionally merge and pin @opencode-ai/plugin@1.18.4, preserve user fields, reject dependency conflicts and symlink manifests, and rollback partial installations."
+    },
+    {
+      "component": "OpenCode/Pi live preflight",
+      "defect": "The computed exact-version failure was overwritten by the successful subprocess exit status during object construction.",
+      "fix": "Apply the normalized subprocess fields before the policy result and add pass/fail regression tests for reviewed and unreviewed versions."
+    },
+    {
+      "component": "Pi JSONL RPC completion",
+      "defect": "agent_end could be promoted after a bounded grace period even though current Pi may continue with retry, compaction, or queued work.",
+      "fix": "Removed the fallback, require agent_settled for success, and reject process exit after agent_end but before agent_settled."
+    },
+    {
+      "component": "OpenCode contract target",
+      "defect": "The initial reviewed target followed the development-branch 1.18.5 manifest even though the publicly installable OpenCode package was 1.18.4.",
+      "fix": "Pinned the CLI/server contract to published stable 1.18.4 and added a regression check that rejects unreviewed 1.18.5."
+    }
+  ],
+  "host_packages": [
+    {
+      "file": "dist/hosts/proofgraph-host-opencode-1.1.0.tgz",
+      "bytes": 4567,
+      "sha256": "30fb8a26ec392d3458fde84f3497cc5521acbeb6922a73e1fb7835e031c7c1e9"
+    },
+    {
+      "file": "dist/hosts/proofgraph-host-pi-1.1.0.tgz",
+      "bytes": 4565,
+      "sha256": "1d299c0fd13a07c60bddbba7299265446a10c0c4dc1f0534e8836bdfe9a5c25f"
+    }
+  ],
+  "contract_targets": {
+    "opencode_cli_server": "1.18.4",
+    "opencode_plugin": "1.18.4",
+    "pi_cli": "0.82.0",
+    "pi_node_minimum": "22.19.0"
+  }
+}
