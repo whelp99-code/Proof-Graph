@@ -2,8 +2,8 @@
   "schema_version": 1,
   "product": "proofgraph",
   "version": "1.1.0",
-  "generated_at": "2026-07-25T14:27:44.291Z",
-  "file_count": 250,
+  "generated_at": "2026-07-25T14:29:57.102Z",
+  "file_count": 243,
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
@@ -24,41 +24,6 @@
       "path": ".mcp.json",
       "bytes": 407,
       "sha256": "e4415f939446b5f6662244e8c797e121fe9ab98db6f5bfc8e6c05b9905024703"
-    },
-    {
-      "path": ".opencode/commands/pg-report.md",
-      "bytes": 210,
-      "sha256": "125e0f5dbf889f5b968a8d2b59df7a24a89fcceb20cbfbe3a100d3fd38d560b2"
-    },
-    {
-      "path": ".opencode/commands/pg-status.md",
-      "bytes": 244,
-      "sha256": "f7c69f0ca93c8ffa370fde46444a3f15e6989e9c9536147c3bc46ede7abb470d"
-    },
-    {
-      "path": ".opencode/commands/pg.md",
-      "bytes": 368,
-      "sha256": "a3d799ced625f3b7992ae90e9cbf4d3c060e11ccfff6bc3418adfa99d7d0b803"
-    },
-    {
-      "path": ".opencode/package.json",
-      "bytes": 83,
-      "sha256": "4888ff1fd81e8c9ccfa9af1a3c8e1cdcf2076bbfeb58be5be61d4dd8d264724e"
-    },
-    {
-      "path": ".opencode/plugins/proofgraph.ts",
-      "bytes": 751,
-      "sha256": "b90aa414b4f32c28274fe0e02a28ab81b588a6f6cb37e577ca6f234b750fb7e0"
-    },
-    {
-      "path": ".opencode/proofgraph/bridge-client.mjs",
-      "bytes": 4798,
-      "sha256": "fab9fcd28bbe98558599e6c504d4712dc94bbde0437dc06996dee8045795f7fc"
-    },
-    {
-      "path": ".opencode/proofgraph/core.mjs",
-      "bytes": 8363,
-      "sha256": "43b903cf2ecde3d19fa148b0c3eeeb421ebbb9ff85a3012e20b9ddd0f146b73d"
     },
     {
       "path": "agents/graph-developer.md",
@@ -647,8 +612,8 @@
     },
     {
       "path": "scripts/verify-package.mjs",
-      "bytes": 4716,
-      "sha256": "c21a15ab895e704079f5570937ab088d21ee858b6c237e9530937119ce11ec0f"
+      "bytes": 4730,
+      "sha256": "a9f1a4d7130bd3e76bfd38975fb01a7e9864d94dc3d4a0e96020c1e1aba2f50e"
     },
     {
       "path": "server/index.mjs",
