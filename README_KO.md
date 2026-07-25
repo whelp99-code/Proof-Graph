@@ -315,7 +315,7 @@ npm run verify:hosts
 npm run hosts:preflight
 ```
 
-현재 Host 계층은 OpenCode/Pi Plugin·Extension, 인증 Bridge, 도구 정책, 설치, Mock E2E와 독립 블랙박스 검증을 완료했습니다. 실제 Host 바이너리·인증 세션 canary는 별도 출시 게이트입니다.
+현재 Host 계층은 OpenCode/Pi Plugin·Extension, 인증 Bridge, 도구 정책, 설치, Mock E2E와 독립 블랙박스 검증을 완료했습니다. **OpenCode live canary 완료 (2026-07-25)**: bridge 서버 health·SSE·tool-policy·compile·보안 경계(approve/deny/abort 차단, host identity mismatch 403, 무단 접근 401)·plugin 모듈 로드(5 hooks) 모두 정상 동작 확인. Pi live canary는 미완료 (Pi 0.82.0 미설치).
 
 ### Orca Execution Host
 
@@ -401,7 +401,8 @@ OpenCode·Pi Host 시험         46/46 PASS
 Host live preflight            2 PASS / 0 FAIL / 4 SKIP
 Coverage                       92.11% / 74.82% / 88.94%
 오프라인 Runtime·Host 계약    PASS
-실제 OpenCode·Pi live canary   REQUIRED
+실제 OpenCode live canary       DONE (2026-07-25)
+실제 Pi live canary             REQUIRED
 무인 프로덕션 mutation         NOT APPROVED
 ```
 
