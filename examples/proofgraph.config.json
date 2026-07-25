@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "default_adapter": "mock",
+  "data_dir": ".proofgraph",
+  "routing": {
+    "direct": "mock",
+    "researcher": "mock",
+    "planner": "mock",
+    "developer": "mock",
+    "verifier": "mock",
+    "synthesizer": "mock"
+  },
+  "workspace": {
+    "enabled": false,
+    "require_approval": true,
+    "require_clean": true,
+    "allowed_commands": [
+      "npm",
+      "node",
+      "python",
+      "python3",
+      "pytest",
+      "cargo",
+      "go"
+    ]
+  },
+  "debugger": {
+    "enabled": true,
+    "event_poll_ms": 250
+  },
+  "adapters": {
+    "claude": {
+      "enabled": false,
+      "command": "claude",
+      "extra_args": []
+    },
+    "codex": {
+      "enabled": false,
+      "command": "codex",
+      "output_args": [
+        "--json"
+      ],
+      "sandbox": "read-only",
+      "skip_git_repo_check": true,
+      "extra_args": []
+    },
+    "opencode": {
+      "enabled": false,
+      "transport": "server",
+      "server_url": "http://127.0.0.1:4096",
+      "username": "opencode",
+      "password_env": "OPENCODE_SERVER_PASSWORD",
+      "allow_remote": false,
+      "allow_insecure_remote": false,
+      "max_response_bytes": 2000000,
+      "allow_host_tools": false,
+      "require_isolated_workspace": true,
+      "keep_sessions": true,
+      "agent_map": {
+        "direct": "plan",
+        "researcher": "plan",
+        "planner": "plan",
+        "developer": "plan",
+        "verifier": "plan",
+        "synthesizer": "plan"
+      },
+      "pure_worker_confirmed": false
+    },
+    "grok": {
+      "enabled": false,
+      "command": "grok",
+      "allow_host_tools": false,
+      "extra_args": []
+    },
+    "pi": {
+      "enabled": false,
+      "command": "pi",
+      "allow_host_tools": false,
+      "safe_tools": [
+        "read",
+        "grep",
+        "find",
+        "ls"
+      ],
+      "host_tools": [
+        "read",
+        "grep",
+        "find",
+        "ls",
+        "bash",
+        "edit",
+        "write"
+      ],
+      "disable_discovery": true,
+      "ui_policy": "deny"
+    },
+    "gjc": {
+      "enabled": false,
+      "command": null,
+      "args": null,
+      "allow_host_tools": false,
+      "integration": "sdk-v3-websocket"
+    },
+    "orca": {
+      "enabled": false,
+      "command": "orca",
+      "args": [],
+      "repo_selector": null,
+      "setup": "inherit",
+      "coordinator_terminal": null,
+      "manual_permissions_confirmed": false,
+      "agent_map": {
+        "direct": "codex",
+        "researcher": "claude",
+        "planner": "claude",
+        "developer": "codex",
+        "verifier": "claude",
+        "synthesizer": "claude"
+      },
+      "allowed_agents": [
+        "claude",
+        "codex"
+      ],
+      "allow_node_agent_override": false,
+      "allow_workspace_mutation": false,
+      "allow_inline_result": false,
+      "check_timeout_ms": 900000,
+      "terminal_wait_ms": 60000,
+      "max_checkpoints": 2,
+      "require_explicit_repo_selector": true
+    }
+  },
+  "templates": {}
+}

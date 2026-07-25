@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "schema": "schemas/graphspec-v1.schema.json",
+  "graph": "examples/graphs/ai-agent-tui.graph.json",
+  "errors": []
+}

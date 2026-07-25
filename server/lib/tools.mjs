@@ -16,6 +16,19 @@ import {
   verifyIntegrity,
 } from './workflow.mjs';
 import { ValidationError } from './errors.mjs';
+import {
+  abortGraphRun,
+  claimGraphNode,
+  completeGraphNode,
+  expandGraph,
+  getGraphReport,
+  getGraphStatus,
+  previewGraph,
+  resolveGraphApproval,
+  startGraphRun,
+  verifyGraphIntegrity,
+} from './graph-runtime.mjs';
+
 
 const ID = { type: 'string', minLength: 1, maxLength: 64, pattern: '^[A-Za-z][A-Za-z0-9_.:-]{0,63}$' };
 const RUN_ID = { type: 'string', pattern: '^pg_[a-f0-9]{24}$' };
@@ -224,6 +237,174 @@ const TOOLS = [
   },
 ];
 
+const GRAPH_SIGNAL_SCHEMA = objectSchema({
+  complexity: { type: 'integer', minimum: 0, maximum: 100 },
+  uncertainty: { type: 'integer', minimum: 0, maximum: 100 },
+  risk: { type: 'string', enum: ['low', 'medium', 'high', 'critical'] },
+  reversibility: { type: 'string', enum: ['reversible', 'partially_reversible', 'irreversible'] },
+  requires_research: { type: 'boolean' },
+  requires_implementation: { type: 'boolean' },
+  estimated_subtasks: { type: 'integer', minimum: 1, maximum: 50 },
+  external_side_effects: { type: 'boolean' },
+  compliance_sensitive: { type: 'boolean' },
+  user_approval_required: { type: 'boolean' },
+  verification_strength: { type: 'string', enum: ['lite', 'standard', 'deep'] },
+});
+
+const GRAPH_CONSTRAINT_SCHEMA = objectSchema({
+  max_parallel_nodes: { type: 'integer', minimum: 1, maximum: 16 },
+  max_iterations: { type: 'integer', minimum: 1, maximum: 10 },
+  max_dynamic_nodes: { type: 'integer', minimum: 0, maximum: 100 },
+});
+
+const GRAPH_RUNTIME_POLICY_SCHEMA = objectSchema({
+  max_tool_calls: { type: 'integer', minimum: 10, maximum: 2000 },
+  max_agents: { type: 'integer', minimum: 1, maximum: 64 },
+  max_wall_time_seconds: { type: 'integer', minimum: 60, maximum: 28800 },
+  max_output_bytes: { type: 'integer', minimum: 1000, maximum: 1000000 },
+  max_failure_bytes: { type: 'integer', minimum: 1000, maximum: 100000 },
+});
+
+const GRAPH_FAILURE_SCHEMA = objectSchema({
+  failure_type: { type: 'string', enum: ['implementation_error', 'design_error', 'requirements_error', 'evidence_gap', 'verification_error', 'security_risk', 'budget_exceeded', 'unknown'] },
+  severity: { type: 'string', enum: ['low', 'medium', 'high', 'critical'] },
+  summary: { type: 'string', minLength: 5, maxLength: 8000 },
+  evidence: { type: 'array', maxItems: 30, items: { type: 'string', minLength: 1, maxLength: 4000 } },
+  expected: { type: 'string', minLength: 1, maxLength: 4000 },
+  observed: { type: 'string', minLength: 1, maxLength: 4000 },
+  recommended_route: { type: 'string', enum: ['research', 'plan', 'develop', 'verify', 'human', 'partial', 'failed'] },
+  retryable: { type: 'boolean' },
+  signature: { type: 'string', minLength: 8, maxLength: 128 },
+}, ['failure_type', 'summary']);
+
+const GRAPH_TOOLS = [
+  {
+    name: 'pg_graph_preview',
+    title: 'Compile and validate a dynamic graph preview',
+    description: 'Deterministically assess complexity, uncertainty, and risk, then compile a bounded conditional graph without starting a run.',
+    inputSchema: objectSchema({
+      objective: { type: 'string', minLength: 10, maxLength: 10000 },
+      mode: { type: 'string', enum: ['auto', 'research', 'build', 'review'] },
+      signals: GRAPH_SIGNAL_SCHEMA,
+      constraints: GRAPH_CONSTRAINT_SCHEMA,
+    }, ['objective']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_start',
+    title: 'Start a compiled dynamic graph run',
+    description: 'Compile and start a bounded adaptive graph. Triage is deterministic; high-risk work enters an approval state.',
+    inputSchema: objectSchema({
+      objective: { type: 'string', minLength: 10, maxLength: 10000 },
+      mode: { type: 'string', enum: ['auto', 'research', 'build', 'review'] },
+      signals: GRAPH_SIGNAL_SCHEMA,
+      constraints: GRAPH_CONSTRAINT_SCHEMA,
+      runtime_policy: GRAPH_RUNTIME_POLICY_SCHEMA,
+    }, ['objective']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_get_status',
+    title: 'Inspect dynamic graph state',
+    description: 'Return ready nodes, pending approvals, routes, failures, budgets, and graph revisions.',
+    inputSchema: objectSchema({ run_id: RUN_ID }, ['run_id']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_claim_node',
+    title: 'Claim one ready graph node',
+    description: 'Atomically claim a ready node using its canonical role before work begins.',
+    inputSchema: objectSchema({ run_id: RUN_ID, actor: ACTOR, node_id: ID }, ['run_id', 'actor', 'node_id']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_complete_node',
+    title: 'Complete or fail a graph node',
+    description: 'Store a bounded structured output or Failure Packet, then route deterministically to the next node or retry loop.',
+    inputSchema: objectSchema({
+      run_id: RUN_ID,
+      actor: ACTOR,
+      node_id: ID,
+      outcome: { type: 'string', enum: ['success', 'failed', 'blocked'] },
+      output: { type: 'object', additionalProperties: true },
+      failure: GRAPH_FAILURE_SCHEMA,
+    }, ['run_id', 'actor', 'node_id', 'outcome']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_resolve_approval',
+    title: 'Resolve a pending human approval',
+    description: 'Resolve a high-risk gate using the local challenge returned by graph status. Identity remains self-attested inside Claude Code.',
+    inputSchema: objectSchema({
+      run_id: RUN_ID,
+      actor: ACTOR,
+      approval_id: ID,
+      decision: { type: 'string', enum: ['approved', 'denied'] },
+      challenge: { type: 'string', minLength: 8, maxLength: 128 },
+      decision_source: { type: 'string', enum: ['AskUserQuestion', 'external_human', 'test_fixture'] },
+      comment: { type: 'string', minLength: 1, maxLength: 2000 },
+    }, ['run_id', 'actor', 'approval_id', 'decision', 'challenge', 'decision_source']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_expand',
+    title: 'Safely expand a running plan node',
+    description: 'Insert bounded research/develop/verify fan-out nodes between a claimed planner node and a pending join node, then revalidate the whole graph.',
+    inputSchema: objectSchema({
+      run_id: RUN_ID,
+      actor: ACTOR,
+      parent_node_id: ID,
+      join_node_id: ID,
+      reason: { type: 'string', minLength: 5, maxLength: 2000 },
+      tasks: {
+        type: 'array', minItems: 1, maxItems: 16,
+        items: objectSchema({
+          node_id: ID,
+          title: { type: 'string', minLength: 3, maxLength: 300 },
+          kind: { type: 'string', enum: ['research', 'develop', 'verify'] },
+          role: { type: 'string', enum: ['researcher', 'developer', 'verifier'] },
+          risk: { type: 'string', enum: ['low', 'medium'] },
+          agent_type: { type: 'string', minLength: 3, maxLength: 120 },
+          model_tier: { type: 'string', enum: ['fast', 'standard', 'deep', 'inherit'] },
+          tool_policy: { type: 'array', minItems: 1, maxItems: 3, uniqueItems: true, items: { type: 'string', enum: ['proofgraph', 'web_search', 'workspace_read'] } },
+        }, ['node_id', 'title', 'kind']),
+      },
+    }, ['run_id', 'actor', 'parent_node_id', 'join_node_id', 'tasks', 'reason']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_get_report',
+    title: 'Get the finalized dynamic graph report',
+    description: 'Return the server-generated report after a success, partial, or failed terminal is reached.',
+    inputSchema: objectSchema({ run_id: RUN_ID, format: { type: 'string', enum: ['markdown', 'json'] } }, ['run_id']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_verify_integrity',
+    title: 'Verify dynamic graph integrity',
+    description: 'Recompute the event chain, graph digest, node output hashes, failure hashes, and report hashes.',
+    inputSchema: objectSchema({ run_id: RUN_ID }, ['run_id']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+  },
+  {
+    name: 'pg_graph_abort',
+    title: 'Abort a dynamic graph run',
+    description: 'Explicitly abort a non-terminal graph run and release the project singleton guard.',
+    inputSchema: objectSchema({ run_id: RUN_ID, actor: ACTOR, reason: { type: 'string', minLength: 3, maxLength: 2000 } }, ['run_id', 'actor', 'reason']),
+    outputSchema: COMMON_OUTPUT,
+    annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: false },
+  },
+];
+
 const TEST_TOOL = {
   name: 'pg_test_import_source',
   title: 'Import deterministic test source',
@@ -254,10 +435,20 @@ const HANDLERS = {
   pg_get_report: getReport,
   pg_verify_integrity: verifyIntegrity,
   pg_abort_run: abortRun,
+  pg_graph_preview: async (input) => previewGraph(input),
+  pg_graph_start: startGraphRun,
+  pg_graph_get_status: getGraphStatus,
+  pg_graph_claim_node: claimGraphNode,
+  pg_graph_complete_node: completeGraphNode,
+  pg_graph_resolve_approval: resolveGraphApproval,
+  pg_graph_expand: expandGraph,
+  pg_graph_get_report: getGraphReport,
+  pg_graph_verify_integrity: verifyGraphIntegrity,
+  pg_graph_abort: abortGraphRun,
 };
 
 export function listTools({ testMode = process.env.PROOFGRAPH_TEST_MODE === '1' } = {}) {
-  return testMode ? [...TOOLS, TEST_TOOL] : [...TOOLS];
+  return testMode ? [...TOOLS, ...GRAPH_TOOLS, TEST_TOOL] : [...TOOLS, ...GRAPH_TOOLS];
 }
 
 export async function invokeTool(name, args = {}, context = {}) {

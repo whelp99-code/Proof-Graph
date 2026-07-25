@@ -1,0 +1,892 @@
+{
+  "ok": true,
+  "file": "/mnt/data/ProofGraph-v1.0.1-agent-tui/examples/graphs/ai-agent-tui.graph.json",
+  "graph_digest": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+  "validation": {
+    "node_count": 14,
+    "edge_count": 38,
+    "terminal_count": 3,
+    "cycle_count": 1,
+    "cycles": [
+      [
+        "research-safety",
+        "research-ux",
+        "verify-adversarial",
+        "verify-functional",
+        "develop-controller",
+        "develop-renderer",
+        "develop-model",
+        "plan",
+        "research-runtime"
+      ]
+    ],
+    "dynamic_node_count": 3
+  },
+  "graph": {
+    "schema_version": 1,
+    "graph_id": "graph_ai_agent_tui_v1",
+    "name": "AI Agent TUI development",
+    "objective": "Develop a secure dependency-free operator TUI for ProofGraph AI agent runs. It must list runs; render graph nodes, agent state, events, failures, integrity, and approvals; inspect selected nodes; support pause, resume, and single-step through debugger APIs; approve or deny pending approvals and abort runs only through bounded double-key confirmation; restore terminal state on every exit path; provide responsive wide, narrow, and non-interactive snapshot modes; and pass functional plus adversarial independent verification.",
+    "entry_node": "triage",
+    "nodes": [
+      {
+        "node_id": "triage",
+        "title": "Classify TUI scope and risk",
+        "kind": "triage",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "auto": true,
+          "initial_route": "research",
+          "assessment": {
+            "mode": "explicit",
+            "signals": {
+              "complexity": 82,
+              "uncertainty": 50,
+              "risk": "medium",
+              "requires_research": true,
+              "requires_implementation": true,
+              "estimated_subtasks": 8,
+              "verification_strength": "deep"
+            },
+            "recommendation": {
+              "initial_route": "research",
+              "post_approval_route": "research",
+              "research_fanout": 3,
+              "verification_strength": "deep",
+              "max_iterations": 4,
+              "max_parallel_nodes": 3,
+              "max_dynamic_nodes": 16,
+              "human_approval_required": false,
+              "model_tiers": {},
+              "reason_codes": [
+                "template:agent-tui"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "node_id": "research-runtime",
+        "title": "Research ProofGraph run, debugger, and inspector contracts",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "focus": "runtime-contracts"
+        }
+      },
+      {
+        "node_id": "research-ux",
+        "title": "Research terminal interaction and accessibility constraints",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "focus": "terminal-ux"
+        }
+      },
+      {
+        "node_id": "research-safety",
+        "title": "Research operator control and fail-closed safety boundaries",
+        "kind": "research",
+        "role": "researcher",
+        "risk": "low",
+        "max_attempts": 2,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-researcher",
+        "model_tier": "deep",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": true,
+        "metadata": {
+          "focus": "security-and-integrity"
+        }
+      },
+      {
+        "node_id": "plan",
+        "title": "Design TUI architecture and acceptance contract",
+        "kind": "plan",
+        "role": "planner",
+        "risk": "low",
+        "max_attempts": 4,
+        "join": "all",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-planner",
+        "model_tier": "deep",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "join_from": [
+            "research-runtime",
+            "research-ux",
+            "research-safety"
+          ],
+          "deliverables": [
+            "verified-view-model",
+            "responsive-renderer",
+            "keyboard-controller",
+            "approval-and-abort-controls",
+            "failure-and-integrity-inspector",
+            "snapshot-mode",
+            "terminal-restoration",
+            "tests-and-operator-guide"
+          ],
+          "acceptance_contract": [
+            "No direct state.json mutation from the TUI",
+            "Pause, resume, and step use DebuggerController only",
+            "Approve, deny, and abort use GraphKernel only and require double-key confirmation",
+            "Corrupt runs remain visible as integrity_error and cannot crash the UI",
+            "Snapshot mode works without a TTY",
+            "Interactive exit always restores raw mode, cursor, and alternate screen"
+          ]
+        }
+      },
+      {
+        "node_id": "develop-model",
+        "title": "Implement verified run discovery, node selection, and operator view model",
+        "kind": "develop",
+        "role": "developer",
+        "risk": "low",
+        "max_attempts": 4,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-developer",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "component": "model",
+          "mutation_mode": "artifact_only",
+          "state_contract": [
+            "runs",
+            "selected_run",
+            "selected_node",
+            "debugger",
+            "approvals",
+            "failures",
+            "events",
+            "integrity"
+          ],
+          "fail_closed_states": [
+            "integrity_error",
+            "unknown",
+            "malformed"
+          ]
+        }
+      },
+      {
+        "node_id": "develop-renderer",
+        "title": "Implement responsive wide, narrow, and snapshot terminal renderer",
+        "kind": "develop",
+        "role": "developer",
+        "risk": "low",
+        "max_attempts": 4,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-developer",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "component": "renderer",
+          "mutation_mode": "artifact_only",
+          "layouts": [
+            "wide",
+            "narrow",
+            "compact",
+            "snapshot"
+          ],
+          "panels": [
+            "runs",
+            "graph-and-agents",
+            "inspector-and-approvals",
+            "events"
+          ],
+          "terminal_safety": [
+            "sanitize-control-sequences",
+            "bounded-lines",
+            "bounded-width",
+            "restore-terminal"
+          ]
+        }
+      },
+      {
+        "node_id": "develop-controller",
+        "title": "Implement navigation, debugger, approval, denial, and abort controls",
+        "kind": "develop",
+        "role": "developer",
+        "risk": "low",
+        "max_attempts": 4,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-developer",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "component": "controller",
+          "mutation_mode": "artifact_only",
+          "commands": [
+            "select-run",
+            "select-node",
+            "pause",
+            "resume",
+            "single-step",
+            "approve",
+            "deny",
+            "abort",
+            "refresh",
+            "help",
+            "quit"
+          ],
+          "destructive_confirmation": {
+            "type": "same-key-double-press",
+            "window_seconds": 4
+          },
+          "mutation_boundary": "GraphKernel and DebuggerController only"
+        }
+      },
+      {
+        "node_id": "verify-functional",
+        "title": "Verify rendering, selection, debugger actions, approvals, abort, and snapshot mode",
+        "kind": "verify",
+        "role": "verifier",
+        "risk": "low",
+        "max_attempts": 5,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-verifier",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "verification_strength": "standard",
+          "acceptance_tests": [
+            "wide and narrow panels remain bounded",
+            "run and node selection is deterministic",
+            "pause, resume, and step call debugger APIs",
+            "approve, deny, and abort require two matching keys",
+            "snapshot mode works without a TTY",
+            "selected node output and Failure Packet are inspectable"
+          ]
+        }
+      },
+      {
+        "node_id": "verify-adversarial",
+        "title": "Adversarially verify corrupt state, terminal injection, confirmation bypass, and cleanup",
+        "kind": "verify",
+        "role": "verifier",
+        "risk": "low",
+        "max_attempts": 5,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-verifier-deep",
+        "model_tier": "deep",
+        "tool_policy": [
+          "proofgraph",
+          "workspace_read"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "verification_strength": "deep",
+          "acceptance_tests": [
+            "ANSI and control sequence injection is stripped",
+            "corrupt or semantically tampered run state is fail-closed",
+            "wrong, expired, or mismatched confirmation cannot execute destructive actions",
+            "narrow and non-TTY modes do not crash",
+            "exceptions and Ctrl-C restore terminal raw mode, cursor, and alternate screen",
+            "TUI cannot bypass GraphKernel, approval challenge, or debugger policy"
+          ]
+        }
+      },
+      {
+        "node_id": "synthesize",
+        "title": "Synthesize verified TUI implementation and operations guide",
+        "kind": "synthesize",
+        "role": "synthesizer",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": "proofgraph-claude:graph-synthesizer",
+        "model_tier": "standard",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": null,
+        "dynamic": false,
+        "metadata": {
+          "deliverables": [
+            "runnable-operator-tui",
+            "explicit-graphspec",
+            "automated-tests",
+            "adversarial-verification",
+            "installation-and-operations-guide"
+          ],
+          "only_verified_outputs": true
+        }
+      },
+      {
+        "node_id": "terminal-success",
+        "title": "AI Agent TUI completed",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": "success",
+        "dynamic": false,
+        "metadata": {}
+      },
+      {
+        "node_id": "terminal-partial",
+        "title": "AI Agent TUI partially completed",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": "partial",
+        "dynamic": false,
+        "metadata": {}
+      },
+      {
+        "node_id": "terminal-failed",
+        "title": "AI Agent TUI failed",
+        "kind": "terminal",
+        "role": "system",
+        "risk": "low",
+        "max_attempts": 1,
+        "join": "any",
+        "approval_required": false,
+        "agent_type": null,
+        "model_tier": "inherit",
+        "tool_policy": [
+          "proofgraph"
+        ],
+        "terminal_status": "failed",
+        "dynamic": false,
+        "metadata": {}
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "e-triage-runtime",
+        "from": "triage",
+        "to": "research-runtime",
+        "condition": {
+          "type": "route",
+          "value": "research"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-triage-ux",
+        "from": "triage",
+        "to": "research-ux",
+        "condition": {
+          "type": "route",
+          "value": "research"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-triage-safety",
+        "from": "triage",
+        "to": "research-safety",
+        "condition": {
+          "type": "route",
+          "value": "research"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-runtime-plan",
+        "from": "research-runtime",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-ux-plan",
+        "from": "research-ux",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-safety-plan",
+        "from": "research-safety",
+        "to": "plan",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-runtime-partial",
+        "from": "research-runtime",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-ux-partial",
+        "from": "research-ux",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-safety-partial",
+        "from": "research-safety",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-model",
+        "from": "plan",
+        "to": "develop-model",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-runtime-evidence",
+        "from": "plan",
+        "to": "research-runtime",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-ux-evidence",
+        "from": "plan",
+        "to": "research-ux",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-safety-evidence",
+        "from": "plan",
+        "to": "research-safety",
+        "condition": {
+          "type": "failure_type",
+          "value": "evidence_gap"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-failed",
+        "from": "plan",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-plan-partial",
+        "from": "plan",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-model-renderer",
+        "from": "develop-model",
+        "to": "develop-renderer",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-renderer-controller",
+        "from": "develop-renderer",
+        "to": "develop-controller",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-controller-functional",
+        "from": "develop-controller",
+        "to": "verify-functional",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-plan-design-1",
+        "from": "develop-model",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-plan-design-2",
+        "from": "develop-renderer",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-plan-design-3",
+        "from": "develop-controller",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-failed-1",
+        "from": "develop-model",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-failed-2",
+        "from": "develop-renderer",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-develop-failed-3",
+        "from": "develop-controller",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-functional-adversarial",
+        "from": "verify-functional",
+        "to": "verify-adversarial",
+        "condition": {
+          "type": "verification",
+          "value": "passed"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-functional-implementation",
+        "from": "verify-functional",
+        "to": "develop-model",
+        "condition": {
+          "type": "failure_type",
+          "value": "implementation_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-functional-design",
+        "from": "verify-functional",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-functional-requirements",
+        "from": "verify-functional",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "requirements_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-functional-security",
+        "from": "verify-functional",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-functional-partial",
+        "from": "verify-functional",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-adversarial-synthesize",
+        "from": "verify-adversarial",
+        "to": "synthesize",
+        "condition": {
+          "type": "verification",
+          "value": "passed"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-adversarial-implementation",
+        "from": "verify-adversarial",
+        "to": "develop-model",
+        "condition": {
+          "type": "failure_type",
+          "value": "implementation_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-adversarial-design",
+        "from": "verify-adversarial",
+        "to": "plan",
+        "condition": {
+          "type": "failure_type",
+          "value": "design_error"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-adversarial-security",
+        "from": "verify-adversarial",
+        "to": "terminal-failed",
+        "condition": {
+          "type": "failure_type",
+          "value": "security_risk"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-adversarial-partial",
+        "from": "verify-adversarial",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-synthesize-success",
+        "from": "synthesize",
+        "to": "terminal-success",
+        "condition": {
+          "type": "outcome",
+          "value": "success"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-synthesize-partial",
+        "from": "synthesize",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "blocked"
+        },
+        "priority": 100,
+        "label": null
+      },
+      {
+        "edge_id": "e-synthesize-failed",
+        "from": "synthesize",
+        "to": "terminal-partial",
+        "condition": {
+          "type": "outcome",
+          "value": "failed"
+        },
+        "priority": 100,
+        "label": null
+      }
+    ],
+    "limits": {
+      "max_steps": 100,
+      "max_route_visits": 5,
+      "max_dynamic_nodes": 16,
+      "max_parallel_nodes": 3,
+      "max_iterations": 4
+    },
+    "policy": {
+      "require_verification_for_success": true,
+      "require_human_for_high_risk": true,
+      "allow_workspace_mutation": false,
+      "allow_shell": false
+    },
+    "metadata": {
+      "template": "agent-tui",
+      "artifact_only_development": true,
+      "deliverables": [
+        "runtime/tui/app.mjs",
+        "CLI tui command",
+        "snapshot mode",
+        "tests",
+        "operations documentation"
+      ]
+    },
+    "compiler": {
+      "name": "proofgraph-explicit-graph",
+      "version": "1.0.1",
+      "input_digest": "manual-reference-graph"
+    }
+  }
+}

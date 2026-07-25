@@ -2,14 +2,9 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - "chore/**"
-      - "feature/**"
-      - "fix/**"
+    branches: [main, "feature/**", "fix/**", "chore/**", "release/**"]
   pull_request:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -23,34 +18,43 @@ jobs:
   validate:
     name: Node ${{ matrix.node-version }} validation
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
-        node-version: [20, 22]
-
+        node-version: [20, 22, 24]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm install --ignore-scripts
-
-      - name: Unit, integration, and adversarial tests
+      - name: Verify dependency-free runtime installation
+        run: npm ci --ignore-scripts
+      - name: Unit, integration, platform, and adversarial tests
         run: npm test
-
-      - name: Static and MCP preflight
+      - name: OpenCode and Pi host contract tests
+        run: npm run test:hosts
+      - name: Plugin, MCP, Hook, compiler, and host preflight
         run: npm run preflight
-
-      - name: Independent black-box verification
+      - name: Evidence independent black-box verification
         run: npm run verify:independent
-
-      - name: Upload verification outputs
+      - name: Graph independent black-box verification
+        run: npm run verify:graph
+      - name: Platform independent black-box verification
+        run: npm run verify:platform
+      - name: TUI independent black-box verification
+        run: npm run verify:tui
+      - name: Orca independent verification
+        run: npm run verify:orca
+      - name: OpenCode and Pi independent verification
+        run: npm run verify:hosts
+      - name: Offline live-host preflight
+        run: npm run hosts:preflight
+      - name: Rebuild OpenCode and Pi host packages
+        run: npm run package:hosts
+      - name: Verify release package manifest
+        run: npm run verify:package
+      - name: Upload verification evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -58,37 +62,64 @@ jobs:
           path: |
             verification/*.json
             verification/*.md
+            verification/tmp/*.json
+            BUILD_MANIFEST.json
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: 30
 
-  manifest:
-    name: Repository and release manifest checks
+  documentation:
+    name: Documentation and release consistency
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install --ignore-scripts
-
-      - name: Full release verification
-        run: npm run release:verify
-
-      - name: Verify roadmap and documentation links
+          node-version: 22
+      - name: Install
+        run: npm ci --ignore-scripts
+      - name: Check version alignment
+        shell: bash
+        run: |
+          node --input-type=module - <<'NODE'
+          import fs from 'node:fs/promises';
+          import { VERSION } from './runtime/version.mjs';
+          const pkg = JSON.parse(await fs.readFile('./package.json', 'utf8'));
+          const plugin = JSON.parse(await fs.readFile('./.claude-plugin/plugin.json', 'utf8'));
+          if (pkg.version !== plugin.version || pkg.version !== VERSION) {
+            console.error({ package: pkg.version, plugin: plugin.version, runtime: VERSION });
+            process.exit(1);
+          }
+          NODE
+      - name: Check required product and host documentation
         shell: bash
         run: |
           test -f ROADMAP.md
           test -f ROADMAP_KO.md
-          grep -q "ROADMAP.md" README.md
-          grep -q "ROADMAP_KO.md" README_KO.md
-
+          test -f docs/GRAPH_ENGINEERING.md
+          test -f docs/GRAPH_ENGINEERING_KO.md
+          test -f docs/ARCHITECTURE.md
+          test -f docs/ARCHITECTURE_KO.md
+          test -f docs/ADAPTERS.md
+          test -f docs/ADAPTERS_KO.md
+          test -f docs/OPERATIONS_KO.md
+          test -f docs/AI_AGENT_TUI.md
+          test -f docs/AI_AGENT_TUI_KO.md
+          test -f docs/GRAPH_SPEC.md
+          test -f docs/GRAPH_SPEC_KO.md
+          test -f docs/OPENCODE_PI_INTEGRATION.md
+          test -f docs/OPENCODE_PI_INTEGRATION_KO.md
+          test -f docs/releases/v1.1.0.md
+          test -f schemas/graphspec-v1.schema.json
+          test -f examples/graphs/ai-agent-tui.graph.json
+          test -f examples/opencode-host.config.json
+          test -f examples/pi-host.config.json
+          grep -q 'ROADMAP.md' README.md
+          grep -q 'ROADMAP_KO.md' README_KO.md
+          grep -q 'OPENCODE_PI_INTEGRATION.md' README.md
+          grep -q 'OPENCODE_PI_INTEGRATION_KO.md' README_KO.md
+      - name: Full release verification
+        run: npm run release:verify
       - name: Upload release verification outputs
         if: always()
         uses: actions/upload-artifact@v4
@@ -97,6 +128,7 @@ jobs:
           path: |
             verification/*.json
             verification/*.md
+            verification/tmp/*.json
             BUILD_MANIFEST.json
           if-no-files-found: warn
           retention-days: 30

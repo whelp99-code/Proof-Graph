@@ -7,13 +7,17 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MANIFEST = path.join(ROOT, 'BUILD_MANIFEST.json');
 const writeMode = process.argv.includes('--write');
-const excludedExact = new Set(['BUILD_MANIFEST.json', 'verification/package_verification.txt']);
-const excludedPrefixes = ['.git/', 'node_modules/', 'verification/tmp/'];
+const excludedExact = new Set(['BUILD_MANIFEST.json']);
+const excludedPrefixes = ['.git/', '.proofgraph/', 'node_modules/', 'verification/tmp/', 'dist/'];
 
 function shouldInclude(rel) {
   const posix = rel.split(path.sep).join('/');
   if (excludedExact.has(posix)) return false;
-  return !excludedPrefixes.some(prefix => posix.startsWith(prefix));
+  if (excludedPrefixes.some(prefix => posix.startsWith(prefix))) return false;
+  // Raw test transcripts are transient and excluded. Final JSON evidence is manifested;
+  // repeated CI results are written under verification/tmp/, which is excluded above.
+  if (posix.startsWith('verification/') && /\.txt$/i.test(posix)) return false;
+  return true;
 }
 async function walk(dir) {
   const out = [];

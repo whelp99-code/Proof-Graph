@@ -1,68 +1,50 @@
-# ProofGraph Claude MVP 아키텍처
-
-## 설계 결정
-
-1차 MVP는 **Claude Code 플러그인 + 내장 stdio MCP 서버 + 결정론적 Hook**으로 구성한다.
-
-MCP만 단독 제공하면 설치·Skill·Subagent·Hook을 함께 배포하기 어렵고, 플러그인만 프롬프트로 구성하면 상태·예산·검증을 모델 판단에 의존하게 된다. 두 방식을 결합해 플러그인은 Claude 측 오케스트레이션을, MCP는 결정론적 상태기계를 담당한다.
-
-## 구성요소
-
-### Skill
-
-`/proofgraph-claude:research`가 유일한 사용자 진입점이다. 자동 모델 호출을 비활성화해 사용자가 명시적으로 실행한다.
-
-### Subagent
-
-- `planner`: 고정 3역할 계획과 원자적 주장 등록
-- `researcher`: 두 인스턴스가 병렬로 서로 다른 출처를 수집
-- `verifier`: 증거를 다시 확인하고 방향성 판정 기록
-- `synthesizer`: 서버의 결정론적 finalize와 보고서 반환
-
-### Hook
-
-- `PreToolUse`: 활성 Run 동안 허용 목록 외 도구 차단, Agent·WebSearch 예산 예약
-- `PostToolUse`·`PostToolUseFailure`: 원문 대신 입력·응답·오류 해시 감사 기록
-- `Stop`: 미완료 Run의 조용한 종료 차단
-- 세션·Subagent 이벤트: 해시 기반 감사 이벤트 기록
-
-### MCP 서버
-
-newline-delimited JSON-RPC stdio 서버다. 초기화 협상 뒤 `tools/list`, `tools/call`을 제공한다. 운영 모드에서 14개 도구를 노출하고, 네트워크 없는 시험 모드에만 fixture import 도구를 추가한다.
-
-## 상태 모델
+# ProofGraph v1.0.2 아키텍처
 
 ```text
-active
-├─ finalized
-├─ aborted
-└─ budget_exceeded
+CLI / ESM API / Universal MCP / Claude Plugin
+                    │
+             Platform Factory
+                    │
+  ┌─────────────────┼──────────────────┐
+  ▼                 ▼                  ▼
+Graph Compiler   Adapter Router   Template Registry
+  │                 │
+  ▼                 ▼
+Graph Runtime   Coding Agent Drivers
+  │
+  ├─ State + Event Hash Chain
+  ├─ Conditional Edge / Bounded Loop
+  ├─ Failure Routing / Human Approval
+  ├─ Workspace Engine
+  └─ Debugger + Inspector
 ```
 
-실행 상태는 원자적 파일 교체와 파일 잠금을 사용한다. 각 변경은 append-only 이벤트와 `state.committed` 이벤트를 생성하며, 상태 digest가 이벤트 체인과 연결된다.
+제어면은 일반 코드가 담당합니다. Graph 검증, edge 선택, 예산, 승인, event commit, workspace action digest, 무결성은 LLM의 자연어 판단으로 변경할 수 없습니다. 에이전트는 구조화된 AgentResult를 제출하는 작업자입니다.
 
-## 증거 모델
+Claude Code 플러그인은 v1.0 Runtime의 Host Adapter입니다. CLI·ESM·범용 MCP가 기본 제품 표면이고, 다른 코딩 도구는 Adapter 계약을 통해 연결합니다.
+
+Workspace Engine은 disposable Git worktree를 만들고, 에이전트가 제안한 typed action을 승인 후 적용합니다. worktree는 파일 격리일 뿐 네트워크·커널 격리는 아닙니다.
+
+## Adapter 경계
+
+공통 AgentRequest는 Host별 CLI·RPC·SDK bridge 호출로 변환되고 결과는 AgentResult로 정규화됩니다. Claude print JSON, Codex exec JSON/JSONL, OpenCode run JSON events, Grok headless JSON, Pi strict JSONL RPC 프로필을 제공합니다. Codex는 버전별 출력 플래그 차이 때문에 `output_args`를 설정할 수 있습니다. Gajae Code v0.11은 외부 `--mode rpc`, `rpc-ui`, `bridge` CLI 진입점을 제거하고 SDK v3 WebSocket을 기계 제어 표면으로 지정하므로, pinned bridge 또는 명시적 command profile과 live canary 없이는 실행하지 않습니다.
+
+## AI Agent TUI
+
+`runtime/tui/app.mjs`는 검증된 run state를 읽는 로컬 운영자 클라이언트입니다. 조회는 integrity 검사를 통과한 state/event/report만 사용하고, pause·resume·single-step은 `DebuggerController`와 `GraphKernel`을 통해 실행합니다. 승인·거부·중단은 challenge 및 이중 키 확인을 거쳐 GraphKernel에 위임합니다. 따라서 TUI가 state 파일을 직접 쓰거나 별도의 Control Plane을 만들지 않습니다. interactive alternate-screen 모드와 결정론적 non-TTY snapshot 모드를 모두 지원합니다.
+
+
+## Orca Execution Host
 
 ```text
-Claim
- ├─ producer role
- ├─ Evidence[]
- │   ├─ server-fetched Source
- │   ├─ exact normalized quote
- │   ├─ source content hash
- │   └─ supports/refutes/context
- └─ Verdict[]
-     ├─ verifier role
-     ├─ evidence IDs
-     └─ supported/refuted/mixed/insufficient
+ProofGraph Kernel
+  └─ OrcaExecutionHost
+      ├─ orchestration task-create
+      ├─ worktree create
+      ├─ terminal list/wait
+      ├─ orchestration dispatch --inject
+      ├─ orchestration check
+      └─ exact AgentResult report validation
 ```
 
-최종 분류는 distinct hostname 수, 정확 일치 근거, 프롬프트 인젝션 제외, verifier 판정으로 계산한다. caller가 finalize 입력에 분류를 넣을 수 없다.
-
-## 실패 의미론
-
-- 작업은 `pending`, `success`, `failed`, `blocked` 중 하나다.
-- 실패·차단 작업은 보고서에서 삭제하지 않는다.
-- 미완료 작업이 있으면 finalize를 거부한다.
-- 예산 초과 시 상태가 `budget_exceeded`로 바뀌고 추가 open-world 작업을 차단한다.
-- state가 삭제·손상돼도 Hook은 fail-open하지 않고 fail-closed한다.
+Orca는 화면·terminal·agent process·worktree의 실행 권위자이고, ProofGraph는 GraphSpec·ready node·검증·실패 route·terminal status의 상태 권위자입니다. `orca orchestration run`은 사용하지 않습니다. 두 오케스트레이터가 동시에 다음 경로를 선택하지 않도록 수동 추적형 primitive만 사용합니다.

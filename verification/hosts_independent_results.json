@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:54:45.786Z",
+  "verifier_type": "black-box-cli-http-fake-opencode-and-pi-jsonl-rpc",
+  "production_modules_imported": false,
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "residuals_confirmed": 1,
+  "release_gate": "PASS_OFFLINE_OPENCODE_PI_CANARY_REQUIRED",
+  "results": [
+    {
+      "name": "public_version_is_v1_1_0",
+      "status": "PASS",
+      "residual": false,
+      "result": {
+        "product": "proofgraph",
+        "version": "1.1.0"
+      },
+      "stderr": ""
+    },
+    {
+      "name": "opencode_and_pi_are_reference_hosts",
+      "status": "PASS",
+      "residual": false,
+      "hosts": [
+        {
+          "name": "opencode",
+          "priority": 1,
+          "integration": "plugin+http+sse"
+        },
+        {
+          "name": "pi",
+          "priority": 2,
+          "integration": "extension+jsonl-rpc"
+        },
+        {
+          "name": "orca",
+          "priority": 3,
+          "integration": "cli+custom-agent"
+        }
+      ]
+    },
+    {
+      "name": "managed_integrations_install_without_forking_hosts",
+      "status": "PASS",
+      "residual": false,
+      "opencode_files": 7,
+      "pi_files": 3
+    },
+    {
+      "name": "installed_entrypoints_use_official_host_extension_shapes",
+      "status": "PASS",
+      "residual": false
+    },
+    {
+      "name": "opencode_install_pins_the_reviewed_plugin_dependency",
+      "status": "PASS",
+      "residual": false,
+      "dependency": "1.18.4"
+    },
+    {
+      "name": "opencode_model_tool_surface_excludes_human_gate_authority",
+      "status": "PASS",
+      "residual": false,
+      "approval_tool_exposed": false,
+      "abort_tool_exposed": false
+    },
+    {
+      "name": "host_bridge_is_authenticated_and_command_capable",
+      "status": "PASS",
+      "residual": false,
+      "health_status": 200,
+      "unauthorized_status": 401,
+      "compile_status": 200
+    },
+    {
+      "name": "opencode_bridge_pins_identity_and_denies_human_gate_authority",
+      "status": "PASS",
+      "residual": false,
+      "start_status": 200,
+      "impersonation_status": 403,
+      "raw_abort_status": 403,
+      "final_status": "active"
+    },
+    {
+      "name": "opencode_server_adapter_completes_verified_graph",
+      "status": "PASS",
+      "residual": false,
+      "exit_code": 0,
+      "terminal_status": "success",
+      "quality_gate_passed": true,
+      "message_requests": 3,
+      "stderr": ""
+    },
+    {
+      "name": "opencode_server_uses_authenticated_structured_contract",
+      "status": "PASS",
+      "residual": false,
+      "request_count": 9
+    },
+    {
+      "name": "pi_jsonl_rpc_adapter_completes_verified_graph",
+      "status": "PASS",
+      "residual": false,
+      "exit_code": 0,
+      "terminal_status": "success",
+      "quality_gate_passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "live_vendor_canaries_remain_explicit_release_gate",
+      "status": "PASS",
+      "residual": true,
+      "impact": "The verifier exercises fake OpenCode HTTP and Pi JSONL RPC endpoints only. Real installed hosts, authentication, model behavior, and permissions still require pinned live canaries."
+    }
+  ]
+}

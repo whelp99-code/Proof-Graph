@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "version": "1.0.1",
+  "component": "ai-agent-tui-reference-integration",
+  "generated_at": "2026-07-25T07:35:04.570998+00:00",
+  "release_gate": "PASS_OFFLINE_VENDOR_CANARY_REQUIRED",
+  "exact_user_command": "AI에인전트 TUI를 개발하라",
+  "graph_definition": {
+    "authoring_layer": "bounded template profile",
+    "runtime_layer": "GraphSpec v1 JSON",
+    "json_schema": "schemas/graphspec-v1.schema.json",
+    "runtime_validator": "proofgraph graph validate",
+    "explicit_graph_cli": [
+      "proofgraph graph validate",
+      "proofgraph graph start",
+      "proofgraph graph run"
+    ],
+    "explicit_graph_mcp": [
+      "proofgraph_graph_validate",
+      "proofgraph_graph_start",
+      "proofgraph_graph_run"
+    ]
+  },
+  "natural_language_compile": {
+    "template": "agent-tui",
+    "selection": "auto",
+    "matched_keyword": "ai에인전트 tui",
+    "graph_digest": "4e943669520e4bd5d538ca7a62da0acf4657c5df7050acbd56acfc8fa6c72821",
+    "node_count": 15,
+    "edge_count": 58,
+    "research_nodes": 6,
+    "human_gate": true,
+    "verification_strength": "deep"
+  },
+  "natural_language_execution": {
+    "run_id": "pg_4ff04e488efd0c1572a5e323",
+    "initial_status": "waiting_approval",
+    "approval_id": "approval_c1d196a854e99bdd75be0b0f",
+    "decision": "approved",
+    "post_decision_status": "active",
+    "final_status": "finalized",
+    "terminal_status": "success",
+    "quality_gate_passed": true,
+    "integrity_ok": true
+  },
+  "explicit_reference_graph": {
+    "path": "examples/graphs/ai-agent-tui.graph.json",
+    "graph_id": "graph_ai_agent_tui_v1",
+    "graph_digest": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+    "node_count": 14,
+    "edge_count": 38,
+    "cycle_count": 1,
+    "json_schema_valid": true,
+    "mock_run_id": "pg_acaba997d516ff457410ac6e",
+    "mock_status": "finalized",
+    "mock_terminal_status": "success",
+    "mock_quality_gate_passed": true,
+    "mock_integrity_ok": true
+  },
+  "bugs_found_and_fixed": [
+    {
+      "id": "cli-approval-source-contract",
+      "symptom": "CLI approval sent an unrecognized decision_source and could not resume an approved graph.",
+      "fix": "Use external_human and add end-to-end regression coverage."
+    },
+    {
+      "id": "tui-double-key-race",
+      "symptom": "Asynchronous keypress handlers could process the second confirmation key before the first confirmation state was committed.",
+      "fix": "Serialize input through an ordered key queue."
+    },
+    {
+      "id": "single-step-parallel-race",
+      "symptom": "Single-step could admit multiple parallel ready nodes into the debugger boundary.",
+      "fix": "Force the kernel batch limit to one while debugger mode is step."
+    }
+  ],
+  "verification": {
+    "automated_tests": {
+      "total": 164,
+      "passed": 164,
+      "failed": 0,
+      "skipped": 0
+    },
+    "adversarial_tests": {
+      "total": 41,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0
+    },
+    "coverage": {
+      "line_percent": 92.83,
+      "branch_percent": 77.21,
+      "function_percent": 91.88,
+      "observed_repeat_range": {
+        "line_percent": [
+          92.52,
+          92.86
+        ],
+        "branch_percent": [
+          76.83,
+          77.81
+        ],
+        "function_percent": [
+          91.64,
+          92.05
+        ]
+      },
+      "note": "Node.js experimental coverage has small run-to-run variation on async/process paths. Release documentation uses the final package-verification run; the observed repeat range is retained."
+    },
+    "preflight": {
+      "total": 22,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 1
+    },
+    "independent": {
+      "total": 49,
+      "passed": 49,
+      "failed": 0,
+      "breakdown": [
+        {
+          "verifier": "evidence",
+          "total": 18,
+          "passed": 18,
+          "failed": 0,
+          "residuals": 1
+        },
+        {
+          "verifier": "graph",
+          "total": 14,
+          "passed": 14,
+          "failed": 0,
+          "residuals": 1
+        },
+        {
+          "verifier": "platform",
+          "total": 10,
+          "passed": 10,
+          "failed": 0,
+          "residuals": 1
+        },
+        {
+          "verifier": "tui",
+          "total": 7,
+          "passed": 7,
+          "failed": 0,
+          "residuals": 0
+        }
+      ]
+    }
+  },
+  "known_limits": [
+    "Mock execution verifies orchestration and contracts, not live vendor model quality.",
+    "Claude, Codex, OpenCode, GJC, Grok, and Pi require pinned live canaries before production eligibility.",
+    "Human identity is self-attested at the local host boundary rather than cryptographically proven.",
+    "The TUI is a local single-operator console, not a remote multi-user control plane.",
+    "Terminal width uses JavaScript string length and can differ from visual cell width for some CJK and emoji sequences."
+  ],
+  "sha256": {
+    "runtime/templates/registry.mjs": "0a540cc2504c03cec936bfa493682fedc89f2a9fc766034eb8412a72b4442125",
+    "server/lib/graph-compiler.mjs": "f52bf672f597e4de336989e86962ee5a1dd030824ea9019330d5cf0fb1155c54",
+    "server/lib/graph-runtime.mjs": "73e06ec227a80e2b426f0865e6624adef2a495971f45ead323192d17fe232acf",
+    "runtime/tui/app.mjs": "656c0b2c63002ed6724ea87c6d8ff98db226457f7096e0e3c3e6481cd055c3a8",
+    "bin/proofgraph.mjs": "a89fc9110dfba4da01718b4affb710cc125112dba39b8ef60816c16d473413aa",
+    "runtime/mcp/tools.mjs": "5d1709c8b3af4d729bfdc9568c4f451b0128cc1e2ef2e04454968205d3934287",
+    "runtime/kernel.mjs": "ae6dd051584e652bdf4a09c351f46a6bf24a96deb3f8a34fcf38388174a2ed96",
+    "examples/graphs/ai-agent-tui.graph.json": "8f61f3338559914c359a51cca17097d89b1a8dbd44977ef29ebef97d73daf921",
+    "schemas/graphspec-v1.schema.json": "457bd7a87c3268ef257c368e2d41d3c105ba504e7251b4eba6bfb00e34a564bf",
+    "docs/AI_AGENT_TUI_KO.md": "cb78a08892dde12bcc97d05955c74594ea50a67d03dcea8d62ecce14300a293c",
+    "docs/GRAPH_SPEC_KO.md": "10413170aeba6353efa57de5dcf4cf4792bfbc955850faf4b3ce74c72960382d",
+    "scripts/preflight.mjs": "7249a8220510797370e03b8f4e4bc7fcaabae5b0e219c3d2a0a9681f207a2631",
+    "tests/platform/tui.test.mjs": "af1c93954a928c66336eb79af14708959523a5e00020fc557ffcea548d1449e7",
+    "tests/platform/platform-mcp.test.mjs": "6337d31518f2c24d5f4b2c9c83d7664f7f2a828560e3ab050cf01feb31f33f1a",
+    "verification/tui_independent_verifier.mjs": "e121e2ddb42ed164db618c78de6a1cace9a13db0a994faa3744f559691dc1ed7"
+  }
+}

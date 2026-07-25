@@ -1,0 +1,96 @@
+{
+  "ok": true,
+  "run_id": "pg_4ff04e488efd0c1572a5e323",
+  "checks": [
+    {
+      "check": "event_chain",
+      "ok": true,
+      "details": {
+        "ok": true,
+        "errors": [],
+        "event_count": 119,
+        "head_hash": "ab4c7c2d7fa3fed9dd96d011b922844dc7ebcb919706886ac0672ca4fdd970aa"
+      }
+    },
+    {
+      "check": "graph_spec",
+      "ok": true,
+      "expected": "4e943669520e4bd5d538ca7a62da0acf4657c5df7050acbd56acfc8fa6c72821",
+      "actual": "4e943669520e4bd5d538ca7a62da0acf4657c5df7050acbd56acfc8fa6c72821"
+    },
+    {
+      "check": "node:triage",
+      "ok": true
+    },
+    {
+      "check": "node:terminal-success",
+      "ok": true
+    },
+    {
+      "check": "node:terminal-partial",
+      "ok": true
+    },
+    {
+      "check": "node:terminal-failed",
+      "ok": true
+    },
+    {
+      "check": "node:research-01",
+      "ok": true
+    },
+    {
+      "check": "node:research-02",
+      "ok": true
+    },
+    {
+      "check": "node:research-03",
+      "ok": true
+    },
+    {
+      "check": "node:research-04",
+      "ok": true
+    },
+    {
+      "check": "node:research-05",
+      "ok": true
+    },
+    {
+      "check": "node:research-06",
+      "ok": true
+    },
+    {
+      "check": "node:plan",
+      "ok": true
+    },
+    {
+      "check": "node:develop",
+      "ok": true
+    },
+    {
+      "check": "node:verify",
+      "ok": true
+    },
+    {
+      "check": "node:synthesize",
+      "ok": true
+    },
+    {
+      "check": "node:human-gate",
+      "ok": true
+    },
+    {
+      "check": "report_markdown",
+      "ok": true
+    },
+    {
+      "check": "report_json",
+      "ok": true
+    }
+  ],
+  "failed_checks": [],
+  "event_head": {
+    "seq": 119,
+    "hash": "ab4c7c2d7fa3fed9dd96d011b922844dc7ebcb919706886ac0672ca4fdd970aa"
+  },
+  "warning": "Local hashes are not an external signature, human-identity attestation, or notarization."
+}

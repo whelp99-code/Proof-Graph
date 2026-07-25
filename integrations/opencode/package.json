@@ -1,0 +1,21 @@
+{
+  "name": "@proofgraph/host-opencode",
+  "version": "1.1.0",
+  "type": "module",
+  "description": "OpenCode plugin and server bridge for the ProofGraph Graph Engineering Runtime.",
+  "keywords": ["opencode", "proofgraph", "plugin", "graph-engineering"],
+  "license": "MIT",
+  "exports": {
+    ".": "./plugin.ts"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "1.18.4"
+  },
+  "proofgraph": {
+    "host": "opencode",
+    "contract_target": {
+      "opencode": "1.18.4",
+      "plugin": "1.18.4"
+    }
+  }
+}

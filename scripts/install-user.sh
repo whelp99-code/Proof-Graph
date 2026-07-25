@@ -11,7 +11,7 @@ if [[ -e "$DEST" && "$FORCE" -ne 1 ]]; then
 fi
 rm -rf "$DEST"
 mkdir -p "$DEST"
-for item in .claude-plugin .mcp.json agents hooks server skills package.json LICENSE README.md README_KO.md docs; do
+for item in .claude-plugin .mcp.json agents hooks server skills package.json LICENSE README.md README_KO.md ROADMAP.md ROADMAP_KO.md CHANGELOG.md docs; do
   cp -R "$ROOT/$item" "$DEST/"
 done
 printf 'Installed ProofGraph Claude to %s\nRestart Claude Code or run /reload-plugins.\n' "$DEST"

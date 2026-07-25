@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "product": "proofgraph",
+  "component": "ai-agent-tui",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:54:38.527Z",
+  "verifier_type": "black-box-cli-and-persisted-artifacts",
+  "production_modules_imported": false,
+  "environment": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "total": 7,
+  "passed": 7,
+  "failed": 0,
+  "release_gate": "PASS_OFFLINE_VENDOR_CANARY_REQUIRED",
+  "results": [
+    {
+      "name": "CLI and Claude plugin metadata are aligned",
+      "status": "PASS",
+      "duration_ms": 60.717,
+      "details": {
+        "version": "1.1.0",
+        "product": "proofgraph",
+        "plugin": "proofgraph-claude"
+      }
+    },
+    {
+      "name": "natural-language AI agent TUI request selects the bounded agent-tui template",
+      "status": "PASS",
+      "duration_ms": 136.322,
+      "details": {
+        "template": "agent-tui",
+        "graph_digest": "d20c745c6d58d1cb97deb82835a3f76b56d9f0e4ef823a2359a77f64db5f6184",
+        "research_nodes": 6,
+        "verifier_nodes": 1
+      }
+    },
+    {
+      "name": "explicit AI Agent TUI GraphSpec validates with typed nodes, cycles, and verification gates",
+      "status": "PASS",
+      "duration_ms": 73.007,
+      "details": {
+        "graph_digest": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+        "analysis": {
+          "node_count": 14,
+          "edge_count": 38,
+          "terminal_count": 3,
+          "cycle_count": 1,
+          "cycles": [
+            [
+              "research-safety",
+              "research-ux",
+              "verify-adversarial",
+              "verify-functional",
+              "develop-controller",
+              "develop-renderer",
+              "develop-model",
+              "plan",
+              "research-runtime"
+            ]
+          ],
+          "dynamic_node_count": 3
+        }
+      }
+    },
+    {
+      "name": "explicit GraphSpec completes through the mock adapter and the TUI snapshot renders verified state",
+      "status": "PASS",
+      "duration_ms": 508.485,
+      "details": {
+        "run_id": "pg_97dd807cce7d09b31d73c9fc",
+        "terminal_status": "success",
+        "snapshot_lines": 35
+      }
+    },
+    {
+      "name": "natural-language run stops for explicit approval and CLI approval resumes to verified success",
+      "status": "PASS",
+      "duration_ms": 721.503,
+      "details": {
+        "run_id": "pg_13bfffd08f51bdc94538a5fd",
+        "approval_id": "approval_333ffb0ce576c3a62db77304",
+        "terminal_status": "success"
+      }
+    },
+    {
+      "name": "TUI fails closed on persisted-state tampering without crashing",
+      "status": "PASS",
+      "duration_ms": 479.828,
+      "details": {
+        "run_id": "pg_d36c4ba862eef3fcd97b3a89",
+        "fail_closed": true
+      }
+    },
+    {
+      "name": "interactive mode rejects non-TTY use and directs automation to snapshot mode",
+      "status": "PASS",
+      "duration_ms": 65.545,
+      "details": {
+        "rejected": true,
+        "stderr": "Error: Interactive TUI requires a TTY. Use --snapshot for redirected output or CI."
+      }
+    }
+  ]
+}

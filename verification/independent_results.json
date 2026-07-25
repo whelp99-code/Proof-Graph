@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "product": "proofgraph-claude",
-  "version": "0.2.0",
-  "generated_at": "2026-07-24T00:38:39.387Z",
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "generated_at": "2026-07-25T10:54:40.102Z",
   "verifier_type": "black-box-stdio-mcp-and-hook-subprocess",
   "production_modules_imported": false,
   "environment": {
@@ -20,36 +20,36 @@
       "name": "plugin manifest and component inventory are internally consistent",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 1.019,
+      "duration_ms": 1.733,
       "details": {
-        "version": "0.2.0",
-        "agents": 4
+        "version": "1.1.0",
+        "agents": 11
       }
     },
     {
       "name": "production MCP requires initialization and exposes exactly the intended surface",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 38.76,
+      "duration_ms": 42.949,
       "details": {
         "protocol": "2025-11-25",
-        "tool_count": 14
+        "tool_count": 24
       }
     },
     {
       "name": "malformed JSON and unknown tools fail without terminating the MCP process",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 36.124,
+      "duration_ms": 39.262,
       "details": null
     },
     {
       "name": "black-box evidence lifecycle finalizes a supported claim and passes local integrity checks",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 122.405,
+      "duration_ms": 111.583,
       "details": {
-        "run_id": "pg_e64cb9764f35ade86ab986f0",
+        "run_id": "pg_00f9ea5d02d3de017eff5883",
         "classification": "supported"
       }
     },
@@ -57,9 +57,9 @@
       "name": "persisted state remains readable after MCP server restart",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 41.314,
+      "duration_ms": 50.789,
       "details": {
-        "run_id": "pg_e64cb9764f35ade86ab986f0",
+        "run_id": "pg_00f9ea5d02d3de017eff5883",
         "status": "finalized"
       }
     },
@@ -67,7 +67,7 @@
       "name": "fabricated quotations and arbitrary source identifiers are rejected",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 68.872,
+      "duration_ms": 72.294,
       "details": {
         "fake_error": "Evidence quote is not an exact normalized substring of the stored source",
         "missing_error": "Unknown source: src_fabricated"
@@ -77,7 +77,7 @@
       "name": "two URLs on one hostname do not satisfy independent-source policy",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 108.519,
+      "duration_ms": 120.952,
       "details": {
         "classification": "unverified",
         "support_source_count": 1
@@ -87,7 +87,7 @@
       "name": "prompt-injection-marked source text cannot qualify for automatic promotion",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 97.658,
+      "duration_ms": 118.187,
       "details": {
         "excluded": 1
       }
@@ -96,14 +96,14 @@
       "name": "canonical role boundaries reject cross-role state mutation",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 53.606,
+      "duration_ms": 65.587,
       "details": null
     },
     {
       "name": "hard MCP tool-call budget transitions the run to budget_exceeded",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 112.082,
+      "duration_ms": 116.372,
       "details": {
         "counters": {
           "tool_calls": 10,
@@ -117,17 +117,17 @@
       "name": "one active run per project is enforced and explicit abort releases the guard",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 77.618,
+      "duration_ms": 56.007,
       "details": {
-        "first": "pg_e12d522300250f39aa99837d",
-        "second": "pg_8036f67e56e32342219f3915"
+        "first": "pg_0574c0c4e9652a0bc589816f",
+        "second": "pg_fe76fb151456b7387d47be49"
       }
     },
     {
       "name": "active-run hooks deny shell, skill, and external MCP escape paths while allowing the bundled MCP",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 187.076,
+      "duration_ms": 192.536,
       "details": {
         "denied": [
           "Bash",
@@ -140,7 +140,7 @@
       "name": "hook fails closed when active state is missing or corrupt",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 81.869,
+      "duration_ms": 83.841,
       "details": {
         "reason": "ProofGraph guard failed closed: Run does not exist"
       }
@@ -149,7 +149,7 @@
       "name": "valid-JSON semantic state tampering cannot disable the active-run guard",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 102.841,
+      "duration_ms": 82.863,
       "details": {
         "reason": "ProofGraph guard failed closed: Run state or event chain failed integrity validation"
       }
@@ -158,16 +158,16 @@
       "name": "Stop hook blocks an unfinished run instead of silently ending the session",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 90.248,
+      "duration_ms": 97.463,
       "details": {
-        "reason": "ProofGraph run pg_88dc50edb0917bc55d22f58a is still active. Pending tasks: research-primary, research-secondary, verification. Complete all tasks and call pg_finalize_run, or explicitly call pg_abort_run if completion is impossible."
+        "reason": "ProofGraph run pg_99fddef31edaad23866057eb is still active. Pending tasks: research-primary, research-secondary, verification. Complete all tasks and call pg_finalize_run, or explicitly call pg_abort_run if completion is impossible."
       }
     },
     {
       "name": "source-file tampering before finalization blocks report generation",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 90.495,
+      "duration_ms": 103.324,
       "details": {
         "error": "Stored source content hash mismatch during finalization"
       }
@@ -176,7 +176,7 @@
       "name": "post-finalization report and event-log tampering are detected",
       "status": "PASS",
       "residual": false,
-      "duration_ms": 130.882,
+      "duration_ms": 127.783,
       "details": {
         "failed_checks": [
           "event_chain",
@@ -188,7 +188,7 @@
       "name": "actor independence remains a declared role rather than cryptographic identity",
       "status": "RESIDUAL_CONFIRMED",
       "residual": true,
-      "duration_ms": 63.879,
+      "duration_ms": 64.527,
       "details": {
         "impact": "Same Claude host can self-declare verifier; this MVP separates context and roles but does not cryptographically attest model identity."
       }

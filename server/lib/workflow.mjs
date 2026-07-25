@@ -1,4 +1,5 @@
 import { randomId, nowIso, sha256 } from './canonical.mjs';
+import { PRODUCT_NAME, VERSION } from '../../runtime/version.mjs';
 import {
   clearActiveRun,
   createRun,
@@ -120,8 +121,8 @@ export async function startRun(input, context = {}) {
   const startedAt = nowIso();
   const state = {
     schema_version: 1,
-    product: 'proofgraph-claude',
-    version: '0.2.0',
+    product: PRODUCT_NAME,
+    version: VERSION,
     run_id: runId,
     project_key: key,
     project_dir_sha256: sha256(projectDir),

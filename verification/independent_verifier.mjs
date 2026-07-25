@@ -11,6 +11,8 @@ import readline from 'node:readline';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const PACKAGE = JSON.parse(await fs.readFile(path.join(ROOT, 'package.json'), 'utf8'));
+const VERSION = PACKAGE.version;
 const OUTPUT = process.argv.includes('--output') ? path.resolve(process.argv[process.argv.indexOf('--output') + 1]) : path.join(ROOT, 'verification', 'independent_results.json');
 const results = [];
 
@@ -53,7 +55,7 @@ class Client {
   }
   notify(method, params = {}) { this.child.stdin.write(`${JSON.stringify({ jsonrpc: '2.0', method, params })}\n`); }
   async initialize(version = '2025-11-25') {
-    const msg = await this.request('initialize', { protocolVersion: version, capabilities: {}, clientInfo: { name: 'proofgraph-independent-verifier', version: '1.0.0' } });
+    const msg = await this.request('initialize', { protocolVersion: version, capabilities: {}, clientInfo: { name: 'proofgraph-independent-verifier', version: VERSION } });
     this.notify('notifications/initialized'); return msg;
   }
   async call(name, args = {}) { return this.request('tools/call', { name, arguments: args }); }
@@ -147,7 +149,7 @@ await runCase('production MCP requires initialization and exposes exactly the in
     const early = await c.request('tools/list'); assert(early.error?.code === -32002, 'tools/list was available before initialization', early);
     const init = await c.initialize('2099-01-01'); assert(init.result?.protocolVersion === '2025-11-25', 'Protocol negotiation did not select latest supported version', init);
     const list = await c.request('tools/list'); const names = list.result.tools.map(t => t.name);
-    assert(names.length === 14, 'Unexpected production tool count', names); assert(!names.includes('pg_test_import_source'), 'Test fixture tool leaked into production');
+    assert(names.length === 24, 'Unexpected production tool count', names); assert(!names.includes('pg_test_import_source'), 'Test fixture tool leaked into production');
     return { protocol: init.result.protocolVersion, tool_count: names.length };
   } finally { await c.close(); await cleanup(ctx); }
 });
@@ -331,8 +333,8 @@ const failures = results.filter(r => r.status === 'FAIL');
 const residuals = results.filter(r => r.residual);
 const summary = {
   schema_version: 1,
-  product: 'proofgraph-claude',
-  version: '0.2.0',
+  product: 'proofgraph',
+  version: VERSION,
   generated_at: new Date().toISOString(),
   verifier_type: 'black-box-stdio-mcp-and-hook-subprocess',
   production_modules_imported: false,
@@ -347,4 +349,6 @@ const summary = {
 await fs.mkdir(path.dirname(OUTPUT), { recursive: true }); await fs.writeFile(OUTPUT, `${JSON.stringify(summary, null, 2)}\n`);
 console.log(`\n${summary.passed}/${summary.total} independent checks passed; residuals: ${summary.residuals_confirmed}`);
 console.log(`Wrote ${OUTPUT}`);
-if (failures.length) process.exitCode = 1;
+const exitCode = failures.length ? 1 : 0;
+await new Promise((resolve) => process.stdout.write('', resolve));
+process.exit(exitCode);

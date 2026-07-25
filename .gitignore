@@ -1,0 +1,19 @@
+# ProofGraph runtime state
+.proofgraph/
+
+# Node local install
+node_modules/
+
+# OS/editor noise
+.DS_Store
+*.swp
+*.tmp
+
+# Local vendor canary outputs
+verification/*-canary-local.json
+
+# Transient verification outputs
+verification/tmp/
+
+# Generated release archives
+dist/

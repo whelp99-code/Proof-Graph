@@ -1,0 +1,1080 @@
+{
+  "ok": true,
+  "run_id": "pg_acaba997d516ff457410ac6e",
+  "status": "finalized",
+  "report": {
+    "ok": true,
+    "run_id": "pg_acaba997d516ff457410ac6e",
+    "format": "json",
+    "report": {
+      "schema_version": 1,
+      "product": "proofgraph",
+      "version": "1.0.1",
+      "run_kind": "graph",
+      "run_id": "pg_acaba997d516ff457410ac6e",
+      "graph_id": "graph_ai_agent_tui_v1",
+      "graph_digest": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+      "objective": "Develop a secure dependency-free operator TUI for ProofGraph AI agent runs. It must list runs; render graph nodes, agent state, events, failures, integrity, and approvals; inspect selected nodes; support pause, resume, and single-step through debugger APIs; approve or deny pending approvals and abort runs only through bounded double-key confirmation; restore terminal state on every exit path; provide responsive wide, narrow, and non-interactive snapshot modes; and pass functional plus adversarial independent verification.",
+      "terminal_status": "success",
+      "quality_gate_passed": true,
+      "finalized_at": "2026-07-25T07:27:53.352Z",
+      "assessment": {
+        "objective": "Develop a secure dependency-free operator TUI for ProofGraph AI agent runs. It must list runs; render graph nodes, agent state, events, failures, integrity, and approvals; inspect selected nodes; support pause, resume, and single-step through debugger APIs; approve or deny pending approvals and abort runs only through bounded double-key confirmation; restore terminal state on every exit path; provide responsive wide, narrow, and non-interactive snapshot modes; and pass functional plus adversarial independent verification.",
+        "mode": "explicit",
+        "signals": {},
+        "recommendation": {
+          "initial_route": "graph-defined",
+          "post_approval_route": "graph-defined",
+          "research_fanout": 3,
+          "verification_strength": "deep",
+          "max_iterations": 4,
+          "max_parallel_nodes": 3,
+          "max_dynamic_nodes": 16,
+          "human_approval_required": false,
+          "model_tiers": {},
+          "reason_codes": [
+            "source:explicit-graph"
+          ]
+        }
+      },
+      "counters": {
+        "tool_calls": 20,
+        "source_fetches": 0,
+        "agents_spawned": 0,
+        "graph_steps": 11,
+        "dynamic_nodes": 0,
+        "approvals_requested": 0
+      },
+      "nodes": [
+        {
+          "node_id": "triage",
+          "title": "Classify TUI scope and risk",
+          "kind": "triage",
+          "role": "system",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "system",
+          "activated_incoming": [],
+          "started_at": "2026-07-25T07:27:53.026Z",
+          "completed_at": "2026-07-25T07:27:53.026Z",
+          "output": {
+            "route": "research",
+            "assessment": {
+              "mode": "explicit",
+              "signals": {
+                "complexity": 82,
+                "uncertainty": 50,
+                "risk": "medium",
+                "requires_research": true,
+                "requires_implementation": true,
+                "estimated_subtasks": 8,
+                "verification_strength": "deep"
+              },
+              "recommendation": {
+                "initial_route": "research",
+                "post_approval_route": "research",
+                "research_fanout": 3,
+                "verification_strength": "deep",
+                "max_iterations": 4,
+                "max_parallel_nodes": 3,
+                "max_dynamic_nodes": 16,
+                "human_approval_required": false,
+                "model_tiers": {},
+                "reason_codes": [
+                  "template:agent-tui"
+                ]
+              }
+            }
+          },
+          "output_sha256": "56770f34d651ef3f2aff8a460a49542fe6b09fe69301d19c0e370ee7486e853c",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 1,
+              "from": "triage",
+              "to": "research-runtime",
+              "edge_id": "e-triage-runtime",
+              "condition": {
+                "type": "route",
+                "value": "research"
+              },
+              "context": {
+                "outcome": "success",
+                "route": "research",
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.032Z"
+            },
+            {
+              "step": 1,
+              "from": "triage",
+              "to": "research-safety",
+              "edge_id": "e-triage-safety",
+              "condition": {
+                "type": "route",
+                "value": "research"
+              },
+              "context": {
+                "outcome": "success",
+                "route": "research",
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.032Z"
+            },
+            {
+              "step": 1,
+              "from": "triage",
+              "to": "research-ux",
+              "edge_id": "e-triage-ux",
+              "condition": {
+                "type": "route",
+                "value": "research"
+              },
+              "context": {
+                "outcome": "success",
+                "route": "research",
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.032Z"
+            }
+          ]
+        },
+        {
+          "node_id": "research-runtime",
+          "title": "Research ProofGraph run, debugger, and inspector contracts",
+          "kind": "research",
+          "role": "researcher",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "researcher",
+          "activated_incoming": [
+            "e-triage-runtime"
+          ],
+          "started_at": "2026-07-25T07:27:53.054Z",
+          "completed_at": "2026-07-25T07:27:53.087Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "research"
+            },
+            "summary": "Completed research-runtime",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "17021491c62fa88d9e985a91620757f128daecc167304df24e9c1829c6bd5761",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 2,
+              "from": "research-runtime",
+              "to": "plan",
+              "edge_id": "e-runtime-plan",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.087Z"
+            }
+          ]
+        },
+        {
+          "node_id": "research-ux",
+          "title": "Research terminal interaction and accessibility constraints",
+          "kind": "research",
+          "role": "researcher",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "researcher",
+          "activated_incoming": [
+            "e-triage-ux"
+          ],
+          "started_at": "2026-07-25T07:27:53.157Z",
+          "completed_at": "2026-07-25T07:27:53.166Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "research"
+            },
+            "summary": "Completed research-ux",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "935be3cf79f7319f1edb3880f6e7171a8c7ab8195def6e6c6e595ecec7c7633a",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 4,
+              "from": "research-ux",
+              "to": "plan",
+              "edge_id": "e-ux-plan",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.166Z"
+            }
+          ]
+        },
+        {
+          "node_id": "research-safety",
+          "title": "Research operator control and fail-closed safety boundaries",
+          "kind": "research",
+          "role": "researcher",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "researcher",
+          "activated_incoming": [
+            "e-triage-safety"
+          ],
+          "started_at": "2026-07-25T07:27:53.109Z",
+          "completed_at": "2026-07-25T07:27:53.120Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "research"
+            },
+            "summary": "Completed research-safety",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "6e0c3f538025c4b71bb8145eee41a0cf20899236df63b22825fb3a4753a98703",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 3,
+              "from": "research-safety",
+              "to": "plan",
+              "edge_id": "e-safety-plan",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.120Z"
+            }
+          ]
+        },
+        {
+          "node_id": "plan",
+          "title": "Design TUI architecture and acceptance contract",
+          "kind": "plan",
+          "role": "planner",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "planner",
+          "activated_incoming": [
+            "e-runtime-plan",
+            "e-safety-plan",
+            "e-ux-plan"
+          ],
+          "started_at": "2026-07-25T07:27:53.176Z",
+          "completed_at": "2026-07-25T07:27:53.187Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "plan"
+            },
+            "summary": "Completed plan",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "12f24dcebe6b179b8bedeb46c031a211f60cfd9fae34af3e5b9e779b8b41b064",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 5,
+              "from": "plan",
+              "to": "develop-model",
+              "edge_id": "e-plan-model",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.187Z"
+            }
+          ]
+        },
+        {
+          "node_id": "develop-model",
+          "title": "Implement verified run discovery, node selection, and operator view model",
+          "kind": "develop",
+          "role": "developer",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "developer",
+          "activated_incoming": [
+            "e-plan-model"
+          ],
+          "started_at": "2026-07-25T07:27:53.199Z",
+          "completed_at": "2026-07-25T07:27:53.209Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "develop"
+            },
+            "summary": "Completed develop-model",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "d10784615611348dc10190858cd13eb704eb610fdbba7ecfc2e23b707adb6907",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 6,
+              "from": "develop-model",
+              "to": "develop-renderer",
+              "edge_id": "e-model-renderer",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.209Z"
+            }
+          ]
+        },
+        {
+          "node_id": "develop-renderer",
+          "title": "Implement responsive wide, narrow, and snapshot terminal renderer",
+          "kind": "develop",
+          "role": "developer",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "developer",
+          "activated_incoming": [
+            "e-model-renderer"
+          ],
+          "started_at": "2026-07-25T07:27:53.223Z",
+          "completed_at": "2026-07-25T07:27:53.236Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "develop"
+            },
+            "summary": "Completed develop-renderer",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "ac2de767fa5f2b047932fb4ee967d7104d255b3f3066c0036e7e22372f67dadf",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 7,
+              "from": "develop-renderer",
+              "to": "develop-controller",
+              "edge_id": "e-renderer-controller",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.236Z"
+            }
+          ]
+        },
+        {
+          "node_id": "develop-controller",
+          "title": "Implement navigation, debugger, approval, denial, and abort controls",
+          "kind": "develop",
+          "role": "developer",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "developer",
+          "activated_incoming": [
+            "e-renderer-controller"
+          ],
+          "started_at": "2026-07-25T07:27:53.249Z",
+          "completed_at": "2026-07-25T07:27:53.259Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "develop"
+            },
+            "summary": "Completed develop-controller",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "c42cf3ce16188e6a7e2deef85211d55d2003feccea2bfc8d4e3458ae24e194d6",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 8,
+              "from": "develop-controller",
+              "to": "verify-functional",
+              "edge_id": "e-controller-functional",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.259Z"
+            }
+          ]
+        },
+        {
+          "node_id": "verify-functional",
+          "title": "Verify rendering, selection, debugger actions, approvals, abort, and snapshot mode",
+          "kind": "verify",
+          "role": "verifier",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "verifier",
+          "activated_incoming": [
+            "e-controller-functional"
+          ],
+          "started_at": "2026-07-25T07:27:53.276Z",
+          "completed_at": "2026-07-25T07:27:53.293Z",
+          "output": {
+            "verification": {
+              "passed": true,
+              "checks": [
+                "mock-contract"
+              ]
+            },
+            "result": {
+              "mock": true
+            },
+            "summary": "Verified verify-functional",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "a19b612e607427898ddf336ddb4210d17bb7b80cabf2104fa81369e05ea62ccb",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 9,
+              "from": "verify-functional",
+              "to": "verify-adversarial",
+              "edge_id": "e-functional-adversarial",
+              "condition": {
+                "type": "verification",
+                "value": "passed"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": "passed",
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.293Z"
+            }
+          ]
+        },
+        {
+          "node_id": "verify-adversarial",
+          "title": "Adversarially verify corrupt state, terminal injection, confirmation bypass, and cleanup",
+          "kind": "verify",
+          "role": "verifier",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "verifier",
+          "activated_incoming": [
+            "e-functional-adversarial"
+          ],
+          "started_at": "2026-07-25T07:27:53.307Z",
+          "completed_at": "2026-07-25T07:27:53.323Z",
+          "output": {
+            "verification": {
+              "passed": true,
+              "checks": [
+                "mock-contract"
+              ]
+            },
+            "result": {
+              "mock": true
+            },
+            "summary": "Verified verify-adversarial",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "712914c6681d0a353c97de31302094806be92e0e41579e8e3ae34fef37fe6e3e",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 10,
+              "from": "verify-adversarial",
+              "to": "synthesize",
+              "edge_id": "e-adversarial-synthesize",
+              "condition": {
+                "type": "verification",
+                "value": "passed"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": "passed",
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.323Z"
+            }
+          ]
+        },
+        {
+          "node_id": "synthesize",
+          "title": "Synthesize verified TUI implementation and operations guide",
+          "kind": "synthesize",
+          "role": "synthesizer",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "synthesizer",
+          "activated_incoming": [
+            "e-adversarial-synthesize"
+          ],
+          "started_at": "2026-07-25T07:27:53.341Z",
+          "completed_at": "2026-07-25T07:27:53.352Z",
+          "output": {
+            "result": {
+              "mock": true,
+              "kind": "synthesize"
+            },
+            "summary": "Completed synthesize",
+            "artifacts": [],
+            "usage": {},
+            "adapter": "mock",
+            "adapter_agent_id": "proofgraph.mock"
+          },
+          "output_sha256": "4fdd1e7d70bf8ff0299fc2b03cb743aa3d4d42844495d3a148df13eac9a93194",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": [
+            {
+              "step": 11,
+              "from": "synthesize",
+              "to": "terminal-success",
+              "edge_id": "e-synthesize-success",
+              "condition": {
+                "type": "outcome",
+                "value": "success"
+              },
+              "context": {
+                "outcome": "success",
+                "route": null,
+                "approval": null,
+                "verification": null,
+                "failure_type": null
+              },
+              "at": "2026-07-25T07:27:53.352Z"
+            }
+          ]
+        },
+        {
+          "node_id": "terminal-success",
+          "title": "AI Agent TUI completed",
+          "kind": "terminal",
+          "role": "system",
+          "risk": "low",
+          "status": "succeeded",
+          "attempts": 1,
+          "visits": 1,
+          "actor": "system",
+          "activated_incoming": [
+            "e-synthesize-success"
+          ],
+          "started_at": "2026-07-25T07:27:53.352Z",
+          "completed_at": "2026-07-25T07:27:53.352Z",
+          "output": {
+            "terminal_status": "success"
+          },
+          "output_sha256": "da748561b61eb5c95a5259a6b86daead3c46525a28ca2d656106ec0ca27c04b9",
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": []
+        },
+        {
+          "node_id": "terminal-partial",
+          "title": "AI Agent TUI partially completed",
+          "kind": "terminal",
+          "role": "system",
+          "risk": "low",
+          "status": "pending",
+          "attempts": 0,
+          "visits": 0,
+          "actor": null,
+          "activated_incoming": [],
+          "started_at": null,
+          "completed_at": null,
+          "output": null,
+          "output_sha256": null,
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": []
+        },
+        {
+          "node_id": "terminal-failed",
+          "title": "AI Agent TUI failed",
+          "kind": "terminal",
+          "role": "system",
+          "risk": "low",
+          "status": "pending",
+          "attempts": 0,
+          "visits": 0,
+          "actor": null,
+          "activated_incoming": [],
+          "started_at": null,
+          "completed_at": null,
+          "output": null,
+          "output_sha256": null,
+          "failure": null,
+          "failure_sha256": null,
+          "approval_id": null,
+          "route_history": []
+        }
+      ],
+      "failures": [],
+      "approvals": [],
+      "route_history": [
+        {
+          "step": 1,
+          "from": "triage",
+          "to": "research-runtime",
+          "edge_id": "e-triage-runtime",
+          "condition": {
+            "type": "route",
+            "value": "research"
+          },
+          "context": {
+            "outcome": "success",
+            "route": "research",
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.032Z"
+        },
+        {
+          "step": 1,
+          "from": "triage",
+          "to": "research-safety",
+          "edge_id": "e-triage-safety",
+          "condition": {
+            "type": "route",
+            "value": "research"
+          },
+          "context": {
+            "outcome": "success",
+            "route": "research",
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.032Z"
+        },
+        {
+          "step": 1,
+          "from": "triage",
+          "to": "research-ux",
+          "edge_id": "e-triage-ux",
+          "condition": {
+            "type": "route",
+            "value": "research"
+          },
+          "context": {
+            "outcome": "success",
+            "route": "research",
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.032Z"
+        },
+        {
+          "step": 2,
+          "from": "research-runtime",
+          "to": "plan",
+          "edge_id": "e-runtime-plan",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.087Z"
+        },
+        {
+          "step": 3,
+          "from": "research-safety",
+          "to": "plan",
+          "edge_id": "e-safety-plan",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.120Z"
+        },
+        {
+          "step": 4,
+          "from": "research-ux",
+          "to": "plan",
+          "edge_id": "e-ux-plan",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.166Z"
+        },
+        {
+          "step": 5,
+          "from": "plan",
+          "to": "develop-model",
+          "edge_id": "e-plan-model",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.187Z"
+        },
+        {
+          "step": 6,
+          "from": "develop-model",
+          "to": "develop-renderer",
+          "edge_id": "e-model-renderer",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.209Z"
+        },
+        {
+          "step": 7,
+          "from": "develop-renderer",
+          "to": "develop-controller",
+          "edge_id": "e-renderer-controller",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.236Z"
+        },
+        {
+          "step": 8,
+          "from": "develop-controller",
+          "to": "verify-functional",
+          "edge_id": "e-controller-functional",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.259Z"
+        },
+        {
+          "step": 9,
+          "from": "verify-functional",
+          "to": "verify-adversarial",
+          "edge_id": "e-functional-adversarial",
+          "condition": {
+            "type": "verification",
+            "value": "passed"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": "passed",
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.293Z"
+        },
+        {
+          "step": 10,
+          "from": "verify-adversarial",
+          "to": "synthesize",
+          "edge_id": "e-adversarial-synthesize",
+          "condition": {
+            "type": "verification",
+            "value": "passed"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": "passed",
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.323Z"
+        },
+        {
+          "step": 11,
+          "from": "synthesize",
+          "to": "terminal-success",
+          "edge_id": "e-synthesize-success",
+          "condition": {
+            "type": "outcome",
+            "value": "success"
+          },
+          "context": {
+            "outcome": "success",
+            "route": null,
+            "approval": null,
+            "verification": null,
+            "failure_type": null
+          },
+          "at": "2026-07-25T07:27:53.352Z"
+        }
+      ],
+      "dynamic_expansions": [],
+      "limitations": [
+        "Agent roles are declared identities supplied by adapters, not cryptographically independent principals.",
+        "Git worktrees isolate files but do not provide network or kernel isolation; use an external sandbox for untrusted commands.",
+        "Vendor adapters require tool-specific live canaries before production use.",
+        "Heuristic complexity and risk scores are routing inputs, not objective ground truth."
+      ],
+      "report_json_sha256": "b5bb31cb3eccc71b968f7734bb4a535222fa3d1fef7ef774f450f0389f25f0f0",
+      "report_markdown_sha256": "3d9ea92ce0c324cd2fcb90ca2341a791346c4b3016a928450e7d3a60fbfda9e6"
+    }
+  },
+  "integrity": {
+    "ok": true,
+    "run_id": "pg_acaba997d516ff457410ac6e",
+    "checks": [
+      {
+        "check": "event_chain",
+        "ok": true,
+        "details": {
+          "ok": true,
+          "errors": [],
+          "event_count": 109,
+          "head_hash": "a77a2bb6ce6df607c240fbf4779dea40a9cd98530c7774c842fa6f549d5cddc6"
+        }
+      },
+      {
+        "check": "graph_spec",
+        "ok": true,
+        "expected": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+        "actual": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8"
+      },
+      {
+        "check": "node:triage",
+        "ok": true
+      },
+      {
+        "check": "node:research-runtime",
+        "ok": true
+      },
+      {
+        "check": "node:research-ux",
+        "ok": true
+      },
+      {
+        "check": "node:research-safety",
+        "ok": true
+      },
+      {
+        "check": "node:plan",
+        "ok": true
+      },
+      {
+        "check": "node:develop-model",
+        "ok": true
+      },
+      {
+        "check": "node:develop-renderer",
+        "ok": true
+      },
+      {
+        "check": "node:develop-controller",
+        "ok": true
+      },
+      {
+        "check": "node:verify-functional",
+        "ok": true
+      },
+      {
+        "check": "node:verify-adversarial",
+        "ok": true
+      },
+      {
+        "check": "node:synthesize",
+        "ok": true
+      },
+      {
+        "check": "node:terminal-success",
+        "ok": true
+      },
+      {
+        "check": "node:terminal-partial",
+        "ok": true
+      },
+      {
+        "check": "node:terminal-failed",
+        "ok": true
+      },
+      {
+        "check": "report_markdown",
+        "ok": true
+      },
+      {
+        "check": "report_json",
+        "ok": true
+      }
+    ],
+    "failed_checks": [],
+    "event_head": {
+      "seq": 109,
+      "hash": "a77a2bb6ce6df607c240fbf4779dea40a9cd98530c7774c842fa6f549d5cddc6"
+    },
+    "warning": "Local hashes are not an external signature, human-identity attestation, or notarization."
+  }
+}

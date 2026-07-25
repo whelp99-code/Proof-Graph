@@ -1,0 +1,86 @@
+{
+  "product": "proofgraph",
+  "check": "opencode-pi-live-preflight",
+  "generated_at": "2026-07-25T10:54:44.627Z",
+  "contract_targets": {
+    "opencode": {
+      "cli_version": "1.18.4",
+      "plugin_version": "1.18.4",
+      "node_minimum": "20.0.0",
+      "dependency": {
+        "name": "@opencode-ai/plugin",
+        "version": "1.18.4"
+      }
+    },
+    "pi": {
+      "cli_version": "0.82.0",
+      "node_minimum": "22.19.0",
+      "peer_dependencies": {
+        "@earendil-works/pi-coding-agent": "*",
+        "typebox": "*"
+      }
+    }
+  },
+  "passed": 2,
+  "failed": 0,
+  "skipped": 4,
+  "total": 6,
+  "live_canary_required": true,
+  "checks": [
+    {
+      "installed": false,
+      "skipped": true,
+      "reason": "opencode is not installed",
+      "name": "opencode_cli",
+      "host": "opencode",
+      "executable": "opencode",
+      "contract_target_version": "1.18.4",
+      "version_matches_contract_target": null,
+      "ok": true
+    },
+    {
+      "installed": false,
+      "skipped": true,
+      "reason": "pi is not installed",
+      "name": "pi_cli",
+      "host": "pi",
+      "executable": "pi",
+      "contract_target_version": "0.82.0",
+      "version_matches_contract_target": null,
+      "ok": true
+    },
+    {
+      "name": "pi_node_runtime",
+      "host": "pi",
+      "ok": true,
+      "skipped": true,
+      "reason": "Pi is not installed; Pi-specific Node runtime gate was not exercised",
+      "actual": "22.16.0",
+      "required": "22.19.0"
+    },
+    {
+      "name": "host_integration_sources",
+      "ok": true,
+      "missing": []
+    },
+    {
+      "name": "host_contract_manifests",
+      "ok": true,
+      "opencode_dependency": "1.18.4",
+      "opencode_target": {
+        "opencode": "1.18.4",
+        "plugin": "1.18.4"
+      },
+      "pi_target": {
+        "pi": "0.82.0"
+      },
+      "pi_node": ">=22.19.0"
+    },
+    {
+      "name": "opencode_server_health",
+      "ok": true,
+      "skipped": true,
+      "reason": "OPENCODE_SERVER_URL is not configured"
+    }
+  ]
+}

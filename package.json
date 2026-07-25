@@ -1,9 +1,9 @@
 {
-  "name": "proofgraph-claude",
-  "version": "0.2.0",
+  "name": "proofgraph",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "Claude Code-only evidence-gated research plugin with a local MCP server and deterministic hooks.",
+  "description": "The Graph Engineering runtime for AI coding tools, with first-class OpenCode and Pi reference-host integrations.",
   "engines": {
     "node": ">=20"
   },
@@ -12,10 +12,42 @@
     "test:unit": "node --test --test-reporter=spec tests/unit/*.test.mjs",
     "test:integration": "node --test --test-reporter=spec tests/integration/*.test.mjs",
     "test:adversarial": "node --test --test-reporter=spec tests/adversarial/*.test.mjs",
+    "test:graph": "node --test --test-reporter=spec tests/unit/graph-*.test.mjs tests/integration/graph-*.test.mjs tests/adversarial/graph-*.test.mjs",
     "preflight": "node scripts/preflight.mjs",
-    "verify:independent": "node verification/independent_verifier.mjs",
+    "verify:independent": "node verification/independent_verifier.mjs --output verification/tmp/independent_results.json",
+    "verify:graph": "node verification/graph_independent_verifier.mjs --output verification/tmp/graph_independent_results.json",
     "verify:package": "node scripts/verify-package.mjs",
-    "release:verify": "npm test && node scripts/preflight.mjs --output verification/preflight_results.json && node verification/independent_verifier.mjs --output verification/independent_results.json"
+    "release:verify": "node --test --test-reporter=spec tests/**/*.test.mjs && node scripts/preflight.mjs --output verification/tmp/preflight_results.json && node verification/platform_independent_verifier.mjs --output verification/tmp/platform_independent_results.json && node verification/tui_independent_verifier.mjs --output verification/tmp/tui_independent_results.json && node verification/independent_verifier.mjs --output verification/tmp/independent_results.json && node verification/graph_independent_verifier.mjs --output verification/tmp/graph_independent_results.json && node verification/orca_independent_verifier.mjs --output verification/tmp/orca_independent_results.json && node scripts/hosts-live-preflight.mjs --output verification/tmp/hosts_live_preflight.json && node verification/hosts_independent_verifier.mjs --output verification/tmp/hosts_independent_results.json && node scripts/package-hosts.mjs && node scripts/verify-package.mjs",
+    "test:platform": "node --test --test-reporter=spec tests/platform/*.test.mjs",
+    "test:debugger": "node --test --test-reporter=spec tests/platform/debugger.test.mjs tests/platform/inspector.test.mjs",
+    "verify:platform": "node verification/platform_independent_verifier.mjs --output verification/tmp/platform_independent_results.json",
+    "canary": "node scripts/canary.mjs",
+    "verify:tui": "node verification/tui_independent_verifier.mjs --output verification/tmp/tui_independent_results.json",
+    "test:orca": "node --test --test-reporter=spec tests/platform/orca-host.test.mjs tests/platform/orca-live-preflight.test.mjs tests/adversarial/orca-host-adversarial.test.mjs",
+    "verify:orca": "node verification/orca_independent_verifier.mjs --output verification/tmp/orca_independent_results.json",
+    "orca:preflight": "node scripts/orca-live-preflight.mjs",
+    "test:hosts": "node --test --test-reporter=spec tests/platform/host-*.test.mjs tests/platform/opencode-host.test.mjs tests/platform/pi-rpc-host.test.mjs tests/integration/host-bridge-e2e.test.mjs tests/adversarial/host-integrations-adversarial.test.mjs",
+    "verify:hosts": "node verification/hosts_independent_verifier.mjs --output verification/tmp/hosts_independent_results.json",
+    "hosts:preflight": "node scripts/hosts-live-preflight.mjs --output verification/tmp/hosts_live_preflight.json",
+    "package:hosts": "node scripts/package-hosts.mjs"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bin": {
+    "proofgraph": "./bin/proofgraph.mjs",
+    "proofgraph-mcp": "./runtime/mcp/server.mjs"
+  },
+  "exports": {
+    ".": "./runtime/platform.mjs",
+    "./adapters": "./runtime/adapters/profiles.mjs",
+    "./contracts": "./runtime/contracts.mjs",
+    "./mcp": "./runtime/mcp/session.mjs",
+    "./templates": "./runtime/templates/registry.mjs",
+    "./workspace": "./runtime/workspace/engine.mjs",
+    "./debugger": "./runtime/debugger/controller.mjs",
+    "./tui": "./runtime/tui/app.mjs",
+    "./hosts": "./runtime/hosts/index.mjs",
+    "./integrations/opencode": "./integrations/opencode/core.mjs",
+    "./integrations/pi": "./integrations/pi/core.mjs",
+    "./host-protocol": "./runtime/hosts/protocol.mjs"
+  }
 }

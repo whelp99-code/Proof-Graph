@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "default_adapter": "mock",
+  "data_dir": ".proofgraph",
+  "routing": {
+    "direct": "pi",
+    "researcher": "pi",
+    "planner": "pi",
+    "developer": "pi",
+    "verifier": "pi",
+    "synthesizer": "pi"
+  },
+  "workspace": {
+    "enabled": false,
+    "require_approval": true,
+    "require_clean": true,
+    "allowed_commands": [
+      "npm",
+      "node",
+      "python",
+      "python3",
+      "pytest",
+      "cargo",
+      "go"
+    ]
+  },
+  "debugger": {
+    "enabled": true,
+    "event_poll_ms": 250
+  },
+  "adapters": {
+    "pi": {
+      "enabled": false,
+      "command": "pi",
+      "allow_host_tools": false,
+      "disable_discovery": true,
+      "ui_policy": "deny"
+    }
+  },
+  "templates": {}
+}

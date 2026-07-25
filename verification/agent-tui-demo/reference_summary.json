@@ -1,0 +1,63 @@
+{
+  "natural": {
+    "template": "agent-tui",
+    "selection": "auto",
+    "matched_keyword": "ai에인전트 tui",
+    "digest": "4e943669520e4bd5d538ca7a62da0acf4657c5df7050acbd56acfc8fa6c72821",
+    "node_count": 15,
+    "edge_count": 58,
+    "terminal_count": 3,
+    "cycle_count": 1,
+    "cycles": [
+      [
+        "research-06",
+        "research-05",
+        "research-04",
+        "research-03",
+        "research-02",
+        "verify",
+        "develop",
+        "plan",
+        "research-01",
+        "human-gate"
+      ]
+    ],
+    "dynamic_node_count": 6,
+    "initial_status": "waiting_approval",
+    "run_id": "pg_4ff04e488efd0c1572a5e323",
+    "approval_id": "approval_c1d196a854e99bdd75be0b0f",
+    "decision": "approved",
+    "post_decision_status": "active",
+    "final_status": "finalized",
+    "terminal_status": "success",
+    "quality_gate_passed": true,
+    "integrity_ok": true
+  },
+  "explicit": {
+    "graph_id": "graph_ai_agent_tui_v1",
+    "digest": "c7af6302f9bf478785a96b5d70c7a215c212cb417b30448f2cc283ef833480c8",
+    "node_count": 14,
+    "edge_count": 38,
+    "terminal_count": 3,
+    "cycle_count": 1,
+    "cycles": [
+      [
+        "research-safety",
+        "research-ux",
+        "verify-adversarial",
+        "verify-functional",
+        "develop-controller",
+        "develop-renderer",
+        "develop-model",
+        "plan",
+        "research-runtime"
+      ]
+    ],
+    "dynamic_node_count": 3,
+    "run_id": "pg_acaba997d516ff457410ac6e",
+    "status": "finalized",
+    "terminal_status": "success",
+    "quality_gate_passed": true,
+    "integrity_ok": true
+  }
+}

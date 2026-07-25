@@ -1,35 +1,15 @@
-# 알려진 제한과 다음 게이트
+# ProofGraph v1.0 알려진 제한
 
-## 현재 남아 있는 핵심 제한
+- 실제 Claude/Codex/OpenCode/GJC/Grok/Pi 인증 호출은 이 빌드 환경에서 수행하지 않았다.
+- 공급자별 structured output envelope은 버전 변화에 따라 Adapter 수정이 필요할 수 있다.
+- Codex JSON 플래그와 event envelope은 설치 버전에 따라 달라질 수 있으므로 `adapters.codex.output_args`와 live canary가 필요하다.
+- GJC 기본 통합은 SDK v3 WebSocket bridge 구현체를 번들하지 않으며, pinned bridge 또는 명시적 command profile이 필요하다.
+- Git worktree는 네트워크·커널 sandbox가 아니다.
+- 승인 challenge는 승인자의 실제 인간 신원을 암호학적으로 증명하지 않는다.
+- Agent 역할은 기본적으로 논리적 신원이다.
+- heuristic complexity/risk 값은 라우팅 입력이지 객관적 측정치가 아니다.
+- 범용 MCP의 `run`은 동기 요청이므로 매우 긴 작업은 host timeout 정책과 조정해야 한다.
+- 분산 worker, durable queue, 조직 RBAC, signed graph registry는 v1.0 범위 밖이다.
+- npm registry에 게시된 패키지가 아니라 소스 릴리스다.
 
-1. **실제 Claude Code 실기 미검증**: 현재 검증 환경에는 `claude` CLI와 인증 세션이 없어, 플러그인 host load와 실제 WebSearch 호출을 끝까지 실행하지 못했다.
-2. **역할 신원 self-attestation**: Subagent 컨텍스트는 분리되지만 verifier 역할을 암호학적으로 증명하지 않는다.
-3. **출처 독립성 근사**: 서로 다른 hostname을 독립 출처로 계산한다. 동일 소유자·재배포·미러를 식별하지 않는다.
-4. **인용 존재와 의미 지지의 차이**: exact quote 검사는 문장이 원문에 존재하는지만 확인한다. 인용이 해당 주장을 실제로 함의하는지, 문맥이 왜곡되지 않았는지는 verifier와 사람 검토가 판단해야 한다.
-5. **Token·비용 하드 리밋 부재**: MCP 호출·source fetch·Agent 수·벽시계는 제한하지만 Claude 계정 청구액을 직접 중단하지 않는다.
-6. **웹 렌더링 범위**: JavaScript 실행이 필요한 페이지, 로그인 페이지, 봇 차단 사이트는 수집하지 못할 수 있다.
-7. **로컬 단일 사용자**: 멀티테넌트 RBAC·원격 worker·중앙 서버는 포함하지 않는다.
-8. **외부 공증 부재**: 로컬 파일을 함께 조작한 공격자가 새 hash 체인을 만들 수 있다. 배포 manifest의 외부 보관이 필요하다.
-
-## Claude 실기 canary 통과 조건
-
-최소 20개 과제를 실행한다.
-
-- 알려진 참 10건
-- 알려진 거짓 5건
-- 고의로 애매하거나 근거 부족한 주장 5건
-
-통과 조건:
-
-```text
-플러그인 strict validation PASS
-MCP 연결 성공률 100%
-명시적 finalize 또는 abort 100%
-금지 도구 실제 실행 0건
-조작 인용 승격 0건
-근거 부족 주장 supported 승격 0건
-실제 출처 URL·인용 일치율 100%
-Hook/MCP 비정상 종료 0건
-```
-
-이 gate 전에는 로컬 canary만 허용하고 조직 전체 기본 플러그인으로 배포하지 않는다.
+릴리스 게이트는 `PASS_OFFLINE_VENDOR_CANARY_REQUIRED`이다. 공급자별 canary 전에는 해당 Adapter를 production-ready로 표시하지 않는다.

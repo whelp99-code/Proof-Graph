@@ -1,72 +1,140 @@
 {
   "schema_version": 1,
-  "product": "proofgraph-claude",
-  "version": "0.2.0",
-  "release_decision": "PASS_OFFLINE_CANARY_REQUIRED",
-  "scope": "Claude Code-only read-only research plugin with bundled local stdio MCP and deterministic hooks",
-  "environment": {
-    "node": "v22.16.0",
-    "platform": "linux-x64",
-    "claude_cli_available": false,
-    "external_network_canary": "NOT_RUN_IN_VERIFICATION_ENVIRONMENT"
-  },
+  "product": "proofgraph",
+  "version": "1.1.0",
+  "release_decision": "PASS_OFFLINE_OPENCODE_PI_CANARY_REQUIRED",
+  "scope": "Graph Engineering runtime with first-class OpenCode and Pi reference hosts",
   "automated_tests": {
-    "unit": {
-      "total": 26,
-      "passed": 26,
-      "failed": 0
-    },
-    "integration": {
-      "total": 13,
-      "passed": 13,
-      "failed": 0
-    },
-    "adversarial": {
-      "total": 21,
-      "passed": 21,
-      "failed": 0,
-      "documented_residuals": 1
-    },
-    "all": {
-      "total": 60,
-      "passed": 60,
-      "failed": 0
-    }
+    "total": 232,
+    "passed": 232,
+    "failed": 0,
+    "skipped": 0
+  },
+  "adversarial_tests": {
+    "total": 60,
+    "passed": 60,
+    "failed": 0,
+    "skipped": 0
+  },
+  "host_contract_tests": {
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "skipped": 0
   },
   "coverage_percent": {
-    "line": 89.51,
-    "branch": 77.03,
-    "functions": 92.63
-  },
-  "independent_black_box": {
-    "total": 18,
-    "passed": 18,
-    "failed": 0,
-    "production_modules_imported": false,
-    "residuals_confirmed": 1,
-    "release_gate": "PASS_OFFLINE_CANARY_REQUIRED"
+    "line_percent": 92.11,
+    "branch_percent": 74.82,
+    "function_percent": 88.94,
+    "measurement_note": "Final full-suite Node.js experimental coverage run after managed-install hardening and Pi agent_settled completion enforcement."
   },
   "preflight": {
-    "checks": 15,
-    "reported_passed": 15,
+    "passed": 27,
     "failed": 0,
-    "skipped": [
+    "skipped": 1,
+    "total": 28,
+    "skipped_checks": [
       "claude_cli_plugin_validation"
-    ],
-    "substantive_executed_passed": 14
+    ]
   },
-  "production_mcp_tool_count": 14,
-  "runtime_npm_dependencies": 0,
-  "known_residuals": [
-    "Verifier actor identity is a server-enforced declared role, not a cryptographically attested identity.",
-    "Exact quote matching proves text presence, not semantic entailment or context correctness.",
-    "Distinct hostnames are only a proxy for editorial independence.",
-    "Claude token usage and account billing are not hard-limited by the plugin.",
-    "Actual Claude Code host loading, live WebSearch, and live public HTTPS source retrieval require the user-environment canary."
+  "host_live_preflight": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 4,
+    "total": 6,
+    "skipped_checks": [
+      "opencode_cli",
+      "pi_cli",
+      "pi_node_runtime",
+      "opencode_server_health"
+    ]
+  },
+  "independent_black_box": {
+    "evidence_engine": {
+      "passed": 18,
+      "total": 18,
+      "failed": 0,
+      "residuals": 1
+    },
+    "graph_engine": {
+      "passed": 14,
+      "total": 14,
+      "failed": 0,
+      "residuals": 1
+    },
+    "platform": {
+      "passed": 10,
+      "total": 10,
+      "failed": 0,
+      "residuals": 1
+    },
+    "ai_agent_tui": {
+      "passed": 7,
+      "total": 7,
+      "failed": 0,
+      "residuals": 0
+    },
+    "orca_bridge": {
+      "passed": 13,
+      "total": 13,
+      "failed": 0,
+      "residuals": 5
+    },
+    "opencode_pi_hosts": {
+      "passed": 12,
+      "total": 12,
+      "failed": 0,
+      "residuals": 1
+    },
+    "total": {
+      "passed": 74,
+      "total": 74,
+      "failed": 0,
+      "residuals": 9
+    }
+  },
+  "host_priority": [
+    "opencode",
+    "pi",
+    "orca"
   ],
-  "go_no_go": {
-    "offline_mvp": "GO",
-    "local_read_only_claude_canary": "GO",
-    "unattended_or_org_wide_deployment": "NO_GO_UNTIL_20_CASE_CANARY"
-  }
+  "host_protocol": "proofgraph.host.v1",
+  "canaries": {
+    "mock": "CANARY_PASS",
+    "opencode": "NOT_RUN",
+    "pi": "NOT_RUN",
+    "orca": "NOT_RUN",
+    "claude": "NOT_RUN",
+    "codex": "NOT_RUN",
+    "gajae_code": "NOT_RUN",
+    "grok": "NOT_RUN"
+  },
+  "claims_not_made": [
+    "No real OpenCode or Pi binary, authenticated model, or permission UI was exercised in this build environment.",
+    "Offline fake-host verification does not prove compatibility with an unpinned future host version.",
+    "No unattended workspace mutation, push, merge, PR, deployment, or production database action is approved."
+  ],
+  "known_residuals": [
+    "Host extensions run with the OS permissions of the user account; ProofGraph policy is not kernel isolation.",
+    "Git worktrees isolate files, not network or operating-system resources.",
+    "Human identity inside one host remains self-attested rather than cryptographically attested.",
+    "OpenCode and Pi interfaces require version-pinned live canaries before production certification.",
+    "OpenCode pure_worker_confirmed is an operator attestation until a pinned live canary verifies the dedicated --pure worker server."
+  ],
+  "host_contract_targets": {
+    "opencode": {
+      "cli_server": "1.18.4",
+      "plugin": "1.18.4"
+    },
+    "pi": {
+      "cli": "0.82.0",
+      "node_minimum": "22.19.0"
+    }
+  },
+  "defects_found_and_fixed": [
+    "OpenCode managed installation did not materialize the local plugin dependency in the config-root package manifest.",
+    "Host live preflight calculated an exact-version failure but overwrote it with the subprocess success flag.",
+    "Pi RPC previously allowed agent_end to become success before the documented agent_settled signal; completion now requires agent_settled and early exit fails closed.",
+    "The initial OpenCode target followed an unreleased development manifest; the release now pins the publicly installable stable CLI/server 1.18.4 and rejects unreviewed 1.18.5."
+  ]
 }

@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "run_id": "pg_4ff04e488efd0c1572a5e323",
+  "status": "waiting_approval",
+  "pending_approvals": [
+    {
+      "approval_id": "approval_c1d196a854e99bdd75be0b0f",
+      "node_id": "human-gate",
+      "risk": "medium",
+      "reason": "High-risk, sensitive, externally acting, or irreversible work requires explicit approval.",
+      "requested_at": "2026-07-25T07:27:51.838Z",
+      "challenge": "confirm_3a69f45aedee76b27387fc3a",
+      "warning": "The challenge binds the decision to this local run but does not cryptographically prove human identity."
+    }
+  ]
+}
