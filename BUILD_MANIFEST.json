@@ -2,8 +2,8 @@
   "schema_version": 1,
   "product": "proofgraph",
   "version": "1.1.0",
-  "generated_at": "2026-07-25T10:55:02.173Z",
-  "file_count": 243,
+  "generated_at": "2026-07-25T14:27:44.291Z",
+  "file_count": 250,
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
@@ -24,6 +24,41 @@
       "path": ".mcp.json",
       "bytes": 407,
       "sha256": "e4415f939446b5f6662244e8c797e121fe9ab98db6f5bfc8e6c05b9905024703"
+    },
+    {
+      "path": ".opencode/commands/pg-report.md",
+      "bytes": 210,
+      "sha256": "125e0f5dbf889f5b968a8d2b59df7a24a89fcceb20cbfbe3a100d3fd38d560b2"
+    },
+    {
+      "path": ".opencode/commands/pg-status.md",
+      "bytes": 244,
+      "sha256": "f7c69f0ca93c8ffa370fde46444a3f15e6989e9c9536147c3bc46ede7abb470d"
+    },
+    {
+      "path": ".opencode/commands/pg.md",
+      "bytes": 368,
+      "sha256": "a3d799ced625f3b7992ae90e9cbf4d3c060e11ccfff6bc3418adfa99d7d0b803"
+    },
+    {
+      "path": ".opencode/package.json",
+      "bytes": 83,
+      "sha256": "4888ff1fd81e8c9ccfa9af1a3c8e1cdcf2076bbfeb58be5be61d4dd8d264724e"
+    },
+    {
+      "path": ".opencode/plugins/proofgraph.ts",
+      "bytes": 751,
+      "sha256": "b90aa414b4f32c28274fe0e02a28ab81b588a6f6cb37e577ca6f234b750fb7e0"
+    },
+    {
+      "path": ".opencode/proofgraph/bridge-client.mjs",
+      "bytes": 4798,
+      "sha256": "fab9fcd28bbe98558599e6c504d4712dc94bbde0437dc06996dee8045795f7fc"
+    },
+    {
+      "path": ".opencode/proofgraph/core.mjs",
+      "bytes": 8363,
+      "sha256": "43b903cf2ecde3d19fa148b0c3eeeb421ebbb9ff85a3012e20b9ddd0f146b73d"
     },
     {
       "path": "agents/graph-developer.md",
@@ -152,8 +187,8 @@
     },
     {
       "path": "docs/LIMITATIONS_KO.md",
-      "bytes": 1309,
-      "sha256": "e236159268f03d783d14981fb1163ddf2e76f68bf4006daffdec5d31cb006b26"
+      "bytes": 2503,
+      "sha256": "e6cbabb6635bafbeb32c37f999a1f87a7afe6be2e52f5cf3e001aea8b272236f"
     },
     {
       "path": "docs/OPENCODE_PI_INTEGRATION_KO.md",
@@ -357,13 +392,13 @@
     },
     {
       "path": "README_KO.md",
-      "bytes": 15259,
-      "sha256": "a02fe589f3eafb750d62744941868e65228236f0ae1ee99d187e04684b40cfdc"
+      "bytes": 15521,
+      "sha256": "53e69de82bf391b9180f870673948ed8bddff884d2f425b0625f9bec75cdc786"
     },
     {
       "path": "README.md",
-      "bytes": 11246,
-      "sha256": "0d84f99e5489f11bee8092b03f6c139b3ad5f602f442538d3059f81f7f17a887"
+      "bytes": 11540,
+      "sha256": "8008991a41aab9c68a3346fb1415a42a7ed4466e94cb9726f68a690474698c6a"
     },
     {
       "path": "ROADMAP_KO.md",
