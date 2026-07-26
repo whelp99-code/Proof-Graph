@@ -20,3 +20,4 @@ dist/
 
 # Generated host plugin installs
 .opencode/
+.pi/

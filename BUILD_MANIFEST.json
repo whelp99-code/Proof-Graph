@@ -2,7 +2,7 @@
   "schema_version": 1,
   "product": "proofgraph",
   "version": "1.1.0",
-  "generated_at": "2026-07-26T04:31:31.736Z",
+  "generated_at": "2026-07-26T04:48:40.390Z",
   "file_count": 244,
   "files": [
     {
@@ -17,8 +17,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 314,
-      "sha256": "83c95728dac4e65b474f79783f506b98053488b917d0c10afa2909a401ad1d23"
+      "bytes": 319,
+      "sha256": "6e0a0530d695cf57bd2b721bf188aa4c1ab9c2e74c3e8b077a47f4b013d6eda3"
     },
     {
       "path": ".mcp.json",
@@ -617,8 +617,8 @@
     },
     {
       "path": "scripts/verify-package.mjs",
-      "bytes": 4743,
-      "sha256": "26b76aac1e760edb125ec07ec163f477b5569057daa4216cab0120fe1afc1a01"
+      "bytes": 4751,
+      "sha256": "2d3de39e11e0826e93424163dcb61f3fab3ee7a57e0211d946498dbd7be0ef32"
     },
     {
       "path": "server/index.mjs",
