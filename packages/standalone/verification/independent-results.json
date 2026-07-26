@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "verifier": "independent-black-box",
+  "version": "5.0.0",
+  "production_module_imports": 0,
+  "total": 18,
+  "passed": 18,
+  "failed": 0,
+  "results": [
+    {
+      "name": "CLI version contract",
+      "passed": true,
+      "detail": {
+        "product": "proofgraph-standalone",
+        "version": "5.0.0",
+        "release_gate": "PASS_OFFLINE_LIVE_PROVIDER_AND_HOST_CANARY_REQUIRED"
+      }
+    },
+    {
+      "name": "CLI deterministic TaskSpec",
+      "passed": true,
+      "detail": {
+        "task_id": "task_0458fc3d842a75ef54be",
+        "digest": "6ff2edbcc7d7546bb31159a42f72c2df71ffdaf96046809113e6c3ddf1b0a2be"
+      }
+    },
+    {
+      "name": "CLI Organization independence",
+      "passed": true,
+      "detail": {
+        "organization_id": "org_b0519bcad6d6afe47e09",
+        "roles": 10
+      }
+    },
+    {
+      "name": "CLI full Mission success",
+      "passed": true,
+      "detail": {
+        "mission_id": "mission_f5af328051f45952edbb",
+        "artifacts": 2
+      }
+    },
+    {
+      "name": "CLI Mission report preserves unverified candidates",
+      "passed": true,
+      "detail": {
+        "candidates": 1,
+        "failures": 0
+      }
+    },
+    {
+      "name": "High-risk Mission stops at external approval",
+      "passed": true,
+      "detail": {
+        "mission_id": "mission_f0d9d5c647eca9be2efb",
+        "pending_approvals": 1
+      }
+    },
+    {
+      "name": "CLI external operator approval resumes and completes high-risk Mission",
+      "passed": true,
+      "detail": {
+        "mission_id": "mission_f0d9d5c647eca9be2efb",
+        "status": "completed",
+        "approval_status": "approved"
+      }
+    },
+    {
+      "name": "CLI external Delivery requires proposal-bound operator approval",
+      "passed": true,
+      "detail": {
+        "delivery_completed": true,
+        "approval_persisted": true
+      }
+    },
+    {
+      "name": "Runtime-generated approval secrets are private and not shipped constants",
+      "passed": true,
+      "detail": {
+        "files": 1
+      }
+    },
+    {
+      "name": "MCP tool surface excludes approval, abort, and policy apply",
+      "passed": true,
+      "detail": {
+        "count": 19,
+        "names": [
+          "pg2_compile_task",
+          "pg2_build_organization",
+          "pg2_compile_mission",
+          "pg2_create_mission",
+          "pg2_run_mission",
+          "pg2_mission_status",
+          "pg2_mission_report",
+          "pg2_create_os_run",
+          "pg2_run_os",
+          "pg2_os_report",
+          "pg4_intelligence_status",
+          "pg4_context",
+          "pg4_model_routes",
+          "pg4_model_observations",
+          "pg4_contracts",
+          "pg4_impact",
+          "pg4_memory",
+          "pg4_intelligence_verification",
+          "pg2_verify_integrity"
+        ]
+      }
+    },
+    {
+      "name": "MCP Task and Organization compilation",
+      "passed": true,
+      "detail": {
+        "task_id": "task_098e1d08f86de1ce49ad",
+        "organization_id": "org_6134bf5ef7b3c7fd4610"
+      }
+    },
+    {
+      "name": "MCP rejects arbitrary fields and unknown tools",
+      "passed": true,
+      "detail": {
+        "injected_error": "Error: Unknown tool arguments: arbitrary_graph",
+        "unknown_error": "Error: Unknown tool: pg2_apply_policy"
+      }
+    },
+    {
+      "name": "MCP persistent Mission and integrity",
+      "passed": true,
+      "detail": {
+        "mission_id": "mission_401cb96397d1caa1786a"
+      }
+    },
+    {
+      "name": "State tampering is detected through CLI",
+      "passed": true,
+      "detail": {
+        "mission_id": "mission_abfb17f26758783a11a6",
+        "detected": true
+      }
+    },
+    {
+      "name": "Event-chain tampering is detected through CLI",
+      "passed": true,
+      "detail": {
+        "mission_id": "mission_abfb17f26758783a11a6",
+        "detected": true
+      }
+    },
+    {
+      "name": "CLI Autonomous Organization OS bounded success",
+      "passed": true,
+      "detail": {
+        "os_run_id": "osrun_199efc81c02a988e2e41",
+        "cycle": 1
+      }
+    },
+    {
+      "name": "No production source module imported by verifier",
+      "passed": true,
+      "detail": {
+        "production_imports": 0
+      }
+    },
+    {
+      "name": "v1.1 integration manifest declares operator-only commands",
+      "passed": true,
+      "detail": {
+        "protocol": "proofgraph.host.v1"
+      }
+    }
+  ],
+  "digest": "4b546766ecb9aec74cef1bcae4b3039ca10afe07f89f982d5e96c11b31e6b93a"
+}

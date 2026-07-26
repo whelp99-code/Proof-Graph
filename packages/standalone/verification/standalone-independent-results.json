@@ -1,0 +1,3568 @@
+{
+  "schema_version": 1,
+  "version": "5.0.0",
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "name": "fake provider starts",
+      "passed": true,
+      "details": {
+        "port": 50232
+      }
+    },
+    {
+      "name": "daemon uses native local mode",
+      "passed": true,
+      "details": {
+        "ok": true,
+        "pid": 59479,
+        "execution_mode": "native_local",
+        "url": "http://127.0.0.1:50233",
+        "data_dir": "/var/folders/f0/tbqwy3mn7rj7vy2j7ts0gxhr0000gn/T/pg-v5-independent-BtEyi9",
+        "token_files": {
+          "operator": "/var/folders/f0/tbqwy3mn7rj7vy2j7ts0gxhr0000gn/T/pg-v5-independent-BtEyi9/.operator-api-token",
+          "host_ingest": "/var/folders/f0/tbqwy3mn7rj7vy2j7ts0gxhr0000gn/T/pg-v5-independent-BtEyi9/.host-ingest-token"
+        }
+      }
+    },
+    {
+      "name": "mission created",
+      "passed": true,
+      "details": {
+        "ok": true,
+        "run": {
+          "schema_version": 2,
+          "projection_version": 1,
+          "run_id": "mission_ff86f6010fbaf89f3e00",
+          "run_type": "mission",
+          "objective": "Implement and independently verify a bounded API",
+          "raw_status": "planned",
+          "status": "planned",
+          "quality_gate_passed": false,
+          "execution": {
+            "mode": "native_local",
+            "real_execution": true,
+            "simulation_promotion_allowed": false,
+            "model_invocations": 0,
+            "tool_invocations": 0
+          },
+          "completed_with_recovery": false,
+          "progress": {
+            "completed": 1,
+            "terminal": 1,
+            "total": 5,
+            "percent": 20
+          },
+          "current_node_ids": [],
+          "current_nodes": [],
+          "next_node_ids": [
+            "mission_ff86f6010fbaf89f3e00:work:plan"
+          ],
+          "graph": {
+            "nodes": [
+              {
+                "id": "mission_ff86f6010fbaf89f3e00:work:triage",
+                "stage_id": "triage",
+                "kind": "triage",
+                "label": "triage",
+                "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "status": "completed",
+                "attempts": 1,
+                "max_attempts": 1,
+                "failure": null,
+                "approval_required": false,
+                "progress": null,
+                "sequence": 1
+              },
+              {
+                "id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "stage_id": "plan",
+                "kind": "plan",
+                "label": "plan",
+                "role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "status": "pending",
+                "attempts": 0,
+                "max_attempts": 3,
+                "failure": null,
+                "approval_required": false,
+                "progress": null,
+                "sequence": 2
+              },
+              {
+                "id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "stage_id": "develop",
+                "kind": "develop",
+                "label": "develop",
+                "role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "status": "pending",
+                "attempts": 0,
+                "max_attempts": 4,
+                "failure": null,
+                "approval_required": false,
+                "progress": null,
+                "sequence": 3
+              },
+              {
+                "id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "stage_id": "verify",
+                "kind": "verify",
+                "label": "verify",
+                "role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "status": "pending",
+                "attempts": 0,
+                "max_attempts": 2,
+                "failure": null,
+                "approval_required": false,
+                "progress": null,
+                "sequence": 4
+              },
+              {
+                "id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "stage_id": "synthesize",
+                "kind": "synthesize",
+                "label": "synthesize",
+                "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "status": "pending",
+                "attempts": 0,
+                "max_attempts": 1,
+                "failure": null,
+                "approval_required": false,
+                "progress": null,
+                "sequence": 5
+              }
+            ],
+            "edges": [
+              {
+                "id": "dep:mission_ff86f6010fbaf89f3e00:work:triage->mission_ff86f6010fbaf89f3e00:work:plan",
+                "from": "mission_ff86f6010fbaf89f3e00:work:triage",
+                "to": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "kind": "dependency",
+                "active": false
+              },
+              {
+                "id": "dep:mission_ff86f6010fbaf89f3e00:work:plan->mission_ff86f6010fbaf89f3e00:work:develop",
+                "from": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "to": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "kind": "dependency",
+                "active": false
+              },
+              {
+                "id": "dep:mission_ff86f6010fbaf89f3e00:work:develop->mission_ff86f6010fbaf89f3e00:work:verify",
+                "from": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "to": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "kind": "dependency",
+                "active": false
+              },
+              {
+                "id": "dep:mission_ff86f6010fbaf89f3e00:work:verify->mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "from": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "to": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "kind": "dependency",
+                "active": false
+              }
+            ],
+            "active_node_ids": [],
+            "next_node_ids": [
+              "mission_ff86f6010fbaf89f3e00:work:plan"
+            ]
+          },
+          "organization": {
+            "organization_id": "org_1c7ad51b3c489f0d12ee",
+            "departments": [
+              {
+                "department_id": "org_1c7ad51b3c489f0d12ee:executive",
+                "type": "executive",
+                "name": "Executive Office",
+                "purpose": "Executive Office responsibilities for task task_63563c87298631a0d461",
+                "budget": {
+                  "calls": 3,
+                  "tokens": 13333,
+                  "cost_micros": 166666,
+                  "wall_time_ms": 100000
+                },
+                "capability_ceiling": [
+                  "artifact.read",
+                  "artifact.write",
+                  "budget.allocate",
+                  "delivery.propose",
+                  "organization.delegate",
+                  "organization.plan",
+                  "policy.propose",
+                  "proofgraph.control",
+                  "risk.review",
+                  "verification.execute",
+                  "web.research",
+                  "workspace.propose",
+                  "workspace.read"
+                ]
+              },
+              {
+                "department_id": "org_1c7ad51b3c489f0d12ee:product",
+                "type": "product",
+                "name": "Product and Planning",
+                "purpose": "Product and Planning responsibilities for task task_63563c87298631a0d461",
+                "budget": {
+                  "calls": 6,
+                  "tokens": 26666,
+                  "cost_micros": 333333,
+                  "wall_time_ms": 200000
+                },
+                "capability_ceiling": [
+                  "artifact.read",
+                  "artifact.write",
+                  "organization.plan",
+                  "proofgraph.control",
+                  "workspace.read"
+                ]
+              },
+              {
+                "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+                "type": "engineering",
+                "name": "Engineering Department",
+                "purpose": "Engineering Department responsibilities for task task_63563c87298631a0d461",
+                "budget": {
+                  "calls": 13,
+                  "tokens": 53333,
+                  "cost_micros": 666666,
+                  "wall_time_ms": 400000
+                },
+                "capability_ceiling": [
+                  "artifact.read",
+                  "artifact.write",
+                  "proofgraph.control",
+                  "workspace.propose",
+                  "workspace.read"
+                ]
+              },
+              {
+                "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+                "type": "quality",
+                "name": "Independent Quality Office",
+                "purpose": "Independent Quality Office responsibilities for task task_63563c87298631a0d461",
+                "budget": {
+                  "calls": 6,
+                  "tokens": 26666,
+                  "cost_micros": 333333,
+                  "wall_time_ms": 200000
+                },
+                "capability_ceiling": [
+                  "artifact.read",
+                  "artifact.write",
+                  "proofgraph.control",
+                  "verification.execute",
+                  "workspace.read"
+                ]
+              },
+              {
+                "department_id": "org_1c7ad51b3c489f0d12ee:external-governance",
+                "type": "executive",
+                "name": "External Governance",
+                "purpose": "External human authority; never model delegated.",
+                "budget": {
+                  "calls": 0,
+                  "tokens": 0,
+                  "cost_micros": 0,
+                  "wall_time_ms": 0
+                },
+                "capability_ceiling": [
+                  "approval.decide",
+                  "policy.apply",
+                  "run.abort"
+                ],
+                "external": true
+              }
+            ],
+            "teams": [
+              {
+                "team_id": "org_1c7ad51b3c489f0d12ee:product-team",
+                "department_id": "org_1c7ad51b3c489f0d12ee:product",
+                "name": "Planning",
+                "purpose": "Product and Planning responsibilities for task task_63563c87298631a0d461"
+              },
+              {
+                "team_id": "org_1c7ad51b3c489f0d12ee:engineering-team",
+                "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+                "name": "Implementation",
+                "purpose": "Engineering Department responsibilities for task task_63563c87298631a0d461"
+              },
+              {
+                "team_id": "org_1c7ad51b3c489f0d12ee:quality-team",
+                "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+                "name": "Independent Verification",
+                "purpose": "Independent Quality Office responsibilities for task task_63563c87298631a0d461"
+              }
+            ],
+            "roles": [
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "name": "Executive Manager",
+                "role_type": "executive",
+                "department_id": "org_1c7ad51b3c489f0d12ee:executive",
+                "team_id": null,
+                "manager_role_id": null,
+                "purpose": "Compile mission intent, allocate bounded work, reconcile results, and preserve governance.",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "budget.allocate",
+                  "delivery.propose",
+                  "organization.delegate",
+                  "organization.plan",
+                  "policy.propose",
+                  "proofgraph.control",
+                  "risk.review",
+                  "verification.execute",
+                  "web.research",
+                  "workspace.propose",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "budget.allocate",
+                  "delivery.propose",
+                  "organization.delegate",
+                  "organization.plan",
+                  "policy.propose",
+                  "proofgraph.control",
+                  "risk.review",
+                  "verification.execute",
+                  "web.research",
+                  "workspace.propose",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 30,
+                  "tokens": 120000,
+                  "cost_micros": 1500000,
+                  "wall_time_ms": 900000
+                },
+                "independence_group": "executive",
+                "can_delegate": true,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:product-lead",
+                "name": "Planning Lead",
+                "role_type": "manager",
+                "department_id": "org_1c7ad51b3c489f0d12ee:product",
+                "team_id": "org_1c7ad51b3c489f0d12ee:product-team",
+                "manager_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "purpose": "Lead Planning",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "organization.plan",
+                  "proofgraph.control",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "organization.plan",
+                  "proofgraph.control",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 6,
+                  "tokens": 26666,
+                  "cost_micros": 333333,
+                  "wall_time_ms": 200000
+                },
+                "independence_group": "planning",
+                "can_delegate": true,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "name": "Planner",
+                "role_type": "specialist",
+                "department_id": "org_1c7ad51b3c489f0d12ee:product",
+                "team_id": "org_1c7ad51b3c489f0d12ee:product-team",
+                "manager_role_id": "org_1c7ad51b3c489f0d12ee:product-lead",
+                "purpose": "Execute Planning work",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 4,
+                  "tokens": 19999,
+                  "cost_micros": 249999,
+                  "wall_time_ms": 150000
+                },
+                "independence_group": "planning",
+                "can_delegate": false,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:engineering-lead",
+                "name": "Engineering Lead",
+                "role_type": "manager",
+                "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+                "team_id": "org_1c7ad51b3c489f0d12ee:engineering-team",
+                "manager_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "purpose": "Lead Implementation",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "proofgraph.control",
+                  "workspace.propose",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "proofgraph.control",
+                  "workspace.propose",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 13,
+                  "tokens": 53333,
+                  "cost_micros": 666666,
+                  "wall_time_ms": 400000
+                },
+                "independence_group": "engineering",
+                "can_delegate": true,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "name": "Developer",
+                "role_type": "specialist",
+                "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+                "team_id": "org_1c7ad51b3c489f0d12ee:engineering-team",
+                "manager_role_id": "org_1c7ad51b3c489f0d12ee:engineering-lead",
+                "purpose": "Execute Implementation work",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "workspace.propose",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "workspace.propose",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 9,
+                  "tokens": 39999,
+                  "cost_micros": 499999,
+                  "wall_time_ms": 300000
+                },
+                "independence_group": "engineering",
+                "can_delegate": false,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "name": "Quality Lead",
+                "role_type": "verifier",
+                "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+                "team_id": "org_1c7ad51b3c489f0d12ee:quality-team",
+                "manager_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "purpose": "Lead Independent Verification",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "proofgraph.control",
+                  "verification.execute",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "proofgraph.control",
+                  "verification.execute",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 6,
+                  "tokens": 26666,
+                  "cost_micros": 333333,
+                  "wall_time_ms": 200000
+                },
+                "independence_group": "quality",
+                "can_delegate": true,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:quality-specialist",
+                "name": "Independent Verifier",
+                "role_type": "verifier",
+                "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+                "team_id": "org_1c7ad51b3c489f0d12ee:quality-team",
+                "manager_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "purpose": "Execute Independent Verification work",
+                "capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "verification.execute",
+                  "workspace.read"
+                ],
+                "delegable_capabilities": [
+                  "artifact.read",
+                  "artifact.write",
+                  "verification.execute",
+                  "workspace.read"
+                ],
+                "budget": {
+                  "calls": 4,
+                  "tokens": 19999,
+                  "cost_micros": 249999,
+                  "wall_time_ms": 150000
+                },
+                "independence_group": "quality",
+                "can_delegate": false,
+                "model_eligible": true
+              },
+              {
+                "role_id": "org_1c7ad51b3c489f0d12ee:human-approver",
+                "name": "External Human Approver",
+                "role_type": "human",
+                "department_id": "org_1c7ad51b3c489f0d12ee:external-governance",
+                "team_id": null,
+                "manager_role_id": null,
+                "purpose": "Approve or deny high-risk, irreversible, policy-changing, or external-effect actions.",
+                "capabilities": [
+                  "approval.decide",
+                  "policy.apply",
+                  "run.abort"
+                ],
+                "delegable_capabilities": [],
+                "budget": {
+                  "calls": 0,
+                  "tokens": 0,
+                  "cost_micros": 0,
+                  "wall_time_ms": 0
+                },
+                "independence_group": "human",
+                "can_delegate": false,
+                "model_eligible": false
+              }
+            ]
+          },
+          "loops": [],
+          "loop_summary": {
+            "total": 0,
+            "active": 0,
+            "exhausted": 0,
+            "current_iteration": 0
+          },
+          "failures": {
+            "historical": [],
+            "resolved": [],
+            "unresolved": []
+          },
+          "approvals": {
+            "pending": [],
+            "decided": []
+          },
+          "artifacts": {
+            "candidates": [],
+            "verified": []
+          },
+          "intelligence": {
+            "fabric_version": "5.0.0",
+            "model_registry_version": "offline-reference-1",
+            "model_registry_digest": "58e24f8e30dfc2e894b8d5a99447487b13bce0d42b404a842df582b3ac6bfbf3",
+            "contexts": {
+              "total": 0,
+              "bytes": 0,
+              "redactions": 0,
+              "stale_sources": 0,
+              "unknown_freshness_sources": 0,
+              "latest_by_work_item": {},
+              "packets": []
+            },
+            "routing": {
+              "total": 0,
+              "latest_by_work_item": {},
+              "decisions": [],
+              "observation_total": 0,
+              "latest_observation_by_work_item": {},
+              "observations": [],
+              "model_summary": []
+            },
+            "collaboration": {
+              "contracts": [],
+              "handoffs": [],
+              "pending": 0,
+              "blocked": 0,
+              "completed": 0
+            },
+            "knowledge": {
+              "graph_id": "knowledge_d2e81d356957fbf54d7f",
+              "revision": 2,
+              "node_count": 18,
+              "edge_count": 18,
+              "nodes": [
+                {
+                  "node_id": "kg_ba00a60d2f8bae8ca8888198",
+                  "external_id": "task_63563c87298631a0d461",
+                  "kind": "task",
+                  "label": "Implement and independently verify a bounded API",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_f47a57aee2d71f1c22e3eb54",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                  "kind": "role",
+                  "label": "Executive Manager",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_690af76474261896bac77048",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:product-lead",
+                  "kind": "role",
+                  "label": "Planning Lead",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_e6bdb0fb89c54b5851818d94",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                  "kind": "role",
+                  "label": "Planner",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_d2d8ff321951ac2628f1b060",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:engineering-lead",
+                  "kind": "role",
+                  "label": "Engineering Lead",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_b0951a8f3c1445a3e8339594",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                  "kind": "role",
+                  "label": "Developer",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_291171b3854c2e7df2434beb",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                  "kind": "role",
+                  "label": "Quality Lead",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_45ce45f709ad444d3e043e17",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:quality-specialist",
+                  "kind": "role",
+                  "label": "Independent Verifier",
+                  "criticality": "low"
+                },
+                {
+                  "node_id": "kg_305650566d9c5872d3f751c0",
+                  "external_id": "org_1c7ad51b3c489f0d12ee:human-approver",
+                  "kind": "role",
+                  "label": "External Human Approver",
+                  "criticality": "high"
+                },
+                {
+                  "node_id": "kg_e1da5968538bc9319b28c1d6",
+                  "external_id": "mission_ff86f6010fbaf89f3e00:work:triage",
+                  "kind": "work_item",
+                  "label": "triage: Implement and independently verify a bounded API",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_2b678be48f3088aa82a84677",
+                  "external_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                  "kind": "work_item",
+                  "label": "plan: Implement and independently verify a bounded API",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_65c67b59fefe139cb63f0808",
+                  "external_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                  "kind": "work_item",
+                  "label": "develop: Implement and independently verify a bounded API",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                  "external_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                  "kind": "work_item",
+                  "label": "verify: Implement and independently verify a bounded API",
+                  "criticality": "high"
+                },
+                {
+                  "node_id": "kg_dd62343239ae88eb9d5c0d50",
+                  "external_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                  "kind": "work_item",
+                  "label": "synthesize: Implement and independently verify a bounded API",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_759626b3cd5fe4158f640b11",
+                  "external_id": "task_63563c87298631a0d461:acceptance:1",
+                  "kind": "requirement",
+                  "label": "implementation artifact is present, traceable, and independently verified",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_dac8e62fb3eebd6c389f8491",
+                  "external_id": "task_63563c87298631a0d461:acceptance:2",
+                  "kind": "requirement",
+                  "label": "test evidence is present, traceable, and independently verified",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_3500b81a9dab8906730126e4",
+                  "external_id": "task_63563c87298631a0d461:acceptance:3",
+                  "kind": "requirement",
+                  "label": "all failed, blocked, partial, and unverified items remain visible",
+                  "criticality": "medium"
+                },
+                {
+                  "node_id": "kg_500b87fe46751c2b9a7e51d2",
+                  "external_id": "task_63563c87298631a0d461:acceptance:4",
+                  "kind": "requirement",
+                  "label": "no unapproved external side effect occurs",
+                  "criticality": "medium"
+                }
+              ],
+              "edges": [
+                {
+                  "edge_id": "edge_37d8a1ca655521c096ff45df",
+                  "from": "kg_f47a57aee2d71f1c22e3eb54",
+                  "to": "kg_e1da5968538bc9319b28c1d6",
+                  "kind": "produces",
+                  "severity": "low"
+                },
+                {
+                  "edge_id": "edge_b5a476b4f6b103d5ec99b661",
+                  "from": "kg_e1da5968538bc9319b28c1d6",
+                  "to": "kg_ba00a60d2f8bae8ca8888198",
+                  "kind": "relates_to",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_00607d27bb4a3ab05c91c3b8",
+                  "from": "kg_e6bdb0fb89c54b5851818d94",
+                  "to": "kg_2b678be48f3088aa82a84677",
+                  "kind": "produces",
+                  "severity": "low"
+                },
+                {
+                  "edge_id": "edge_6dd54cc5a00e554d430050e9",
+                  "from": "kg_2b678be48f3088aa82a84677",
+                  "to": "kg_ba00a60d2f8bae8ca8888198",
+                  "kind": "relates_to",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_f69bd625f96d0a84d8b40fd3",
+                  "from": "kg_e1da5968538bc9319b28c1d6",
+                  "to": "kg_2b678be48f3088aa82a84677",
+                  "kind": "depends_on",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_8d1efd78a049d52c5d7c17f0",
+                  "from": "kg_b0951a8f3c1445a3e8339594",
+                  "to": "kg_65c67b59fefe139cb63f0808",
+                  "kind": "produces",
+                  "severity": "low"
+                },
+                {
+                  "edge_id": "edge_77fc236456dd7c2f1eb53e5f",
+                  "from": "kg_65c67b59fefe139cb63f0808",
+                  "to": "kg_ba00a60d2f8bae8ca8888198",
+                  "kind": "relates_to",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_88e68716f31ad691f6500a53",
+                  "from": "kg_2b678be48f3088aa82a84677",
+                  "to": "kg_65c67b59fefe139cb63f0808",
+                  "kind": "depends_on",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_086775de9a2b5a822d4969b2",
+                  "from": "kg_291171b3854c2e7df2434beb",
+                  "to": "kg_38e89b9d4d1d27a0789d0b6d",
+                  "kind": "produces",
+                  "severity": "low"
+                },
+                {
+                  "edge_id": "edge_64236b37156fa5432b251a44",
+                  "from": "kg_38e89b9d4d1d27a0789d0b6d",
+                  "to": "kg_ba00a60d2f8bae8ca8888198",
+                  "kind": "relates_to",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_ffdee431cff910ab2c2554aa",
+                  "from": "kg_65c67b59fefe139cb63f0808",
+                  "to": "kg_38e89b9d4d1d27a0789d0b6d",
+                  "kind": "depends_on",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_583d0ba3d3bacc924be8ff99",
+                  "from": "kg_f47a57aee2d71f1c22e3eb54",
+                  "to": "kg_dd62343239ae88eb9d5c0d50",
+                  "kind": "produces",
+                  "severity": "low"
+                },
+                {
+                  "edge_id": "edge_12a1efc98c08e60b30328d64",
+                  "from": "kg_dd62343239ae88eb9d5c0d50",
+                  "to": "kg_ba00a60d2f8bae8ca8888198",
+                  "kind": "relates_to",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_b1b4baa3ce83c1806b360f98",
+                  "from": "kg_38e89b9d4d1d27a0789d0b6d",
+                  "to": "kg_dd62343239ae88eb9d5c0d50",
+                  "kind": "depends_on",
+                  "severity": "medium"
+                },
+                {
+                  "edge_id": "edge_41c379a666a08dce3d80bb6f",
+                  "from": "kg_ba00a60d2f8bae8ca8888198",
+                  "to": "kg_759626b3cd5fe4158f640b11",
+                  "kind": "depends_on",
+                  "severity": "high"
+                },
+                {
+                  "edge_id": "edge_1e6c79b4f40a3746a7ef6d34",
+                  "from": "kg_ba00a60d2f8bae8ca8888198",
+                  "to": "kg_dac8e62fb3eebd6c389f8491",
+                  "kind": "depends_on",
+                  "severity": "high"
+                },
+                {
+                  "edge_id": "edge_6cdda53e54c311365d9fd545",
+                  "from": "kg_ba00a60d2f8bae8ca8888198",
+                  "to": "kg_3500b81a9dab8906730126e4",
+                  "kind": "depends_on",
+                  "severity": "high"
+                },
+                {
+                  "edge_id": "edge_945bcf7bd48e10b1f9ad20ad",
+                  "from": "kg_ba00a60d2f8bae8ca8888198",
+                  "to": "kg_500b87fe46751c2b9a7e51d2",
+                  "kind": "depends_on",
+                  "severity": "high"
+                }
+              ],
+              "impacts": [],
+              "actionable_impacts": 0,
+              "digest": "7b72c5bc97cf64e401ce00c5666a33729c53a836acb9fe514b3a4e45ba94d490"
+            },
+            "memory": {
+              "recalled": [],
+              "captured": []
+            },
+            "verification": [],
+            "stats": {
+              "context_bytes": 0,
+              "context_redactions": 0,
+              "stale_context_sources": 0,
+              "unknown_freshness_sources": 0,
+              "route_count": 0,
+              "model_observation_count": 0,
+              "model_successes": 0,
+              "model_failures": 0,
+              "model_latency_total_ms": 0,
+              "contract_count": 0,
+              "impact_count": 0,
+              "memory_recall_count": 0
+            },
+            "digest": "5922179ae7f2b594d487e13c08cba761d27b4e0825945ece1fb2e8728f927f05"
+          },
+          "usage": {
+            "calls": 0,
+            "tokens": 0,
+            "cost_micros": 0,
+            "wall_time_ms": 0
+          },
+          "host": {
+            "name": "reference",
+            "status": "configured",
+            "session_id": null,
+            "last_event_at": null
+          },
+          "operator": {
+            "paused": false,
+            "paused_at": null,
+            "paused_by": null,
+            "reason": null
+          },
+          "timeline": [
+            {
+              "event_id": "mission:mission_ff86f6010fbaf89f3e00:1",
+              "seq": 1,
+              "at": "2026-07-26T04:30:42.900Z",
+              "type": "mission.created",
+              "actor": "executive-manager",
+              "data": {
+                "organization_id": "org_1c7ad51b3c489f0d12ee",
+                "task_id": "task_63563c87298631a0d461"
+              }
+            }
+          ],
+          "integrity": {
+            "state_digest": "bbe7e355677aa4733832095d5989851e69132808c5aa51fc87d6fdce11a32aca"
+          },
+          "updated_at": "2026-07-26T04:30:42.901Z",
+          "digest": "682c94037868f8a7eb20c05929c48db3c23d74a27e2e0f313b59748d6686036b"
+        }
+      }
+    },
+    {
+      "name": "native mission completes clean",
+      "passed": true,
+      "details": {
+        "schema_version": 2,
+        "projection_version": 20,
+        "run_id": "mission_ff86f6010fbaf89f3e00",
+        "run_type": "mission",
+        "objective": "Implement and independently verify a bounded API",
+        "raw_status": "completed",
+        "status": "completed_clean",
+        "quality_gate_passed": true,
+        "execution": {
+          "mode": "native_local",
+          "real_execution": true,
+          "simulation_promotion_allowed": false,
+          "model_invocations": 4,
+          "tool_invocations": 0
+        },
+        "completed_with_recovery": false,
+        "progress": {
+          "completed": 5,
+          "terminal": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "current_node_ids": [],
+        "current_nodes": [],
+        "next_node_ids": [],
+        "graph": {
+          "nodes": [
+            {
+              "id": "mission_ff86f6010fbaf89f3e00:work:triage",
+              "stage_id": "triage",
+              "kind": "triage",
+              "label": "triage",
+              "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "status": "completed",
+              "attempts": 1,
+              "max_attempts": 1,
+              "failure": null,
+              "approval_required": false,
+              "progress": null,
+              "sequence": 1
+            },
+            {
+              "id": "mission_ff86f6010fbaf89f3e00:work:plan",
+              "stage_id": "plan",
+              "kind": "plan",
+              "label": "plan",
+              "role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+              "status": "completed",
+              "attempts": 1,
+              "max_attempts": 3,
+              "failure": null,
+              "approval_required": false,
+              "progress": null,
+              "sequence": 2
+            },
+            {
+              "id": "mission_ff86f6010fbaf89f3e00:work:develop",
+              "stage_id": "develop",
+              "kind": "develop",
+              "label": "develop",
+              "role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+              "status": "completed",
+              "attempts": 1,
+              "max_attempts": 4,
+              "failure": null,
+              "approval_required": false,
+              "progress": null,
+              "sequence": 3
+            },
+            {
+              "id": "mission_ff86f6010fbaf89f3e00:work:verify",
+              "stage_id": "verify",
+              "kind": "verify",
+              "label": "verify",
+              "role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+              "status": "completed",
+              "attempts": 1,
+              "max_attempts": 2,
+              "failure": null,
+              "approval_required": false,
+              "progress": null,
+              "sequence": 4
+            },
+            {
+              "id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+              "stage_id": "synthesize",
+              "kind": "synthesize",
+              "label": "synthesize",
+              "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "status": "completed",
+              "attempts": 1,
+              "max_attempts": 1,
+              "failure": null,
+              "approval_required": false,
+              "progress": null,
+              "sequence": 5
+            }
+          ],
+          "edges": [
+            {
+              "id": "dep:mission_ff86f6010fbaf89f3e00:work:triage->mission_ff86f6010fbaf89f3e00:work:plan",
+              "from": "mission_ff86f6010fbaf89f3e00:work:triage",
+              "to": "mission_ff86f6010fbaf89f3e00:work:plan",
+              "kind": "dependency",
+              "active": false
+            },
+            {
+              "id": "dep:mission_ff86f6010fbaf89f3e00:work:plan->mission_ff86f6010fbaf89f3e00:work:develop",
+              "from": "mission_ff86f6010fbaf89f3e00:work:plan",
+              "to": "mission_ff86f6010fbaf89f3e00:work:develop",
+              "kind": "dependency",
+              "active": false
+            },
+            {
+              "id": "dep:mission_ff86f6010fbaf89f3e00:work:develop->mission_ff86f6010fbaf89f3e00:work:verify",
+              "from": "mission_ff86f6010fbaf89f3e00:work:develop",
+              "to": "mission_ff86f6010fbaf89f3e00:work:verify",
+              "kind": "dependency",
+              "active": false
+            },
+            {
+              "id": "dep:mission_ff86f6010fbaf89f3e00:work:verify->mission_ff86f6010fbaf89f3e00:work:synthesize",
+              "from": "mission_ff86f6010fbaf89f3e00:work:verify",
+              "to": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+              "kind": "dependency",
+              "active": false
+            }
+          ],
+          "active_node_ids": [],
+          "next_node_ids": []
+        },
+        "organization": {
+          "organization_id": "org_1c7ad51b3c489f0d12ee",
+          "departments": [
+            {
+              "department_id": "org_1c7ad51b3c489f0d12ee:executive",
+              "type": "executive",
+              "name": "Executive Office",
+              "purpose": "Executive Office responsibilities for task task_63563c87298631a0d461",
+              "budget": {
+                "calls": 3,
+                "tokens": 13333,
+                "cost_micros": 166666,
+                "wall_time_ms": 100000
+              },
+              "capability_ceiling": [
+                "artifact.read",
+                "artifact.write",
+                "budget.allocate",
+                "delivery.propose",
+                "organization.delegate",
+                "organization.plan",
+                "policy.propose",
+                "proofgraph.control",
+                "risk.review",
+                "verification.execute",
+                "web.research",
+                "workspace.propose",
+                "workspace.read"
+              ]
+            },
+            {
+              "department_id": "org_1c7ad51b3c489f0d12ee:product",
+              "type": "product",
+              "name": "Product and Planning",
+              "purpose": "Product and Planning responsibilities for task task_63563c87298631a0d461",
+              "budget": {
+                "calls": 6,
+                "tokens": 26666,
+                "cost_micros": 333333,
+                "wall_time_ms": 200000
+              },
+              "capability_ceiling": [
+                "artifact.read",
+                "artifact.write",
+                "organization.plan",
+                "proofgraph.control",
+                "workspace.read"
+              ]
+            },
+            {
+              "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+              "type": "engineering",
+              "name": "Engineering Department",
+              "purpose": "Engineering Department responsibilities for task task_63563c87298631a0d461",
+              "budget": {
+                "calls": 13,
+                "tokens": 53333,
+                "cost_micros": 666666,
+                "wall_time_ms": 400000
+              },
+              "capability_ceiling": [
+                "artifact.read",
+                "artifact.write",
+                "proofgraph.control",
+                "workspace.propose",
+                "workspace.read"
+              ]
+            },
+            {
+              "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+              "type": "quality",
+              "name": "Independent Quality Office",
+              "purpose": "Independent Quality Office responsibilities for task task_63563c87298631a0d461",
+              "budget": {
+                "calls": 6,
+                "tokens": 26666,
+                "cost_micros": 333333,
+                "wall_time_ms": 200000
+              },
+              "capability_ceiling": [
+                "artifact.read",
+                "artifact.write",
+                "proofgraph.control",
+                "verification.execute",
+                "workspace.read"
+              ]
+            },
+            {
+              "department_id": "org_1c7ad51b3c489f0d12ee:external-governance",
+              "type": "executive",
+              "name": "External Governance",
+              "purpose": "External human authority; never model delegated.",
+              "budget": {
+                "calls": 0,
+                "tokens": 0,
+                "cost_micros": 0,
+                "wall_time_ms": 0
+              },
+              "capability_ceiling": [
+                "approval.decide",
+                "policy.apply",
+                "run.abort"
+              ],
+              "external": true
+            }
+          ],
+          "teams": [
+            {
+              "team_id": "org_1c7ad51b3c489f0d12ee:product-team",
+              "department_id": "org_1c7ad51b3c489f0d12ee:product",
+              "name": "Planning",
+              "purpose": "Product and Planning responsibilities for task task_63563c87298631a0d461"
+            },
+            {
+              "team_id": "org_1c7ad51b3c489f0d12ee:engineering-team",
+              "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+              "name": "Implementation",
+              "purpose": "Engineering Department responsibilities for task task_63563c87298631a0d461"
+            },
+            {
+              "team_id": "org_1c7ad51b3c489f0d12ee:quality-team",
+              "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+              "name": "Independent Verification",
+              "purpose": "Independent Quality Office responsibilities for task task_63563c87298631a0d461"
+            }
+          ],
+          "roles": [
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "name": "Executive Manager",
+              "role_type": "executive",
+              "department_id": "org_1c7ad51b3c489f0d12ee:executive",
+              "team_id": null,
+              "manager_role_id": null,
+              "purpose": "Compile mission intent, allocate bounded work, reconcile results, and preserve governance.",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "budget.allocate",
+                "delivery.propose",
+                "organization.delegate",
+                "organization.plan",
+                "policy.propose",
+                "proofgraph.control",
+                "risk.review",
+                "verification.execute",
+                "web.research",
+                "workspace.propose",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "budget.allocate",
+                "delivery.propose",
+                "organization.delegate",
+                "organization.plan",
+                "policy.propose",
+                "proofgraph.control",
+                "risk.review",
+                "verification.execute",
+                "web.research",
+                "workspace.propose",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 30,
+                "tokens": 120000,
+                "cost_micros": 1500000,
+                "wall_time_ms": 900000
+              },
+              "independence_group": "executive",
+              "can_delegate": true,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:product-lead",
+              "name": "Planning Lead",
+              "role_type": "manager",
+              "department_id": "org_1c7ad51b3c489f0d12ee:product",
+              "team_id": "org_1c7ad51b3c489f0d12ee:product-team",
+              "manager_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "purpose": "Lead Planning",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "organization.plan",
+                "proofgraph.control",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "organization.plan",
+                "proofgraph.control",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 6,
+                "tokens": 26666,
+                "cost_micros": 333333,
+                "wall_time_ms": 200000
+              },
+              "independence_group": "planning",
+              "can_delegate": true,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+              "name": "Planner",
+              "role_type": "specialist",
+              "department_id": "org_1c7ad51b3c489f0d12ee:product",
+              "team_id": "org_1c7ad51b3c489f0d12ee:product-team",
+              "manager_role_id": "org_1c7ad51b3c489f0d12ee:product-lead",
+              "purpose": "Execute Planning work",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 4,
+                "tokens": 19999,
+                "cost_micros": 249999,
+                "wall_time_ms": 150000
+              },
+              "independence_group": "planning",
+              "can_delegate": false,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:engineering-lead",
+              "name": "Engineering Lead",
+              "role_type": "manager",
+              "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+              "team_id": "org_1c7ad51b3c489f0d12ee:engineering-team",
+              "manager_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "purpose": "Lead Implementation",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "proofgraph.control",
+                "workspace.propose",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "proofgraph.control",
+                "workspace.propose",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 13,
+                "tokens": 53333,
+                "cost_micros": 666666,
+                "wall_time_ms": 400000
+              },
+              "independence_group": "engineering",
+              "can_delegate": true,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+              "name": "Developer",
+              "role_type": "specialist",
+              "department_id": "org_1c7ad51b3c489f0d12ee:engineering",
+              "team_id": "org_1c7ad51b3c489f0d12ee:engineering-team",
+              "manager_role_id": "org_1c7ad51b3c489f0d12ee:engineering-lead",
+              "purpose": "Execute Implementation work",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "workspace.propose",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "workspace.propose",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 9,
+                "tokens": 39999,
+                "cost_micros": 499999,
+                "wall_time_ms": 300000
+              },
+              "independence_group": "engineering",
+              "can_delegate": false,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+              "name": "Quality Lead",
+              "role_type": "verifier",
+              "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+              "team_id": "org_1c7ad51b3c489f0d12ee:quality-team",
+              "manager_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "purpose": "Lead Independent Verification",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "proofgraph.control",
+                "verification.execute",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "proofgraph.control",
+                "verification.execute",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 6,
+                "tokens": 26666,
+                "cost_micros": 333333,
+                "wall_time_ms": 200000
+              },
+              "independence_group": "quality",
+              "can_delegate": true,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:quality-specialist",
+              "name": "Independent Verifier",
+              "role_type": "verifier",
+              "department_id": "org_1c7ad51b3c489f0d12ee:quality",
+              "team_id": "org_1c7ad51b3c489f0d12ee:quality-team",
+              "manager_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+              "purpose": "Execute Independent Verification work",
+              "capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "verification.execute",
+                "workspace.read"
+              ],
+              "delegable_capabilities": [
+                "artifact.read",
+                "artifact.write",
+                "verification.execute",
+                "workspace.read"
+              ],
+              "budget": {
+                "calls": 4,
+                "tokens": 19999,
+                "cost_micros": 249999,
+                "wall_time_ms": 150000
+              },
+              "independence_group": "quality",
+              "can_delegate": false,
+              "model_eligible": true
+            },
+            {
+              "role_id": "org_1c7ad51b3c489f0d12ee:human-approver",
+              "name": "External Human Approver",
+              "role_type": "human",
+              "department_id": "org_1c7ad51b3c489f0d12ee:external-governance",
+              "team_id": null,
+              "manager_role_id": null,
+              "purpose": "Approve or deny high-risk, irreversible, policy-changing, or external-effect actions.",
+              "capabilities": [
+                "approval.decide",
+                "policy.apply",
+                "run.abort"
+              ],
+              "delegable_capabilities": [],
+              "budget": {
+                "calls": 0,
+                "tokens": 0,
+                "cost_micros": 0,
+                "wall_time_ms": 0
+              },
+              "independence_group": "human",
+              "can_delegate": false,
+              "model_eligible": false
+            }
+          ]
+        },
+        "loops": [],
+        "loop_summary": {
+          "total": 0,
+          "active": 0,
+          "exhausted": 0,
+          "current_iteration": 0
+        },
+        "failures": {
+          "historical": [],
+          "resolved": [],
+          "unresolved": []
+        },
+        "approvals": {
+          "pending": [],
+          "decided": []
+        },
+        "artifacts": {
+          "candidates": [
+            {
+              "schema_version": 1,
+              "artifact_id": "artifact_1a25fa0177be61a665e9",
+              "name": "synthesize-artifact",
+              "media_type": "application/json",
+              "content": {
+                "kind": "synthesize",
+                "live": true
+              },
+              "status": "candidate",
+              "producer_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+              "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+              "source_run_id": "run_65c083dc4eccdff69c3e",
+              "source_report_digest": "84ee814b4c55711b44d1b5390cbf7092643a88c8f43be2efeb9268a488fe7fda",
+              "verifier_role_id": null,
+              "verification_evidence": [],
+              "content_digest": "e1da376f241be16069a7432dd4d143592a84b75eac5b0aa65ce992fbcf3d9a2e",
+              "digest": "d9263005a82f422681f3a01e24a507578a85b9b3f62c8567941875b1b3258eaf"
+            }
+          ],
+          "verified": [
+            {
+              "schema_version": 1,
+              "artifact_id": "artifact_823e17b447f69cf052c0",
+              "name": "plan-artifact",
+              "media_type": "application/json",
+              "content": {
+                "kind": "plan",
+                "live": true
+              },
+              "status": "verified",
+              "producer_role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+              "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+              "source_run_id": "run_9a1a3b43ce638e7a3e62",
+              "source_report_digest": "6e6aba8a13cb43fff6d083d37ae6ee0960fa8103a16b7634d11aaf57766d1e5b",
+              "verifier_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+              "verification_evidence": [
+                "fake-provider independent evidence"
+              ],
+              "content_digest": "2ca689abe3212bf8a51ab5a19a1a8be2ca2c5e2c1f5f40c662fe5bd69023dd73",
+              "verification_report_digest": "fdfcabf07397dddb2845c45a9d96d3818adc8e850ff965db53eb16116a61b937",
+              "digest": "1d2bb90618e3db781c4f887c0dbee7b0ee1db533fe8b3a92ceb1b32732187c5d"
+            },
+            {
+              "schema_version": 1,
+              "artifact_id": "artifact_1505d6824f7843fd4ccd",
+              "name": "develop-artifact",
+              "media_type": "application/json",
+              "content": {
+                "kind": "develop",
+                "live": true
+              },
+              "status": "verified",
+              "producer_role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+              "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+              "source_run_id": "run_cd39e0f618532b4f4e7e",
+              "source_report_digest": "ef451ac059d85febcd8795cc797c58e7a34fa4ccad9b2ef27642fcdbebef811a",
+              "verifier_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+              "verification_evidence": [
+                "fake-provider independent evidence"
+              ],
+              "content_digest": "b662fad39c74b6539a831f83d1a8e2c0e1842813fc11197eebd8f86ac96a111e",
+              "verification_report_digest": "fdfcabf07397dddb2845c45a9d96d3818adc8e850ff965db53eb16116a61b937",
+              "digest": "eb8a93c0c526ac4118e06b8691bbe7097ebacc17b9976d2ead1b0fb1d4d30a93"
+            }
+          ]
+        },
+        "intelligence": {
+          "fabric_version": "5.0.0",
+          "model_registry_version": "offline-reference-1",
+          "model_registry_digest": "58e24f8e30dfc2e894b8d5a99447487b13bce0d42b404a842df582b3ac6bfbf3",
+          "contexts": {
+            "total": 4,
+            "bytes": 20736,
+            "redactions": 0,
+            "stale_sources": 0,
+            "unknown_freshness_sources": 16,
+            "latest_by_work_item": {
+              "mission_ff86f6010fbaf89f3e00:work:plan": {
+                "packet_id": "ctx_c3c2107277c86e94db7f",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "role_type": "specialist",
+                "classification": "internal",
+                "byte_size": 5029,
+                "token_estimate": 1258,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 5,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "4002192108083147dc675a59a10249d295d1f0deab23f77a1661ce38405d57ad"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:develop": {
+                "packet_id": "ctx_2cc59e13c4a7e0d404cd",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "role_type": "specialist",
+                "classification": "internal",
+                "byte_size": 5242,
+                "token_estimate": 1311,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 4,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "e5f7521dbecfe1a3d220f2bfb98b582ccbad88c9107247d9aa2b11db2480f421"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:verify": {
+                "packet_id": "ctx_01de4e742ceefaea4d03",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "role_type": "verifier",
+                "classification": "internal",
+                "byte_size": 4715,
+                "token_estimate": 1179,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 4,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "c44838e5332e3a00a3f8396e939f7e7d896470c8b87724885fefd87a7f1d3c29"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:synthesize": {
+                "packet_id": "ctx_bf2bb87d49db29a97ba2",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "role_type": "executive",
+                "classification": "internal",
+                "byte_size": 5750,
+                "token_estimate": 1438,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 3,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "0b859145e06136a491ea424113e14824aef90eb2667894a2a921c4b709fd1223"
+              }
+            },
+            "packets": [
+              {
+                "packet_id": "ctx_c3c2107277c86e94db7f",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "role_type": "specialist",
+                "classification": "internal",
+                "byte_size": 5029,
+                "token_estimate": 1258,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 5,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "4002192108083147dc675a59a10249d295d1f0deab23f77a1661ce38405d57ad"
+              },
+              {
+                "packet_id": "ctx_2cc59e13c4a7e0d404cd",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "role_type": "specialist",
+                "classification": "internal",
+                "byte_size": 5242,
+                "token_estimate": 1311,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 4,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "e5f7521dbecfe1a3d220f2bfb98b582ccbad88c9107247d9aa2b11db2480f421"
+              },
+              {
+                "packet_id": "ctx_01de4e742ceefaea4d03",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "role_type": "verifier",
+                "classification": "internal",
+                "byte_size": 4715,
+                "token_estimate": 1179,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 4,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "c44838e5332e3a00a3f8396e939f7e7d896470c8b87724885fefd87a7f1d3c29"
+              },
+              {
+                "packet_id": "ctx_bf2bb87d49db29a97ba2",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "role_type": "executive",
+                "classification": "internal",
+                "byte_size": 5750,
+                "token_estimate": 1438,
+                "source_count": 8,
+                "stale_source_count": 0,
+                "unknown_freshness_source_count": 3,
+                "redaction_count": 0,
+                "dropped_sections": [],
+                "sections": [
+                  "objective",
+                  "constraints",
+                  "work_item",
+                  "dependencies",
+                  "artifacts",
+                  "contracts",
+                  "impacts",
+                  "memory"
+                ],
+                "digest": "0b859145e06136a491ea424113e14824aef90eb2667894a2a921c4b709fd1223"
+              }
+            ]
+          },
+          "routing": {
+            "total": 4,
+            "latest_by_work_item": {
+              "mission_ff86f6010fbaf89f3e00:work:plan": {
+                "route_id": "route_37b2ae766e75bf79ebdb",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 57.39794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for planning, reasoning, structured_output",
+                  "risk ceiling critical",
+                  "context 1258/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "b74c0bcb54fff61fd51962f5cdc5b981089b8ab316bbbfb9885ca5452a6b02b6"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:develop": {
+                "route_id": "route_e098b906e3f6bdb44153",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 62.19794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for coding, structured_output",
+                  "risk ceiling critical",
+                  "context 1311/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "84abdb92b0bb8b616e521f230d090eb5a55a70c4c74fc9c02857121cc8b4518c"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:verify": {
+                "route_id": "route_1d1e1425eb594fc8f815",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 62.19794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for reasoning, structured_output, verification",
+                  "risk ceiling critical",
+                  "context 1179/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "ff99a541efcd76ce5eec3adff91668c4e46216ae1092f3331ce45af685bb756c"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:synthesize": {
+                "route_id": "route_eba99a664fe25afa774e",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 57.39794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for reasoning, structured_output",
+                  "risk ceiling critical",
+                  "context 1438/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "5890ef72936e2f4cc318ed978e26f2d2f48f5d91b27f8f86d840159fbf7be489"
+              }
+            },
+            "decisions": [
+              {
+                "route_id": "route_37b2ae766e75bf79ebdb",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 57.39794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for planning, reasoning, structured_output",
+                  "risk ceiling critical",
+                  "context 1258/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "b74c0bcb54fff61fd51962f5cdc5b981089b8ab316bbbfb9885ca5452a6b02b6"
+              },
+              {
+                "route_id": "route_e098b906e3f6bdb44153",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 62.19794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for coding, structured_output",
+                  "risk ceiling critical",
+                  "context 1311/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "84abdb92b0bb8b616e521f230d090eb5a55a70c4c74fc9c02857121cc8b4518c"
+              },
+              {
+                "route_id": "route_1d1e1425eb594fc8f815",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 62.19794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for reasoning, structured_output, verification",
+                  "risk ceiling critical",
+                  "context 1179/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "ff99a541efcd76ce5eec3adff91668c4e46216ae1092f3331ce45af685bb756c"
+              },
+              {
+                "route_id": "route_eba99a664fe25afa774e",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "score": 57.39794,
+                "estimated_cost_micros": 0,
+                "fallback_chain": [],
+                "reasons": [
+                  "eligible for reasoning, structured_output",
+                  "risk ceiling critical",
+                  "context 1438/250000",
+                  "health 1",
+                  "quality 0.6",
+                  "reliability 1"
+                ],
+                "digest": "5890ef72936e2f4cc318ed978e26f2d2f48f5d91b27f8f86d840159fbf7be489"
+              }
+            ],
+            "observation_total": 4,
+            "latest_observation_by_work_item": {
+              "mission_ff86f6010fbaf89f3e00:work:plan": {
+                "observation_id": "modelobs_55dd7973fa153f6e5657",
+                "route_id": "route_37b2ae766e75bf79ebdb",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 11,
+                "observed_at": "2026-07-26T04:30:42.940Z",
+                "digest": "d8875ab94517117e9ebd1f47e4d414d8ee20385afb6c0e766b1ec425810447a6"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:develop": {
+                "observation_id": "modelobs_28f5ba3343f68f4bef46",
+                "route_id": "route_e098b906e3f6bdb44153",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 3,
+                "observed_at": "2026-07-26T04:30:43.052Z",
+                "digest": "b51822efe14f0dda7046a44e79606c0dfc7c5f95eb747dd6ca8414b85d75e97f"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:verify": {
+                "observation_id": "modelobs_9aa900052a1542225b40",
+                "route_id": "route_1d1e1425eb594fc8f815",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 3,
+                "observed_at": "2026-07-26T04:30:43.174Z",
+                "digest": "f12b8fd6970b88c8b570a970d40ea6e89952c037f0bcc631171f1548f7b2a596"
+              },
+              "mission_ff86f6010fbaf89f3e00:work:synthesize": {
+                "observation_id": "modelobs_0e2e9eacc20626b8b8b0",
+                "route_id": "route_eba99a664fe25afa774e",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 3,
+                "observed_at": "2026-07-26T04:30:43.306Z",
+                "digest": "fe122618e15b37828294daced4626d11ec97f24d3c88800cb3e71aa039d157e5"
+              }
+            },
+            "observations": [
+              {
+                "observation_id": "modelobs_55dd7973fa153f6e5657",
+                "route_id": "route_37b2ae766e75bf79ebdb",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 11,
+                "observed_at": "2026-07-26T04:30:42.940Z",
+                "digest": "d8875ab94517117e9ebd1f47e4d414d8ee20385afb6c0e766b1ec425810447a6"
+              },
+              {
+                "observation_id": "modelobs_28f5ba3343f68f4bef46",
+                "route_id": "route_e098b906e3f6bdb44153",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 3,
+                "observed_at": "2026-07-26T04:30:43.052Z",
+                "digest": "b51822efe14f0dda7046a44e79606c0dfc7c5f95eb747dd6ca8414b85d75e97f"
+              },
+              {
+                "observation_id": "modelobs_9aa900052a1542225b40",
+                "route_id": "route_1d1e1425eb594fc8f815",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 3,
+                "observed_at": "2026-07-26T04:30:43.174Z",
+                "digest": "f12b8fd6970b88c8b570a970d40ea6e89952c037f0bcc631171f1548f7b2a596"
+              },
+              {
+                "observation_id": "modelobs_0e2e9eacc20626b8b8b0",
+                "route_id": "route_eba99a664fe25afa774e",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "attempt": 1,
+                "status": "success",
+                "success": true,
+                "failure_type": null,
+                "calls": 1,
+                "tokens": 35,
+                "cost_micros": 0,
+                "latency_ms": 3,
+                "observed_at": "2026-07-26T04:30:43.306Z",
+                "digest": "fe122618e15b37828294daced4626d11ec97f24d3c88800cb3e71aa039d157e5"
+              }
+            ],
+            "model_summary": [
+              {
+                "model_id": "reference/deterministic-v1",
+                "provider": "reference",
+                "host": "reference",
+                "observations": 4,
+                "successes": 4,
+                "failures": 0,
+                "latency_total_ms": 20,
+                "tokens": 140,
+                "cost_micros": 0,
+                "last_observed_at": "2026-07-26T04:30:43.306Z",
+                "failure_types": {},
+                "success_rate": 1,
+                "average_latency_ms": 5
+              }
+            ]
+          },
+          "collaboration": {
+            "contracts": [
+              {
+                "contract_id": "contract_02a7b80261ad40d1d657",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "type": "dependency_handoff",
+                "status": "completed",
+                "subject": "triage output handoff to plan",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:product-specialist"
+                ],
+                "acknowledgement_count": 1,
+                "evidence_count": 0,
+                "output_count": 0,
+                "digest": "da9fc2aed4c8f15c4d3128ae2b0f92aed128b31647ef7a71fc81410020c43184"
+              },
+              {
+                "contract_id": "contract_231a798a4e50613bd7aa",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "type": "dependency_handoff",
+                "status": "completed",
+                "subject": "plan output handoff to develop",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:engineering-specialist"
+                ],
+                "acknowledgement_count": 1,
+                "evidence_count": 0,
+                "output_count": 0,
+                "digest": "49547bd6cf58e1c25d619424ac996a038b6109596ec8a1a9c0581ae18329b4b8"
+              },
+              {
+                "contract_id": "contract_009d342a5c315f03d29a",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "type": "verification_request",
+                "status": "completed",
+                "subject": "develop output handoff to verify",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:quality-lead"
+                ],
+                "acknowledgement_count": 1,
+                "evidence_count": 0,
+                "output_count": 0,
+                "digest": "ed20f21eacfc77390d9f294d29a16d6b59a2d4c493a7863fa51b9ae09de5faf4"
+              },
+              {
+                "contract_id": "contract_8dcd0599ba71ee70c0e5",
+                "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "type": "dependency_handoff",
+                "status": "completed",
+                "subject": "verify output handoff to synthesize",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:executive-manager"
+                ],
+                "acknowledgement_count": 1,
+                "evidence_count": 0,
+                "output_count": 0,
+                "digest": "9964421910bf710c50c44021c73c09857fc7900be0271f1c78f6f47fa2f24473"
+              }
+            ],
+            "handoffs": [
+              {
+                "handoff_id": "handoff_41101b120f32998af575",
+                "contract_id": "contract_02a7b80261ad40d1d657",
+                "context_packet_id": "ctx_c3c2107277c86e94db7f",
+                "route_id": "route_37b2ae766e75bf79ebdb",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:product-specialist"
+                ],
+                "digest": "8fe71a601005e8bdf6f80c634357ab388ccaefb60b13cfdd7ae8ba293b96e3f6"
+              },
+              {
+                "handoff_id": "handoff_aeea32400a3b996fd01f",
+                "contract_id": "contract_231a798a4e50613bd7aa",
+                "context_packet_id": "ctx_2cc59e13c4a7e0d404cd",
+                "route_id": "route_e098b906e3f6bdb44153",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:engineering-specialist"
+                ],
+                "digest": "508b5758aaf73d21b6cb3c7edcd2b6e4d28d98cbd8bdd3a48d1a3bb0d5017162"
+              },
+              {
+                "handoff_id": "handoff_5691d1d9b5161d004509",
+                "contract_id": "contract_009d342a5c315f03d29a",
+                "context_packet_id": "ctx_01de4e742ceefaea4d03",
+                "route_id": "route_1d1e1425eb594fc8f815",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:quality-lead"
+                ],
+                "digest": "f93c96936ee2f28753d646f3100a0327107eaeb5a000ba98db0d3cba7df57ab1"
+              },
+              {
+                "handoff_id": "handoff_dc8cd14812b671a7f560",
+                "contract_id": "contract_8dcd0599ba71ee70c0e5",
+                "context_packet_id": "ctx_bf2bb87d49db29a97ba2",
+                "route_id": "route_eba99a664fe25afa774e",
+                "producer_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "consumer_role_ids": [
+                  "org_1c7ad51b3c489f0d12ee:executive-manager"
+                ],
+                "digest": "81d355c2faa86de4fd67ba809aefb67fdf6251b41811cf99bba3499b14e79ff1"
+              }
+            ],
+            "pending": 0,
+            "blocked": 0,
+            "completed": 4
+          },
+          "knowledge": {
+            "graph_id": "knowledge_d2e81d356957fbf54d7f",
+            "revision": 6,
+            "node_count": 18,
+            "edge_count": 18,
+            "nodes": [
+              {
+                "node_id": "kg_ba00a60d2f8bae8ca8888198",
+                "external_id": "task_63563c87298631a0d461",
+                "kind": "task",
+                "label": "Implement and independently verify a bounded API",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_f47a57aee2d71f1c22e3eb54",
+                "external_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+                "kind": "role",
+                "label": "Executive Manager",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_690af76474261896bac77048",
+                "external_id": "org_1c7ad51b3c489f0d12ee:product-lead",
+                "kind": "role",
+                "label": "Planning Lead",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_e6bdb0fb89c54b5851818d94",
+                "external_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+                "kind": "role",
+                "label": "Planner",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_d2d8ff321951ac2628f1b060",
+                "external_id": "org_1c7ad51b3c489f0d12ee:engineering-lead",
+                "kind": "role",
+                "label": "Engineering Lead",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_b0951a8f3c1445a3e8339594",
+                "external_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+                "kind": "role",
+                "label": "Developer",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_291171b3854c2e7df2434beb",
+                "external_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "kind": "role",
+                "label": "Quality Lead",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_45ce45f709ad444d3e043e17",
+                "external_id": "org_1c7ad51b3c489f0d12ee:quality-specialist",
+                "kind": "role",
+                "label": "Independent Verifier",
+                "criticality": "low"
+              },
+              {
+                "node_id": "kg_305650566d9c5872d3f751c0",
+                "external_id": "org_1c7ad51b3c489f0d12ee:human-approver",
+                "kind": "role",
+                "label": "External Human Approver",
+                "criticality": "high"
+              },
+              {
+                "node_id": "kg_e1da5968538bc9319b28c1d6",
+                "external_id": "mission_ff86f6010fbaf89f3e00:work:triage",
+                "kind": "work_item",
+                "label": "triage: Implement and independently verify a bounded API",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_2b678be48f3088aa82a84677",
+                "external_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "kind": "work_item",
+                "label": "plan: Implement and independently verify a bounded API",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_65c67b59fefe139cb63f0808",
+                "external_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "kind": "work_item",
+                "label": "develop: Implement and independently verify a bounded API",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "external_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "kind": "work_item",
+                "label": "verify: Implement and independently verify a bounded API",
+                "criticality": "high"
+              },
+              {
+                "node_id": "kg_dd62343239ae88eb9d5c0d50",
+                "external_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "kind": "work_item",
+                "label": "synthesize: Implement and independently verify a bounded API",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_759626b3cd5fe4158f640b11",
+                "external_id": "task_63563c87298631a0d461:acceptance:1",
+                "kind": "requirement",
+                "label": "implementation artifact is present, traceable, and independently verified",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_dac8e62fb3eebd6c389f8491",
+                "external_id": "task_63563c87298631a0d461:acceptance:2",
+                "kind": "requirement",
+                "label": "test evidence is present, traceable, and independently verified",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_3500b81a9dab8906730126e4",
+                "external_id": "task_63563c87298631a0d461:acceptance:3",
+                "kind": "requirement",
+                "label": "all failed, blocked, partial, and unverified items remain visible",
+                "criticality": "medium"
+              },
+              {
+                "node_id": "kg_500b87fe46751c2b9a7e51d2",
+                "external_id": "task_63563c87298631a0d461:acceptance:4",
+                "kind": "requirement",
+                "label": "no unapproved external side effect occurs",
+                "criticality": "medium"
+              }
+            ],
+            "edges": [
+              {
+                "edge_id": "edge_37d8a1ca655521c096ff45df",
+                "from": "kg_f47a57aee2d71f1c22e3eb54",
+                "to": "kg_e1da5968538bc9319b28c1d6",
+                "kind": "produces",
+                "severity": "low"
+              },
+              {
+                "edge_id": "edge_b5a476b4f6b103d5ec99b661",
+                "from": "kg_e1da5968538bc9319b28c1d6",
+                "to": "kg_ba00a60d2f8bae8ca8888198",
+                "kind": "relates_to",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_00607d27bb4a3ab05c91c3b8",
+                "from": "kg_e6bdb0fb89c54b5851818d94",
+                "to": "kg_2b678be48f3088aa82a84677",
+                "kind": "produces",
+                "severity": "low"
+              },
+              {
+                "edge_id": "edge_6dd54cc5a00e554d430050e9",
+                "from": "kg_2b678be48f3088aa82a84677",
+                "to": "kg_ba00a60d2f8bae8ca8888198",
+                "kind": "relates_to",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_f69bd625f96d0a84d8b40fd3",
+                "from": "kg_e1da5968538bc9319b28c1d6",
+                "to": "kg_2b678be48f3088aa82a84677",
+                "kind": "depends_on",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_8d1efd78a049d52c5d7c17f0",
+                "from": "kg_b0951a8f3c1445a3e8339594",
+                "to": "kg_65c67b59fefe139cb63f0808",
+                "kind": "produces",
+                "severity": "low"
+              },
+              {
+                "edge_id": "edge_77fc236456dd7c2f1eb53e5f",
+                "from": "kg_65c67b59fefe139cb63f0808",
+                "to": "kg_ba00a60d2f8bae8ca8888198",
+                "kind": "relates_to",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_88e68716f31ad691f6500a53",
+                "from": "kg_2b678be48f3088aa82a84677",
+                "to": "kg_65c67b59fefe139cb63f0808",
+                "kind": "depends_on",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_086775de9a2b5a822d4969b2",
+                "from": "kg_291171b3854c2e7df2434beb",
+                "to": "kg_38e89b9d4d1d27a0789d0b6d",
+                "kind": "produces",
+                "severity": "low"
+              },
+              {
+                "edge_id": "edge_64236b37156fa5432b251a44",
+                "from": "kg_38e89b9d4d1d27a0789d0b6d",
+                "to": "kg_ba00a60d2f8bae8ca8888198",
+                "kind": "relates_to",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_ffdee431cff910ab2c2554aa",
+                "from": "kg_65c67b59fefe139cb63f0808",
+                "to": "kg_38e89b9d4d1d27a0789d0b6d",
+                "kind": "depends_on",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_583d0ba3d3bacc924be8ff99",
+                "from": "kg_f47a57aee2d71f1c22e3eb54",
+                "to": "kg_dd62343239ae88eb9d5c0d50",
+                "kind": "produces",
+                "severity": "low"
+              },
+              {
+                "edge_id": "edge_12a1efc98c08e60b30328d64",
+                "from": "kg_dd62343239ae88eb9d5c0d50",
+                "to": "kg_ba00a60d2f8bae8ca8888198",
+                "kind": "relates_to",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_b1b4baa3ce83c1806b360f98",
+                "from": "kg_38e89b9d4d1d27a0789d0b6d",
+                "to": "kg_dd62343239ae88eb9d5c0d50",
+                "kind": "depends_on",
+                "severity": "medium"
+              },
+              {
+                "edge_id": "edge_41c379a666a08dce3d80bb6f",
+                "from": "kg_ba00a60d2f8bae8ca8888198",
+                "to": "kg_759626b3cd5fe4158f640b11",
+                "kind": "depends_on",
+                "severity": "high"
+              },
+              {
+                "edge_id": "edge_1e6c79b4f40a3746a7ef6d34",
+                "from": "kg_ba00a60d2f8bae8ca8888198",
+                "to": "kg_dac8e62fb3eebd6c389f8491",
+                "kind": "depends_on",
+                "severity": "high"
+              },
+              {
+                "edge_id": "edge_6cdda53e54c311365d9fd545",
+                "from": "kg_ba00a60d2f8bae8ca8888198",
+                "to": "kg_3500b81a9dab8906730126e4",
+                "kind": "depends_on",
+                "severity": "high"
+              },
+              {
+                "edge_id": "edge_945bcf7bd48e10b1f9ad20ad",
+                "from": "kg_ba00a60d2f8bae8ca8888198",
+                "to": "kg_500b87fe46751c2b9a7e51d2",
+                "kind": "depends_on",
+                "severity": "high"
+              }
+            ],
+            "impacts": [
+              {
+                "impact_id": "impact_074a4287903df3265bd8",
+                "source_id": "kg_e1da5968538bc9319b28c1d6",
+                "target_id": "kg_ba00a60d2f8bae8ca8888198",
+                "target_external_id": "task_63563c87298631a0d461",
+                "target_kind": "task",
+                "severity": "medium",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "8b64a15ebc5293b3d66cab7d517382129100339f4659ba87d5527e2cc89f3e57"
+              },
+              {
+                "impact_id": "impact_0e4538c8fad3fcaeb27b",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_65c67b59fefe139cb63f0808",
+                "target_external_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "target_kind": "work_item",
+                "severity": "medium",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "872a0528a0f8ac5096f30ebeb8b381b551ca8a45b535c57e19d1afd8a7a42df8"
+              },
+              {
+                "impact_id": "impact_d13728a71240cd8656ca",
+                "source_id": "kg_e1da5968538bc9319b28c1d6",
+                "target_id": "kg_759626b3cd5fe4158f640b11",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:1",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "9c9569839b11554c40da25412fccc278bf8a4c3b57518a9b0f3dd28ba8a8ebca"
+              },
+              {
+                "impact_id": "impact_bc42344a35edb4f8048d",
+                "source_id": "kg_e1da5968538bc9319b28c1d6",
+                "target_id": "kg_dac8e62fb3eebd6c389f8491",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:2",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "5c0d484d2d613c632de646f2872cf910e3610e47419172e85fd9cae759c49a41"
+              },
+              {
+                "impact_id": "impact_06d43964fd2d1d8f4883",
+                "source_id": "kg_e1da5968538bc9319b28c1d6",
+                "target_id": "kg_3500b81a9dab8906730126e4",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:3",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "859d5498db5300c120fbfacedbd64b2d55bf4acc66f2d250fb5d5582a08d8bbe"
+              },
+              {
+                "impact_id": "impact_65fb98d9fcdb3c819c5f",
+                "source_id": "kg_e1da5968538bc9319b28c1d6",
+                "target_id": "kg_500b87fe46751c2b9a7e51d2",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:4",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "1d3f9ecb983e325ba1e84f6a0f40443f8f10bffa77203069481d797a7a3eba7d"
+              },
+              {
+                "impact_id": "impact_266eae4edf0688be023a",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_external_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "target_kind": "work_item",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+                "digest": "77be42e46f155d51ed81bf4c195a0e7af218c9d76c00ca56f740e69bc2558e4b"
+              },
+              {
+                "impact_id": "impact_2a259086b96059a478af",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_ba00a60d2f8bae8ca8888198",
+                "target_external_id": "task_63563c87298631a0d461",
+                "target_kind": "task",
+                "severity": "medium",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "a65e5af7e586f201e3b9d329c8225d297a121c5770e56c85c08b03dc8df62807"
+              },
+              {
+                "impact_id": "impact_6357065fc994dc77e0d3",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_external_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "target_kind": "work_item",
+                "severity": "high",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "27f0c7a6415390728e128067f059f8b2ec6cb65a41007bbc64bb334b9cbec7f4"
+              },
+              {
+                "impact_id": "impact_227aae00488c45a0f812",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_759626b3cd5fe4158f640b11",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:1",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "684731e8a069c62f634117e2a8351d685eba5f582ff486484c50572f1ba9bb38"
+              },
+              {
+                "impact_id": "impact_2a2f4b357ca8c29eaeeb",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_dac8e62fb3eebd6c389f8491",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:2",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "b9859a56fce742bb1b889c5b0cff5a0c1dd406db9fe94869922ef301e669c03f"
+              },
+              {
+                "impact_id": "impact_42c8a8be9f94276187a9",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_3500b81a9dab8906730126e4",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:3",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "a60a83741f2efd7857707eb2d45708f201cbad519ae3eecf9a41b8ba26108336"
+              },
+              {
+                "impact_id": "impact_8e7bfb36a055b8381bfb",
+                "source_id": "kg_2b678be48f3088aa82a84677",
+                "target_id": "kg_500b87fe46751c2b9a7e51d2",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:4",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "b344ecef41f31ebcc6f714c1f4ce6d38b28cc16b4f700cc8dade8821b663d6e2"
+              },
+              {
+                "impact_id": "impact_7e729308a6c2dd0760f0",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_dd62343239ae88eb9d5c0d50",
+                "target_external_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "target_kind": "work_item",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+                "digest": "30f320266bb5a22727b572b1c416daf34aa271f77c063eff2eda7b765c4f01ef"
+              },
+              {
+                "impact_id": "impact_00874f6f34bd617d295a",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_ba00a60d2f8bae8ca8888198",
+                "target_external_id": "task_63563c87298631a0d461",
+                "target_kind": "task",
+                "severity": "medium",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "digest": "ce7ea334ee1079bbfe24e943226c513b2e3f2fb761ef5d2394a3acfbb664e95c"
+              },
+              {
+                "impact_id": "impact_366d3a6fe111c36dde1e",
+                "source_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_id": "kg_dd62343239ae88eb9d5c0d50",
+                "target_external_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "target_kind": "work_item",
+                "severity": "medium",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "digest": "f9a06bae11e82b87827aeee78fd8f6afe2404aebe39f11dc362f9928652c3bf8"
+              },
+              {
+                "impact_id": "impact_18974e14bcd0760d41b1",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_759626b3cd5fe4158f640b11",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:1",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "digest": "21b266c3ff4631dd1be199e1ca071b2ae63d5cc8d4267befd63d11efa3de7a5d"
+              },
+              {
+                "impact_id": "impact_e04590c462198e864f6c",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_dac8e62fb3eebd6c389f8491",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:2",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "digest": "8e7e208726de436efa6e71460b14fa7ddfeced423c54c13433a7944b72e4a055"
+              },
+              {
+                "impact_id": "impact_aa3b2dc4ed7f6d97a735",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_3500b81a9dab8906730126e4",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:3",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "digest": "08bdb8702587cad34804cc8a6739b84fe0763a8e39e7d1070ae63335af767b5c"
+              },
+              {
+                "impact_id": "impact_344cd89ea5d9f0263ab2",
+                "source_id": "kg_65c67b59fefe139cb63f0808",
+                "target_id": "kg_500b87fe46751c2b9a7e51d2",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:4",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+                "digest": "a0a95063a8f771346d9b8e3e15e4a8d33c2a2939c3610fa0c702f0b6de8f2bd4"
+              },
+              {
+                "impact_id": "impact_38c7a4bd2a1cb937e015",
+                "source_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_id": "kg_ba00a60d2f8bae8ca8888198",
+                "target_external_id": "task_63563c87298631a0d461",
+                "target_kind": "task",
+                "severity": "medium",
+                "depth": 1,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "digest": "aeb1c507a90ad6d3a9ee0d6a3f4345c61358b4324163a022bbdcef738e9046f3"
+              },
+              {
+                "impact_id": "impact_b2d24fb7353e15ef0529",
+                "source_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_id": "kg_759626b3cd5fe4158f640b11",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:1",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "digest": "f50e0fece2f2f886c512f2a7b676abf882a585a67c52095379a90cbe23ddb7c4"
+              },
+              {
+                "impact_id": "impact_f419dd0bdbdce17415e0",
+                "source_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_id": "kg_dac8e62fb3eebd6c389f8491",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:2",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "digest": "07ee4985c2c36b32dce37a9f05111ccd4d0cf29242d427a7791491907139bf8c"
+              },
+              {
+                "impact_id": "impact_0c5bf703764ab2f92099",
+                "source_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_id": "kg_3500b81a9dab8906730126e4",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:3",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "digest": "a7aa00e08b5c265b65892c5026eb514aee48b19214a29d628487c1f784907068"
+              },
+              {
+                "impact_id": "impact_4d19ec76154cb20af665",
+                "source_id": "kg_38e89b9d4d1d27a0789d0b6d",
+                "target_id": "kg_500b87fe46751c2b9a7e51d2",
+                "target_external_id": "task_63563c87298631a0d461:acceptance:4",
+                "target_kind": "requirement",
+                "severity": "high",
+                "depth": 2,
+                "action_required": false,
+                "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+                "digest": "e604c8253d94629b259f01b5b23351c11c062da273338a5d0b9db7afce87f5fe"
+              }
+            ],
+            "actionable_impacts": 0,
+            "digest": "c4ea225fd6710201ba2eb2bd1e35cb07ef854fcbfd67cccd02aaa36fcb0be98d"
+          },
+          "memory": {
+            "recalled": [
+              {
+                "memory_id": "memory_aa1574aa2ad785616faa3aee",
+                "kind": "verification",
+                "title": "Verified result for Implement and independently verify a bounded API",
+                "status": "verified",
+                "confidence": 1,
+                "retrieval_score": 14,
+                "sensitivity": "internal",
+                "verified_by": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "valid_at": "2026-07-26T04:30:43.181Z",
+                "digest": "6bb1a1e976f5cb1bddd9591de432df0c390264798485cb68470a098f84d4a79b"
+              },
+              {
+                "memory_id": "memory_9b2906f1ed38b811955c8468",
+                "kind": "artifact",
+                "title": "Verified artifact develop-artifact",
+                "status": "verified",
+                "confidence": 1,
+                "retrieval_score": 9,
+                "sensitivity": "internal",
+                "verified_by": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "valid_at": "2026-07-26T04:30:43.183Z",
+                "digest": "a04fcc41306d878609170f03d40fb7dab2f462b9404c1aae941d604ca692e7d3"
+              },
+              {
+                "memory_id": "memory_7a1d7cb5c44c91906c4277b8",
+                "kind": "artifact",
+                "title": "Verified artifact plan-artifact",
+                "status": "verified",
+                "confidence": 1,
+                "retrieval_score": 9,
+                "sensitivity": "internal",
+                "verified_by": "org_1c7ad51b3c489f0d12ee:quality-lead",
+                "valid_at": "2026-07-26T04:30:43.182Z",
+                "digest": "f69f01ee9d899dcbba9f5023978347c80b7463a0dea1efe5746cf090bf1934af"
+              }
+            ],
+            "captured": [
+              {
+                "memory_id": "memory_101074b14177fbef234f84e2",
+                "status": "proposed",
+                "digest": "d0aaccea0429e5ecfd3e88d23f577241b3e28d3a5375a2e5044a41af37a8964c"
+              },
+              {
+                "memory_id": "memory_413b98555c4b63dceb0e1ddb",
+                "status": "proposed",
+                "digest": "0471ac25dd5e3e80517a4f53838ba80647f1591270698fd64972fb975b208733"
+              },
+              {
+                "memory_id": "memory_aa1574aa2ad785616faa3aee",
+                "status": "verified",
+                "digest": "6bb1a1e976f5cb1bddd9591de432df0c390264798485cb68470a098f84d4a79b"
+              },
+              {
+                "memory_id": "memory_7a1d7cb5c44c91906c4277b8",
+                "status": "verified",
+                "digest": "f69f01ee9d899dcbba9f5023978347c80b7463a0dea1efe5746cf090bf1934af"
+              },
+              {
+                "memory_id": "memory_9b2906f1ed38b811955c8468",
+                "status": "verified",
+                "digest": "a04fcc41306d878609170f03d40fb7dab2f462b9404c1aae941d604ca692e7d3"
+              },
+              {
+                "memory_id": "memory_4ceec8ec5b910aea3bdb7e6c",
+                "status": "proposed",
+                "digest": "24fc918bf80f75d964cc18a0d6273ab228275dc60a0b070d0e43dc9cba62f3f6"
+              }
+            ]
+          },
+          "verification": [
+            {
+              "verification_id": "intelverify_fd91eb8f132f96dd7891",
+              "scope": "execution_bundle",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+              "passed": true,
+              "blocking_failures": [],
+              "check_count": 6,
+              "verified_at": "2026-07-26T04:30:42.922Z",
+              "digest": "a152e536fefa31dd561eadafd240bed117a680e3f25f497706d0eacd815defee"
+            },
+            {
+              "verification_id": "intelverify_415787def12939e9d57d",
+              "scope": "execution_bundle",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+              "passed": true,
+              "blocking_failures": [],
+              "check_count": 6,
+              "verified_at": "2026-07-26T04:30:43.041Z",
+              "digest": "ccf82199d70a348d251f2ca61eade07336117e9efed752513a0bc20973c55cea"
+            },
+            {
+              "verification_id": "intelverify_eb9faddad4d1b5e0418c",
+              "scope": "execution_bundle",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify",
+              "passed": true,
+              "blocking_failures": [],
+              "check_count": 6,
+              "verified_at": "2026-07-26T04:30:43.163Z",
+              "digest": "3889c2498e217e4330279a488b507eb1bc715f6840f8fdf5ca12e6915a6a1708"
+            },
+            {
+              "verification_id": "intelverify_e6dd18fa01c63e5c28f9",
+              "scope": "execution_bundle",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+              "passed": true,
+              "blocking_failures": [],
+              "check_count": 6,
+              "verified_at": "2026-07-26T04:30:43.293Z",
+              "digest": "12f766f35d00c60724368a30dc48e41872ec0b1d12a7b72b2ce2871c90bd404e"
+            },
+            {
+              "verification_id": "intelterminal_6ac4ffe80a60496e3cdf",
+              "scope": "terminal",
+              "work_item_id": null,
+              "passed": true,
+              "blocking_failures": [],
+              "check_count": 14,
+              "verified_at": "2026-07-26T04:30:43.418Z",
+              "digest": "b5e08781b9ec57bf9ac972d3b6390a00a42a3c779831efddaf218a300aa97955"
+            }
+          ],
+          "stats": {
+            "context_bytes": 20736,
+            "context_redactions": 0,
+            "stale_context_sources": 0,
+            "unknown_freshness_sources": 16,
+            "route_count": 4,
+            "model_observation_count": 4,
+            "model_successes": 4,
+            "model_failures": 0,
+            "model_latency_total_ms": 20,
+            "contract_count": 4,
+            "impact_count": 25,
+            "memory_recall_count": 3
+          },
+          "digest": "06bf09276abe4642b4ad21e877b88006a91d8075590adc747f062f80aaedef6d"
+        },
+        "usage": {
+          "calls": 4,
+          "tokens": 140,
+          "cost_micros": 0,
+          "wall_time_ms": 0
+        },
+        "host": {
+          "name": "reference",
+          "status": "configured",
+          "session_id": null,
+          "last_event_at": null
+        },
+        "operator": {
+          "paused": false,
+          "paused_at": null,
+          "paused_by": null,
+          "reason": null
+        },
+        "timeline": [
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:1",
+            "seq": 1,
+            "at": "2026-07-26T04:30:42.900Z",
+            "type": "mission.created",
+            "actor": "executive-manager",
+            "data": {
+              "organization_id": "org_1c7ad51b3c489f0d12ee",
+              "task_id": "task_63563c87298631a0d461"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:2",
+            "seq": 2,
+            "at": "2026-07-26T04:30:42.910Z",
+            "type": "mission.started",
+            "actor": "executive-manager",
+            "data": {}
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:3",
+            "seq": 3,
+            "at": "2026-07-26T04:30:42.913Z",
+            "type": "work_item.claimed",
+            "actor": "org_1c7ad51b3c489f0d12ee:product-specialist",
+            "data": {
+              "attempt": 1,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:4",
+            "seq": 4,
+            "at": "2026-07-26T04:30:42.913Z",
+            "type": "node.progress",
+            "actor": "org_1c7ad51b3c489f0d12ee:product-specialist",
+            "data": {
+              "attempt": 1,
+              "max_attempts": 3,
+              "status": "running",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:5",
+            "seq": 5,
+            "at": "2026-07-26T04:30:42.924Z",
+            "type": "intelligence.context_compiled",
+            "actor": "org_1c7ad51b3c489f0d12ee:product-specialist",
+            "data": {
+              "bytes": 5029,
+              "context_packet_id": "ctx_c3c2107277c86e94db7f",
+              "redactions": 0,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:6",
+            "seq": 6,
+            "at": "2026-07-26T04:30:42.925Z",
+            "type": "intelligence.model_routed",
+            "actor": "model-router",
+            "data": {
+              "host": "reference",
+              "model_id": "reference/deterministic-v1",
+              "route_id": "route_37b2ae766e75bf79ebdb",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:7",
+            "seq": 7,
+            "at": "2026-07-26T04:30:42.925Z",
+            "type": "intelligence.collaboration_prepared",
+            "actor": "collaboration-runtime",
+            "data": {
+              "contract_ids": [
+                "contract_02a7b80261ad40d1d657"
+              ],
+              "handoff_ids": [
+                "handoff_41101b120f32998af575"
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:8",
+            "seq": 8,
+            "at": "2026-07-26T04:30:42.944Z",
+            "type": "work_item.completed",
+            "actor": "org_1c7ad51b3c489f0d12ee:product-specialist",
+            "data": {
+              "artifact_candidates": 1,
+              "execution_mode": "native_local",
+              "run_id": "run_9a1a3b43ce638e7a3e62",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:9",
+            "seq": 9,
+            "at": "2026-07-26T04:30:42.944Z",
+            "type": "intelligence.report_ingested",
+            "actor": "intelligence-fabric",
+            "data": {
+              "contract_count": 1,
+              "impact_count": 7,
+              "knowledge_revision": 3,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:10",
+            "seq": 10,
+            "at": "2026-07-26T04:30:42.944Z",
+            "type": "intelligence.model_observed",
+            "actor": "model-router",
+            "data": {
+              "cost_micros": 0,
+              "host": "reference",
+              "latency_ms": 11,
+              "model_id": "reference/deterministic-v1",
+              "observation_id": "modelobs_55dd7973fa153f6e5657",
+              "status": "success",
+              "tokens": 35,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:11",
+            "seq": 11,
+            "at": "2026-07-26T04:30:42.950Z",
+            "type": "intelligence.memory_captured",
+            "actor": "memory-runtime",
+            "data": {
+              "memory_refs": [
+                {
+                  "digest": "d0aaccea0429e5ecfd3e88d23f577241b3e28d3a5375a2e5044a41af37a8964c",
+                  "memory_id": "memory_101074b14177fbef234f84e2",
+                  "status": "proposed"
+                }
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:12",
+            "seq": 12,
+            "at": "2026-07-26T04:30:43.037Z",
+            "type": "work_item.claimed",
+            "actor": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+            "data": {
+              "attempt": 1,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:13",
+            "seq": 13,
+            "at": "2026-07-26T04:30:43.037Z",
+            "type": "node.progress",
+            "actor": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+            "data": {
+              "attempt": 1,
+              "max_attempts": 4,
+              "status": "running",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:14",
+            "seq": 14,
+            "at": "2026-07-26T04:30:43.045Z",
+            "type": "intelligence.context_compiled",
+            "actor": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+            "data": {
+              "bytes": 5242,
+              "context_packet_id": "ctx_2cc59e13c4a7e0d404cd",
+              "redactions": 0,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:15",
+            "seq": 15,
+            "at": "2026-07-26T04:30:43.045Z",
+            "type": "intelligence.model_routed",
+            "actor": "model-router",
+            "data": {
+              "host": "reference",
+              "model_id": "reference/deterministic-v1",
+              "route_id": "route_e098b906e3f6bdb44153",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:16",
+            "seq": 16,
+            "at": "2026-07-26T04:30:43.045Z",
+            "type": "intelligence.collaboration_prepared",
+            "actor": "collaboration-runtime",
+            "data": {
+              "contract_ids": [
+                "contract_231a798a4e50613bd7aa"
+              ],
+              "handoff_ids": [
+                "handoff_aeea32400a3b996fd01f"
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:17",
+            "seq": 17,
+            "at": "2026-07-26T04:30:43.056Z",
+            "type": "work_item.completed",
+            "actor": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+            "data": {
+              "artifact_candidates": 1,
+              "execution_mode": "native_local",
+              "run_id": "run_cd39e0f618532b4f4e7e",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:18",
+            "seq": 18,
+            "at": "2026-07-26T04:30:43.056Z",
+            "type": "intelligence.report_ingested",
+            "actor": "intelligence-fabric",
+            "data": {
+              "contract_count": 2,
+              "impact_count": 14,
+              "knowledge_revision": 4,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:19",
+            "seq": 19,
+            "at": "2026-07-26T04:30:43.056Z",
+            "type": "intelligence.model_observed",
+            "actor": "model-router",
+            "data": {
+              "cost_micros": 0,
+              "host": "reference",
+              "latency_ms": 3,
+              "model_id": "reference/deterministic-v1",
+              "observation_id": "modelobs_28f5ba3343f68f4bef46",
+              "status": "success",
+              "tokens": 35,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:20",
+            "seq": 20,
+            "at": "2026-07-26T04:30:43.062Z",
+            "type": "intelligence.memory_captured",
+            "actor": "memory-runtime",
+            "data": {
+              "memory_refs": [
+                {
+                  "digest": "0471ac25dd5e3e80517a4f53838ba80647f1591270698fd64972fb975b208733",
+                  "memory_id": "memory_413b98555c4b63dceb0e1ddb",
+                  "status": "proposed"
+                }
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:21",
+            "seq": 21,
+            "at": "2026-07-26T04:30:43.148Z",
+            "type": "work_item.claimed",
+            "actor": "org_1c7ad51b3c489f0d12ee:quality-lead",
+            "data": {
+              "attempt": 1,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:22",
+            "seq": 22,
+            "at": "2026-07-26T04:30:43.148Z",
+            "type": "node.progress",
+            "actor": "org_1c7ad51b3c489f0d12ee:quality-lead",
+            "data": {
+              "attempt": 1,
+              "max_attempts": 2,
+              "status": "running",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:23",
+            "seq": 23,
+            "at": "2026-07-26T04:30:43.167Z",
+            "type": "intelligence.context_compiled",
+            "actor": "org_1c7ad51b3c489f0d12ee:quality-lead",
+            "data": {
+              "bytes": 4715,
+              "context_packet_id": "ctx_01de4e742ceefaea4d03",
+              "redactions": 0,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:24",
+            "seq": 24,
+            "at": "2026-07-26T04:30:43.167Z",
+            "type": "intelligence.model_routed",
+            "actor": "model-router",
+            "data": {
+              "host": "reference",
+              "model_id": "reference/deterministic-v1",
+              "route_id": "route_1d1e1425eb594fc8f815",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:25",
+            "seq": 25,
+            "at": "2026-07-26T04:30:43.167Z",
+            "type": "intelligence.collaboration_prepared",
+            "actor": "collaboration-runtime",
+            "data": {
+              "contract_ids": [
+                "contract_009d342a5c315f03d29a"
+              ],
+              "handoff_ids": [
+                "handoff_5691d1d9b5161d004509"
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:26",
+            "seq": 26,
+            "at": "2026-07-26T04:30:43.179Z",
+            "type": "work_item.completed",
+            "actor": "org_1c7ad51b3c489f0d12ee:quality-lead",
+            "data": {
+              "artifact_candidates": 0,
+              "execution_mode": "native_local",
+              "run_id": "run_fbccc98d2006d0d3fb3b",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:27",
+            "seq": 27,
+            "at": "2026-07-26T04:30:43.179Z",
+            "type": "intelligence.report_ingested",
+            "actor": "intelligence-fabric",
+            "data": {
+              "contract_count": 3,
+              "impact_count": 20,
+              "knowledge_revision": 5,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:28",
+            "seq": 28,
+            "at": "2026-07-26T04:30:43.179Z",
+            "type": "intelligence.model_observed",
+            "actor": "model-router",
+            "data": {
+              "cost_micros": 0,
+              "host": "reference",
+              "latency_ms": 3,
+              "model_id": "reference/deterministic-v1",
+              "observation_id": "modelobs_9aa900052a1542225b40",
+              "status": "success",
+              "tokens": 35,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:29",
+            "seq": 29,
+            "at": "2026-07-26T04:30:43.190Z",
+            "type": "intelligence.memory_captured",
+            "actor": "memory-runtime",
+            "data": {
+              "memory_refs": [
+                {
+                  "digest": "6bb1a1e976f5cb1bddd9591de432df0c390264798485cb68470a098f84d4a79b",
+                  "memory_id": "memory_aa1574aa2ad785616faa3aee",
+                  "status": "verified"
+                },
+                {
+                  "digest": "f69f01ee9d899dcbba9f5023978347c80b7463a0dea1efe5746cf090bf1934af",
+                  "memory_id": "memory_7a1d7cb5c44c91906c4277b8",
+                  "status": "verified"
+                },
+                {
+                  "digest": "a04fcc41306d878609170f03d40fb7dab2f462b9404c1aae941d604ca692e7d3",
+                  "memory_id": "memory_9b2906f1ed38b811955c8468",
+                  "status": "verified"
+                }
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:verify"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:30",
+            "seq": 30,
+            "at": "2026-07-26T04:30:43.285Z",
+            "type": "work_item.claimed",
+            "actor": "org_1c7ad51b3c489f0d12ee:executive-manager",
+            "data": {
+              "attempt": 1,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:31",
+            "seq": 31,
+            "at": "2026-07-26T04:30:43.285Z",
+            "type": "node.progress",
+            "actor": "org_1c7ad51b3c489f0d12ee:executive-manager",
+            "data": {
+              "attempt": 1,
+              "max_attempts": 1,
+              "status": "running",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:32",
+            "seq": 32,
+            "at": "2026-07-26T04:30:43.297Z",
+            "type": "intelligence.context_compiled",
+            "actor": "org_1c7ad51b3c489f0d12ee:executive-manager",
+            "data": {
+              "bytes": 5750,
+              "context_packet_id": "ctx_bf2bb87d49db29a97ba2",
+              "redactions": 0,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:33",
+            "seq": 33,
+            "at": "2026-07-26T04:30:43.297Z",
+            "type": "intelligence.model_routed",
+            "actor": "model-router",
+            "data": {
+              "host": "reference",
+              "model_id": "reference/deterministic-v1",
+              "route_id": "route_eba99a664fe25afa774e",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:34",
+            "seq": 34,
+            "at": "2026-07-26T04:30:43.297Z",
+            "type": "intelligence.collaboration_prepared",
+            "actor": "collaboration-runtime",
+            "data": {
+              "contract_ids": [
+                "contract_8dcd0599ba71ee70c0e5"
+              ],
+              "handoff_ids": [
+                "handoff_dc8cd14812b671a7f560"
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:35",
+            "seq": 35,
+            "at": "2026-07-26T04:30:43.311Z",
+            "type": "work_item.completed",
+            "actor": "org_1c7ad51b3c489f0d12ee:executive-manager",
+            "data": {
+              "artifact_candidates": 1,
+              "execution_mode": "native_local",
+              "run_id": "run_65c083dc4eccdff69c3e",
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:36",
+            "seq": 36,
+            "at": "2026-07-26T04:30:43.311Z",
+            "type": "intelligence.report_ingested",
+            "actor": "intelligence-fabric",
+            "data": {
+              "contract_count": 4,
+              "impact_count": 25,
+              "knowledge_revision": 6,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:37",
+            "seq": 37,
+            "at": "2026-07-26T04:30:43.311Z",
+            "type": "intelligence.model_observed",
+            "actor": "model-router",
+            "data": {
+              "cost_micros": 0,
+              "host": "reference",
+              "latency_ms": 3,
+              "model_id": "reference/deterministic-v1",
+              "observation_id": "modelobs_0e2e9eacc20626b8b8b0",
+              "status": "success",
+              "tokens": 35,
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:38",
+            "seq": 38,
+            "at": "2026-07-26T04:30:43.326Z",
+            "type": "intelligence.memory_captured",
+            "actor": "memory-runtime",
+            "data": {
+              "memory_refs": [
+                {
+                  "digest": "24fc918bf80f75d964cc18a0d6273ab228275dc60a0b070d0e43dc9cba62f3f6",
+                  "memory_id": "memory_4ceec8ec5b910aea3bdb7e6c",
+                  "status": "proposed"
+                }
+              ],
+              "work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:39",
+            "seq": 39,
+            "at": "2026-07-26T04:30:43.423Z",
+            "type": "intelligence.terminal_verified",
+            "actor": "intelligence-verifier",
+            "data": {
+              "blocking_failures": [],
+              "passed": true,
+              "verification_id": "intelterminal_6ac4ffe80a60496e3cdf"
+            }
+          },
+          {
+            "event_id": "mission:mission_ff86f6010fbaf89f3e00:40",
+            "seq": 40,
+            "at": "2026-07-26T04:30:43.423Z",
+            "type": "mission.terminal",
+            "actor": "company-runtime",
+            "data": {
+              "execution_mode": "native_local",
+              "quality_gate_passed": true,
+              "real_execution": true,
+              "status": "completed"
+            }
+          }
+        ],
+        "integrity": {
+          "state_digest": "888bd315c5ca610988fee2de57a4b51be408ee68b6028e2a47042843d7cb760d"
+        },
+        "updated_at": "2026-07-26T04:30:43.423Z",
+        "digest": "e5ff037c5fa82d12f8d59baad57f26b3957637e7c89ff216d167b743fbad4fae"
+      }
+    },
+    {
+      "name": "quality gate passes",
+      "passed": true,
+      "details": {}
+    },
+    {
+      "name": "real execution recorded",
+      "passed": true,
+      "details": {
+        "mode": "native_local",
+        "real_execution": true,
+        "simulation_promotion_allowed": false,
+        "model_invocations": 4,
+        "tool_invocations": 0
+      }
+    },
+    {
+      "name": "verified artifact exists",
+      "passed": true,
+      "details": {
+        "candidates": [
+          {
+            "schema_version": 1,
+            "artifact_id": "artifact_1a25fa0177be61a665e9",
+            "name": "synthesize-artifact",
+            "media_type": "application/json",
+            "content": {
+              "kind": "synthesize",
+              "live": true
+            },
+            "status": "candidate",
+            "producer_role_id": "org_1c7ad51b3c489f0d12ee:executive-manager",
+            "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:synthesize",
+            "source_run_id": "run_65c083dc4eccdff69c3e",
+            "source_report_digest": "84ee814b4c55711b44d1b5390cbf7092643a88c8f43be2efeb9268a488fe7fda",
+            "verifier_role_id": null,
+            "verification_evidence": [],
+            "content_digest": "e1da376f241be16069a7432dd4d143592a84b75eac5b0aa65ce992fbcf3d9a2e",
+            "digest": "d9263005a82f422681f3a01e24a507578a85b9b3f62c8567941875b1b3258eaf"
+          }
+        ],
+        "verified": [
+          {
+            "schema_version": 1,
+            "artifact_id": "artifact_823e17b447f69cf052c0",
+            "name": "plan-artifact",
+            "media_type": "application/json",
+            "content": {
+              "kind": "plan",
+              "live": true
+            },
+            "status": "verified",
+            "producer_role_id": "org_1c7ad51b3c489f0d12ee:product-specialist",
+            "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:plan",
+            "source_run_id": "run_9a1a3b43ce638e7a3e62",
+            "source_report_digest": "6e6aba8a13cb43fff6d083d37ae6ee0960fa8103a16b7634d11aaf57766d1e5b",
+            "verifier_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+            "verification_evidence": [
+              "fake-provider independent evidence"
+            ],
+            "content_digest": "2ca689abe3212bf8a51ab5a19a1a8be2ca2c5e2c1f5f40c662fe5bd69023dd73",
+            "verification_report_digest": "fdfcabf07397dddb2845c45a9d96d3818adc8e850ff965db53eb16116a61b937",
+            "digest": "1d2bb90618e3db781c4f887c0dbee7b0ee1db533fe8b3a92ceb1b32732187c5d"
+          },
+          {
+            "schema_version": 1,
+            "artifact_id": "artifact_1505d6824f7843fd4ccd",
+            "name": "develop-artifact",
+            "media_type": "application/json",
+            "content": {
+              "kind": "develop",
+              "live": true
+            },
+            "status": "verified",
+            "producer_role_id": "org_1c7ad51b3c489f0d12ee:engineering-specialist",
+            "source_work_item_id": "mission_ff86f6010fbaf89f3e00:work:develop",
+            "source_run_id": "run_cd39e0f618532b4f4e7e",
+            "source_report_digest": "ef451ac059d85febcd8795cc797c58e7a34fa4ccad9b2ef27642fcdbebef811a",
+            "verifier_role_id": "org_1c7ad51b3c489f0d12ee:quality-lead",
+            "verification_evidence": [
+              "fake-provider independent evidence"
+            ],
+            "content_digest": "b662fad39c74b6539a831f83d1a8e2c0e1842813fc11197eebd8f86ac96a111e",
+            "verification_report_digest": "fdfcabf07397dddb2845c45a9d96d3818adc8e850ff965db53eb16116a61b937",
+            "digest": "eb8a93c0c526ac4118e06b8691bbe7097ebacc17b9976d2ead1b0fb1d4d30a93"
+          }
+        ]
+      }
+    }
+  ]
+}

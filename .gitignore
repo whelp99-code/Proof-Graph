@@ -17,3 +17,6 @@ verification/tmp/
 
 # Generated release archives
 dist/
+
+# Generated host plugin installs
+.opencode/

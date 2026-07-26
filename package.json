@@ -2,6 +2,7 @@
   "name": "proofgraph",
   "version": "1.1.0",
   "private": true,
+  "workspaces": ["packages/standalone"],
   "type": "module",
   "description": "The Graph Engineering runtime for AI coding tools, with first-class OpenCode and Pi reference-host integrations.",
   "engines": {

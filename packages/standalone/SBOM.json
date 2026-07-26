@@ -1,0 +1,43 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:proofgraph-standalone-5.0.0",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "@proofgraph/intelligence",
+      "version": "4.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    }
+  },
+  "components": [],
+  "properties": [
+    {
+      "name": "proofgraph.runtimeDependencies",
+      "value": "0"
+    },
+    {
+      "name": "proofgraph.nodeRequirement",
+      "value": ">=20"
+    },
+    {
+      "name": "proofgraph.runtimeBaseline",
+      "value": "2.0.0"
+    },
+    {
+      "name": "proofgraph.hostBaseline",
+      "value": "1.1.0"
+    },
+    {
+      "name": "proofgraph.releaseGate",
+      "value": "PASS_OFFLINE_V1_1_INTEGRATION_AND_MULTI_MODEL_CANARY_REQUIRED"
+    }
+  ]
+}

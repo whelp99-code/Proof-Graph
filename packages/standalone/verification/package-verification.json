@@ -1,0 +1,9 @@
+{
+  "schema_version": 2,
+  "version": "5.0.0",
+  "manifested_files": 166,
+  "actual_files": 166,
+  "findings": [],
+  "passed": true,
+  "digest": "f284cf4af31fce7bb872d901fdb2edeebe080ae6b1856c7202cd0fde579996e6"
+}

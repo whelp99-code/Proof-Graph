@@ -8,7 +8,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const MANIFEST = path.join(ROOT, 'BUILD_MANIFEST.json');
 const writeMode = process.argv.includes('--write');
 const excludedExact = new Set(['BUILD_MANIFEST.json']);
-const excludedPrefixes = ['.git/', '.proofgraph/', '.opencode/', 'node_modules/', 'verification/tmp/', 'dist/'];
+const excludedPrefixes = ['.git/', '.proofgraph/', '.opencode/', 'node_modules/', 'packages/', 'verification/tmp/', 'dist/'];
 
 function shouldInclude(rel) {
   const posix = rel.split(path.sep).join('/');

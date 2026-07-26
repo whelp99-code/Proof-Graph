@@ -1,0 +1,75 @@
+{
+  "schema_version": 3,
+  "package": "@proofgraph/intelligence",
+  "version": "5.0.0",
+  "runtime_baseline": "ProofGraph 2.0.0",
+  "host_baseline": "ProofGraph 1.1.0",
+  "baseline_protocol": "proofgraph.host.v1",
+  "recommended_repository_path": "packages/intelligence",
+  "integration_strategy": "workspace-package-over-v1.1-host",
+  "binaries": [
+    "proofgraph",
+    "proofgraphd",
+    "proofgraph-org",
+    "proofgraph-org-mcp"
+  ],
+  "control_plane": {
+    "default_url": "http://127.0.0.1:8742",
+    "command_protocol": "REST JSON",
+    "event_protocol": "SSE",
+    "operator_auth": "separate bearer token",
+    "host_ingest_auth": "separate host token"
+  },
+  "required_v1_1_commands": [
+    "run",
+    "status",
+    "report",
+    "integrity"
+  ],
+  "operator_only_commands": [
+    "approve",
+    "deny",
+    "abort",
+    "pause",
+    "resume",
+    "retry",
+    "shutdown"
+  ],
+  "required_post_merge_gates": [
+    "public v1.1 exact-tree full regression",
+    "Intelligence automated and independent suites",
+    "authenticated multi-host/model canary",
+    "real provider cost/latency/quality calibration",
+    "cross-layer approval, verifier, registry-drift, and secret-redaction adversarial tests",
+    "fresh package verification"
+  ],
+  "claims_not_made": [
+    "The exact public v1.1 Git tree has not been merged into this standalone package.",
+    "No authenticated multi-provider model canary was executed in this build environment.",
+    "Example model registry values are not provider performance claims.",
+    "The local property graph and lexical memory are not distributed graph/vector databases.",
+    "Local hashes are not external attestation or notarization."
+  ],
+  "intelligence_surfaces": {
+    "context": "proofgraph.context-packet.v1",
+    "model_registry": "proofgraph.model-registry.v1",
+    "route": "proofgraph.route-decision.v1",
+    "collaboration": [
+      "proofgraph.work-contract.v1",
+      "proofgraph.handoff-packet.v1"
+    ],
+    "knowledge": "proofgraph.knowledge-graph.v1",
+    "memory": "proofgraph.memory-entry.v1",
+    "verification": "proofgraph.intelligence-verification.v1",
+    "model_observation": "proofgraph.model-observation.v1",
+    "context_freshness": "observed_at/source_updated_at/age_seconds/freshness"
+  },
+  "release_gate": "PASS_OFFLINE_LIVE_PROVIDER_AND_HOST_CANARY_REQUIRED",
+  "product": "proofgraph-standalone",
+  "execution_modes": [
+    "simulation",
+    "hosted",
+    "native_cloud",
+    "native_local"
+  ]
+}

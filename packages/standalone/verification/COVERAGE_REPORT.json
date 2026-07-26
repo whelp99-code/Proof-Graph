@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "version": "2.0.0",
+  "scope": [
+    "runtime/**/*.mjs",
+    "bin/*.mjs"
+  ],
+  "tests": 109,
+  "passed": 109,
+  "failed": 0,
+  "coverage_percent": {
+    "line": 95.03,
+    "branch_conservative": 78.06,
+    "function": 92.43
+  },
+  "thresholds": {
+    "line": 90,
+    "branch": 75,
+    "function": 90
+  },
+  "thresholds_passed": true,
+  "note": "V8 branch instrumentation varied slightly across clean runs; the conservative observed minimum is used for release claims. Generated COVERAGE_SUMMARY.json is intentionally excluded from the reproducible manifest.",
+  "digest": "83949ed3ecab4711b6f03b49815036ea7407e23ff252ac85dbd5ff48403f89d0"
+}

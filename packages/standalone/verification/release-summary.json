@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "product": "@proofgraph/intelligence",
+  "version": "4.0.0",
+  "date": "2026-07-26",
+  "baseline": "ProofGraph Operator 3.0.0 / ProofGraph host contract 1.1",
+  "release_gate": "PASS_OFFLINE_V1_1_INTEGRATION_AND_MULTI_MODEL_CANARY_REQUIRED",
+  "runtime_pillars": [
+    "context_delivery",
+    "exact_model_routing",
+    "collaboration_contracts",
+    "knowledge_impact",
+    "organization_memory",
+    "intelligence_verification"
+  ],
+  "tests": {
+    "passed": 174,
+    "failed": 0,
+    "skipped": 0
+  },
+  "coverage_percent": {
+    "line": 97.02,
+    "branch_conservative_observed_minimum": 76.96,
+    "function": 93.0
+  },
+  "independent_verification": {
+    "legacy_cli_mcp": {
+      "passed": 18,
+      "failed": 0,
+      "production_module_imports": 0
+    },
+    "operator": {
+      "passed": 15,
+      "failed": 0,
+      "production_module_imports": 0
+    },
+    "intelligence": {
+      "passed": 11,
+      "failed": 0,
+      "production_module_imports": 0
+    },
+    "total": {
+      "passed": 44,
+      "failed": 0,
+      "production_module_imports": 0
+    }
+  },
+  "preflight": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 2
+  },
+  "benchmark_p95_ms": {
+    "graph_1000_nodes": 0.415,
+    "snapshot_1000_nodes_10000_events": 0.559,
+    "timeline_search_10000_events": 7.543
+  },
+  "remaining_gates": [
+    "public v1.1 exact-tree integration regression",
+    "authenticated multi-host and real-provider model canary",
+    "measured model registry calibration"
+  ],
+  "claims_not_made": [
+    "Model observations do not autonomously modify routing policy.",
+    "Source freshness does not prove semantic truth.",
+    "No authenticated real-provider routing canary is claimed.",
+    "No exact integration with the public v1.1 tree is claimed."
+  ],
+  "digest": "a6f5cdca5e2f5cb03b65859869314955bfaf9868ceedfe2f9148b2bcf7392361"
+}
