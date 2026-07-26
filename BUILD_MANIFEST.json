@@ -2,8 +2,8 @@
   "schema_version": 1,
   "product": "proofgraph",
   "version": "1.1.0",
-  "generated_at": "2026-07-25T14:29:57.102Z",
-  "file_count": 243,
+  "generated_at": "2026-07-26T04:31:31.736Z",
+  "file_count": 244,
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
@@ -17,8 +17,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 269,
-      "sha256": "73e24340fb4da69d119c609b0e3d9eccdf6d2b0bf09ac3b3a8adbc6612e81c39"
+      "bytes": 314,
+      "sha256": "83c95728dac4e65b474f79783f506b98053488b917d0c10afa2909a401ad1d23"
     },
     {
       "path": ".mcp.json",
@@ -99,6 +99,11 @@
       "path": "docs/ADAPTERS.md",
       "bytes": 3985,
       "sha256": "1fd36be6f1c53db1806670267f91ad995d5fc8825a8cf4d7d58b5f6be5cd303a"
+    },
+    {
+      "path": "docs/adr/001-standalone-v5-as-package.md",
+      "bytes": 2879,
+      "sha256": "173ca0ceb9369e772f934ab7fa261ea51b25c9bd0e8fd88f3d389875318b0a5e"
     },
     {
       "path": "docs/AI_AGENT_TUI_KO.md",
@@ -347,13 +352,13 @@
     },
     {
       "path": "package-lock.json",
-      "bytes": 377,
-      "sha256": "b23a69f00ed349f1a8f229d132a5ac1a2b34cf8dd7e0caa3a348dca9b57b3fd7"
+      "bytes": 947,
+      "sha256": "b70247fc2f0caa52fc9b688c90a7c796c6d48d736fb014e2abc100ac3d21b9d7"
     },
     {
       "path": "package.json",
-      "bytes": 4249,
-      "sha256": "acdc864eb23182a62eef6eae3e62725b09e2cfa25db87c311416c9bae078f4b7"
+      "bytes": 4290,
+      "sha256": "95ae82ec8191c5866e16fb604960e0e10e0b36beaca8898425b2dba3f02126d0"
     },
     {
       "path": "README_KO.md",
@@ -362,8 +367,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11540,
-      "sha256": "8008991a41aab9c68a3346fb1415a42a7ed4466e94cb9726f68a690474698c6a"
+      "bytes": 11941,
+      "sha256": "1ebc899ac812916e7fce7f7685678babfdcfe2d89b6b33c93494abe886d65a77"
     },
     {
       "path": "ROADMAP_KO.md",
@@ -612,8 +617,8 @@
     },
     {
       "path": "scripts/verify-package.mjs",
-      "bytes": 4730,
-      "sha256": "a9f1a4d7130bd3e76bfd38975fb01a7e9864d94dc3d4a0e96020c1e1aba2f50e"
+      "bytes": 4743,
+      "sha256": "26b76aac1e760edb125ec07ec163f477b5569057daa4216cab0120fe1afc1a01"
     },
     {
       "path": "server/index.mjs",

@@ -1,0 +1,9 @@
+{
+  "baseline": "1.1.0",
+  "protocol": "proofgraph.host.v1",
+  "url": "http://127.0.0.1:8743",
+  "host": "opencode",
+  "token_env": "PROOFGRAPH_HOST_TOKEN",
+  "operator_commands_are_model_callable": false,
+  "live_canary_required": true
+}

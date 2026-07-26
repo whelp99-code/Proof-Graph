@@ -1,0 +1,58 @@
+{
+  "schema": "proofgraph.model-registry.v1",
+  "schema_version": 1,
+  "registry_version": "example-1",
+  "entries": [
+    {
+      "model_id": "opencode/code-primary",
+      "provider": "opencode",
+      "host": "opencode",
+      "enabled": false,
+      "capabilities": ["coding", "general", "planning", "reasoning", "structured_output", "verification"],
+      "data_classifications": ["public", "internal"],
+      "risk_ceiling": "high",
+      "max_context_tokens": 100000,
+      "quality": 0.85,
+      "reliability": 0.8,
+      "health": 1,
+      "latency_ms": 1500,
+      "input_cost_micros_per_million": 0,
+      "output_cost_micros_per_million": 0,
+      "tags": ["code", "host-managed"]
+    },
+    {
+      "model_id": "claude/reasoning-primary",
+      "provider": "anthropic",
+      "host": "claude",
+      "enabled": false,
+      "capabilities": ["general", "planning", "reasoning", "research", "structured_output", "verification"],
+      "data_classifications": ["public", "internal"],
+      "risk_ceiling": "critical",
+      "max_context_tokens": 100000,
+      "quality": 0.9,
+      "reliability": 0.85,
+      "health": 1,
+      "latency_ms": 1800,
+      "input_cost_micros_per_million": 0,
+      "output_cost_micros_per_million": 0,
+      "tags": ["reasoning", "verification"]
+    },
+    {
+      "model_id": "pi/general-primary",
+      "provider": "pi",
+      "host": "pi",
+      "enabled": false,
+      "capabilities": ["general", "reasoning", "structured_output"],
+      "data_classifications": ["public", "internal"],
+      "risk_ceiling": "medium",
+      "max_context_tokens": 64000,
+      "quality": 0.75,
+      "reliability": 0.75,
+      "health": 1,
+      "latency_ms": 1200,
+      "input_cost_micros_per_million": 0,
+      "output_cost_micros_per_million": 0,
+      "tags": ["general", "fast"]
+    }
+  ]
+}

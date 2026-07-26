@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "verifier": "operator-independent-black-box",
+  "version": "5.0.0",
+  "production_module_imports": 0,
+  "total": 15,
+  "passed": 15,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Operator CLI version contract",
+      "passed": true,
+      "detail": {
+        "product": "proofgraph-standalone",
+        "version": "5.0.0",
+        "release_gate": "PASS_OFFLINE_LIVE_PROVIDER_AND_HOST_CANARY_REQUIRED"
+      }
+    },
+    {
+      "name": "Control Plane health and unauthorized boundary",
+      "passed": true,
+      "detail": {
+        "health": {
+          "ok": true,
+          "product": "proofgraph-standalone",
+          "version": "5.0.0",
+          "model_registry": {
+            "version": "offline-reference-1",
+            "digest": "58e24f8e30dfc2e894b8d5a99447487b13bce0d42b404a842df582b3ac6bfbf3",
+            "models": 1
+          }
+        },
+        "unauthorized_status": 401
+      }
+    },
+    {
+      "name": "Mission reaches one-screen clean completion projection",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_a230e33c37683d9d6ee9",
+        "status": "completed_clean",
+        "progress": {
+          "completed": 5,
+          "terminal": 5,
+          "total": 5,
+          "percent": 100
+        },
+        "nodes": 5
+      }
+    },
+    {
+      "name": "SSE emits projection snapshot and can resume from event cursor",
+      "passed": true,
+      "detail": {
+        "event": "run.updated",
+        "event_count": 40,
+        "cursor": 40
+      }
+    },
+    {
+      "name": "Idempotency ledger returns the same run for repeated create command",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_75cb4c9841bcc5f8839b"
+      }
+    },
+    {
+      "name": "Pause and resume are operator-controlled and observable",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_d704aff0de7494b159b7",
+        "status": "completed_clean"
+      }
+    },
+    {
+      "name": "Approval challenge is hidden and external approval completes mission",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_f0d9d5c647eca9be2efb",
+        "approval_id": "approval_cd738fdee7ae4387ab40b740c0d3bf5f"
+      }
+    },
+    {
+      "name": "Approval denial produces an explicit denied terminal state",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_3220e157525f4434fe0f",
+        "status": "denied"
+      }
+    },
+    {
+      "name": "Host ingest token is isolated from operator authority",
+      "passed": true,
+      "detail": {
+        "operator_status": 401,
+        "host_status": 202
+      }
+    },
+    {
+      "name": "CLI snapshot renders graph, timeline and approval-safe content",
+      "passed": true,
+      "detail": {
+        "lines": 36
+      }
+    },
+    {
+      "name": "OpenCode project installer creates plugin and command surface",
+      "passed": true,
+      "detail": {
+        "files": 6
+      }
+    },
+    {
+      "name": "Control Plane restart preserves run projection and token identity",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_a230e33c37683d9d6ee9",
+        "status": "completed_clean"
+      }
+    },
+    {
+      "name": "State tampering fails closed through HTTP API",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_00dad6cfeb0679984ead",
+        "detected": true
+      }
+    },
+    {
+      "name": "Host bridge loop is rendered as completed with recovery",
+      "passed": true,
+      "detail": {
+        "run_id": "mission_4478b63f358d796b01d8",
+        "status": "completed_with_recovery",
+        "loops": 1,
+        "verify_attempts": 2
+      }
+    },
+    {
+      "name": "No production source module imported by operator verifier",
+      "passed": true,
+      "detail": {
+        "production_imports": 0
+      }
+    }
+  ],
+  "digest": "67a20babfe14da9be48ede1349ed703d532f7e02fae00b3faff66dc09e6a495e"
+}

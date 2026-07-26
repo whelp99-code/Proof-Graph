@@ -1,0 +1,38 @@
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ ProofGraph Operator  RUN mission_1d3fcf7c329cb5177744  COMPLETED_WITH_RECOVERY  reference CONFIGURED  100%  0s [CONNECTED]       │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│RUNS                     │EXECUTION GRAPH                                                         │INSPECTOR                        │
+│▶↺ mission_1d3fcf7c329cb5│                               [✓ triage]                               │Node: verify                     │
+│   completed_with_recover│                                   │                                    │Kind: verify                     │
+│                         │                                   ▼                                    │Status: completed                │
+│                         │                                [✓ plan]                                │Role: org_960cb79e783a233415e8:q…│
+│                         │                                   │                                    │Attempt: 2/2                     │
+│                         │                                   ▼                                    │                                 │
+│                         │                             [✓ develop ↺2]                             │Loops: 1                         │
+│                         │                                   │                                    │Unresolved: 0                    │
+│                         │                                   ▼                                    │Approvals: 0                     │
+│                         │                             ⟦✓ verify ↺2⟧                              │                                 │
+│                         │                                   │                                    │                                 │
+│                         │                                   ▼                                    │                                 │
+│                         │                             [✓ synthesize]                             │                                 │
+│                         │────────────────────────────────────────────────────────────────────────│                                 │
+│                         │↺ verify → develop  implementation_error  1/1                           │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+│                         │                                                                        │                                 │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│TIMELINE                                                                           │APPROVAL QUEUE                                │
+│21:48:41 node.progress mission_1d3fcf7c329cb5177744:work:synthesize                │No pending approvals                          │
+│21:48:41 work_item.completed mission_1d3fcf7c329cb5177744:work:synthesize          │                                              │
+│21:48:41 mission.terminal completed                                                │                                              │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│[G] Graph [O] Org [C] Cycles [T] Timeline [F] Failures  [N] New [P] Pause [R] Retry [A] Approve [D] Deny [X] Abort [Q] Quit       │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
